@@ -1,0 +1,234 @@
+/* EXTRABOLD */
+@utility typography-EB12 {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 0.85;
+}
+@utility typography-EB14 {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 0.85;
+}
+@utility typography-EB16 {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 0.85;
+}
+@utility typography-EB18 {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 0.85;
+}
+@utility typography-EB20 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 0.85;
+}
+@utility typography-EB24 {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 0.85;
+}
+@utility typography-EB34 {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 0.85;
+}
+@utility typography-EB48 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 0.85;
+}
+@utility typography-EB74 {
+  font-size: 74px;
+  font-weight: 800;
+  line-height: 0.85;
+}
+
+/* BOLD */
+@utility typography-B12 {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 0.85;
+}
+@utility typography-B14 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 0.85;
+}
+@utility typography-B16 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 0.85;
+}
+@utility typography-B18 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 0.85;
+}
+@utility typography-B20 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 0.85;
+}
+@utility typography-B24 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 0.85;
+}
+@utility typography-B34 {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 0.85;
+}
+@utility typography-B48 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 0.85;
+}
+@utility typography-B74 {
+  font-size: 74px;
+  font-weight: 700;
+  line-height: 0.85;
+}
+
+/* BOLD */
+@utility typography-S12 {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+@utility typography-S14 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+@utility typography-S16 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+@utility typography-S18 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+@utility typography-S20 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+@utility typography-S24 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+@utility typography-S34 {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+@utility typography-S48 {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+@utility typography-S74 {
+  font-size: 74px;
+  font-weight: 600;
+  line-height: 0.85;
+}
+
+/* MEDIUM */
+@utility typography-M12 {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 0.85;
+}
+@utility typography-M14 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 0.85;
+}
+@utility typography-M16 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 0.85;
+}
+@utility typography-M18 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 0.85;
+}
+@utility typography-M20 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 0.85;
+}
+@utility typography-M24 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 0.85;
+}
+@utility typography-M34 {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 0.85;
+}
+@utility typography-M48 {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 0.85;
+}
+@utility typography-M74 {
+  font-size: 74px;
+  font-weight: 500;
+  line-height: 0.85;
+}
+
+/* REGULAR */
+@utility typography-R12 {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 0.85;
+}
+@utility typography-R14 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 0.85;
+}
+@utility typography-R16 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 0.85;
+}
+@utility typography-R18 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 0.85;
+}
+@utility typography-R20 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 0.85;
+}
+@utility typography-R24 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 0.85;
+}
+@utility typography-R34 {
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 0.85;
+}
+@utility typography-R48 {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 0.85;
+}
+@utility typography-R74 {
+  font-size: 74px;
+  font-weight: 400;
+  line-height: 0.85;
+}
