@@ -1,3 +1,5 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 import { Gelion } from "@/design-system/font";
 import { HEADER_HEIGHT } from "@/constants/header-height";
 
@@ -20,13 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${Gelion.className} bg-foreground antialiased relative`}>
+      <body
+        className={`${Gelion.className} bg-foreground antialiased relative`}
+      >
         <Header />
         <div style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}>
           {children}
         </div>
         <Footer />
       </body>
+
+      <GoogleAnalytics gaId={"GTM-NXW7WLQX"} />
     </html>
   );
 }
