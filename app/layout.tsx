@@ -30,9 +30,9 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
-      </body>
 
-      <GoogleAnalytics gaId={"GTM-NXW7WLQX"} />
+        <GoogleAnalytics gaId={"GTM-NXW7WLQX"} />
+      </body>
     </html>
   );
 }
