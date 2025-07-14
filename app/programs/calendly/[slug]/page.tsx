@@ -6,22 +6,22 @@ import { HEADER_HEIGHT } from "@/constants/header-height";
 const programs = [
   {
     slug: "summer-work-and-travel-jordan",
-    label: "Summer Work & Travel Jordan",
+    label: "Summer Work & Travel",
     url: "https://calendly.com/levntura/wat-2024",
   },
   {
     slug: "summer-work-and-travel-egypt",
-    label: "Summer Work & Travel Egypt",
-    url: "https://calendly.com/levntura/camp-2024-jordan-clone",
+    label: "Summer Work & Travel",
+    url: "https://calendly.com/levntura/wat-2024-jordan-clone",
   },
   {
     slug: "camp-counselor-jordan",
-    label: "Camp Counselor Jordan",
+    label: "Camp Counselor",
     url: "https://calendly.com/levntura/camp-2024-jordan",
   },
   {
     slug: "camp-counselor-egypt",
-    label: "Camp Counselor Egypt",
+    label: "Camp Counselor",
     url: "https://calendly.com/levntura/camp-2024-jordan-clone",
   },
 ];
