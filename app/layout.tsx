@@ -1,4 +1,5 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 import { Gelion } from "@/design-system/font";
 import { HEADER_HEIGHT } from "@/constants/header-height";
@@ -9,8 +10,6 @@ import { Footer } from "@/components/footer";
 import type { Metadata } from "next";
 
 import "./globals.css";
-import Head from "next/head";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Levntura",
