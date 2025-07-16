@@ -59,7 +59,7 @@ export default async function ProgramPage({
       <Script
         type="text/javascript"
         src="https://assets.calendly.com/assets/external/widget.js"
-        async
+        strategy="beforeInteractive"
       />
     </div>
   );
