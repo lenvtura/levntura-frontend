@@ -26,6 +26,14 @@ const programs = [
   },
 ];
 
+export async function generateStaticParams() {
+  return programs.map((p) => ({
+    slug: p.slug,
+  }));
+}
+
+export const revalidate = 3600;
+
 export default async function ProgramPage({
   params,
 }: {
