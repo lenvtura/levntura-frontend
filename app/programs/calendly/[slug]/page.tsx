@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Script from "next/script";
 
 import { HEADER_HEIGHT } from "@/constants/header-height";
+import { CalendlyEmbed } from "./calendly-embed";
 
 const programs = [
   {
@@ -51,16 +52,7 @@ export default async function ProgramPage({
       <div className="typography-S34 text-center text-black">
         Book appointment for {currentProgram.label}
       </div>
-      <div
-        className="calendly-inline-widget"
-        data-url={currentProgram.url}
-        style={{ minWidth: 320, height: 700 }}
-      />
-      <Script
-        type="text/javascript"
-        src="https://assets.calendly.com/assets/external/widget.js"
-        async
-      />
+      <CalendlyEmbed url={currentProgram.url} />
     </div>
   );
 }
