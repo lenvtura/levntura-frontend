@@ -9,7 +9,7 @@ export const SocialMediaLinks = [
   { id: 1, path: "/asaa", icon: <TwitterIcon fill="white" /> },
   {
     id: 2,
-    path: "/asaa",
+    path: "https://www.facebook.com/share/1ABHriXpTc/",
     icon: <FacebookIcon />,
   },
 ];
