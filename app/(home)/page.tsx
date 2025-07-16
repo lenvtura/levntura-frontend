@@ -220,7 +220,7 @@ export default function Home() {
 
       <SocialMediaSection />
 
-      <FreshNewsSection />
+      {/* <FreshNewsSection /> */}
 
       <AreYouReadySection />
     </div>
