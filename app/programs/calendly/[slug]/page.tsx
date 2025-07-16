@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Script from "next/script";
 
 import { HEADER_HEIGHT } from "@/constants/header-height";
 import { CalendlyEmbed } from "./calendly-embed";
@@ -52,7 +51,7 @@ export default async function ProgramPage({
       <div className="typography-S34 text-center text-black">
         Book appointment for {currentProgram.label}
       </div>
-      <CalendlyEmbed url={currentProgram.url} />
+      <CalendlyEmbed url={currentProgram.url} label={currentProgram.label} />
     </div>
   );
 }

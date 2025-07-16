@@ -5,36 +5,36 @@ import Script from "next/script";
 import { trackEvent } from "@/helpers/track-event";
 
 const calendlyEvents = {
-  "calendly.event_scheduled"() {
+  "calendly.event_scheduled"({ label }: { label: string }) {
     trackEvent({
       action: "Calendly Event Scheduled",
       category: "Calendly",
-      label: "Event Scheduled",
+      label,
     });
   },
-  "calendly.event_type_viewed"() {
+  "calendly.event_type_viewed"({ label }: { label: string }) {
     trackEvent({
       action: "Calendly Event Viewed",
       category: "Calendly",
-      label: "Event Type Viewed",
+      label,
     });
   },
-  "calendly.date_and_time_selected"() {
+  "calendly.date_and_time_selected"({ label }: { label: string }) {
     trackEvent({
       action: "Calendly Date and Time Selected",
       category: "Calendly",
-      label: "Date and Time Selected",
+      label,
     });
   },
 };
 
-export function CalendlyEmbed({ url }: { url?: string }) {
+export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
   useEffect(() => {
     const handleAllMessages = (e: MessageEvent) => {
       if (e.origin === "https://calendly.com") {
         const eventKey = e.data.event as keyof typeof calendlyEvents;
         const sendCalendlyEvent = calendlyEvents[eventKey];
-        sendCalendlyEvent?.();
+        sendCalendlyEvent?.({ label });
       }
     };
 
