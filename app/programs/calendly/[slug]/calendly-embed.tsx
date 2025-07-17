@@ -11,6 +11,13 @@ const calendlyEvents = {
       category: "Calendly",
       label,
     });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "calendly_event_scheduled",
+      calendlyLabel: label,
+      calendlyCategory: "Calendly",
+      calendlyAction: "Calendly Event Scheduled",
+    });
   },
   "calendly.event_type_viewed"({ label }: { label: string }) {
     trackEvent({
@@ -18,12 +25,26 @@ const calendlyEvents = {
       category: "Calendly",
       label,
     });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "calendly_event_viewed",
+      calendlyLabel: label,
+      calendlyCategory: "Calendly",
+      calendlyAction: "Calendly Event Viewed",
+    });
   },
   "calendly.date_and_time_selected"({ label }: { label: string }) {
     trackEvent({
       action: "Calendly Date and Time Selected",
       category: "Calendly",
       label,
+    });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "calendly_event_date_and_time_selected",
+      calendlyLabel: label,
+      calendlyCategory: "Calendly",
+      calendlyAction: "Date and Time Selected",
     });
   },
 };
