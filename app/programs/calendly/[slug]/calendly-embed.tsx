@@ -3,9 +3,16 @@
 import { useEffect } from "react";
 import Script from "next/script";
 import { trackEvent } from "@/helpers/track-event";
+import { usePathname, useRouter } from "next/navigation";
 
 const calendlyEvents = {
-  "calendly.event_scheduled"({ label }: { label: string }) {
+  "calendly.event_scheduled"({
+    setQuery,
+    label,
+  }: {
+    setQuery: (url: string) => void;
+    label: string;
+  }) {
     trackEvent({
       action: "Calendly Event Scheduled",
       category: "Calendly",
@@ -18,8 +25,15 @@ const calendlyEvents = {
       calendlyCategory: "Calendly",
       calendlyAction: "Calendly Event Scheduled",
     });
+    setQuery(`status=scheduled`);
   },
-  "calendly.event_type_viewed"({ label }: { label: string }) {
+  "calendly.event_type_viewed"({
+    setQuery,
+    label,
+  }: {
+    setQuery: (url: string) => void;
+    label: string;
+  }) {
     trackEvent({
       action: "Calendly Event Viewed",
       category: "Calendly",
@@ -33,7 +47,13 @@ const calendlyEvents = {
       calendlyAction: "Calendly Event Viewed",
     });
   },
-  "calendly.date_and_time_selected"({ label }: { label: string }) {
+  "calendly.date_and_time_selected"({
+    setQuery,
+    label,
+  }: {
+    setQuery: (url: string) => void;
+    label: string;
+  }) {
     trackEvent({
       action: "Calendly Date and Time Selected",
       category: "Calendly",
@@ -46,16 +66,23 @@ const calendlyEvents = {
       calendlyCategory: "Calendly",
       calendlyAction: "Date and Time Selected",
     });
+    setQuery(`status=date_selected`);
   },
 };
 
 export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const setQuery = (query: string) => {
+    router.push(`${pathname}?${query}`);
+  };
+
   useEffect(() => {
     const handleAllMessages = (e: MessageEvent) => {
       if (e.origin === "https://calendly.com") {
         const eventKey = e.data.event as keyof typeof calendlyEvents;
         const sendCalendlyEvent = calendlyEvents[eventKey];
-        sendCalendlyEvent?.({ label });
+        sendCalendlyEvent?.({ setQuery, label });
       }
     };
 
