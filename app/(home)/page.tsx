@@ -20,7 +20,6 @@ import { WorkAndTravelSection } from "./work-and-travel-section";
 import { VentureSection } from "./venture-section";
 import { CampusLifeSection } from "./campus-life-section";
 import { SocialMediaSection } from "./social-media-section";
-import { FreshNewsSection } from "./fresh-news-section";
 import { AreYouReadySection } from "./are-you-ready-section";
 import { TravelsImgsDsk } from "./travels-imgs-dsk";
 import { TravelsImgsMobile } from "./travels-imgs-mobile";
