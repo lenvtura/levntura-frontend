@@ -27,13 +27,7 @@ const calendlyEvents = {
     });
     setQuery(`status=scheduled`);
   },
-  "calendly.event_type_viewed"({
-    setQuery,
-    label,
-  }: {
-    setQuery: (url: string) => void;
-    label: string;
-  }) {
+  "calendly.event_type_viewed"({ label }: { label: string }) {
     trackEvent({
       action: "Calendly Event Viewed",
       category: "Calendly",
