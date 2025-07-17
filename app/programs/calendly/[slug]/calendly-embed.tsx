@@ -64,7 +64,7 @@ export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
     return () => {
       window.removeEventListener("message", handleAllMessages);
     };
-  }, []);
+  }, [label]);
 
   return (
     <>
