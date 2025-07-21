@@ -1,74 +1,55 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Script from "next/script";
 import { trackEvent } from "@/helpers/track-event";
-import { usePathname, useRouter } from "next/navigation";
-
-const calendlyEvents = {
-  "calendly.event_scheduled"({
-    setQuery,
-    label,
-  }: {
-    setQuery: (url: string) => void;
-    label: string;
-  }) {
-    trackEvent({
-      action: "Calendly Event Scheduled",
-      category: "Calendly",
-      label,
-    });
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "calendly_event_scheduled",
-      calendlyLabel: label,
-      calendlyCategory: "Calendly",
-      calendlyAction: "Calendly Event Scheduled",
-    });
-    setQuery(`status=scheduled`);
-  },
-  "calendly.event_type_viewed"({ label }: { label: string }) {
-    trackEvent({
-      action: "Calendly Event Viewed",
-      category: "Calendly",
-      label,
-    });
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "calendly_event_viewed",
-      calendlyLabel: label,
-      calendlyCategory: "Calendly",
-      calendlyAction: "Calendly Event Viewed",
-    });
-  },
-  "calendly.date_and_time_selected"({
-    setQuery,
-    label,
-  }: {
-    setQuery: (url: string) => void;
-    label: string;
-  }) {
-    trackEvent({
-      action: "Calendly Date and Time Selected",
-      category: "Calendly",
-      label,
-    });
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "calendly_event_date_and_time_selected",
-      calendlyLabel: label,
-      calendlyCategory: "Calendly",
-      calendlyAction: "Date and Time Selected",
-    });
-    setQuery(`status=date_selected`);
-  },
-};
+import { Loader2 } from "lucide-react";
+import { cn } from "@/design-system/helpers";
+import { Button } from "@/design-system/button";
 
 export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const setQuery = (query: string) => {
-    router.push(`${pathname}?${query}`);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isBtnDisplayed, setIsBtnDisplayed] = useState(true);
+
+  const calendlyEvents = {
+    "calendly.event_scheduled"() {
+      trackEvent({
+        action: "Calendly Event Scheduled",
+        category: "Calendly",
+        label,
+      });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        calendlyAction: "Calendly Event Scheduled",
+      });
+    },
+
+    "calendly.event_type_viewed"() {
+      trackEvent({
+        action: "Calendly Event Viewed",
+        category: "Calendly",
+        label,
+      });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "calendly_event_viewed",
+        calendlyAction: "Calendly Event Viewed",
+      });
+      setIsLoading(false);
+    },
+
+    "calendly.date_and_time_selected"() {
+      trackEvent({
+        action: "Calendly Date and Time Selected",
+        category: "Calendly",
+        label,
+      });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "calendly_event_date_and_time_selected",
+        calendlyAction: "Date and Time Selected",
+      });
+    },
   };
 
   useEffect(() => {
@@ -76,7 +57,7 @@ export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
       if (e.origin === "https://calendly.com") {
         const eventKey = e.data.event as keyof typeof calendlyEvents;
         const sendCalendlyEvent = calendlyEvents[eventKey];
-        sendCalendlyEvent?.({ setQuery, label });
+        sendCalendlyEvent?.();
       }
     };
 
@@ -85,20 +66,69 @@ export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
     return () => {
       window.removeEventListener("message", handleAllMessages);
     };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const openCalendly = () => {
+    setIsBtnDisplayed(false);
+    setIsLoading(true);
+    window.Calendly?.initInlineWidget({
+      url,
+      parentElement: document.getElementById("calendly-embed"),
+    });
+    trackEvent({
+      action: "Calendly Opened",
+      category: "Calendly",
+      label,
+    });
+  };
+
+  if (url !== "https://calendly.com/levntura/wat-2024-jordan-clone") {
+    return (
+      <>
+        <div
+          className="calendly-inline-widget"
+          data-url={url}
+          style={{ minWidth: 320, height: 700 }}
+        />
+        <Script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        />
+      </>
+    );
+  }
+
   return (
     <>
+      {isLoading && (
+        <div className="flex justify-center items-center mt-4 text-blue-950">
+          <Loader2 className="animate-spin text-blue-700" size={32} />
+        </div>
+      )}
       <div
-        className="calendly-inline-widget"
-        data-url={url}
-        style={{ minWidth: 320, height: 700 }}
-      />
+        className={cn(!isBtnDisplayed && "h-[700px]")}
+        id="calendly-embed"
+      ></div>
+
+      {isBtnDisplayed && (
+        <div className="flex justify-center items-center w-full mt-4 ">
+          <Button
+            className="bg-blue-600 hover:bg-blue-700 text-white border-0"
+            size="lg"
+            onClick={openCalendly}
+          >
+            Book Appointment
+          </Button>
+        </div>
+      )}
+
       <Script
         type="text/javascript"
         src="https://assets.calendly.com/assets/external/widget.js"
-        async
+        defer
       />
     </>
   );
