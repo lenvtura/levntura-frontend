@@ -71,6 +71,9 @@ export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
   }, []);
 
   const openCalendly = () => {
+    window.dataLayer?.push({
+      calendlyAction: "BookAppointment CTA - Clicked",
+    });
     setIsBtnDisplayed(false);
     setIsLoading(true);
     window.Calendly?.initInlineWidget({
