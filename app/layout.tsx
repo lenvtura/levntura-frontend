@@ -12,6 +12,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Levntura",
+  other: {
+    "facebook-domain-verification": "aplbfnewceubq9qxhed3c4ixeuixxk",
+  },
 };
 
 export default function RootLayout({
