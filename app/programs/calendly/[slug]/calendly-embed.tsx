@@ -7,7 +7,17 @@ import { Loader2 } from "lucide-react";
 import { cn } from "@/design-system/helpers";
 import { Button } from "@/design-system/button";
 
-export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
+export function CalendlyEmbed({
+  url,
+  label,
+  abstraction,
+  country,
+}: {
+  url: string;
+  label: string;
+  abstraction: string;
+  country: string;
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [isBtnDisplayed, setIsBtnDisplayed] = useState(true);
 
@@ -20,7 +30,7 @@ export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
       });
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        calendlyAction: "Calendly Event Scheduled",
+        calendlyAction: `Calendly Event Scheduled - ${abstraction} - ${country}`,
       });
     },
 
@@ -33,7 +43,7 @@ export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "calendly_event_viewed",
-        calendlyAction: "Calendly Event Viewed",
+        calendlyAction: `Calendly Event Viewed - ${abstraction} - ${country}`,
       });
       setIsLoading(false);
     },
@@ -47,7 +57,7 @@ export function CalendlyEmbed({ url, label }: { url: string; label: string }) {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "calendly_event_date_and_time_selected",
-        calendlyAction: "Date and Time Selected",
+        calendlyAction: `Date and Time Selected - ${abstraction} - ${country}`,
       });
     },
   };

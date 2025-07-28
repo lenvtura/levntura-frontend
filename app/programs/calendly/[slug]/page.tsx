@@ -7,21 +7,29 @@ const programs = [
   {
     slug: "summer-work-and-travel-jordan",
     label: "Summer Work & Travel",
+    country: "Jordan",
+    abstraction: "WAT",
     url: "https://calendly.com/levntura/wat-2024",
   },
   {
     slug: "summer-work-and-travel-egypt",
     label: "Summer Work & Travel",
+    country: "Egypt",
+    abstraction: "WAT",
     url: "https://calendly.com/levntura/wat-2024-jordan-clone",
   },
   {
     slug: "camp-counselor-jordan",
     label: "Camp Counselor",
+    country: "Jordan",
+    abstraction: "CAMP",
     url: "https://calendly.com/levntura/camp-2024-jordan",
   },
   {
     slug: "camp-counselor-egypt",
     label: "Camp Counselor",
+    country: "Egypt",
+    abstraction: "CAMP",
     url: "https://calendly.com/levntura/camp-2024-jordan-clone",
   },
 ];
@@ -51,7 +59,7 @@ export default async function ProgramPage({
       <div className="typography-S34 text-center text-black">
         Book appointment for {currentProgram.label}
       </div>
-      <CalendlyEmbed url={currentProgram.url} label={currentProgram.label} />
+      <CalendlyEmbed {...currentProgram} />
     </div>
   );
 }
