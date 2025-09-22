@@ -26,7 +26,6 @@ import { TravelsImgsMobile } from "./travels-imgs-mobile";
 import { MoreToRead } from "./more-to-read";
 import { PublicationAndMedia } from "./publication-and-media";
 import { OurStudentsSharing } from "./our-students-sharing";
-import { Metadata } from "next";
 
 const Opportunities = [
   "Study & Travel",
@@ -36,11 +35,6 @@ const Opportunities = [
 ];
 
 const PART_HEIGHT_APPEAR_IN_NEXT_SECTION = 200;
-
-export const metadata: Metadata = {
-  title:
-    "Study Abroad Agency In Egypt & Jordan | Work And Travel & J1 Visa | Levntura",
-};
 
 export default function Home() {
   const containerRef = useRef(null);
