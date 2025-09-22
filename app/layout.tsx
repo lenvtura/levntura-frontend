@@ -13,6 +13,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  title:
+    "Study Abroad Agency In Egypt & Jordan | Work And Travel & J1 Visa | Levntura",
   description:
     "Levntura is a leading study abroad agency in Egypt & Jordan offering Work and Travel and J1 visa programs, empowering youth with cultural exchange worldwide.",
   openGraph: {
