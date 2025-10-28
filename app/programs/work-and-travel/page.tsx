@@ -413,7 +413,7 @@ export default function page() {
         <Slider
           data={countries}
           renderItem={(country) => (
-            <div className="relative w-[300px] sm:w-full grid gap-7">
+            <div className="relative w-[300px] lg:w-[480px] grid gap-7">
               <Image
                 className="pointer-events-none w-full object-cover"
                 src={country.src}
