@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { SectionWrapper } from "../(home)/section-wrapper";
 import img1 from "@/assets/photos/tour-images/i1.png";
 import img2 from "@/assets/photos/tour-images/i2.png";
 import img3 from "@/assets/photos/tour-images/i3.png";
@@ -8,12 +7,18 @@ import img5 from "@/assets/photos/tour-images/i5.png";
 import img6 from "@/assets/photos/tour-images/i6.png";
 import img8 from "@/assets/photos/tour-images/i8.png";
 import img9 from "@/assets/photos/tour-images/i9.png";
-import gred from "@/assets/photos/tour-images/gardinets.png";
-import { Button } from "@/design-system/button";
+import { SectionTitle } from "../(home)/section-title";
+import { StartNowBtn } from "@/atoms/start-now-btn";
+import { ComponentProps } from "react";
+import { cn } from "@/design-system/helpers";
 
-export default function TourImages() {
+export default function TourImages({
+  gradientProps: { className, ...props } = {},
+}: {
+  gradientProps?: ComponentProps<"div">;
+}) {
   return (
-    <SectionWrapper sectionColor="bg-lev-yellow-light">
+    <>
       <div className="relative">
         <div className="flex gap-2">
           <div className="flex-1 max-w-full sm:flex-1/2 sm:max-w-1/2 md:flex-1/3 md:max-w-1/3">
@@ -33,23 +38,23 @@ export default function TourImages() {
             <Image src={img9} alt="img9" className="mt-2 w-full align-middle" />
           </div>
         </div>
-        <Image
-          src={gred}
-          alt="grediants"
-          className="absolute left-0 right-0 bottom-0"
+        <div
+          className={cn(
+            "absolute h-[500px] left-0 right-0 bottom-0 bg-gradient-to-t from-[10%]  from-white to-transparent",
+            className
+          )}
+          {...props}
         />
       </div>
-      <div className="flex flex-col gap-4 items-center">
-        <h1 className="text-5xl sm:text-6xl font-semibold lg:typography-S74 uppercase text-center">
+      <div className="flex flex-col -translate-y-[100px] gap-4 items-center">
+        <SectionTitle className="text-center">
           We are creating <br />
           memories, are <br />
           you joining?
-        </h1>
+        </SectionTitle>
 
-        <Button className="">Start Now!</Button>
-
-        <p className="opacity-50"> See all photos </p>
+        <StartNowBtn />
       </div>
-    </SectionWrapper>
+    </>
   );
 }

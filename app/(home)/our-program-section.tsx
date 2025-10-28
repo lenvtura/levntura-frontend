@@ -2,15 +2,14 @@ import { Routes } from "@/constants/routes";
 import { Button } from "@/design-system/button";
 import { MoveRightIcon } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
-import { motion } from "motion/react";
 
 import studyImage from "@/assets/photos/study.png";
 import workImage from "@/assets/photos/work.png";
 import internshipImage from "@/assets/photos/internship.png";
 import counselorImage from "@/assets/photos/counselor.png";
-import Image from "next/image";
 import { SectionTitle } from "./section-title";
+import { Slider } from "../programs/work-and-travel/jobs-slider";
+import Image from "next/image";
 
 const Opportunities = [
   "Study & Travel",
@@ -19,7 +18,7 @@ const Opportunities = [
   "Counselor",
 ];
 
-const Programs = [
+const programs = [
   { label: "Study & Travel", src: studyImage },
   { label: "Work & Travel", src: workImage },
   { label: "Internship", src: internshipImage },
@@ -27,24 +26,8 @@ const Programs = [
 ];
 
 export function OurProgramSection() {
-  const ref = useRef(null);
-  const constraintRef = useRef(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: ref,
-  //   offset: ["start end", "end center"],
-  // });
-
-  // const translateXa = useSpring(scrollYProgress, {
-  //   stiffness: 100,
-  //   damping: 50,
-  //   restDelta: 0.001,
-  // });
-
-  // const translateX = useTransform(translateXa, [0, 1], ["50%", "0%"], {
-  //   ease: easeIn,
-  // });
   return (
-    <div ref={ref} className=" py-[100px] bg-[#D8E6E6]">
+    <div className=" py-[100px] bg-[#D8E6E6]">
       <div className="container">
         <div className="flex max-md:flex-col-reverse relative mb-12 gap-4">
           <div className="flex max-md:mt-4 max-md:grid grid-cols-2 mr-4 flex-col gap-4">
@@ -67,41 +50,32 @@ export function OurProgramSection() {
             </Link>
 
             <SectionTitle className="text-lev-green-dark">
-              Our Programs
+              Our program
             </SectionTitle>
           </div>
         </div>
       </div>
 
-      <div className="container">
-        <motion.div className="w-full overflow-hidden bg-red-300">
-          <motion.div
-            ref={constraintRef}
-            dragConstraints={{ left: 20, right: 20 }}
-            //   style={{ translateX }}
-            drag={"x"}
-            whileDrag={{ cursor: "grabbing" }}
-            className="flex  gap-4 bg-amber-300/35  w-full"
-          >
-            {Programs.map((t) => (
-              <div
-                style={{ width: `${(1 / Programs.length) * 100}%` }}
-                key={t.label}
-                className="  shrink-0  relative  overflow-hidden h-full"
-              >
-                <Image
-                  alt=""
-                  src={t.src}
-                  className="object-contain group-hover:scale-105 transition-[scale] pointer-events-none w-full h-full"
-                />
-                <div className="absolute typography-B34 left-[16px] bottom-[16px] text-white">
-                  {t.label}
-                </div>
+      <Slider
+        data={programs}
+        renderItem={(item) => {
+          return (
+            <div
+              key={item.label}
+              className="  shrink-0  relative w-[480px] overflow-hidden h-full"
+            >
+              <Image
+                alt=""
+                src={item.src}
+                className="object-contain group-hover:scale-105 transition-[scale] pointer-events-none w-full h-full"
+              />
+              <div className="absolute typography-B34 left-[16px] bottom-[16px] text-white">
+                {item.label}
               </div>
-            ))}
-          </motion.div>
-        </motion.div>
-      </div>
+            </div>
+          );
+        }}
+      />
     </div>
   );
 }

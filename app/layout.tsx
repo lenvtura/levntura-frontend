@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${Gelion.className} bg-foreground antialiased relative`}
+        className={`${Gelion.className} overflow-x-hidden bg-foreground antialiased relative`}
       >
         <Header />
         <div style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}>
