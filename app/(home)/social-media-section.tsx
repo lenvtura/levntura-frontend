@@ -3,11 +3,10 @@ import { SectionWrapper } from "./section-wrapper";
 import happyFriendship from "@/assets/photos/happy-friendship.png";
 import { cn } from "@/design-system/helpers";
 import { SectionTitle } from "./section-title";
-import Link from "next/link";
 import { Routes } from "@/constants/routes";
-import { MoveRightIcon } from "lucide-react";
-import { Button } from "@/design-system/button";
 import { FaceboocBoxLogoSvg } from "@/assets/logos/facebooc-box-logo-svg";
+import { ButtonWithArrow } from "@/atoms/button-with-arrow";
+import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 
 const SocialMediaStats = [
   {
@@ -38,14 +37,15 @@ export function SocialMediaSection() {
     <div>
       <SectionWrapper>
         <div className="grid md:grid-cols-3 items-start justify-center gap-6  mb-16">
-          {SocialMediaStats.map((stat) => (
+          {SocialMediaStats.map((stat, index) => (
             // <div
             //   className="relative pr-6 max-md:after:mb-6 max-md:after:bottom-0  after:mr-6 last:after:relative after:top-1/2 after:-translate-y-[50%] after:absolute after:bg-lev-blue-dark after:right-0 after:inset-y-0 after:w-[2px] after:h-[96px]  last:border-0 last:pr-0 border-lev-blue-dark"
             //   key={stat.number}
             // >
-            <div
-              className="relative pr-6 border-r-2 last:border-0 last:pr-0 border-lev-blue-dark"
+            <FadeUpAnimator
               key={stat.number}
+              transition={{ delay: 0.1 + index * 0.2 }}
+              className="relative pr-6 border-r-2 last:border-0 last:pr-0 border-lev-blue-dark"
             >
               <div className="flex mb-4 gap-6 items-center">
                 <span className={cn("typography-EB74", stat.numberColor)}>
@@ -54,33 +54,37 @@ export function SocialMediaSection() {
                 <span className="typography-M16">{stat.category}</span>
               </div>
               <p className="text-lev-blue-dark">{stat.paragraph}</p>
-            </div>
+            </FadeUpAnimator>
           ))}
         </div>
         <div className="relative flex flex-col justify-center p-8 max-md:h-max h-[650]">
           <div className="z-20 flex flex-col gap-6 justify-center items-start h-full relative text-white">
-            <div className="flex gap-4 flex-wrap">
+            <FadeUpAnimator
+              transition={{ delay: 0.2 }}
+              className="flex gap-4 flex-wrap"
+            >
               <div className="shrink-0 ">
                 <FaceboocBoxLogoSvg />
               </div>
               <p className="max-w-[350px] bg-blend-overlay mix-blend-overlay opacity-70">
                 Join the USA Work and Travel Program and make this summer the
-                one you’ll always remember. Embrace the thrill, enhance your
-                skills, and create memories that will last a lifetime.
+                one you&apos;ll always remember. Embrace the thrill, enhance
+                your skills, and create memories that will last a lifetime.
               </p>
-            </div>
-            <SectionTitle className="text-white inline-block">
-              JOIN OUR <br /> COMMUNITY
-            </SectionTitle>
-            <Link
-              href={Routes.contact}
-              className="  inline-flex typography-R18 items-center gap-4 "
-            >
-              <span className="whitespace-nowrap">Join Now</span>
-              <Button className="border-white" size="icon-md">
-                <MoveRightIcon />
-              </Button>
-            </Link>
+            </FadeUpAnimator>
+            <FadeUpAnimator transition={{ delay: 0.4 }}>
+              <SectionTitle className="text-white inline-block">
+                JOIN OUR <br /> COMMUNITY
+              </SectionTitle>
+            </FadeUpAnimator>
+            <FadeUpAnimator transition={{ delay: 0.6 }}>
+              <ButtonWithArrow
+                href={Routes.contact}
+                iconClassName="border-white"
+              >
+                Join Now
+              </ButtonWithArrow>
+            </FadeUpAnimator>
           </div>
           <Image
             alt=""

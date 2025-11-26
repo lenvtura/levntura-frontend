@@ -42,10 +42,7 @@ export const Slider = <T,>({
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative h-full flex items-center overflow-hidden"
-    >
+    <div ref={containerRef} className="relative h-full flex items-center">
       <motion.div
         ref={sliderRef}
         className="flex gap-8 active:cursor-grabbing"
@@ -57,7 +54,7 @@ export const Slider = <T,>({
         onDragEnd={() => setIsDragging(false)}
         style={{
           width: "max-content",
-          paddingLeft: "calc(50vw - 10rem)", // Centers first card
+          paddingLeft: "calc(50vw - 30rem)", // Centers first card
           paddingRight: "calc(50vw - 10rem)", // Centers last card
         }}
       >
@@ -65,7 +62,6 @@ export const Slider = <T,>({
           <motion.div
             ref={cardRef}
             key={index}
-            // style={{ width: CARD_WIDTH }}
             className="flex-shrink-0 select-none"
             whileHover={!isDragging ? { scale: 1.02, y: -5 } : {}}
             transition={{ duration: 0.2 }}

@@ -11,6 +11,7 @@ import { SectionTitle } from "../(home)/section-title";
 import { StartNowBtn } from "@/atoms/start-now-btn";
 import { ComponentProps } from "react";
 import { cn } from "@/design-system/helpers";
+import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 
 export default function TourImages({
   gradientProps: { className, ...props } = {},
@@ -20,22 +21,22 @@ export default function TourImages({
   return (
     <>
       <div className="relative">
-        <div className="flex gap-2">
+        <div className="flex gap-4">
           <div className="flex-1 max-w-full sm:flex-1/2 sm:max-w-1/2 md:flex-1/3 md:max-w-1/3">
-            <Image src={img1} alt="img1" className="mt-2 w-full align-middle" />
-            <Image src={img4} alt="img4" className="mt-2 w-full align-middle" />
+            <Image src={img1} alt="img1" className="mt-4 w-full align-middle" />
+            <Image src={img4} alt="img4" className="mt-4 w-full align-middle" />
           </div>
 
           <div className="flex-1/3 max-w-1/3">
-            <Image src={img2} alt="img2" className="mt-2 w-full align-middle" />
-            <Image src={img5} alt="img5" className="mt-2 w-full align-middle" />
-            <Image src={img8} alt="img8" className="mt-2 w-full align-middle" />
+            <Image src={img2} alt="img2" className="mt-4 w-full align-middle" />
+            <Image src={img5} alt="img5" className="mt-4 w-full align-middle" />
+            <Image src={img8} alt="img8" className="mt-4 w-full align-middle" />
           </div>
 
           <div className="flex-1/3 max-w-1/3">
-            <Image src={img3} alt="img3" className="mt-2 w-full align-middle" />
-            <Image src={img6} alt="img6" className="mt-2 w-full align-middle" />
-            <Image src={img9} alt="img9" className="mt-2 w-full align-middle" />
+            <Image src={img3} alt="img3" className="mt-4 w-full align-middle" />
+            <Image src={img6} alt="img6" className="mt-4 w-full align-middle" />
+            <Image src={img9} alt="img9" className="mt-4 w-full align-middle" />
           </div>
         </div>
         <div
@@ -46,7 +47,7 @@ export default function TourImages({
           {...props}
         />
       </div>
-      <div className="flex flex-col -translate-y-[100px] gap-4 items-center">
+      <FadeUpAnimator className="flex flex-col -translate-y-[100px] gap-4 items-center">
         <SectionTitle className="text-center">
           We are creating <br />
           memories, are <br />
@@ -54,7 +55,7 @@ export default function TourImages({
         </SectionTitle>
 
         <StartNowBtn />
-      </div>
+      </FadeUpAnimator>
     </>
   );
 }

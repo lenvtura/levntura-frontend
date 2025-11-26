@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import hero from '@/assets/photos/about_hero.png';
-import { Button } from '@/design-system/button';
+import Image from "next/image";
+import hero from "@/assets/photos/about_hero.png";
+import { Button } from "@/design-system/button";
 
 export function WhereJourneysBegin() {
   return (
@@ -53,36 +53,36 @@ export function WhereJourneysBegin() {
     //     </article>
     //   </div>
     // </section>
-    <section className='relative min-h-screen flex flex-col justify-center bg-lev-yellow'>
+    <section className="relative min-h-screen flex flex-col justify-center bg-lev-yellow">
       <Image
         src={hero}
-        alt='about'
+        alt="about"
         // height={500}
         // width={700}
-        className='lg:absolute right-0 top-0 md:max-w-1/2 max-h-[60vh] mb-12 lg:mb-0'
+        className="lg:absolute right-0 top-0 md:max-w-1/2 max-h-[60vh] mb-12 lg:mb-0"
       />
-      <div className='container pb-12 lg:pb-0 space-y-12'>
-        <div className='flex flex-col gap-y-4 self-end'>
-          <h6 className='uppercase typography-M16 text-lev-orange'>
+      <div className="container pb-12 lg:pb-0 space-y-12">
+        <div className="flex flex-col gap-y-4 self-end">
+          <h6 className="uppercase typography-M16 text-lev-orange">
             Discover Levntura
           </h6>
 
-          <h1 className='text-6xl leading-14 font-extrabold md:typography-EB74 md:leading-16 w-3/6 uppercase text-lev-red-dark'>
+          <h1 className="text-6xl leading-14 font-extrabold md:typography-EB74 md:leading-16 w-3/6 uppercase text-lev-red-dark">
             Where <br /> Journeys <br />
-            <span className='text-lev-orange'>Begin</span>
+            <span className="text-lev-orange">Begin</span>
           </h1>
 
-          <div className='flex gap-x-4'>
-            <Button className='border-1 typography-EB16' size='lg'>
+          <div className="flex gap-4 flex-wrap">
+            <Button className="border-1 typography-EB16" size="lg">
               Start Now!
             </Button>
-            <Button className='border-1 typography-EB16' size='lg'>
+            <Button className="border-1 typography-EB16" size="lg">
               Contact US
             </Button>
           </div>
         </div>
-        <article className='lg:flex justify-between space-y-8'>
-          <p className='opacity-50 typography-R16 leading-5 w-4/5 lg:w-2/4'>
+        <article className="lg:flex justify-between space-y-8">
+          <p className="opacity-50 typography-R16 leading-5 w-4/5 lg:w-2/4">
             From our headquarters in Amman Jordan, to our office in Egypt, we
             have been providing the aspiring Middle Eastern Youth with
             exceptional cultural exchange, study abroad and Professional
@@ -92,7 +92,7 @@ export function WhereJourneysBegin() {
             acquisition, and most significantly, igniting the spirit of
             adventure and ambition in the Youngsters.
           </p>
-          <p className='opacity-50 typography-R16 leading-5 w-4/5 lg:w-3/10'>
+          <p className="opacity-50 typography-R16 leading-5 w-4/5 lg:w-3/10">
             Levntura has rapidly become a beacon for those seeking to expand
             their horizons through educational services and cultural exchange
             programs. With a mission to empower the next generation of global
@@ -101,7 +101,7 @@ export function WhereJourneysBegin() {
           </p>
         </article>
       </div>
-      <div className='hidden lg:block absolute right-0 top-0 bottom-0 left-6/10 bg-lev-yellow-light -z-10' />
+      <div className="hidden lg:block absolute right-0 top-0 bottom-0 left-6/10 bg-lev-yellow-light -z-10" />
     </section>
   );
 }

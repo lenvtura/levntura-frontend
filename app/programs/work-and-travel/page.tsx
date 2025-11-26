@@ -1,6 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from "framer-motion";
 import programHeroPhoto from "@/app/programs/work-and-travel/program-hero.webp";
 import photo2 from "@/app/programs/work-and-travel/photo2.webp";
 import photo3 from "@/app/programs/work-and-travel/photo3.webp";
@@ -42,6 +49,7 @@ import thirdPhoto from "@/assets/photos/5.png";
 import fourthPhoto from "@/assets/photos/6.png";
 import { ContactForm } from "@/app/contact/social-and-form";
 import { StartNowBtn } from "@/atoms/start-now-btn";
+import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 
 const jobs = [
   {
@@ -234,50 +242,117 @@ const features = [
   },
 ];
 
-export default function page() {
+function WordReveal({
+  word,
+  progress,
+  index,
+  total,
+}: {
+  word: string;
+  progress: MotionValue<number>;
+  index: number;
+  total: number;
+}) {
+  const start = index / total;
+  const end = (index + 1) / total;
+
+  const opacity = useTransform(
+    progress,
+    [Math.max(0, start - 0.05), start + 0.05, end],
+    [0.15, 1, 1]
+  );
+
+  return <motion.span style={{ opacity }}>{word} </motion.span>;
+}
+
+function ScrollRevealText() {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: textRef,
+    offset: ["start 0.8", "end 0.3"],
+  });
+
+  const text =
+    "Calling all university students seeking an unforgettable summer experience! If you're yearning for a combination of adventure, cultural exchange, language improvement, and professional growth, look no further than the Summer Work and Travel Program to the USA, proudly provided by the Department of State.";
+
+  const textWords = text.split(" ");
+
+  return (
+    <motion.p
+      ref={textRef}
+      className="typography-S34 leading-9 text-center text-lev-blue-dark"
+    >
+      {textWords.map((word, index) => (
+        <WordReveal
+          key={index}
+          word={word}
+          progress={scrollYProgress}
+          index={index}
+          total={textWords.length}
+        />
+      ))}
+    </motion.p>
+  );
+}
+
+export default function Page() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "300%"]);
+
   return (
     <div className="bg-[#F7F7F8]">
-      <div className="flex relative bg-gradient-to-b from-lev-gray-light to-transparent justify-center items-center min-h-screen">
-        <div className="min-w-[2500px] w-full absolute -bottom-[300px]">
+      <div
+        ref={heroRef}
+        className="flex relative bg-gradient-to-b from-lev-gray-light to-transparent justify-center items-center min-h-screen overflow-hidden"
+      >
+        <motion.div
+          style={{ y: imageY }}
+          className="min-w-[2000px] w-full absolute z-100 -bottom-[300px] left-1/2 -translate-x-1/2"
+        >
           <Image
             src={programHeroPhoto}
             className="w-full pointer-events-none object-cover"
             alt=""
           />
-          <StartNowBtn className="z-10 text-white cursor-pointer border-white absolute top-[500px] left-[50%] translate-x-[-50%]" />
-        </div>
-        <div className="flex flex-col uppercase z-10 gap-4 items-center -translate-y-[150px]">
+          <StartNowBtn className="z-10 text-white cursor-pointer border-white absolute top-[350px] left-[50%] translate-x-[-50%]" />
+        </motion.div>
+        <motion.div
+          style={{ y: textY }}
+          className="flex flex-col uppercase z-10 gap-4 items-center -translate-y-[150px]"
+        >
           <span className="typography-B18">SUMMER</span>
-          <h1 className="typography-EB48! sm:typography-EB74! text-[90px] text-lev-blue-dark">
+          <h1 className="typography-EB48! mix-blend-difference! sm:typography-EB74! text-[90px] text-lev-blue-dark ">
             WORK & TRAVEL
           </h1>
-          <p className="typography-S18 text-lev-blue-dark">
+          <p className="typography-S18 mix-blend-difference text-lev-blue-dark">
             BACHELOR & MASTER&apos;S DEGREE STUDENTS
           </p>
           <p className="typography-S18 text-lev-blue-dark">
             Program only to USA.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <SectionWrapper className="mb-[200px]">
-        <p className="typography-S16 text-center text-lev-blue mb-4">
+        <p className="typography-S16 text-center text-lev-blue-light mb-4">
           Embark on a Summer Adventure with the USA Work and Travel Program
         </p>
-        <p className="typography-S34 leading-9 text-center text-lev-blue-dark ">
-          Calling all university students seeking an unforgettable summer
-          experience! If you&apos;re yearning for a combination of adventure,
-          cultural exchange, language improvement, and professional growth, look
-          no further than the Summer Work and Travel Program to the USA, proudly
-          provided by the Department of State.
-        </p>
+        <ScrollRevealText />
       </SectionWrapper>
 
       <SectionWrapper>
-        <SectionTitle className="mb-[80px]">
-          What is the <br /> Summer Work <br /> and Travel <br /> Program?{" "}
-        </SectionTitle>
-        <div className="flex">
+        <FadeUpAnimator>
+          <SectionTitle className="mb-[80px]">
+            What is the <br /> Summer Work <br /> and Travel <br /> Program?{" "}
+          </SectionTitle>
+        </FadeUpAnimator>
+        <FadeUpAnimator className="flex">
           <p className="ms-auto text-lev-red-dark w-[300px]">
             The Summer Work and Travel Program offers students the chance to
             work and travel in the United States during their summer break. It
@@ -286,7 +361,7 @@ export default function page() {
             while exploring diverse landscapes and forging friendships with
             people from around the world.
           </p>
-        </div>
+        </FadeUpAnimator>
       </SectionWrapper>
 
       <SectionWrapper className="flex justify-center items-center">
@@ -294,15 +369,15 @@ export default function page() {
       </SectionWrapper>
 
       <SectionWrapper>
-        <div>
+        <FadeUpAnimator>
           <span className="typography-R18 text-lev-blue mb-8 inline-block">
             Why You Should Participate
           </span>
           <SectionTitle className="mb-[40px] sm:mb-0">
             Picture <br /> yourself
           </SectionTitle>
-        </div>
-        <div className="flex lg:-translate-y-[50px]">
+        </FadeUpAnimator>
+        <FadeUpAnimator className="flex lg:-translate-y-[50px]">
           <p className="ms-auto text-lev-red-dark w-[300px]">
             making new friends from around the world, and gaining valuable work
             experience – all while basking in the summer sun. The USA Work and
@@ -311,15 +386,15 @@ export default function page() {
             in a unique blend of cultural exchange, language improvement, and
             pure happiness.
           </p>
-        </div>
+        </FadeUpAnimator>
       </SectionWrapper>
 
       <SectionWrapper className="flex justify-center items-center mb-[200px]">
-        <div className="relative w-full rounded-full overflow-hidden">
+        <div className="relative max-w-[85%] rounded-full overflow-hidden">
           <Image className="w-full h-full" src={photo3} alt="" />
           <div className="absolute hidden lg:flex  text-center  flex-col gap-6 p-8 justify-center aspect-square shrink-0 items-center end-8 h-[80%] top-1/2 -translate-y-1/2 bg-lev-yellow rounded-full">
             <p className="uppercase text-lev-red-dark typography-EB24">
-              unforgettable journey
+              unforgettable <br /> journey
             </p>
             <p>
               Join the USA Work and Travel Program and make this summer the one
@@ -332,33 +407,37 @@ export default function page() {
 
       <div className="mb-[180px]">
         <SectionWrapper>
-          <SectionTitle className="mb-[100px]">
-            Why You <br /> Should <br /> Participate
-          </SectionTitle>
-          <div className="flex ">
+          <FadeUpAnimator>
+            <SectionTitle className="mb-[100px] text-[120px]">
+              Why You <br /> Should <br /> Participate?
+            </SectionTitle>
+          </FadeUpAnimator>
+          <FadeUpAnimator className="flex ">
             <p className="ms-auto text-lev-red-dark w-[300px]">
               Immerse Yourself In A Unique Blend Of Cultural Exchange, Language
               Improvement, And Pure Happiness.
             </p>
-          </div>
+          </FadeUpAnimator>
         </SectionWrapper>
         <div>
           <Slider
             data={benefits}
             renderItem={(benefit) => (
-              <div className="relative h-[400px] sm:h-[670px] w-[300px] sm:w-[480px] flex flex-col gap-7">
-                <Image
-                  className="absolute object-cover pointer-events-none w-full h-full inset-0"
-                  src={benefit.src}
-                  alt=""
-                />
-                <TitleWithBreaks
-                  title={benefit.title}
-                  className="typography-EB34 sm:typography-EB48 text-white absolute bottom-10 left-10 uppercase "
-                />
-                {/* <p className="typography-R18 leading-6">
+              <div>
+                <div className="relative h-[400px] sm:h-[670px] w-[300px] sm:w-[480px] flex flex-col gap-7">
+                  <Image
+                    className="absolute object-cover pointer-events-none w-full h-full inset-0"
+                    src={benefit.src}
+                    alt=""
+                  />
+                  <TitleWithBreaks
+                    title={benefit.title}
+                    className="typography-EB34 sm:typography-EB48 text-white absolute bottom-10 left-10 uppercase "
+                  />
+                </div>
+                <p className="typography-R16 text-gray-500 w-[300px] sm:w-[480px] mt-4 leading-6">
                   {benefit.description}
-                </p> */}
+                </p>
               </div>
             )}
           />
@@ -367,12 +446,12 @@ export default function page() {
 
       <div className="mb-[150px]">
         <SectionWrapper>
-          <div>
+          <FadeUpAnimator>
             <SectionTitle className="mb-[40px]">
               What you will <br /> be doing
             </SectionTitle>
-          </div>
-          <div className="flex ">
+          </FadeUpAnimator>
+          <FadeUpAnimator className="flex ">
             <p className="ms-auto text-lev-red-dark w-[300px]">
               The Summer Work and Travel Program offers a range of job
               opportunities tailored to your interests and skills. From working
@@ -380,7 +459,7 @@ export default function page() {
               that aligns with your passions and allows you to make the most of
               your summer.
             </p>
-          </div>
+          </FadeUpAnimator>
         </SectionWrapper>
 
         <div>
@@ -400,15 +479,17 @@ export default function page() {
 
       <div className="mb-[100px] sm:mb-0">
         <SectionWrapper>
-          <p className="mb-12 text-lev-red-dark w-[300px]">
-            Discover Your Summer Work Adventure: Top Employers and Locations for
-            the USA Work and Travel Program!
-          </p>
-          <div className="flex">
+          <FadeUpAnimator>
+            <p className="mb-12 text-lev-red-dark w-[300px]">
+              Discover Your Summer Work Adventure: Top Employers and Locations
+              for the USA Work and Travel Program!
+            </p>
+          </FadeUpAnimator>
+          <FadeUpAnimator className="flex">
             <SectionTitle className="ms-auto text-end">
               CHOOSE YOUR <br /> NEXT ADVENTURE
             </SectionTitle>
-          </div>
+          </FadeUpAnimator>
         </SectionWrapper>
         <Slider
           data={countries}
@@ -461,13 +542,19 @@ export default function page() {
       </SectionWrapper>
 
       <SectionWrapper className="min-h-screen mb-[100px]">
-        <SectionTitle className="mb-[90px]">
-          Why Choose <br /> Levntura?
-        </SectionTitle>
+        <FadeUpAnimator>
+          <SectionTitle className="mb-[90px]">
+            Why Choose <br /> Levntura?
+          </SectionTitle>
+        </FadeUpAnimator>
         <div className="grid gap-y-[120px] gap-x-24 grid-cols-1 lg:grid-cols-2 gap-8">
-          {features.map((f) => {
+          {features.map((f, index) => {
             return (
-              <div key={f.title} className="flex gap-4 lg:gap-10">
+              <FadeUpAnimator
+                transition={{ delay: index * 0.2 }}
+                key={f.title}
+                className="flex gap-4 lg:gap-10"
+              >
                 <span className="shrink-0 w-[80px]">{f.icon}</span>
                 <div>
                   <TitleWithBreaks
@@ -478,7 +565,7 @@ export default function page() {
                     {f.description}
                   </p>
                 </div>
-              </div>
+              </FadeUpAnimator>
             );
           })}
         </div>
@@ -487,30 +574,32 @@ export default function page() {
       <div className="relative">
         <SectionWrapper>
           <div className="h-[500px] flex justify-between">
-            <div>
+            <FadeUpAnimator transition={{ delay: 0.1 }}>
               <Image src={firstPhoto} alt="" />
-            </div>
-            <div className="mt-10">
+            </FadeUpAnimator>
+            <FadeUpAnimator transition={{ delay: 0.2 }}>
               <Image src={secondPhoto} alt="" />
-            </div>
+            </FadeUpAnimator>
           </div>
           <div className="flex flex-col md:flex-row gap-10 justify-center items-center">
-            <SectionTitle>
-              Are You <br /> Ready to <br /> Change <br /> Your <br /> World?
-            </SectionTitle>
+            <FadeUpAnimator>
+              <SectionTitle>
+                Are You <br /> Ready to <br /> Change <br /> Your <br /> World?
+              </SectionTitle>
+            </FadeUpAnimator>
 
-            <div>
+            <FadeUpAnimator transition={{ delay: 0.3 }}>
               <ContactForm />
-            </div>
+            </FadeUpAnimator>
           </div>
         </SectionWrapper>
         <div className="flex gap-14">
-          <div className="w-full ">
+          <FadeUpAnimator className="w-full ">
             <Image src={fourthPhoto} alt="" className=" " />
-          </div>
-          <div className="w-full">
+          </FadeUpAnimator>
+          <FadeUpAnimator className="w-full">
             <Image src={thirdPhoto} alt="" className="ml-auto mr-6" />
-          </div>
+          </FadeUpAnimator>
         </div>
       </div>
     </div>

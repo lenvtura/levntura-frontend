@@ -6,41 +6,64 @@ import {
 } from "@/design-system/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
+import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 import img1 from "@/assets/photos/home/m-1.png";
 import img2 from "@/assets/photos/home/m-2.png";
 import img3 from "@/assets/photos/home/m-3.png";
 import img4 from "@/assets/photos/home/m-4.png";
+import { SectionTitle } from "./section-title";
 
 export function PublicationAndMedia() {
   return (
-    <SectionWrapper className="space-y-12">
-      <article className="lg:flex justify-between space-y-8">
-        <h2 className="typography-EB74 leading-16 md:w-1/2">
-          Publication & Media
-        </h2>
+    <SectionWrapper className="space-y-8 lg:space-y-0">
+      <article className="justify-between space-y-8">
+        <FadeUpAnimator transition={{ delay: 0.1 }}>
+          <SectionTitle className="typography-EB74 uppercase text-lev-blue-dark leading-16 md:w-1/2">
+            Publication <br />& Media
+          </SectionTitle>
+        </FadeUpAnimator>
 
-        <h4 className="sm:w-1/2 md:w-1/3 typography-M18 leading-8">
-          Explore University&apos;s 10+ courses across variouGs specialisations
-          that provoke intellectual and intuitive learning among students.
-        </h4>
+        <div className="w-full flex lg:translate-x-[70px] lg:-translate-y-[50px] justify-center items-center">
+          <FadeUpAnimator className="sm:w-1/2 md:w-1/3 text-lev-red-dark typography-R18 leading-6">
+            Explore University&apos;s 10+ courses across variouGs
+            specialisations that provoke intellectual and intuitive learning
+            among students.
+          </FadeUpAnimator>
+        </div>
       </article>
       <Carousel
-        className="w-full"
+        className="w-full over"
         plugins={[Autoplay({ delay: 2000 })]}
         opts={{ loop: true }}
       >
         <CarouselContent className="-ml-1">
           <CarouselItem className="pl-1 md:basis-auto lg:basis-auto">
-            <Image src={img1} alt="" />
+            <Image
+              className="hover:scale-105 transition-transform duration-300"
+              src={img1}
+              alt=""
+            />
           </CarouselItem>
           <CarouselItem className="pl-1 md:basis-auto lg:basis-auto">
-            <Image src={img2} alt="" />
+            <Image
+              className="hover:scale-105 transition-transform duration-300"
+              src={img2}
+              alt=""
+            />
           </CarouselItem>
           <CarouselItem className="pl-1 md:basis-auto lg:basis-auto">
-            <Image src={img3} alt="" />
+            <Image
+              className="hover:scale-105 transition-transform duration-300"
+              src={img3}
+              alt=""
+            />
           </CarouselItem>
           <CarouselItem className="pl-1 md:basis-auto lg:basis-auto">
-            <Image src={img4} alt="" />
+            <Image
+              className="hover:scale-105 transition-transform duration-300"
+              src={img4}
+              alt=""
+            />
           </CarouselItem>
         </CarouselContent>
       </Carousel>

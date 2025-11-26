@@ -30,69 +30,63 @@ import {
 export function SocialAndForm() {
   return (
     <SectionWrapper
-      sectionColor="bg-lev-blue-dark py-0"
-      className="overflow-visible h-screen flex items-center"
+      sectionColor="bg-lev-blue-dark"
+      className="overflow-visible min-h-screen flex-col sm:flex-row items-center flex gap-4 flex-wrap"
     >
-      <div className="lg:flex items-center lg:gap-y-16 w-full space-y-12">
-        {/* Social */}
-        <div className="lg:w-1/2 lg:inline-flex space-y-12 lg:space-y-0">
-          <article className="">
-            <h1 className="typography-EB74 text-white leading-16">
-              HELLO! <br /> LETS <br />
-              <span className="text-lev-blue-light">START</span> <br /> FRESH &{" "}
-              <br />
-              NEW
-            </h1>
-          </article>
+      {/* Social */}
+      <div className="space-y-12 flex-1">
+        <article className="">
+          <h1 className="typography-EB74 text-white leading-16">
+            HELLO! <br /> LETS{" "}
+            <span className="text-lev-blue-light">START</span> <br /> FRESH &{" "}
+            <br />
+            NEW
+          </h1>
+        </article>
 
-          <article className="text-white flex flex-col gap-4 ml-12 -mt-4 self-end">
-            <div className="social_link_top">
-              <h6 className="typography-R14">OUR SOCIALS</h6>
-            </div>
-
-            <div className="flex gap-4">
-              <a
-                href=""
-                className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
-              >
-                <WhatsappIcon className="size-6" />
-              </a>
-              <a
-                href=""
-                className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
-              >
-                <InstagramIcon className="size-6" />
-              </a>
-              <a
-                href=""
-                className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
-              >
-                <LinkedinIcon className="size-6" />
-              </a>
-              <a
-                href=""
-                className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
-              >
-                <YoutubeIcon className="size-6" />
-              </a>
-              <a
-                href=""
-                className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
-              >
-                <FacebookIcon className="size-6" />
-              </a>
-            </div>
-          </article>
-        </div>
-        {/* Form */}
-        <div className="lg:w-1/2 relative">
-          <div className="flex flex-col items-center gap-12 absolute lg:-top-25">
-            <div className="">
-              <MapPinIcon className="text-lev-blue-light" size={100} />
-            </div>
-            <ContactForm />
+        <article className="text-white flex flex-col gap-4 ml-12 -mt-4 self-end">
+          <div className="social_link_top">
+            <h6 className="typography-R14">OUR SOCIALS</h6>
           </div>
-        </div>
+
+          <div className="flex gap-4">
+            <a
+              href=""
+              className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
+            >
+              <WhatsappIcon className="size-6" />
+            </a>
+            <a
+              href=""
+              className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
+            >
+              <InstagramIcon className="size-6" />
+            </a>
+            <a
+              href=""
+              className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
+            >
+              <LinkedinIcon className="size-6" />
+            </a>
+            <a
+              href=""
+              className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
+            >
+              <YoutubeIcon className="size-6" />
+            </a>
+            <a
+              href=""
+              className="border border-white p-1.5 size-6 rounded-full flex items-center justify-center"
+            >
+              <FacebookIcon className="size-6" />
+            </a>
+          </div>
+        </article>
+      </div>
+      {/* Form */}
+      <div className="flex flex-col translate-y-[200px] border-b sm:border-none sm:translate-y-0 items-center gap-12 flex-1">
+        <MapPinIcon className="text-lev-blue-light" size={100} />
+        <ContactForm />
       </div>
     </SectionWrapper>
   );
@@ -118,7 +112,7 @@ export const ContactForm = () => {
     },
   });
   return (
-    <div className="flex flex-col gap-y-4 bg-white lg:w-3/5 p-6">
+    <div className="flex flex-col gap-y-4 max-w-md bg-white p-6">
       <h2 className="typography-S34 w-5/6">
         LITTLE EFFORT, ULTIMATE EXPERIENCE.
       </h2>

@@ -19,14 +19,14 @@ const Logos = [
 export default function CulturalExchange() {
   return (
     <SectionWrapper sectionColor="bg-lev-yellow-light" className="space-y-8">
-      <article className="space-y-8">
-        <h2 className="typography-R24 md:typography-R34 leading-11 w-5/6">
+      <article className="space-y-16 mb-12 w-full mx-auto flex flex-col items-center justify-center">
+        <h2 className="typography-R24 text-lev-red-dark md:typography-R34 leading-8 lg:leading-12! w-5/6">
           From exchange programs to a vibrant community, we democratize global
           opportunities. Levntura isn’t just an organization; it’s a movement
           toward enriching global cultures through every journey.
         </h2>
 
-        <h1 className="text-4xl sm:text-6xl font-extrabold lg:typography-EB74 leading-10 lg:leading-16 sm:leading-13 w-5/6 uppercase">
+        <h1 className="text-4xl text-lev-red-dark sm:text-6xl font-extrabold lg:typography-EB74 leading-10 lg:leading-16 sm:leading-13 w-5/6 uppercase">
           <span className="text-lev-orange">
             Levntura began with a <br />
             belief
@@ -34,7 +34,7 @@ export default function CulturalExchange() {
           in cultural exchange’s transformative power.
         </h1>
       </article>
-      <article className="flex relative min-w-[1000px] h-[100px] overflow-hidden items-center  text-gray-500 mb-[64px] gap-4">
+      <article className="flex relative min-w-[1000px] h-[100px] overflow-hidden items-center  text-lev-red-dark mb-[64px] gap-4">
         {Logos.map((Logo, i) => (
           <div
             key={i}

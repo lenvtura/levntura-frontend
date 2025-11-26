@@ -5,14 +5,17 @@ import {
 } from "@/design-system/carousel";
 import { SectionWrapper } from "./section-wrapper";
 import { Button } from "@/design-system/button";
+import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 // import ved1 from '@/assets/videos';
 
 export function OurStudentsSharing() {
   return (
     <SectionWrapper className="min-h-screen space-y-4">
-      <h2 className="typography-EB48 lg:typography-EB74 leading-12 lg:leading-16 uppercase sm:w-1/2">
-        our students are already sharing
-      </h2>
+      <FadeUpAnimator transition={{ delay: 0.1 }}>
+        <h2 className="typography-EB48 lg:typography-EB74 leading-12 lg:leading-16 uppercase sm:w-1/2">
+          our students are already sharing
+        </h2>
+      </FadeUpAnimator>
       {/* Desktop */}
       <section className="hidden lg:grid lg:grid-cols-2 lg:gap-x-4">
         <article className="hidden lg:block">
@@ -69,17 +72,23 @@ export function OurStudentsSharing() {
       </Carousel>
 
       <article className="space-y-4 lg:hidden">
-        <h4 className="typography-R24 leading-6">
-          Never before <br />
-          Freedom to choose
-        </h4>
-        <p className="typography-R14 leading-4 col-span-2 max-w-xl">
-          Unlock your potential with Levntura’s seasoned counselors. Dive into a
-          world where expert advice meets personalized support, guiding you
-          towards your educational and career aspirations. Let’s chart your
-          journey to success together.
-        </p>
-        <Button className="self-end justify-self-start">See more</Button>
+        <FadeUpAnimator transition={{ delay: 0.3 }}>
+          <h4 className="typography-R24 leading-6">
+            Never before <br />
+            Freedom to choose
+          </h4>
+        </FadeUpAnimator>
+        <FadeUpAnimator transition={{ delay: 0.4 }}>
+          <p className="typography-R14 leading-4 col-span-2 max-w-xl">
+            Unlock your potential with Levntura's seasoned counselors. Dive into a
+            world where expert advice meets personalized support, guiding you
+            towards your educational and career aspirations. Let's chart your
+            journey to success together.
+          </p>
+        </FadeUpAnimator>
+        <FadeUpAnimator transition={{ delay: 0.5 }}>
+          <Button className="self-end justify-self-start">See more</Button>
+        </FadeUpAnimator>
       </article>
     </SectionWrapper>
   );

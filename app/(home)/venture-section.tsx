@@ -1,11 +1,13 @@
 import type { ComponentProps } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { cn } from "@/design-system/helpers";
 
 import studentPhoto from "@/assets/photos/students.png";
 import happyYoungManPhoto from "@/assets/photos/happy-young-man.png";
 import { SectionWrapper } from "./section-wrapper";
 import { SectionTitle } from "./section-title";
+import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 
 const FirstRowParagraph = ({ className, ...props }: ComponentProps<"p">) => {
   return (
@@ -19,7 +21,7 @@ const FirstRowParagraph = ({ className, ...props }: ComponentProps<"p">) => {
 export function VentureSection() {
   return (
     <SectionWrapper>
-      <div className="grid md:grid-cols-2 mb-28 justify-between gap-8">
+      <FadeUpAnimator className="grid md:grid-cols-2 mb-28 justify-between gap-8">
         <div className="row-start-1">
           <span className="uppercase  text-lev-orange typography-R20 inline-block md:mb-8">
             venture
@@ -27,15 +29,17 @@ export function VentureSection() {
           <FirstRowParagraph className="max-md:hidden" />
         </div>
 
-        <SectionTitle className=" md:col-start-2 self-end">
-          Embark on Your Boundless new Adventure
-        </SectionTitle>
+        <div>
+          <SectionTitle className=" md:col-start-2 self-end">
+            Embark on Your Boundless new Adventure
+          </SectionTitle>
+        </div>
 
         <FirstRowParagraph className="md:hidden" />
-      </div>
+      </FadeUpAnimator>
 
-      <div className="grid md:grid-cols-2 mb-28 justify-between gap-8">
-        <div className="max-md:h-[364px]">
+      <FadeUpAnimator className="flex flex-col-reverse md:flex-row mb-28 justify-between gap-8">
+        <div className="max-md:h-[364px] ">
           <Image
             src={studentPhoto}
             alt=""
@@ -43,7 +47,7 @@ export function VentureSection() {
           />
         </div>
 
-        <div>
+        <div className="lg:flex-2/3">
           <span className="uppercase bg-lev-yellow px-2 py-1 typography-R14 rounded-full inline-block mb-4">
             Explore
           </span>
@@ -53,17 +57,17 @@ export function VentureSection() {
             Internships
           </h5>
           <p>
-            Dive into Levntura’s Global Internships, where career development
-            meets adventure. Propel your professional journey in dynamic,
-            international settings, enhancing your skills amidst diverse
-            cultures. Ready to transform ambition into global action? Let’s
-            embark together.
+            Dive into Levntura&apos;s Global Internships, where career
+            development meets adventure. Propel your professional journey in
+            dynamic, international settings, enhancing your skills amidst
+            diverse cultures. Ready to transform ambition into global action?
+            Let&apos;s embark together.
           </p>
         </div>
-      </div>
+      </FadeUpAnimator>
 
-      <div className="grid md:grid-cols-2 justify-between gap-8">
-        <div>
+      <FadeUpAnimator className="flex flex-col md:flex-row justify-between gap-8 ">
+        <div className="lg:flex-2/3">
           <span className="uppercase bg-lev-yellow px-2 py-1 typography-R14 rounded-full inline-block mb-4">
             Empower
           </span>
@@ -71,10 +75,10 @@ export function VentureSection() {
             Expert Guidance to Unlock Your Potential
           </h5>
           <p>
-            Unlock your potential with Levntura’s seasoned counselors. Dive into
-            a world where expert advice meets personalized support, guiding you
-            towards your educational and career aspirations. Let’s chart your
-            journey to success together.
+            Unlock your potential with Levntura&apos;s seasoned counselors. Dive
+            into a world where expert advice meets personalized support, guiding
+            you towards your educational and career aspirations. Let&apos;s
+            chart your journey to success together.
           </p>
         </div>
 
@@ -85,7 +89,7 @@ export function VentureSection() {
             className="w-full h-full object-cover"
           />
         </div>
-      </div>
+      </FadeUpAnimator>
     </SectionWrapper>
   );
 }

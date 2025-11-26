@@ -54,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <body
         className={`${Gelion.className} overflow-x-hidden bg-foreground antialiased relative`}
       >

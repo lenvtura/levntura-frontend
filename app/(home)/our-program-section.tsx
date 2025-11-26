@@ -1,7 +1,4 @@
 import { Routes } from "@/constants/routes";
-import { Button } from "@/design-system/button";
-import { MoveRightIcon } from "lucide-react";
-import Link from "next/link";
 
 import studyImage from "@/assets/photos/study.png";
 import workImage from "@/assets/photos/work.png";
@@ -10,6 +7,8 @@ import counselorImage from "@/assets/photos/counselor.png";
 import { SectionTitle } from "./section-title";
 import { Slider } from "../programs/work-and-travel/jobs-slider";
 import Image from "next/image";
+import { ButtonWithArrow } from "@/atoms/button-with-arrow";
+import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 
 const Opportunities = [
   "Study & Travel",
@@ -30,28 +29,33 @@ export function OurProgramSection() {
     <div className=" py-[100px] bg-[#D8E6E6]">
       <div className="container">
         <div className="flex max-md:flex-col-reverse relative mb-12 gap-4">
-          <div className="flex max-md:mt-4 max-md:grid grid-cols-2 mr-4 flex-col gap-4">
+          <FadeUpAnimator
+            transition={{ delay: 0.2 }}
+            className="flex max-md:mt-4 max-md:grid grid-cols-2 mr-4 flex-col gap-4"
+          >
             {Opportunities.map((opp) => (
               <span className="whitespace-nowrap" key={opp}>
                 {opp}
               </span>
             ))}
-          </div>
+          </FadeUpAnimator>
 
           <div className="w-full items-start justify-between">
-            <Link
-              href={Routes.contact}
-              className="float-right max-md:-mt-2 flex ml-auto  top-0 right-0 typography-R18  items-center gap-4 "
-            >
-              <span className="whitespace-nowrap">Start Now!</span>
-              <Button className="border-lev-green-dark" size="icon-md">
-                <MoveRightIcon />
-              </Button>
-            </Link>
+            <FadeUpAnimator transition={{ delay: 0.4 }}>
+              <ButtonWithArrow
+                className="float-right max-md:-mt-2 flex ml-auto  top-0 right-0 typography-R18  items-center gap-4"
+                href={Routes.contact}
+                iconClassName="border-lev-green-dark"
+              >
+                Start Now!
+              </ButtonWithArrow>
+            </FadeUpAnimator>
 
-            <SectionTitle className="text-lev-green-dark">
-              Our program
-            </SectionTitle>
+            <FadeUpAnimator transition={{ delay: 0.3 }}>
+              <SectionTitle className="text-lev-green-dark">
+                Our program
+              </SectionTitle>
+            </FadeUpAnimator>
           </div>
         </div>
       </div>
@@ -62,7 +66,7 @@ export function OurProgramSection() {
           return (
             <div
               key={item.label}
-              className="  shrink-0  relative w-[480px] overflow-hidden h-full"
+              className="  shrink-0  relative w-[400px] overflow-hidden h-full"
             >
               <Image
                 alt=""

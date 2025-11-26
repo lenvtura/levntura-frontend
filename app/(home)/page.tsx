@@ -26,6 +26,7 @@ import { TravelsImgsMobile } from "./travels-imgs-mobile";
 import { MoreToRead } from "./more-to-read";
 import { PublicationAndMedia } from "./publication-and-media";
 import { OurStudentsSharing } from "./our-students-sharing";
+import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 
 const Opportunities = [
   "Study & Travel",
@@ -83,7 +84,7 @@ export default function Home() {
   // });
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div
         style={{
           height: `calc(100dvh + ${PART_HEIGHT_APPEAR_IN_NEXT_SECTION}px)`,
@@ -113,26 +114,37 @@ export default function Home() {
         >
           <div className="mt-auto py-8 container">
             <div className="flex max-lg:flex-col-reverse max-lg:items-start gap-8 justify-between items-end mb-8">
-              <h1 className="uppercase typography-EB74 max-sm:typography-EB48 text-white">
-                <span
-                  className="text-transparent"
-                  style={{ WebkitTextStroke: "2px white" }}
-                >
-                  Converting <br /> studies
-                </span>
-                <br /> into adventures
-              </h1>
-              <div className="flex flex-col gap-4">
+              <FadeUpAnimator transition={{ delay: 0.2 }}>
+                <h1 className="uppercase typography-EB74 max-sm:typography-EB48 text-white">
+                  <span
+                    className="text-transparent"
+                    style={{ WebkitTextStroke: "2px white" }}
+                  >
+                    Converting <br /> studies
+                  </span>
+                  <br /> into adventures
+                </h1>
+              </FadeUpAnimator>
+              <FadeUpAnimator
+                transition={{ delay: 0.4 }}
+                className="flex flex-col gap-4"
+              >
                 {Opportunities.map((opp) => (
                   <span key={opp}>{opp}</span>
                 ))}
-              </div>
+              </FadeUpAnimator>
             </div>
 
-            <div className="h-[2px] w-[90%] bg-amber-50 bg-blend-overlay mix-blend-overlay" />
+            <FadeUpAnimator
+              transition={{ delay: 0.5 }}
+              className="h-[2px] w-[90%] bg-amber-50 bg-blend-overlay mix-blend-overlay"
+            />
 
             <div className="flex justify-between mt-4">
-              <div className="flex items-center justify-between">
+              <FadeUpAnimator
+                transition={{ delay: 0.6 }}
+                className="flex items-center justify-between"
+              >
                 <Link
                   href={Routes.contact}
                   className="flex typography-R18 max-sm:hidden items-center gap-4 "
@@ -142,11 +154,14 @@ export default function Home() {
                     <MoveRightIcon />
                   </Button>
                 </Link>
-              </div>
+              </FadeUpAnimator>
 
-              <div className="flex gap-2">
+              <FadeUpAnimator
+                transition={{ delay: 0.7 }}
+                className="flex gap-2"
+              >
                 <SocialMedia />
-              </div>
+              </FadeUpAnimator>
             </div>
           </div>
           <div className="h-[64px] inset-x-0 bottom-0 w-[50%] max-md:w-[90%] bg-white " />
@@ -169,32 +184,39 @@ export default function Home() {
             className="bg-white p-8"
           >
             <div className="max-w-[615px] md:h-[700px] max-md:min-h-[500px] ml-auto">
-              <h4 className="typography-EB34 uppercase leading-[1.3]  mb-12">
-                We change lives <br /> throughout leadership <br /> development.
-                Where are <br /> you going next?
-              </h4>
-              <p className="text-lev-black/50">
-                Levntura has rapidly become a beacon for those seeking to expand
-                their horizons through educational services and cultural
-                exchange programs. With a mission to empower the next generation
-                of global leaders, we offer experiences that challenge,
-                enlighten, and open doors to limitless opportunities
-              </p>
+              <FadeUpAnimator transition={{ delay: 0.1 }}>
+                <h4 className="typography-EB34 uppercase leading-[1.3]  mb-12">
+                  We change lives <br /> throughout leadership <br />{" "}
+                  development. Where are <br /> you going next?
+                </h4>
+              </FadeUpAnimator>
+              <FadeUpAnimator transition={{ delay: 0.3 }}>
+                <p className="text-lev-black/50">
+                  Levntura has rapidly become a beacon for those seeking to
+                  expand their horizons through educational services and
+                  cultural exchange programs. With a mission to empower the next
+                  generation of global leaders, we offer experiences that
+                  challenge, enlighten, and open doors to limitless
+                  opportunities
+                </p>
+              </FadeUpAnimator>
             </div>
             <TravelsImgsMobile scrollYProgress={scrollYProgress} />
           </div>
 
           <div className=" max-w-[625px] flex justify-end p-8 max-md:pl-8 pl-[90px]">
-            <p className="text-lev-black ">
-              From our headquarters in Amman Jordan, to our office in Egypt, we
-              have been providing the aspiring Middle Eastern Youth with
-              exceptional cultural exchange, study abroad and Professional
-              training opportunities in North America, Europe and Australia.
-              What we offer is far more superior to opportunities; We change
-              lives throughout leadership development, our contributions to
-              language acquisition, and most significantly, igniting the spirit
-              of adventure and ambition in the Youngsters.
-            </p>
+            <FadeUpAnimator transition={{ delay: 0.5 }}>
+              <p className="text-lev-black ">
+                From our headquarters in Amman Jordan, to our office in Egypt,
+                we have been providing the aspiring Middle Eastern Youth with
+                exceptional cultural exchange, study abroad and Professional
+                training opportunities in North America, Europe and Australia.
+                What we offer is far more superior to opportunities; We change
+                lives throughout leadership development, our contributions to
+                language acquisition, and most significantly, igniting the
+                spirit of adventure and ambition in the Youngsters.
+              </p>
+            </FadeUpAnimator>
           </div>
         </div>
 
