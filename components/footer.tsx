@@ -27,7 +27,7 @@ const bgColorMapper = (pathname: string) =>
   new Map([
     [pathname.includes(Routes.home), "bg-lev-blue"],
     [pathname.includes(Routes.about), "bg-lev-orange"],
-    [pathname.includes(Routes.blogs), "bg-lev-blue"],
+    [pathname.includes(Routes.blogs), "bg-lev-red"],
     [pathname.includes(Routes.careers), "bg-lev-green-dark"],
     [pathname.includes(Routes.contact), "bg-lev-blue-light"],
     [pathname.includes(Routes.programs), "bg-lev-green-dark"],

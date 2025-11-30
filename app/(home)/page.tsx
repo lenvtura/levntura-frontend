@@ -27,6 +27,7 @@ import { MoreToRead } from "./more-to-read";
 import { PublicationAndMedia } from "./publication-and-media";
 import { OurStudentsSharing } from "./our-students-sharing";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
+import { ButtonWithArrow } from "@/atoms/button-with-arrow";
 
 const Opportunities = [
   "Study & Travel",
@@ -145,15 +146,12 @@ export default function Home() {
                 transition={{ delay: 0.6 }}
                 className="flex items-center justify-between"
               >
-                <Link
+                <ButtonWithArrow
                   href={Routes.contact}
-                  className="flex typography-R18 max-sm:hidden items-center gap-4 "
+                  iconClassName="border-white"
                 >
-                  <span>Start the journy</span>
-                  <Button className="border-white" size="icon-md">
-                    <MoveRightIcon />
-                  </Button>
-                </Link>
+                  Start the journey
+                </ButtonWithArrow>
               </FadeUpAnimator>
 
               <FadeUpAnimator
