@@ -1,6 +1,5 @@
 import type { ComponentProps } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { cn } from "@/design-system/helpers";
 
 import studentPhoto from "@/assets/photos/students.png";
@@ -22,7 +21,7 @@ export function VentureSection() {
   return (
     <SectionWrapper>
       <FadeUpAnimator className="grid md:grid-cols-2 mb-28 justify-between gap-8">
-        <div className="row-start-1">
+        <div className="row-start-1 md:sticky md:top-[100px] md:self-start">
           <span className="uppercase  text-lev-orange typography-R20 inline-block md:mb-8">
             venture
           </span>

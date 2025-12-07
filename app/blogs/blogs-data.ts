@@ -155,3 +155,6 @@ export function getTotalPages(
   return Math.ceil(totalBlogs / perPage);
 }
 
+
+
+
