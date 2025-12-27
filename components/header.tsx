@@ -21,7 +21,7 @@ export function Header() {
   return (
     <div
       style={{ height: HEADER_HEIGHT }}
-      className="container bg-transparent mix-blend-difference z-[900] fixed left-1/2 -translate-x-1/2 top-0 flex justify-between items-center"
+      className="container bg-transparent mix-blend-difference z-100000 fixed left-1/2 -translate-x-1/2 top-0 flex justify-between items-center"
     >
       <Link href={Routes.home} className="text-white max-w-[160px] shrink-0">
         <LevunturaFullLogo />

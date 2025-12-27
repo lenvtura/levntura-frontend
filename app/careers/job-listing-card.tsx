@@ -1,7 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import { Button } from "@/design-system/button";
 import Link from "next/link";
-import { CountryFlag } from "./country-flag";
 import { Separator } from "@/design-system/separator";
 
 interface JobListingCardProps {
@@ -24,7 +23,6 @@ export function JobListingCard({
   type,
   typeColor,
   country,
-  countryCode,
   description,
   salary,
   moreHref,
@@ -41,7 +39,7 @@ export function JobListingCard({
       </div>
 
       <div className="p-6 flex flex-col flex-1">
-        <h3 className="typography-EB24 uppercase text-lev-black mb-3">
+        <h3 className="typography-M24 uppercase text-lev-black mb-3">
           {title}
         </h3>
 
@@ -72,11 +70,7 @@ export function JobListingCard({
           <span className="typography-S18 text-lev-black font-semibold">
             {salary}
           </span>
-          <Button
-            asChild
-            variant="default"
-            className="border-transparent text-lev-black hover:bg-lev-black/5 px-4 py-2"
-          >
+          <Button asChild variant="ghost">
             <Link href={moreHref}>MORE</Link>
           </Button>
         </div>

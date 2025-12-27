@@ -18,10 +18,12 @@ export function GalleryHero() {
       </FadeUpAnimator>
 
       <FadeUpAnimator className="text-lev-gray leading-relaxed max-w-3xl mx-auto text-center">
-        At Levntura, we&apos;re here to guide you every step of the way on your
-        journey of discovery. Whether you have questions about our programs,
-        want to share feedback, or simply want to say hello, we&apos;d love to
-        hear from you. Get in touch with us using any of the following methods:
+        At Levntura, every picture tells a story—a story of discovery,
+        friendship, and unforgettable moments that shape who we are. From summer
+        adventures in the U.S. to cultural exchanges around the world, our
+        gallery captures the essence of what it means to explore, connect, and
+        grow. These are the memories we’re proud to create together—moments that
+        remind us that every journey starts with a single step
       </FadeUpAnimator>
     </SectionWrapper>
   );

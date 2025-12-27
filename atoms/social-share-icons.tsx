@@ -1,5 +1,3 @@
-"use client";
-
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
@@ -7,6 +5,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { YoutubeIcon } from "@/assets/icons/youtube";
 import { cn } from "@/design-system/helpers";
 import { ComponentProps } from "react";
+import { headers } from "next/headers";
 
 export type SocialPlatform =
   | "whatsapp"
@@ -24,16 +23,16 @@ interface SocialShareIconsProps extends ComponentProps<"div"> {
   hrefs?: Partial<Record<SocialPlatform, string>>;
 }
 
-const platforms = [
+const JORDAN_PLATFORMS = [
   {
     icon: FaWhatsapp,
     label: "Share on WhatsApp",
-    href: "https://wa.me/?text=Check out this post!",
+    href: "https://api.whatsapp.com/send/?phone=962790922202&text&type=phone_number&app_absent=0",
   },
   {
     icon: FaInstagram,
     label: "Share on Instagram",
-    href: "https://www.instagram.com/levntura",
+    href: "https://www.instagram.com/levntura.jo/",
   },
   {
     icon: FaLinkedinIn,
@@ -43,7 +42,35 @@ const platforms = [
   {
     icon: FaFacebook,
     label: "Share on Facebook",
-    href: "https://www.facebook.com/levntura",
+    href: "https://www.facebook.com/levntura?mibextid=LQQJ4d",
+  },
+  {
+    icon: YoutubeIcon,
+    label: "Share on YouTube",
+    href: "https://www.youtube.com/@Levntura",
+  },
+];
+
+const EGYPT_PLATFORMS = [
+  {
+    icon: FaWhatsapp,
+    label: "Share on WhatsApp",
+    href: "https://api.whatsapp.com/send/?phone=201500050392&text&type=phone_number&app_absent=0",
+  },
+  {
+    icon: FaInstagram,
+    label: "Share on Instagram",
+    href: "https://www.instagram.com/levntura.eg/",
+  },
+  {
+    icon: FaLinkedinIn,
+    label: "Share on LinkedIn",
+    href: "https://www.linkedin.com/company/levntura/",
+  },
+  {
+    icon: FaFacebook,
+    label: "Share on Facebook",
+    href: "https://www.facebook.com/levntura.eg/",
   },
   {
     icon: YoutubeIcon,
@@ -67,7 +94,7 @@ const sizeConfig = {
   },
 };
 
-export function SocialShareIcons({
+export async function SocialShareIcons({
   size = "md",
   variant = "default",
   iconClassName,
@@ -77,10 +104,18 @@ export function SocialShareIcons({
 }: SocialShareIconsProps) {
   const sizeStyles = sizeConfig[size];
 
+  const headersList = await headers();
+  const userCountry = headersList.get("user-country");
+
+  const isFromEgypt = userCountry === "EG";
+  const platforms = isFromEgypt ? EGYPT_PLATFORMS : JORDAN_PLATFORMS;
+
+  console.log({ userCountry });
+
   const baseContainerClass =
     variant === "default"
       ? "rounded-full border border-lev-blue bg-white flex items-center justify-center hover:bg-lev-blue hover:text-white transition-colors"
-      : "border border-white p-1.5 rounded-full flex items-center justify-center";
+      : "border border-white p-1.5 rounded-full flex items-center hover:bg-white justify-center";
 
   const baseIconClass =
     variant === "default"

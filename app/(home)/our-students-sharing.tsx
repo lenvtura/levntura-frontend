@@ -28,7 +28,7 @@ export function OurStudentsSharing() {
             <video className="h-[55vh]" controls height="1000" muted loop>
               <source src="../../assets/videos/media-1.mp4" type="video/mp4" />
             </video>
-            <h4 className="typography-R24 leading-6">
+            <h4 className="typography-S34 leading-8">
               Never before <br />
               Freedom to choose
             </h4>
@@ -36,7 +36,7 @@ export function OurStudentsSharing() {
           <video className="h-[45vh] mt-6" controls muted loop>
             <source src="../../assets/videos/media-2.mp4" type="video/mp4" />
           </video>
-          <p className="typography-R14 leading-4 col-span-2">
+          <p className="typography-R14 text-lev-red-dark leading-5 col-span-2">
             Unlock your potential with Levntura’s seasoned counselors. Dive into
             a world where expert advice meets personalized support, guiding you
             towards your educational and career aspirations. Let’s chart your
@@ -80,10 +80,10 @@ export function OurStudentsSharing() {
         </FadeUpAnimator>
         <FadeUpAnimator transition={{ delay: 0.4 }}>
           <p className="typography-R14 leading-4 col-span-2 max-w-xl">
-            Unlock your potential with Levntura's seasoned counselors. Dive into a
-            world where expert advice meets personalized support, guiding you
-            towards your educational and career aspirations. Let's chart your
-            journey to success together.
+            Unlock your potential with Levntura&apos;s seasoned counselors. Dive
+            into a world where expert advice meets personalized support, guiding
+            you towards your educational and career aspirations. Let&apos;s
+            chart your journey to success together.
           </p>
         </FadeUpAnimator>
         <FadeUpAnimator transition={{ delay: 0.5 }}>

@@ -14,21 +14,21 @@ const SocialMediaStats = [
     numberColor: "text-lev-blue-light",
     category: "Students",
     paragraph:
-      "Join our thriving community of 6.5K ambitious students who have seized the opportunity to elevate their skills",
+      "Join a thriving community of passionate learners who’ve turned curiosity into opportunity—gaining skills, confidence, and global experience through Levntura’s programs.",
   },
   {
     number: "1.5K",
     numberColor: "text-lev-yellow",
     category: "Universities",
     paragraph:
-      "With partnerships spanning across 1.5K prestigious universities, our program opens doors to unparalleled academic and professional networks.",
+      "From world-renowned institutions to innovative learning centers, our academic collaborations create powerful bridges between education and real-world experience.",
   },
   {
     number: "20+",
     numberColor: "text-lev-green-light",
     category: "Countries",
     paragraph:
-      "Whether you're drawn to the historic charm of Europe, the bustling energy of Asia, or the scenic beauty of the Americas, our program provides a passport to unforgettable experiences.",
+      "Explore the world through Levntura—from Europe’s cultural capitals to the breathtaking coasts of North America and Asia’s vibrant cities. Every destination offers a story waiting to be lived.",
   },
 ];
 
@@ -67,14 +67,14 @@ export function SocialMediaSection() {
                 <FaceboocBoxLogoSvg />
               </div>
               <p className="max-w-[350px] bg-blend-overlay mix-blend-overlay opacity-70">
-                Join the USA Work and Travel Program and make this summer the
-                one you&apos;ll always remember. Embrace the thrill, enhance
-                your skills, and create memories that will last a lifetime.
+                Connect with thousands of Levntura students and alumni from
+                around the world. Share your experiences, ask questions, and get
+                insider tips from those who’ve already lived the adventure.
               </p>
             </FadeUpAnimator>
             <FadeUpAnimator transition={{ delay: 0.4 }}>
               <SectionTitle className="text-white inline-block">
-                JOIN OUR <br /> COMMUNITY
+                JOIN OUR <br /> FACEBOOK COMMUNITY
               </SectionTitle>
             </FadeUpAnimator>
             <FadeUpAnimator transition={{ delay: 0.6 }}>

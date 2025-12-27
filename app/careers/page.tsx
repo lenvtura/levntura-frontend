@@ -9,7 +9,6 @@ import { SuggestNewOpportunities } from "./suggest-new-opportunities";
 import {
   JOB_OPPORTUNITIES,
   RELATED_PROGRAMS,
-  TEAM_PHOTOS,
   getPaginatedJobs,
   getTotalPages,
   JOBS_PER_PAGE,
@@ -49,7 +48,7 @@ export default function CareersPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <CareersHero images={TEAM_PHOTOS} />
+      <CareersHero />
 
       <AvailableOpportunities
         opportunities={paginatedJobs}

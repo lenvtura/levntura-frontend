@@ -62,25 +62,25 @@ export function WhoWeAreSection() {
 
         <FadeUpAnimator transition={{ delay: 0.4 }}>
           <p>
-            Incepted in the vibrant city of Amman, Jordan, Levntura has rapidly
-            expanded, solidifying its presence across the Middle-Eastern
-            corridor. Our network spans from our headquarters in Jordan to our
-            office in Egypt, collaborating closely with globally renowned
-            institutions and organizations. We are a powerhouse fostering the
-            spirit of adventure, leadership development, and language
-            acquisition, driving a change that resonates at a global scale.
+            Levntura was founded on the belief that learning should go beyond
+            classrooms—it should be an adventure that shapes minds and futures,
+            we empower Middle Eastern youth to explore new cultures, dream
+            bigger, and grow through meaningful travel and learning experiences,
+            Our mission is simple: to inspire transformation through experience
+            and prepare students not just for success—but for life.
           </p>
         </FadeUpAnimator>
         <FadeUpAnimator transition={{ delay: 0.5 }}>
           <p>
-            From our headquarters in Amman Jordan, to our office in Egypt, we
-            have been providing the aspiring Middle Eastern Youth with
-            exceptional cultural exchange, study abroad and Professional
-            training opportunities in North America, Europe and Australia. What
-            we offer is far more superior to opportunities; We change lives
-            throughout leadership development, our contributions to language
-            acquisition, and most significantly, igniting the spirit of
-            adventure and ambition in the Youngsters.{" "}
+            Headquartered in Amman, Jordan, with a regional office in Cairo,
+            Egypt, Levntura has become one of the leading youth mobility
+            platforms in the Middle East. We collaborate with internationally
+            recognized educational and cultural organizations to deliver
+            high-quality exchange and internship opportunities worldwide. Our
+            programs span across North America, Europe, Australia, and soon Asia
+            and South Africa—empowering students to experience a blend of
+            personal growth and professional development through global
+            exposure.
           </p>
         </FadeUpAnimator>
       </div>

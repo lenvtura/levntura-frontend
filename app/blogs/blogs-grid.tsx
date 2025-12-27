@@ -27,9 +27,9 @@ export function BlogsGrid({
 }: BlogsGridProps) {
   return (
     <div className="bg-white py-12 lg:py-16">
-      <div className="container">
+      <div className="container-md">
         <FadeUpAnimator transition={{ delay: 0.1 }}>
-          <h2 className="typography-EB34 lg:typography-EB48 uppercase text-lev-black mb-8">
+          <h2 className="typography-EB34 lg:typography-EB48 text-lev-green-dark mb-8">
             Latest Articles
           </h2>
         </FadeUpAnimator>
@@ -44,10 +44,10 @@ export function BlogsGrid({
                 key={filter}
                 onClick={() => onFilterChange(filter)}
                 className={cn(
-                  "typography-S14 rounded-full px-6",
+                  "typography-S14 rounded-lg px-4 border-0",
                   activeFilter === filter
-                    ? "bg-lev-red text-white hover:bg-lev-red/90 border-lev-red"
-                    : "bg-white text-lev-black hover:bg-lev-red/10 border-lev-black"
+                    ? "bg-lev-red text-white hover:bg-lev-red/90"
+                    : "bg-white text-lev-black hover:text-lev-black hover:bg-lev-red/10"
                 )}
               >
                 {filter}
@@ -99,7 +99,3 @@ export function BlogsGrid({
     </div>
   );
 }
-
-
-
-

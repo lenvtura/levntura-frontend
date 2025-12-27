@@ -12,6 +12,8 @@ import { StartNowBtn } from "@/atoms/start-now-btn";
 import { ComponentProps } from "react";
 import { cn } from "@/design-system/helpers";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
+import Link from "next/link";
+import { Routes } from "@/constants/routes";
 
 export default function TourImages({
   gradientProps: { className, ...props } = {},
@@ -55,6 +57,12 @@ export default function TourImages({
         </SectionTitle>
 
         <StartNowBtn />
+        <Link
+          href={Routes.gallery}
+          className="typography-R16 mt-4 text-black hover:text-lev-red transition-colors"
+        >
+          See all photos
+        </Link>
       </FadeUpAnimator>
     </>
   );

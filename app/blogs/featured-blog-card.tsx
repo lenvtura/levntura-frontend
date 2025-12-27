@@ -23,7 +23,7 @@ export function FeaturedBlogCard({
 }: FeaturedBlogCardProps) {
   return (
     <Link href={href}>
-      <div className="container mb-12 lg:mb-24">
+      <div className="container-md mb-12 lg:mb-24">
         <div className="flex flex-col md:flex-row gap-8 group cursor-pointer">
           <FadeUpAnimator transition={{ delay: 0.1 }} className="w-full  ">
             <div className="relative aspect-square h-[350px] w-full overflow-hidden">
@@ -67,6 +67,3 @@ export function FeaturedBlogCard({
     </Link>
   );
 }
-
-
-

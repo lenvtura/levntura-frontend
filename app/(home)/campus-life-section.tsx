@@ -23,11 +23,13 @@ export function CampusLifeSection() {
             </FadeUpAnimator>
             <FadeUpAnimator transition={{ delay: 0.3 }}>
               <p className="max-w-[80ch]">
-                Experience the vibrant tapestry of global cultures by choosing
-                from our diverse selection of 20 countries. Whether you&apos;re
-                drawn to the historic charm of Europe, the bustling energy of
-                Asia, or the scenic beauty of the Americas, our program provides a
-                passport to unforgettable experiences.
+                University life isn’t just about lectures and exams—it’s where
+                you grow, explore, and discover who you truly are. At Levntura,
+                we open doors for students to experience global campuses that
+                blend learning with adventure. Meet new people, share ideas, and
+                live moments that shape your future. From late-night study
+                sessions to weekend cultural trips, every experience becomes a
+                story you’ll carry forever.
               </p>
             </FadeUpAnimator>
           </div>

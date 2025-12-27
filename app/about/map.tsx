@@ -44,9 +44,13 @@ export default function Map() {
         </div>
 
         <p className="typography-R16 leading-4">
-          Whether you&apos;re drawn to the historic charm of Europe, the
-          bustling energy of Asia, or the scenic beauty of the Americas, our
-          program provides a passport to unforgettable experiences.
+          Across more than 20 countries, Levntura opens doors to exploration,
+          learning, and cultural connection. From the timeless charm of Europe
+          to the vibrant energy of Asia and the breathtaking landscapes of the
+          Americas, our programs are crafted to give every student a passport to
+          unforgettable global experiences. Whether your dream is to study,
+          work, or lead abroad—Levntura is your gateway to a world without
+          borders.
         </p>
       </div>
     </SectionWrapper>

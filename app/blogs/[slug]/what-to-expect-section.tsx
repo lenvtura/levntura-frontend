@@ -11,7 +11,7 @@ export function WhatToExpectSection() {
         </h2>
       </FadeUpAnimator>
 
-      <p className="mb-8 text-lev-black leading-relaxed">
+      <p className="mb-8 text-gray-500 typography-R16 leading-snug">
         Our programs are designed with your growth and safety in mind:
       </p>
 
@@ -20,14 +20,14 @@ export function WhatToExpectSection() {
           <h3 className="typography-M24 mb-4 text-lev-black">
             Structured Placements
           </h3>
-          <p className="mb-4 text-lev-black leading-relaxed">
+          <p className="mb-4 text-gray-500 typography-R16 leading-snug">
             We place you in vetted work positions suited to your academic
             background and career aspirations.
           </p>
         </div>
         <div className="mb-6">
           <h3 className="typography-M24 mb-4 text-lev-black">Accommodation</h3>
-          <p className="mb-4 text-lev-black leading-relaxed">
+          <p className="mb-4 text-gray-500 typography-R16 leading-snug">
             Safe, comfortable housing is arranged for all participants, along
             with logistical support throughout your stay.
           </p>
@@ -36,7 +36,7 @@ export function WhatToExpectSection() {
           <h3 className="typography-M24 mb-4 text-lev-black">
             Cultural Activities
           </h3>
-          <p className="mb-4 text-lev-black leading-relaxed">
+          <p className="mb-4 text-gray-500 typography-R16 leading-snug">
             Participate in guided tours, cooking classes, and local festivals to
             enrich your understanding of the region.
           </p>
@@ -56,4 +56,3 @@ export function WhatToExpectSection() {
     </section>
   );
 }
-

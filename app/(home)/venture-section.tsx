@@ -11,8 +11,8 @@ import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 const FirstRowParagraph = ({ className, ...props }: ComponentProps<"p">) => {
   return (
     <p className={cn("", className)} {...props}>
-      Explore University&apos;s 10+ courses across variouGs specialisations that
-      provoke intellectual and intuitive learning among students.
+      Explore dynamic programs that combine travel, learning, and cultural
+      discovery—crafted to expand your horizons and challenge your potential.
     </p>
   );
 };
@@ -30,7 +30,7 @@ export function VentureSection() {
 
         <div>
           <SectionTitle className=" md:col-start-2 self-end">
-            Embark on Your Boundless new Adventure
+            EMBARK ON YOUR BOUNDLESS NEW ADVENTURE
           </SectionTitle>
         </div>
 
@@ -56,11 +56,10 @@ export function VentureSection() {
             Internships
           </h5>
           <p>
-            Dive into Levntura&apos;s Global Internships, where career
-            development meets adventure. Propel your professional journey in
-            dynamic, international settings, enhancing your skills amidst
-            diverse cultures. Ready to transform ambition into global action?
-            Let&apos;s embark together.
+            Take your first step into the world of professional growth.
+            Levntura’s Global Internship Programs connect students with
+            international companies and organizations that value ambition,
+            creativity, and fresh perspectives.
           </p>
         </div>
       </FadeUpAnimator>
@@ -74,10 +73,10 @@ export function VentureSection() {
             Expert Guidance to Unlock Your Potential
           </h5>
           <p>
-            Unlock your potential with Levntura&apos;s seasoned counselors. Dive
-            into a world where expert advice meets personalized support, guiding
-            you towards your educational and career aspirations. Let&apos;s
-            chart your journey to success together.
+            Our expert counsellors are here to guide your path—from choosing the
+            right program to building your confidence abroad. With personal
+            mentorship and continuous support, we help you navigate challenges,
+            seize opportunities, and shape a journey that reflects your goals.
           </p>
         </div>
 

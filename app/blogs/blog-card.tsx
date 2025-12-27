@@ -22,7 +22,7 @@ export function BlogCard({
 }: BlogCardProps) {
   return (
     <Link href={href}>
-      <div className="bg-white overflow-hidden hover:shadow-lg transition-shadow group h-full flex flex-col cursor-pointer">
+      <div className="bg-white overflow-hidden group  border-b border-black/20 pb-6 h-full flex flex-col cursor-pointer">
         <div className="relative h-[240px] overflow-hidden shrink-0">
           <Image
             src={image}
@@ -40,7 +40,7 @@ export function BlogCard({
             <span className="typography-R12 text-lev-gray">{readTime}</span>
           </div>
 
-          <h3 className="typography-S20 uppercase text-lev-black mb-4 leading-tight">
+          <h3 className="typography-S24! uppercase text-lev-black mb-4 leading-7!">
             {title}
           </h3>
 
@@ -54,7 +54,3 @@ export function BlogCard({
     </Link>
   );
 }
-
-
-
-

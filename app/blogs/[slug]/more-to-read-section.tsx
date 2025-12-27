@@ -56,17 +56,17 @@ export function MoreToReadSection({
         <Slider
           data={images}
           renderItem={(image) => (
-            <div className="relative h-[400px] sm:h-[670px] w-[300px] sm:w-[480px] flex flex-col gap-7">
-              <Image
-                src={image.src}
-                alt={`More to read `}
-                fill
-                className="object-cover pointer-events-none group-hover:scale-105 transition-transform duration-300"
-              />
-              <TitleWithBreaks
-                title={image.title}
-                className="typography-EB34 sm:typography-EB48 text-white absolute bottom-10 left-10 uppercase "
-              />
+            <div>
+              <div className="relative h-[400px] sm:h-[670px] w-[300px] sm:w-[480px] flex flex-col gap-7">
+                <Image
+                  className="absolute object-cover pointer-events-none w-full h-full inset-0"
+                  src={image.src}
+                  alt=""
+                />
+              </div>
+              <p className="typography-S34 text-lev-black w-[300px] sm:w-[480px] mt-4 ">
+                {image.title}
+              </p>
             </div>
           )}
         />
@@ -74,4 +74,3 @@ export function MoreToReadSection({
     </section>
   );
 }
-

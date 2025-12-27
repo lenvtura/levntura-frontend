@@ -4,16 +4,16 @@ import Link from "next/link";
 
 import { LeventuraSymbolLogo, LeventuraTextLogo } from "@/atoms/logo";
 import { Navlinks } from "@/constants/navlinks";
-import { SocialMedia } from "@/atoms/social-media";
 import { usePathname } from "next/navigation";
 import { Routes } from "@/constants/routes";
 import { cn } from "@/design-system/helpers";
 
 const Opportunities = [
-  "Travel & Work",
-  "Camp Counselor",
-  "Travel & Study",
-  "Internship",
+  { label: "Travel & Work", path: Routes.home },
+  { label: "Camp Counselor", path: Routes.about },
+  { label: "Travel & Study", path: Routes.blogs },
+  { label: "Internship", path: Routes.careers },
+  { label: "Student Portal", path: Routes.careers },
 ];
 
 const Addresses = [
@@ -34,21 +34,21 @@ const bgColorMapper = (pathname: string) =>
     [pathname.includes(Routes.gallery), "bg-lev-red"],
   ]);
 
-export function Footer() {
+export function Footer({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   const color = bgColorMapper(pathname).get(true);
 
   return (
     <div className={cn("bg-lev-green-dark", color)}>
-      <div className="container max-sm:text-center py-12 text-white">
+      <div className="container-md max-sm:text-center py-12 text-white">
         <div className="w-[40px] max-sm:mx-auto ">
           <LeventuraSymbolLogo />
         </div>
 
         <div className="max-sm:flex max-sm:flex-col max-sm:items-center gap-14 grid grid-cols-3 mt-6 ">
           <div className="flex flex-col ">
-            <div className="flex flex-col gap-2 w-min">
+            <div className="flex flex-col gap-2 w-max">
               {Navlinks.map((link) => {
                 const isActive = new RegExp(`^${link.path}$`).test(pathname);
                 return (
@@ -67,14 +67,20 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col whitespace-nowrap gap-6 typography-R24">
+          <div className="flex flex-col whitespace-nowrap gap-2">
             {Opportunities.map((opp) => (
-              <span key={opp}>{opp}</span>
+              <Link
+                href={opp.path}
+                className="hover:text-lev-yellow"
+                key={opp.label}
+              >
+                {opp.label}
+              </Link>
             ))}
           </div>
 
           <div className="flex flex-col">
-            <div className="flex flex-col ">
+            <div className="flex flex-col gap-4">
               {Addresses.map((add) => (
                 <span key={add}>Address: {add}</span>
               ))}
@@ -86,14 +92,12 @@ export function Footer() {
               ))}
             </div>
 
-            <div className="flex max-sm:mx-auto gap-4 mt-4">
-              <SocialMedia />
-            </div>
+            <div className="flex max-sm:mx-auto gap-4 mt-4">{children}</div>
           </div>
         </div>
       </div>
 
-      <div className="bg-blend-overlay mix-blend-overlay text-white/15">
+      <div className="bg-blend-overlay mix-blend-overlay text-white/15 px-4">
         <LeventuraTextLogo />
       </div>
     </div>

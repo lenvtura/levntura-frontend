@@ -5,7 +5,7 @@ import { LeventuraSymbolLogo } from "@/atoms/logo";
 export function ShareCard() {
   return (
     <div className="relative group bg-white p-8 lg:p-12">
-      <LeventuraSymbolLogo className="absolute -bottom-4  -right-16 text-lev-gray-light size-[300px] group-hover:scale-105 group-hover:rotate-90 transition-all duration-500" />
+      <LeventuraSymbolLogo className="absolute -bottom-4  -right-16 text-gray-100 size-[300px]" />
       <FadeUpAnimator transition={{ delay: 0.1 }}>
         <h2 className="typography-S34 lg:typography-S48 text-lev-black mb-4 leading-tight">
           Share it with the <br /> ones you love!

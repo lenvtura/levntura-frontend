@@ -31,9 +31,10 @@ export function MoreToRead() {
 
           <FadeUpAnimator transition={{ delay: 0.2 }}>
             <p className="typography-R16 leading-6 sm:w-3/4">
-              Explore University&apos;s 10+ courses across variouGs
-              specialisations that provoke intellectual and intuitive learning
-              among students.
+              Expand your mind through stories that celebrate discovery,
+              learning, and culture. Every journey teaches something new—here’s
+              where we share the lessons that shaped our path and inspired
+              thousands of youth to see the world differently
             </p>
           </FadeUpAnimator>
         </div>
@@ -81,9 +82,7 @@ export function MoreToRead() {
           </h2>
         </FadeUpAnimator>
       </article>
-      <FadeUpAnimator transition={{ delay: 0.6 }}>
-        <Button className="self-center">Blogs</Button>
-      </FadeUpAnimator>
+      <Button className="self-center">Blogs</Button>
     </SectionWrapper>
   );
 }

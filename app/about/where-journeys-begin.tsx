@@ -1,6 +1,7 @@
 import Image from "next/image";
 import hero from "@/assets/photos/about_hero.png";
 import { Button } from "@/design-system/button";
+import { StartNowBtn } from "@/atoms/start-now-btn";
 
 export function WhereJourneysBegin() {
   return (
@@ -73,31 +74,31 @@ export function WhereJourneysBegin() {
           </h1>
 
           <div className="flex gap-4 flex-wrap">
-            <Button className="border-1 typography-EB16" size="lg">
-              Start Now!
-            </Button>
-            <Button className="border-1 typography-EB16" size="lg">
+            <StartNowBtn className="border-1 typography-EB16" size="lg" />
+            <StartNowBtn className="border-1 typography-EB16" size="lg">
               Contact US
-            </Button>
+            </StartNowBtn>
           </div>
         </div>
         <article className="lg:flex justify-between space-y-8">
           <p className="opacity-50 typography-R16 leading-5 w-4/5 lg:w-2/4">
-            From our headquarters in Amman Jordan, to our office in Egypt, we
-            have been providing the aspiring Middle Eastern Youth with
-            exceptional cultural exchange, study abroad and Professional
-            training opportunities in North America, Europe and Australia. What
-            we offer is far more superior to opportunities; We change lives
-            throughout leadership development, our contributions to language
-            acquisition, and most significantly, igniting the spirit of
-            adventure and ambition in the Youngsters.
+            From our main hub in Amman, Jordan, to our offices in Egypt, we’ve
+            been shaping the future of Middle Eastern youth through meaningful
+            global experiences. Levntura connects ambitious students with study
+            abroad, work & travel, and professional training programs across
+            North America, Europe, and Australia. Beyond opportunities, we
+            inspire transformation—building leadership, language skills, and a
+            lifelong sense of adventure that drives young people to dream bigger
+            and achieve more. Levntura stands as a trusted bridge between
+            cultures, guiding students to unlock their full potential and
+            embrace the world as their classroom.
           </p>
           <p className="opacity-50 typography-R16 leading-5 w-4/5 lg:w-3/10">
-            Levntura has rapidly become a beacon for those seeking to expand
-            their horizons through educational services and cultural exchange
-            programs. With a mission to empower the next generation of global
-            leaders, we offer experiences that challenge, enlighten, and open
-            doors to limitless opportunities.
+            Levntura isn’t just a cultural exchange company—it’s a movement
+            empowering young dreamers to become global achievers. Rooted in the
+            Middle East and connected to the world, we’ve built a reputation for
+            authentic programs, personalized mentorship, and transformative
+            experiences that expand horizons and nurture global citizens.
           </p>
         </article>
       </div>

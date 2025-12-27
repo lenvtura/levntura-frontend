@@ -112,13 +112,6 @@ export const RELATED_PROGRAMS = [
   },
 ];
 
-// Team photos for hero section
-export const TEAM_PHOTOS = [
-  studentsImage,
-  workingTogetherImage,
-  happyFriendshipImage,
-];
-
 // Image for suggest new opportunities section
 export const SUGGEST_OPPORTUNITIES_IMAGE = workingTogetherImage;
 

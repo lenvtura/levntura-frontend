@@ -18,7 +18,7 @@ export function ProgramsGrid({ programs }: ProgramsGridProps) {
   }
 
   return (
-    <section className="container pb-12 lg:pb-24">
+    <section className="container-md pb-12 lg:pb-24">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 auto-rows-fr">
         {programs.map((program, index) => (
           <FadeUpAnimator

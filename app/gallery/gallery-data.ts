@@ -32,3 +32,5 @@ export const GALLERY_GRID_1: (StaticImageData | string)[] = [
   manStudyImage,
 ];
 
+
+

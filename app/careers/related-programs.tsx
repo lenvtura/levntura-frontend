@@ -20,8 +20,8 @@ export function RelatedPrograms({ programs }: RelatedProgramsProps) {
     <div className="bg-lev-green-dark py-16 lg:py-24">
       <div className="container">
         <FadeUpAnimator transition={{ delay: 0.1 }}>
-          <SectionTitle className="text-white mb-12 text-center">
-            RELATED PROGRAMS
+          <SectionTitle className="text-white mb-12 text-center typography-M48">
+            Related Programs
           </SectionTitle>
         </FadeUpAnimator>
 
@@ -48,7 +48,7 @@ export function RelatedPrograms({ programs }: RelatedProgramsProps) {
               transition={{ delay: 0.1 * (index + 1) }}
             >
               <Link href={program.href}>
-                <div className="relative h-[300px] lg:h-[350px] overflow-hidden rounded-sm group cursor-pointer">
+                <div className="relative h-[300px] lg:h-[350px] overflow-hidden group cursor-pointer">
                   <Image
                     src={program.image}
                     alt={program.title}
@@ -57,7 +57,7 @@ export function RelatedPrograms({ programs }: RelatedProgramsProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="typography-EB24 uppercase text-white">
+                    <h3 className="typography-R34 text-white">
                       {program.title}
                     </h3>
                   </div>
@@ -70,4 +70,3 @@ export function RelatedPrograms({ programs }: RelatedProgramsProps) {
     </div>
   );
 }
-

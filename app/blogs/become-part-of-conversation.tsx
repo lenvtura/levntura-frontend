@@ -20,8 +20,15 @@ export function BecomePartOfConversation() {
             strokeWidth="2"
             fill="none"
           />
-          <ellipse cx="300" cy="350" rx="800" ry="200" fill="#D0D0D0" opacity="0.3" />
-          
+          <ellipse
+            cx="300"
+            cy="350"
+            rx="800"
+            ry="200"
+            fill="#D0D0D0"
+            opacity="0.3"
+          />
+
           {/* Location markers */}
           <circle cx="280" cy="320" r="8" fill="#FC535C" />
           <circle cx="850" cy="280" r="8" fill="#FC535C" />
@@ -35,17 +42,15 @@ export function BecomePartOfConversation() {
         <div className="max-w-[800px] mx-auto text-center">
           <FadeUpAnimator transition={{ delay: 0.1 }}>
             <h2 className="typography-EB34 lg:typography-EB48 text-lev-red uppercase mb-8">
-              Become Part of the Conversation
+              LET YOUR JOURNEY INSPIRE OTHERS
             </h2>
           </FadeUpAnimator>
 
           <FadeUpAnimator transition={{ delay: 0.2 }}>
             <p className="text-lev-black leading-relaxed mb-8">
-              Do you have a story to tell, an idea to share, or a burning passion to ignite? Levntura is your
-              platform. Whether you&apos;re an expert breaking down industry secrets, a news hawk with the
-              latest scoop, or simply someone with a unique perspective, our vibrant community welcomes
-              you. Millions have already discovered the power of self-expression on Levntura — sign up
-              now and find out why!
+              Your experience has the power to motivate future explorers. Share
+              your feedback or story with the Levntura team—together, we
+              celebrate every journey that shapes tomorrow’s leaders.
             </p>
           </FadeUpAnimator>
 
@@ -54,7 +59,7 @@ export function BecomePartOfConversation() {
               asChild
               className="bg-lev-blue-dark text-white hover:bg-lev-blue-dark/90 border-lev-blue-dark px-8 py-6 text-base"
             >
-              <Link href="/contact">create your blog</Link>
+              <Link href="/contact">Contact our team</Link>
             </Button>
           </FadeUpAnimator>
         </div>
@@ -62,7 +67,3 @@ export function BecomePartOfConversation() {
     </div>
   );
 }
-
-
-
-

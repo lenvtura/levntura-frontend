@@ -1,0 +1,1 @@
+export const PART_HEIGHT_APPEAR_IN_NEXT_SECTION = 200;

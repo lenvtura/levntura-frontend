@@ -1,3 +1,5 @@
+"use client";
+
 import { Routes } from "@/constants/routes";
 
 import studyImage from "@/assets/photos/study.png";
@@ -73,7 +75,7 @@ export function OurProgramSection() {
                 src={item.src}
                 className="object-contain group-hover:scale-105 transition-[scale] pointer-events-none w-full h-full"
               />
-              <div className="absolute typography-B34 left-[16px] bottom-[16px] text-white">
+              <div className="absolute typography-R34 left-[16px] bottom-[16px] text-white">
                 {item.label}
               </div>
             </div>

@@ -9,9 +9,8 @@ import { Title } from "./title-social-icons-";
 import { IntroductionSection } from "./introduction-section";
 import { CulturalExchangeProgramSection } from "./cultural-exchange-program-section";
 import { WhatToExpectSection } from "./what-to-expect-section";
-import { SocialMedia, SocialMediaLinks } from "@/atoms/social-media";
-import { SocialMediaIcons } from "./social-media-icons";
 import { BlogBreadcrumb } from "./blog-breadcrumb";
+import { SocialShareIcons } from "@/atoms/social-share-icons";
 
 interface BlogDetailPageProps {
   params: Promise<{
@@ -54,7 +53,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           <main>
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 flex-wrap gap-4">
               <BlogBreadcrumb breadcrumbs={blog.breadcrumbs} />
-              <SocialMediaIcons />
+              <SocialShareIcons size="sm" />
             </div>
             <Title title={blog.title} />
 

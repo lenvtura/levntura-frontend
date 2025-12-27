@@ -23,11 +23,11 @@ export default async function CareerDetailPage({
   const otherJobs = CAREER_DETAIL_DATA;
 
   return (
-    <div className="min-h-screen bg-lev-gray-light">
+    <div className="min-h-screen bg-gray-100">
       <div className="absolute inset-x-0 h-[300px] lg:h-[400px] bg-lev-green-dark w-full" />
-      <div className="container grid lg:grid-cols-[1fr_2fr] items-start pt-[300px] pb-12 gap-6 lg:gap-8">
+      <div className="container-md px-4 mx-auto flex flex-col-reverse lg:flex-row items-start pt-[200px] lg:pt-[300px] pb-12 gap-6 lg:gap-8">
         {/* Left Column - Job Listings */}
-        <div className="space-y-6">
+        <div className="space-y-6 basis-1/3">
           {otherJobs.map((job) => (
             <JobListingCard
               key={job.slug}
@@ -46,7 +46,7 @@ export default async function CareerDetailPage({
         </div>
 
         {/* Right Column - Job Detail */}
-        <div className="space-y-8">
+        <div className="space-y-8 flex-1">
           <JobDetailContent
             type={career.type}
             title={career.title}

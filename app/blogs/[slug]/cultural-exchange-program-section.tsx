@@ -49,7 +49,7 @@ export function CulturalExchangeProgramSection() {
         </h2>
       </FadeUpAnimator>
 
-      <p className="mb-8 text-lev-black leading-relaxed">
+      <p className="mb-8 text-gray-500 typography-R16 leading-snug">
         The Arab world, with its rich history and diverse cultures, offers a
         unique backdrop for a transformative summer experience. From the
         bustling markets of Marrakech to the modern skylines of Dubai, each
@@ -67,7 +67,7 @@ export function CulturalExchangeProgramSection() {
               <h3 className="typography-M24 text-lev-black mb-3">
                 {benefit.number}. {benefit.title}
               </h3>
-              <p className="text-lev-black max-w-sm leading-relaxed">
+              <p className="text-gray-500 typography-R16 max-w-sm leading-snug">
                 {benefit.description}
               </p>
             </div>

@@ -22,10 +22,14 @@ export function AreYouReadySection() {
           </FadeUpAnimator>
         </div>
         <div className="flex gap-10 flex-col items-center">
-          <FadeUpAnimator transition={{ delay: 0.3 }}>
-            <SectionTitle className="text-center max-w-[650px]">
+          <FadeUpAnimator
+            className="flex flex-col gap-10 items-center"
+            transition={{ delay: 0.3 }}
+          >
+            <SectionTitle className="text-center text-lev-red-dark max-w-[650px]">
               Are You Ready to Change Your World?
             </SectionTitle>
+            <StartNowBtn />
           </FadeUpAnimator>
 
           <FadeUpAnimator transition={{ delay: 0.4 }}>

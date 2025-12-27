@@ -43,7 +43,7 @@ export function JobOpportunityCard({
 
       <div className="p-6 flex flex-col flex-1">
         <div className="flex items-center justify-between mb-4">
-          <span className="typography-S14 uppercase text-lev-orange">
+          <span className="typography-R14 uppercase text-lev-orange">
             {type}
           </span>
           <div className="flex items-center gap-2">
@@ -54,7 +54,7 @@ export function JobOpportunityCard({
           </div>
         </div>
 
-        <h3 className="typography-EB24 uppercase text-lev-black mb-2">
+        <h3 className="typography-S24 uppercase text-lev-black mb-4">
           {title}
         </h3>
 
@@ -75,11 +75,7 @@ export function JobOpportunityCard({
             >
               <Link href={applyHref}>APPLY</Link>
             </Button>
-            <Button
-              asChild
-              variant="default"
-              className="w-[120px] border-transparent text-lev-black hover:bg-lev-black/5"
-            >
+            <Button asChild variant="ghost" className="w-[120px]">
               <Link href={moreHref}>MORE</Link>
             </Button>
           </div>

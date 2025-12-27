@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { ProgramsHero } from "./programs-hero";
 import { ProgramsHeader } from "./programs-header";
 import { ProgramsGrid } from "./programs-grid";
 import { PROGRAMS_DATA } from "./programs-data";
@@ -28,6 +29,7 @@ export default function ProgramsPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <ProgramsHero />
       <ProgramsHeader
         activeFilter={activeFilter}
         onFilterChange={setActiveFilter}

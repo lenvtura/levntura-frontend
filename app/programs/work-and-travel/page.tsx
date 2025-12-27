@@ -47,9 +47,9 @@ import firstPhoto from "@/assets/photos/3.png";
 import secondPhoto from "@/assets/photos/4.png";
 import thirdPhoto from "@/assets/photos/5.png";
 import fourthPhoto from "@/assets/photos/6.png";
-import { ContactForm } from "@/app/contact/social-and-form";
 import { StartNowBtn } from "@/atoms/start-now-btn";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
+import { ContactForm } from "@/app/contact/contact-form";
 
 const jobs = [
   {

@@ -52,7 +52,7 @@ export function Venture() {
       </div>
       <div className="lg:flex gap-x-4 justify-end space-y-4">
         <section className="sm:flex gap-x-4 space-y-4">
-          <div className="relative w-70 h-90 overflow-hidden">
+          <div className="relative hover:translate-x-[-100px] transition-transform duration-300 w-70 h-90 overflow-hidden">
             <Image
               src={img3}
               alt="img3"

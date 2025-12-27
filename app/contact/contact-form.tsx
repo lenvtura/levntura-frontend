@@ -19,16 +19,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/design-system/select";
-import Link from "next/link";
 
-export const GalleryForm = () => {
+export const ContactForm = () => {
   const formSchema = z.object({
     name: z.string(),
     dateOfBirth: z.string(),
     phoneNo: z.string(),
     email: z.string(),
     program: z.string(),
-    nationality: z.string(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -39,13 +37,15 @@ export const GalleryForm = () => {
       phoneNo: "",
       email: "",
       program: "",
-      nationality: "",
     },
   });
-
   return (
-    <div className="flex flex-col gap-y-4">
-      <form id="galleryForm" className="space-y-4">
+    <div className="flex flex-col gap-y-4 max-w-md bg-white p-6">
+      <h2 className="typography-S34 w-5/6">
+        LITTLE EFFORT, ULTIMATE EXPERIENCE.
+      </h2>
+
+      <form id="loginForm" className="contactForm space-y-4">
         <Form {...form}>
           <FormField
             control={form.control}
@@ -53,7 +53,7 @@ export const GalleryForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input required placeholder="Name" {...field} />
+                  <Input required placeholder="name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -106,52 +106,40 @@ export const GalleryForm = () => {
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Program Interested in" />
+                      <SelectValue placeholder="Select" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="Study & Travel">
-                      Study & Travel
+                    <SelectItem value="Computer Science">
+                      Computer Science
                     </SelectItem>
-                    <SelectItem value="Work & Travel">Work & Travel</SelectItem>
-                    <SelectItem value="Internship">Internship</SelectItem>
-                    <SelectItem value="Counselor">Counselor</SelectItem>
+                    <SelectItem value="Design">Design</SelectItem>
+                    <SelectItem value="Graphic Design">
+                      Graphic Design
+                    </SelectItem>
+                    <SelectItem value="Video Editing">Video Editing</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="nationality"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input required placeholder="Nationality" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
         </Form>
-        <Button
-          type="submit"
-          className="w-full border-lev-black text-lev-black hover:bg-lev-black hover:text-white"
-        >
-          START NOW!
+        <Button type="submit" className="w-full">
+          Start Now!
         </Button>
       </form>
 
-      <Link
-        href="/contact"
-        className="uppercase typography-EB14 flex items-center justify-center mt-2 text-lev-green hover:text-lev-green-dark transition-colors"
+      <div className="success-message hidden" id="successMessage">
+        Form submitted successfully!
+      </div>
+
+      <a
+        href=""
+        className="uppercase typography-EB14 flex items-center justify-center mt-5 text-lev-red mix-blend-difference"
       >
-        CONTACT US
-      </Link>
+        Contact US
+      </a>
     </div>
   );
 };
-
-
-

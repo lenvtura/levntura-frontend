@@ -14,9 +14,15 @@ const Cards = [
   {
     label: "Work & Travel",
     src: womanStudyPhoto,
-    color: "bg-lev-blue-light",
+    bgColor: "bg-lev-blue-light",
+    textColor: "text-lev-blue-light",
   },
-  { label: "Study & Travel", src: manStudyPhoto, color: "bg-lev-orange" },
+  {
+    label: "Camp Counselor",
+    src: manStudyPhoto,
+    bgColor: "bg-lev-orange",
+    textColor: "text-lev-orange",
+  },
 ];
 
 export function WorkAndTravelSection() {
@@ -37,18 +43,21 @@ export function WorkAndTravelSection() {
           className=" md:max-w-[40%] typography-R14 mb-8 md:mb-0 leading-5 flex-1"
         >
           <p>
-            Experience the vibrant tapestry of global cultures by choosing from
-            our diverse selection of 20 countries. Whether you&apos;re drawn to
-            the historic charm of Europe, the bustling energy of Asia, or the
-            scenic beauty of the Americas, our program provides a passport to
-            unforgettable experiences.
+            Spend your summer living, working, and exploring the United States.
+            The Work & Travel Program offers students the chance to experience
+            American culture, build independence, and create memories that last
+            a lifetime. Affordable, exciting, and empowering—you’ll earn, learn,
+            and travel across the States while discovering new friendships and a
+            new version of yourself.
           </p>
         </FadeUpAnimator>
       </div>
 
       <div className="flex gap-4 flex-wrap items-start">
         <FadeUpAnimator transition={{ delay: 0.4 }}>
-          <ButtonWithArrow href={Routes.programs}>All Programs</ButtonWithArrow>
+          <ButtonWithArrow href={Routes.programs}>
+            Explore all programs
+          </ButtonWithArrow>
         </FadeUpAnimator>
         <div className="flex md:ml-auto  max-md:flex-col gap-6">
           {Cards.map((card, index) => (
@@ -57,7 +66,7 @@ export function WorkAndTravelSection() {
               transition={{ delay: 0.5 + index * 0.2 }}
               className="max-w-[500px] group overflow-hidden"
             >
-              <div className="overflow-hidden">
+              <div className="relative overflow-hidden">
                 <Image
                   width={500}
                   height={500}
@@ -65,11 +74,19 @@ export function WorkAndTravelSection() {
                   src={card.src}
                   alt=""
                 />
+                <p
+                  className={cn(
+                    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 typography-R48 w-full text-center",
+                    card.textColor
+                  )}
+                >
+                  {card.label}
+                </p>
               </div>
               <div
                 className={cn(
                   "flex justify-between gap-4 items-center flex-wrap px-4 py-8 typography-R24",
-                  card.color
+                  card.bgColor
                 )}
               >
                 <span>{card.label}</span>

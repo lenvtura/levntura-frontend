@@ -1,6 +1,8 @@
 import React from "react";
 import { SectionWrapper } from "../(home)/section-wrapper";
 import { Button } from "@/design-system/button";
+import Link from "next/link";
+import { Routes } from "@/constants/routes";
 
 export function EductionAndPurposes() {
   return (
@@ -8,31 +10,34 @@ export function EductionAndPurposes() {
       <article className="flex flex-col items-start gap-y-4">
         <h2 className="typography-S34 leading-9 text-lev-red-dark">
           HIGHER EDUCATION <br />
-          HIGHER PURPOSES
+          GREATER IMPACT
         </h2>
 
         <p className="w- text-lev-red-dark typography-R16 opacity-50 leading-4 lg:w-1/2 mt-6">
-          Cultivate the next generation of global leaders through immersive
-          international experiences. Our tailor-made programs are designed not
-          just to traverse borders, but to transcend them—offering you the keys
-          to a realm where your potential knows no bounds. With Levntura, embark
-          on a voyage that enriches, enlightens, and empowers.
+          At Levntura, we cultivate the next generation of global achievers
+          through immersive, life-changing educational journeys.Our tailor-made
+          programs go beyond studying abroad—they shape leaders who think
+          globally, act compassionately, and create change wherever they go.With
+          Levntura, every student gains access to the world’s classrooms,
+          industries, and cultures—unlocking a future without limits.
         </p>
 
-        <Button className="border-1">PROGRAMS</Button>
+        <Button className="border-1">
+          <Link href={Routes.programs}>PROGRAMS</Link>
+        </Button>
       </article>
       <article className="grid sm:grid-cols-2 gap-y-16">
         <div className="space-y-5">
           <div className="flex items-center gap-x-8">
             <h2 className="typography-S34 text-lev-orange">1.5K</h2>
 
-            <h6 className="typography-M16 text-lev-red-dark">UNIVIRSITIES</h6>
+            <h6 className="typography-M16 text-lev-red-dark">UNIVERSITIES</h6>
           </div>
 
           <p className="typography-R14 leading-4 text-lev-red-dark w-4/5">
-            With partnerships spanning across 1.5K prestigious universities, our
-            program opens doors to unparalleled academic and professional
-            networks.
+            Our global partnerships connect students to 1.5K prestigious
+            universities and institutions, opening doors to academic excellence
+            and professional growth.
           </p>
         </div>
         <div className="space-y-5">
@@ -43,8 +48,8 @@ export function EductionAndPurposes() {
           </div>
 
           <p className="typography-R14 leading-4 text-lev-red-dark w-4/5">
-            Join our thriving community of 6.5K ambitious students who have
-            seized the opportunity to elevate their skills.
+            A thriving community of more than 6.5K ambitious youth who turned
+            opportunities into success stories and lifelong global networks.
           </p>
         </div>
         <div className="space-y-5">
@@ -55,22 +60,24 @@ export function EductionAndPurposes() {
           </div>
 
           <p className="typography-R14 leading-4 text-lev-red-dark w-4/5">
-            Whether you&apos;re drawn to the historic charm of Europe, the
-            bustling energy of Asia, or the scenic beauty of the Americas, our
-            program provides a passport to unforgettable experiences.
+            From the historic charm of Europe to the innovation hubs of North
+            America and the cultural richness of Asia—our reach spans across
+            continents.
           </p>
         </div>
         <div className="space-y-5">
           <div className="flex items-center gap-x-8">
-            <h2 className="typography-S34 text-lev-orange">14+</h2>
+            <h2 className="typography-S34 text-lev-orange">8+</h2>
 
-            <h6 className="typography-M16 text-lev-red-dark">COUNTRIES</h6>
+            <h6 className="typography-M16 text-lev-red-dark">
+              YEARS OF IMPACT
+            </h6>
           </div>
 
           <p className="typography-R14 leading-4 text-lev-red-dark w-4/5">
-            Whether you&apos;re drawn to the historic charm of Europe, the
-            bustling energy of Asia, or the scenic beauty of the Americas, our
-            program provides a passport to unforgettable experiences.
+            With over a decade of experience, Levntura continues to empower
+            Middle Eastern youth through trusted, transformative exchange
+            programs worldwide.
           </p>
         </div>
       </article>

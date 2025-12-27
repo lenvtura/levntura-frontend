@@ -7,6 +7,7 @@ import { RoyalAcademyLogoSvg } from "@/assets/logos/royal-academy-logo-svg";
 import { UnitedStudiesLogoSvg } from "@/assets/logos/united-studies-logo-svg";
 import { WiseLogoSvg } from "@/assets/logos/wise-logo-svg";
 import { Button } from "@/design-system/button";
+import { StartNowBtn } from "@/atoms/start-now-btn";
 
 const Logos = [
   CenetLogoSvg,
@@ -54,23 +55,22 @@ export default function CulturalExchange() {
           </div>
         ))}
       </article>
-      <article className="flex flex-col md:flex-row-reverse">
+      <article className="flex flex-col md:flex-row-reverse container-md">
         <div className="shrink-0">
           <Image src={img1} alt="img1" />
         </div>
         <div className="space-y-8">
-          <p className="w-2/3">
-            Levntura’s origin story is one of inspiration and vision. Founded on
-            the belief in the transformative power of cultural exchange,
-            Levntura emerged from humble beginnings. From participating in
-            exchange programs to fostering a vibrant community of explorers, our
-            journey began. Driven by a mission to democratize global
-            opportunities, Levntura became more than an organization—it became a
-            movement. Each step forward reflects our commitment to enriching
-            global cultures, one journey at a time.
+          <p className="w-2/3 text-lev-red-dark typography-R14 leading-relaxed">
+            From exchange programs to a global movement, Levntura was founded on
+            the belief that cultural exchange has the power to transform lives.
+            What started as a small initiative in the Middle East has grown into
+            a regional hub for international education and youth empowerment. We
+            believe that every cultural experience is a catalyst for
+            growth—shaping global citizens who think differently, lead
+            confidently, and value diversity.
           </p>
 
-          <Button className="">Start Now!</Button>
+          <StartNowBtn />
         </div>
       </article>
     </SectionWrapper>

@@ -1,6 +1,5 @@
 "use client";
 
-import { Input } from "@/design-system/input";
 import { Button } from "@/design-system/button";
 import { cn } from "@/design-system/helpers";
 import { Search } from "lucide-react";
@@ -27,7 +26,7 @@ export function ProgramsHeader({
   onSearchChange,
 }: ProgramsHeaderProps) {
   return (
-    <div className="container py-12 lg:py-24">
+    <div className="container-md py-12 lg:py-24">
       <FadeUpAnimator transition={{ delay: 0.1 }}>
         <h1 className="typography-EB48 lg:typography-EB74 uppercase text-lev-green-dark mb-4">
           OUR PROGRAMS
@@ -50,11 +49,11 @@ export function ProgramsHeader({
             <Button
               key={filter}
               onClick={() => onFilterChange(filter)}
+              variant={activeFilter === filter ? "default" : "ghost"}
               className={cn(
                 "typography-S14 border-0 rounded-lg transition-colors",
-                activeFilter === filter
-                  ? "bg-lev-green-dark text-white hover:bg-lev-green-dark/90"
-                  : "bg-white text-lev-black hover:bg-lev-black/5"
+                activeFilter === filter &&
+                  "bg-lev-green-dark text-white hover:bg-lev-green-dark/90"
               )}
             >
               {filter}

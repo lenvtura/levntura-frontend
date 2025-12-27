@@ -1,3 +1,5 @@
+"use client";
+
 import { SectionWrapper } from "./section-wrapper";
 import {
   Carousel,
@@ -37,33 +39,17 @@ export function PublicationAndMedia() {
         opts={{ loop: true }}
       >
         <CarouselContent className="-ml-1">
-          <CarouselItem className="pl-1 md:basis-auto lg:basis-auto">
-            <Image
-              className="hover:scale-105 transition-transform duration-300"
-              src={img1}
-              alt=""
-            />
+          <CarouselItem className="pl-4 md:basis-auto lg:basis-auto">
+            <Image src={img1} alt="" />
           </CarouselItem>
-          <CarouselItem className="pl-1 md:basis-auto lg:basis-auto">
-            <Image
-              className="hover:scale-105 transition-transform duration-300"
-              src={img2}
-              alt=""
-            />
+          <CarouselItem className="pl-4 md:basis-auto lg:basis-auto">
+            <Image src={img2} alt="" />
           </CarouselItem>
-          <CarouselItem className="pl-1 md:basis-auto lg:basis-auto">
-            <Image
-              className="hover:scale-105 transition-transform duration-300"
-              src={img3}
-              alt=""
-            />
+          <CarouselItem className="pl-4 md:basis-auto lg:basis-auto">
+            <Image src={img3} alt="" />
           </CarouselItem>
-          <CarouselItem className="pl-1 md:basis-auto lg:basis-auto">
-            <Image
-              className="hover:scale-105 transition-transform duration-300"
-              src={img4}
-              alt=""
-            />
+          <CarouselItem className="pl-4 md:basis-auto lg:basis-auto">
+            <Image src={img4} alt="" />
           </CarouselItem>
         </CarouselContent>
       </Carousel>

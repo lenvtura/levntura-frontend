@@ -12,17 +12,15 @@ export function IntroductionSection() {
       </FadeUpAnimator>
 
       <FadeUpAnimator transition={{ delay: 0.3 }}>
-        <div className="text-lev-gray space-y-4 typography-R18 mb-10">
-          <p className="mb-4 text-lev-black leading-relaxed">
-            Are you ready to embark on an adventure that will not only enhance
-            your resume but also expand your cultural horizons?
-            &quot;Levntura&quot; invites students like you to dive into the
-            vibrant cultures of the Arab world through our tailored summer work
-            and travel programs. Whether you&apos;re looking to gain practical
-            experience, learn a new language, or meet people from diverse
-            backgrounds, our programs offer something unique for everyone.
-          </p>
-        </div>
+        <p className="text-gray-500 typography-R16 mb-10 leading-snug">
+          Are you ready to embark on an adventure that will not only enhance
+          your resume but also expand your cultural horizons?
+          &quot;Levntura&quot; invites students like you to dive into the
+          vibrant cultures of the Arab world through our tailored summer work
+          and travel programs. Whether you&apos;re looking to gain practical
+          experience, learn a new language, or meet people from diverse
+          backgrounds, our programs offer something unique for everyone.
+        </p>
       </FadeUpAnimator>
 
       <FadeUpAnimator transition={{ delay: 0.2 }} className="mb-8">
@@ -38,4 +36,3 @@ export function IntroductionSection() {
     </section>
   );
 }
-
