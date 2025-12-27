@@ -79,7 +79,9 @@ export function SocialMediaSection() {
             </FadeUpAnimator>
             <FadeUpAnimator transition={{ delay: 0.6 }}>
               <ButtonWithArrow
-                href={Routes.contact}
+                href={
+                  "https://www.facebook.com/groups/381246158916559/?ref=share&mibextid=wwXIfr&rdid=ReSHkamib4L26jsZ&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F17FHY4PDKQ%2F%3Fmibextid%3DwwXIfr#"
+                }
                 iconClassName="border-white"
               >
                 Join Now
