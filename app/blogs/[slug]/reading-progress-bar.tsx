@@ -26,14 +26,14 @@ export function ReadingProgressBar() {
           className="h-full bg-lev-red"
         />
       </div>
-      <motion.div
-        className="fixed top-20 left-6 lg:left-12 z-50 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded border border-gray-200"
+      {/* <motion.div
+        className="fixed top-[300px] left-6 lg:left-20 z-50 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded border border-gray-200"
         style={{ opacity: scrollYProgress }}
       >
         <span className="typography-S12 text-lev-black">
           <motion.span>{percentage}</motion.span>% Read
         </span>
-      </motion.div>
+      </motion.div> */}
     </>
   );
 }

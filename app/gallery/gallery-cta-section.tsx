@@ -5,7 +5,7 @@ import { SectionTitle } from "../(home)/section-title";
 
 export function GalleryCTASection() {
   return (
-    <SectionWrapper className="py-16 lg:py-24 relative">
+    <SectionWrapper className="py-16 container-md lg:py-24 relative">
       {/* Subtle map pattern background */}
       <div
         className="absolute inset-0 opacity-5"
@@ -30,7 +30,7 @@ export function GalleryCTASection() {
           </div>
 
           {/* Right Section - Form */}
-          <div className="bg-gray-100 p-8 lg:p-12 max-w-[500px]">
+          <div className="bg-gray-100 p-8 lg:p-12 max-w-[400px]">
             <FadeUpAnimator className="flex flex-col gap-6">
               <h3 className="typography-S34 uppercase text-lev-black mb-4">
                 LITTLE EFFORT, ULTIMATE EXPERIENCE.

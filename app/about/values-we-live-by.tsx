@@ -42,27 +42,12 @@ const values = [
 
 export default function ValuesWeLiveBy() {
   return (
-    <SectionWrapper sectionColor="bg-lev-yellow-light" className="space-y-8 ">
+    <SectionWrapper
+      sectionColor="bg-lev-yellow-light"
+      className="space-y-8 container-md"
+    >
       <article className="flex flex-col lg:flex-row gap-y-4 justify-between">
-        <div className="space-y-4">
-          <h4 className="typography-S20 text-lev-orange">mission</h4>
-          <div className="md:flex space-y-4">
-            <p className="typography-R14 leading-5 md:w-72">
-              We bridge the gap between dreams and reality—empowering Middle
-              Eastern youth with opportunities, tools, and strategies to achieve
-              meaningful global impact.
-            </p>
-            <p className="typography-R14 leading-5 md:w-72">
-              At Levntura, we connect young minds locally and internationally to
-              develop exceptional leadership skills through study abroad
-              programs, professional training, and personal development
-              experiences. Our mission is to shape confident, responsible, and
-              culturally aware global citizens who can lead with purpose and
-              passion.
-            </p>
-          </div>
-        </div>
-        <h1 className="typography-B74 uppercase leading-16 text-lev-red-dark shrink-0">
+        <h1 className="typography-B74 ms-auto uppercase leading-16 text-lev-red-dark shrink-0">
           Values We <br />
           Live By
         </h1>

@@ -2,12 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import programHeroPhoto from "@/app/programs/work-and-travel/program-hero.webp";
 import photo2 from "@/app/programs/work-and-travel/photo2.webp";
 import photo3 from "@/app/programs/work-and-travel/photo3.webp";
@@ -242,56 +237,14 @@ const features = [
   },
 ];
 
-function WordReveal({
-  word,
-  progress,
-  index,
-  total,
-}: {
-  word: string;
-  progress: MotionValue<number>;
-  index: number;
-  total: number;
-}) {
-  const start = index / total;
-  const end = (index + 1) / total;
-
-  const opacity = useTransform(
-    progress,
-    [Math.max(0, start - 0.05), start + 0.05, end],
-    [0.15, 1, 1]
-  );
-
-  return <motion.span style={{ opacity }}>{word} </motion.span>;
-}
-
 function ScrollRevealText() {
-  const textRef = useRef<HTMLParagraphElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: textRef,
-    offset: ["start 0.8", "end 0.3"],
-  });
-
   const text =
     "Calling all university students seeking an unforgettable summer experience! If you're yearning for a combination of adventure, cultural exchange, language improvement, and professional growth, look no further than the Summer Work and Travel Program to the USA, proudly provided by the Department of State.";
 
-  const textWords = text.split(" ");
-
   return (
-    <motion.p
-      ref={textRef}
-      className="typography-S34 leading-9 text-center text-lev-blue-dark"
-    >
-      {textWords.map((word, index) => (
-        <WordReveal
-          key={index}
-          word={word}
-          progress={scrollYProgress}
-          index={index}
-          total={textWords.length}
-        />
-      ))}
-    </motion.p>
+    <p className="typography-S34 leading-9 text-center text-lev-blue-dark">
+      {text}
+    </p>
   );
 }
 
@@ -324,7 +277,7 @@ export default function Page() {
         </motion.div>
         <motion.div
           style={{ y: textY }}
-          className="flex flex-col uppercase z-10 gap-4 items-center -translate-y-[150px]"
+          className="flex flex-col uppercase z-10 gap-4 items-center -translate-y-[200px]"
         >
           <span className="typography-B18">SUMMER</span>
           <h1 className="typography-EB48! mix-blend-difference! sm:typography-EB74! text-[90px] text-lev-blue-dark ">
@@ -339,14 +292,14 @@ export default function Page() {
         </motion.div>
       </div>
 
-      <SectionWrapper className="mb-[200px]">
+      <SectionWrapper className="mb-[64px]">
         <p className="typography-S16 text-center text-lev-blue-light mb-4">
           Embark on a Summer Adventure with the USA Work and Travel Program
         </p>
         <ScrollRevealText />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="container-md">
         <FadeUpAnimator>
           <SectionTitle className="mb-[80px]">
             What is the <br /> Summer Work <br /> and Travel <br /> Program?{" "}
@@ -368,7 +321,7 @@ export default function Page() {
         <Image src={photo2} alt="" />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="container-md">
         <FadeUpAnimator>
           <span className="typography-R18 text-lev-blue mb-8 inline-block">
             Why You Should Participate
@@ -406,7 +359,7 @@ export default function Page() {
       </SectionWrapper>
 
       <div className="mb-[180px]">
-        <SectionWrapper>
+        <SectionWrapper className="container-md">
           <FadeUpAnimator>
             <SectionTitle className="mb-[100px] text-[120px]">
               Why You <br /> Should <br /> Participate?
@@ -445,7 +398,7 @@ export default function Page() {
       </div>
 
       <div className="mb-[150px]">
-        <SectionWrapper>
+        <SectionWrapper className="container-md">
           <FadeUpAnimator>
             <SectionTitle className="mb-[40px]">
               What you will <br /> be doing
@@ -522,11 +475,11 @@ export default function Page() {
           <Slider
             data={requirements}
             renderItem={(requirement) => (
-              <div className="relative grid bg-white w-[250px] lg:w-[480px] h-full  gap-7 p-10">
+              <div className="relative grid bg-white w-[250px] h-full  gap-7 p-6">
                 <span className="mb-14 inline-block">{requirement.svg}</span>
                 <TitleWithBreaks
                   title={requirement.title}
-                  className="typography-S24 lg:typography-S34 self-end uppercase"
+                  className="typography-S24 lg:typography-M24 self-end"
                 />
                 {/* <p className="typography-R18 leading-6">
                   {requirement.description}
@@ -541,7 +494,7 @@ export default function Page() {
         <TourImages gradientProps={{ className: "from-[#F7F7F8]" }} />
       </SectionWrapper>
 
-      <SectionWrapper className="min-h-screen mb-[100px]">
+      <SectionWrapper className="min-h-screen container-md mb-[100px]">
         <FadeUpAnimator>
           <SectionTitle className="mb-[90px]">
             Why Choose <br /> Levntura?
@@ -551,7 +504,7 @@ export default function Page() {
           {features.map((f, index) => {
             return (
               <FadeUpAnimator
-                transition={{ delay: index * 0.2 }}
+                transition={{ delay: index * 0.1 }}
                 key={f.title}
                 className="flex gap-4 lg:gap-10"
               >

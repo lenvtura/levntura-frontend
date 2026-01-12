@@ -31,7 +31,7 @@ export function Header() {
         <NavLinks />
       </div>
 
-      <div className="max-xl:hidden-with-animate  block-with-animate transition-all duration-1000">
+      <div className="max-xl:hidden-with-animate block-with-animate transition-all duration-1000">
         <StartNowBtn className="border-white text-white" />
       </div>
 

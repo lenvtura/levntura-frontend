@@ -31,6 +31,7 @@
 
   --animate-to-bottom: var(--scroll-to-bottom-animation);
   --animate-to-top: var(--scroll-to-top-animation);
+  --animate-horizontal: var(--scroll-horizontal-animation);
 }
 
 @layer base {
@@ -73,6 +74,18 @@
   }
 }
 
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility animate-horizontal {
+  animation: var(--animate-horizontal);
+}
+
 @keyframes scrollLeft {
   to {
     left: -120px;
@@ -86,6 +99,14 @@
 @keyframes scrollBottom {
   to {
     bottom: -720px;
+  }
+}
+@keyframes scrollHorizontal {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -117,6 +138,7 @@
   --lev-blue-dark: #000037;
   --scroll-to-bottom-animation: scrollBottom 20s linear infinite;
   --scroll-to-top-animation: scrollTop 20s linear infinite;
+  --scroll-horizontal-animation: scrollHorizontal 30s linear infinite;
 }
 
 /* @media (prefers-color-scheme: dark) {
