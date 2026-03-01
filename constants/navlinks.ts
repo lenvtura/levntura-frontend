@@ -8,6 +8,12 @@ export const Navlinks = [
     path: Routes.home,
   },
   {
+    label(label: string = "Blogs") {
+      return label;
+    },
+    path: Routes.blogs,
+  },
+  {
     label(label: string = "About us") {
       return label;
     },
@@ -18,12 +24,6 @@ export const Navlinks = [
   //     return label;
   //   },
   //   path: Routes.gallery,
-  // },
-  // {
-  //   label(label: string = "Blogs") {
-  //     return label;
-  //   },
-  //   path: Routes.blogs,
   // },
   // {
   //   label(label: string = "Programs") {
