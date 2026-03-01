@@ -6,29 +6,30 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
 
-interface BlogContentSectionProps {
+interface BlogTiptapSectionProps {
   id: string;
   title: string;
-  content: string;
+  content: string; // This should be HTML for Tiptap
   image?: StaticImageData | string;
   imagePosition?: "left" | "right" | "full";
 }
 
-export function BlogContentSection({
+export function BlogTiptapSection({
   id,
   title,
   content,
   image,
   imagePosition = "full",
-}: BlogContentSectionProps) {
+}: BlogTiptapSectionProps) {
   const editor = useEditor({
     extensions: [StarterKit],
     content: content,
-    editable: false,
+    editable: false, // Set to true if you want it to be an editor
     immediatelyRender: false,
     editorProps: {
       attributes: {
-        class: "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl focus:outline-none",
+        class:
+          "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl focus:outline-none",
       },
     },
   });
@@ -98,6 +99,11 @@ export function BlogContentSection({
           margin-bottom: 1.25rem;
           line-height: 1.625;
         }
+
+        .tiptap-content a {
+          color: var(--color-lev-blue);
+        }
+
         .tiptap-content ul {
           list-style-type: disc;
           padding-left: 1.5rem;
@@ -108,11 +114,8 @@ export function BlogContentSection({
           padding-left: 1.5rem;
           margin-bottom: 1.5rem;
         }
-        .tiptap-content li  {
+        .tiptap-content li {
           margin-bottom: 0.5rem;
-        }
-        .tiptap-content li p {
-          margin-bottom: 0;
         }
         .tiptap-content strong {
           font-weight: 700;

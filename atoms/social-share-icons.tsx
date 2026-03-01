@@ -110,8 +110,6 @@ export async function SocialShareIcons({
   const isFromEgypt = userCountry === "EG";
   const platforms = isFromEgypt ? EGYPT_PLATFORMS : JORDAN_PLATFORMS;
 
-  console.log({ userCountry });
-
   const baseContainerClass =
     variant === "default"
       ? "rounded-full border border-lev-blue bg-white flex items-center justify-center hover:bg-lev-blue hover:text-white transition-colors"

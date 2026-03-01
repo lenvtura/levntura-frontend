@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { BlogHero } from "./blog-hero";
 import { ReadingProgressBar } from "./reading-progress-bar";
 import { BlogSidebar } from "./blog-sidebar";
@@ -6,16 +7,49 @@ import { MoreToReadSection } from "./more-to-read-section";
 import { BLOG_DETAIL_DATA } from "./blog-detail-data";
 import { notFound } from "next/navigation";
 import { Title } from "./title-social-icons-";
-import { IntroductionSection } from "./introduction-section";
-import { CulturalExchangeProgramSection } from "./cultural-exchange-program-section";
-import { WhatToExpectSection } from "./what-to-expect-section";
+import { BlogContentSection } from "./blog-content-section";
 import { BlogBreadcrumb } from "./blog-breadcrumb";
 import { SocialShareIcons } from "@/atoms/social-share-icons";
+
+const SITE_URL = "https://www.levntura.com";
 
 interface BlogDetailPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata({
+  params,
+}: BlogDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = BLOG_DETAIL_DATA[slug];
+  if (!blog) return {};
+
+  const canonicalUrl = `${SITE_URL}/blogs/${slug}`;
+  const title = blog.seo?.metaTitle ?? blog.title;
+  const description = blog.seo?.metaDescription ?? "";
+
+  return {
+    title,
+    description,
+    keywords: blog.seo?.metaKeywords,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      type: "article",
+      url: canonicalUrl,
+      title,
+      description,
+      siteName: "Levntura",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
@@ -38,7 +72,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   return (
     <div className="min-h-screen bg-white">
       <ReadingProgressBar />
-      <BlogHero title={blog.title} />
+      <BlogHero
+        title={blog.title}
+        image={blog.heroImage}
+        imageAlt={blog.heroImageAlt ?? blog.title}
+      />
 
       <div className="container py-12 lg:py-16">
         <div className="grid lg:grid-cols-[250px_1fr] gap-8">
@@ -52,23 +90,21 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           {/* Main Content */}
           <main>
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 flex-wrap gap-4">
-              <BlogBreadcrumb breadcrumbs={blog.breadcrumbs} />
+              <BlogBreadcrumb title={blog.title} />
               <SocialShareIcons size="sm" />
             </div>
             <Title title={blog.title} />
 
-            {blog.sections.map((section) => {
-              // Map section IDs to their corresponding components
-              const sectionComponents: Record<string, React.ReactNode> = {
-                introduction: <IntroductionSection key="introduction" />,
-                "cultural-exchange-program": (
-                  <CulturalExchangeProgramSection key="cultural-exchange-program" />
-                ),
-                "what-to-expect": <WhatToExpectSection key="what-to-expect" />,
-              };
-
-              return sectionComponents[section.id] || null;
-            })}
+            {blog.sections.map((section) => (
+              <BlogContentSection
+                key={section.id}
+                id={section.id}
+                title={section.title}
+                content={section.content}
+                image={section.image}
+                imagePosition={section.imagePosition}
+              />
+            ))}
 
             {blog.pastStudent && (
               <PastStudentsSection

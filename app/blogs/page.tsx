@@ -24,12 +24,9 @@ export default function BlogsPage() {
     []
   );
 
-  // Filter blogs (excluding featured)
+  // Filter blogs for grid (all blogs including featured)
   const filteredBlogs = useMemo(() => {
     return BLOGS_DATA.filter((blog) => {
-      // Exclude featured blog from grid
-      if (blog.featured) return false;
-
       // Filter by category
       const matchesCategory = blog.categories.includes(activeFilter);
 
