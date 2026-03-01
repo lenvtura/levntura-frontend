@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import { BlogsHeader } from "./blogs-header";
 import { FeaturedBlogCard } from "./featured-blog-card";
 import { BlogsGrid } from "./blogs-grid";
@@ -13,42 +13,60 @@ import {
   BLOGS_PER_PAGE,
 } from "./blogs-data";
 
+// Memoized filter function (rerender-memo)
+const filterBlogs = (
+  blogs: typeof BLOGS_DATA,
+  activeFilter: string,
+  searchQuery: string,
+) => {
+  const searchLower = searchQuery.toLowerCase();
+
+  return blogs.filter((blog) => {
+    const matchesCategory = blog.categories.includes(activeFilter);
+
+    const matchesSearch =
+      searchLower === "" ||
+      blog.title.toLowerCase().includes(searchLower) ||
+      blog.description.toLowerCase().includes(searchLower) ||
+      blog.category.toLowerCase().includes(searchLower);
+
+    return matchesCategory && matchesSearch;
+  });
+};
+
+// Memoized pagination function (rerender-memo)
+const paginateBlogs = (
+  filteredBlogs: typeof BLOGS_DATA,
+  currentPage: number,
+) => {
+  return getPaginatedBlogs(filteredBlogs, currentPage, BLOGS_PER_PAGE);
+};
+
 export default function BlogsPage() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Get featured blog
   const featuredBlog = useMemo(
     () => BLOGS_DATA.find((blog) => blog.featured),
-    []
+    [],
   );
 
-  // Filter blogs for grid (all blogs including featured)
-  const filteredBlogs = useMemo(() => {
-    return BLOGS_DATA.filter((blog) => {
-      // Filter by category
-      const matchesCategory = blog.categories.includes(activeFilter);
+  const filteredBlogs = useMemo(
+    () => filterBlogs(BLOGS_DATA, activeFilter, searchQuery),
+    [activeFilter, searchQuery],
+  );
 
-      // Filter by search query
-      const matchesSearch =
-        searchQuery === "" ||
-        blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        blog.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        blog.category.toLowerCase().includes(searchQuery.toLowerCase());
+  const paginatedBlogs = useMemo(
+    () => paginateBlogs(filteredBlogs, currentPage),
+    [filteredBlogs, currentPage],
+  );
 
-      return matchesCategory && matchesSearch;
-    });
-  }, [activeFilter, searchQuery]);
+  const totalPages = useMemo(
+    () => getTotalPages(filteredBlogs.length, BLOGS_PER_PAGE),
+    [filteredBlogs.length],
+  );
 
-  // Paginate filtered blogs
-  const paginatedBlogs = useMemo(() => {
-    return getPaginatedBlogs(filteredBlogs, currentPage, BLOGS_PER_PAGE);
-  }, [filteredBlogs, currentPage]);
-
-  const totalPages = getTotalPages(filteredBlogs.length, BLOGS_PER_PAGE);
-
-  // Reset to page 1 when filters change
   const handleFilterChange = (filter: string) => {
     setActiveFilter(filter);
     setCurrentPage(1);
@@ -57,6 +75,10 @@ export default function BlogsPage() {
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
     setCurrentPage(1);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -87,7 +109,7 @@ export default function BlogsPage() {
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
-          onPageChange={setCurrentPage}
+          onPageChange={handlePageChange}
         />
       )}
 

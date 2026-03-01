@@ -11,7 +11,6 @@ import twitterCardPng from "@/assets/photos/twitter-card.png";
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { SocialShareIcons } from "@/atoms/social-share-icons";
 
 export const metadata: Metadata = {
   title:
@@ -60,12 +59,12 @@ export default function RootLayout({
         className={`${Gelion.className} overflow-x-hidden bg-foreground antialiased relative`}
       >
         <Header />
+
         <div style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)` }}>
           {children}
         </div>
-        <Footer>
-          <SocialShareIcons size="sm" variant="white-border" />
-        </Footer>
+
+        <Footer />
 
         <GoogleAnalytics gaId={"G-L73SE4X3QR"} />
         <GoogleTagManager gtmId={"GTM-NXW7WLQX"} />

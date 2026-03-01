@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { BlogHero } from "./blog-hero";
 import { ReadingProgressBar } from "./reading-progress-bar";
 import { BlogSidebar } from "./blog-sidebar";
@@ -52,6 +53,14 @@ export async function generateMetadata({
   };
 }
 
+// Generate static params for all blog slugs (partial prerendering)
+export async function generateStaticParams() {
+  const slugs = Object.keys(BLOG_DETAIL_DATA);
+  return slugs.map((slug) => ({
+    slug,
+  }));
+}
+
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const { slug } = await params;
   const blog = BLOG_DETAIL_DATA[slug];
@@ -91,20 +100,24 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           <main>
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 flex-wrap gap-4">
               <BlogBreadcrumb title={blog.title} />
-              <SocialShareIcons size="sm" />
+              <Suspense fallback={<div className="w-12 h-12 animate-pulse" />}>
+                <SocialShareIcons size="sm" />
+              </Suspense>
             </div>
             <Title title={blog.title} />
 
-            {blog.sections.map((section) => (
-              <BlogContentSection
-                key={section.id}
-                id={section.id}
-                title={section.title}
-                content={section.content}
-                image={section.image}
-                imagePosition={section.imagePosition}
-              />
-            ))}
+            <Suspense fallback={<div className="w-12 h-12 animate-pulse" />}>
+              {blog.sections.map((section) => (
+                <BlogContentSection
+                  key={section.id}
+                  id={section.id}
+                  title={section.title}
+                  content={section.content}
+                  image={section.image}
+                  imagePosition={section.imagePosition}
+                />
+              ))}
+            </Suspense>
 
             {blog.pastStudent && (
               <PastStudentsSection

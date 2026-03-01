@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
   images: {
     remotePatterns: [
       new URL("https://images.unsplash.com/**"),
@@ -12,7 +13,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  /* config options here */
 };
 
 export default nextConfig;
