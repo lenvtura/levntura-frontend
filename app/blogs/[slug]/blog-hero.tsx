@@ -10,11 +10,7 @@ interface BlogHeroProps {
   imageAlt?: string;
 }
 
-export function BlogHero({
-  title,
-  image,
-  imageAlt,
-}: BlogHeroProps) {
+export function BlogHero({ title, image, imageAlt }: BlogHeroProps) {
   const heroImage = image ?? lebanonPhoto;
   const alt = imageAlt ?? title;
 
@@ -25,9 +21,17 @@ export function BlogHero({
         <div className="absolute inset-0">
           <Image
             src={heroImage}
+            alt=""
+            fill
+            className="object-cover blur-xs"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/20" />
+          <Image
+            src={heroImage}
             alt={alt}
             fill
-            className="object-cover"
+            className="object-contain"
             priority
           />
         </div>

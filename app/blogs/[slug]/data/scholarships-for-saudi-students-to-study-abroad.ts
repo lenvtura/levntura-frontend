@@ -3,7 +3,7 @@ import type { BlogDetail } from "../blog-detail-data";
 export const scholarshipsForSaudiStudentsToStudyAbroad: BlogDetail = {
   slug: "scholarships-for-saudi-students-to-study-abroad",
   heroImage:
-    "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/scholarships-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=D3TVQAMssYdPePoJRAAwPTvmQUk%3D&Expires=1772340210",
+    "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/scholarships-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=JSDrF1Z6WBnyVBwxfy6%2FFFQTENc%3D&Expires=1772340296",
   heroImageAlt: "scholarships for saudi students to study abroad | levntura",
   breadcrumbs: [
     "Home",
