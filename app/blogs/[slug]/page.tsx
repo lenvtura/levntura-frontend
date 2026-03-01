@@ -30,6 +30,7 @@ export async function generateMetadata({
   const canonicalUrl = `${SITE_URL}/blogs/${slug}`;
   const title = blog.seo?.metaTitle ?? blog.title;
   const description = blog.seo?.metaDescription ?? "";
+  const ogImage = blog.heroImage;
 
   return {
     title,
@@ -44,11 +45,20 @@ export async function generateMetadata({
       title,
       description,
       siteName: "Levntura",
+      images: [
+        {
+          url: typeof ogImage === "string" ? ogImage : ogImage.src,
+          width: 1200,
+          height: 630,
+          alt: blog.heroImageAlt ?? blog.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [typeof ogImage === "string" ? ogImage : ogImage.src],
     },
   };
 }

@@ -11,18 +11,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <Suspense
-        fallback={
-          <div className="min-h-screen bg-lev-blue-dark flex items-center justify-center">
-            <div className="animate-pulse">
-              <div className="h-8 bg-gray-200 rounded w-64 mb-4"></div>
-              <div className="h-4 bg-gray-200 rounded w-48"></div>
-            </div>
-          </div>
-        }
-      >
-        <SocialAndForm />
-      </Suspense>
+      <SocialAndForm />
       <Suspense
         fallback={
           <div className="animate-pulse bg-white py-16">

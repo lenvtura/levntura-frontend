@@ -2,6 +2,7 @@ import { MapPinIcon } from "lucide-react";
 import { SectionWrapper } from "../(home)/section-wrapper";
 import { SocialShareIcons } from "@/atoms/social-share-icons";
 import { ContactForm } from "./contact-form";
+import { Suspense } from "react";
 
 export function SocialAndForm() {
   return (
@@ -25,7 +26,9 @@ export function SocialAndForm() {
             <h6 className="typography-R14">OUR SOCIALS</h6>
           </div>
 
-          <SocialShareIcons variant="white-border" className="gap-4" />
+          <Suspense fallback={<div>Loading...</div>}>
+            <SocialShareIcons variant="white-border" className="gap-4" />
+          </Suspense>
         </article>
       </div>
       {/* Form */}
