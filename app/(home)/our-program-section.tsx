@@ -12,18 +12,21 @@ import Image from "next/image";
 import { ButtonWithArrow } from "@/atoms/button-with-arrow";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 
-const Opportunities = [
-  "Study & Travel",
-  "Work & Travel",
-  "Internship",
-  "Counselor",
+const ProgramTypes = [
+  "Summer Work & Travel",
+  "Camp Counselor",
+  "Internship & Trainee Programs",
+  "Study Abroad",
+  "Language Programs",
+  "Summer Camp",
+  "Volunteering Programs",
 ];
 
 const programs = [
-  { label: "Study & Travel", src: studyImage },
-  { label: "Work & Travel", src: workImage },
-  { label: "Internship", src: internshipImage },
-  { label: "Counselor", src: counselorImage },
+  { label: "Summer Work & Travel", src: workImage },
+  { label: "Camp Counselor", src: counselorImage },
+  { label: "Internship & Trainee", src: internshipImage },
+  { label: "Study Abroad", src: studyImage },
 ];
 
 export function OurProgramSection() {
@@ -35,9 +38,9 @@ export function OurProgramSection() {
             transition={{ delay: 0.2 }}
             className="flex max-md:mt-4 max-md:grid grid-cols-2 mr-4 flex-col gap-4"
           >
-            {Opportunities.map((opp) => (
-              <span className="whitespace-nowrap" key={opp}>
-                {opp}
+            {ProgramTypes.map((programType) => (
+              <span className="whitespace-nowrap" key={programType}>
+                {programType}
               </span>
             ))}
           </FadeUpAnimator>
@@ -46,16 +49,16 @@ export function OurProgramSection() {
             <FadeUpAnimator transition={{ delay: 0.4 }}>
               <ButtonWithArrow
                 className="float-right max-md:-mt-2 flex ml-auto  top-0 right-0 typography-R18  items-center gap-4"
-                href={Routes.contact}
+                href={Routes.programs}
                 iconClassName="border-lev-green-dark"
               >
-                Start Now!
+                Explore Our Programs →
               </ButtonWithArrow>
             </FadeUpAnimator>
 
             <FadeUpAnimator transition={{ delay: 0.3 }}>
               <SectionTitle className="text-lev-green-dark">
-                Our program
+                Our Programs
               </SectionTitle>
             </FadeUpAnimator>
           </div>

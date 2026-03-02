@@ -23,12 +23,12 @@ export function ProgramsHero() {
         <div className="flex items-center py-12 md:py-16 lg:py-24">
           <div className="max-w-xl space-y-6 md:space-y-8">
             <SectionTitle className="text-white">
-              WORK <br />& TRAVEL
+              OUR <br /> PROGRAMS
             </SectionTitle>
             <p className="typography-R16 text-white/60 leading-relaxed">
-              Compassionate counselor skilled in supporting individuals through
-              life&apos;s challenges. I create a safe, non-judgmental space for
-              clients to explore and grow.
+              Explore dynamic programs that combine travel, learning, and
+              cultural discovery—crafted to expand your horizons and challenge
+              your potential.
             </p>
           </div>
         </div>

@@ -28,6 +28,10 @@ const Opportunities = [
   "Counselor",
 ];
 
+const HERO_HEADLINE = "Explore with Levntura!";
+const HERO_SUBHEADLINE = "Where Learning Meets Adventure";
+const HERO_CTA = "Start Your Global Experience";
+
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
@@ -66,9 +70,9 @@ export default function Home() {
                     className="text-transparent"
                     style={{ WebkitTextStroke: "2px white" }}
                   >
-                    Converting <br /> studies
+                    {HERO_HEADLINE}
                   </span>
-                  <br /> into adventures
+                  <br /> {HERO_SUBHEADLINE}
                 </h1>
               </FadeUpAnimator>
               <FadeUpAnimator
@@ -95,7 +99,7 @@ export default function Home() {
                   href={Routes.contact}
                   iconClassName="border-white"
                 >
-                  Start the journey
+                  {HERO_CTA} →
                 </ButtonWithArrow>
               </FadeUpAnimator>
 

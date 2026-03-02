@@ -84,7 +84,7 @@ export function SocialMediaSection() {
                 }
                 iconClassName="border-white"
               >
-                Join Now
+                Join now!
               </ButtonWithArrow>
             </FadeUpAnimator>
           </div>

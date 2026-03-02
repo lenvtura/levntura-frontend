@@ -16,7 +16,7 @@ const values = [
   },
   {
     number: "03",
-    title: "Having Fun",
+    title: "Fun",
     description:
       "We believe joy fuels creativity—we're meant to learn, grow, and have a blast doing it.",
   },
@@ -28,13 +28,7 @@ const values = [
   },
   {
     number: "05",
-    title: "Diversity and inclusion",
-    description:
-      "We celebrate individuality and foster a safe, empowering space for all cultures and perspectives.",
-  },
-  {
-    number: "06",
-    title: "Empowering the youth",
+    title: "Empowerment",
     description:
       "We open minds, broaden horizons, and enable every young person to become a confident global leader.",
   },

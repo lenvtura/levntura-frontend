@@ -32,8 +32,8 @@ export function TravelImgSection() {
           <div className="max-w-[615px] md:h-[700px] max-md:min-h-[500px] ml-auto">
             <FadeUpAnimator transition={{ delay: 0.1 }}>
               <h4 className="typography-EB34 uppercase leading-[1.3]  mb-12">
-                We change lives <br /> throughout leadership <br /> development.
-                Where are <br /> you going next?
+                Empowering Youth to Lead, <br /> Learn, and Explore <br /> the
+                World
               </h4>
             </FadeUpAnimator>
             <FadeUpAnimator transition={{ delay: 0.3 }}>
@@ -43,7 +43,7 @@ export function TravelImgSection() {
                 zones, discover their potential, and develop leadership skills
                 that last a lifetime. Through immersive cultural exchange and
                 global learning programs, we shape the next generation of
-                confident, capable, and connected leaders
+                confident, capable, and connected leaders.
               </p>
             </FadeUpAnimator>
           </div>

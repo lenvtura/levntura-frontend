@@ -27,12 +27,13 @@ export function AreYouReadySection() {
             transition={{ delay: 0.3 }}
           >
             <SectionTitle className="text-center text-lev-red-dark max-w-[650px]">
-              Are You Ready to Change Your World?
+              Ready to Start Your Global Journey?
             </SectionTitle>
-            <StartNowBtn />
-          </FadeUpAnimator>
-
-          <FadeUpAnimator transition={{ delay: 0.4 }}>
+            <p className="text-center text-lev-red-dark typography-R16 max-w-[600px]">
+              Join thousands of ambitious students shaping their future through
+              Levntura&apos;s programs. Let&apos;s build your next adventure
+              together.
+            </p>
             <StartNowBtn />
           </FadeUpAnimator>
         </div>

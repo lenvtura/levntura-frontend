@@ -27,9 +27,12 @@ export function PublicationAndMedia() {
 
         <div className="w-full flex lg:translate-x-[70px] lg:-translate-y-[50px] justify-center items-center">
           <FadeUpAnimator className="sm:w-1/2 md:w-1/3 text-lev-red-dark typography-R18 leading-6">
-            Explore University&apos;s 10+ courses across variouGs
-            specialisations that provoke intellectual and intuitive learning
-            among students.
+            Step into the stories that shaped Levntura&apos;s journey. From
+            global adventures to cultural milestones, each moment reflects our
+            spirit of exploration, leadership, and connection. Every image tells
+            a story of growth—students discovering their strength, building
+            friendships across borders, and creating memories that last a
+            lifetime.
           </FadeUpAnimator>
         </div>
       </article>

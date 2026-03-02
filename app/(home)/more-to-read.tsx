@@ -1,10 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import { SectionWrapper } from "./section-wrapper";
 import img1 from "@/assets/photos/home/k-1.png";
 import img2 from "@/assets/photos/home/k2.png";
 import img3 from "@/assets/photos/home/k3.png";
 import { Button } from "@/design-system/button";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
+import { Routes } from "@/constants/routes";
 
 export function MoreToRead() {
   return (
@@ -82,7 +84,9 @@ export function MoreToRead() {
           </h2>
         </FadeUpAnimator>
       </article>
-      <Button className="self-center">Blogs</Button>
+      <Button asChild className="self-center">
+        <Link href={Routes.blogs}>Blogs</Link>
+      </Button>
     </SectionWrapper>
   );
 }

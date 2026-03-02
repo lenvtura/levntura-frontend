@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
@@ -6,6 +7,7 @@ import {
 import { SectionWrapper } from "./section-wrapper";
 import { Button } from "@/design-system/button";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
+import { Routes } from "@/constants/routes";
 // import ved1 from '@/assets/videos';
 
 export function OurStudentsSharing() {
@@ -37,12 +39,15 @@ export function OurStudentsSharing() {
             <source src="../../assets/videos/media-2.mp4" type="video/mp4" />
           </video>
           <p className="typography-R14 text-lev-red-dark leading-5 col-span-2">
-            Unlock your potential with Levntura’s seasoned counselors. Dive into
-            a world where expert advice meets personalized support, guiding you
-            towards your educational and career aspirations. Let’s chart your
-            journey to success together.
+            Real stories. Real journeys. Real change. From classrooms to
+            airports, our students are living the Levntura experience—studying
+            abroad, working in new cultures, and growing beyond borders. Each
+            story is a glimpse into what it means to take the leap, explore the
+            world, and come back transformed.
           </p>
-          <Button className="self-end justify-self-start">See more</Button>
+          <Button asChild className="self-end justify-self-start">
+            <Link href={Routes.blogs}>See More →</Link>
+          </Button>
         </article>
       </section>
       {/* mobile */}
@@ -80,14 +85,17 @@ export function OurStudentsSharing() {
         </FadeUpAnimator>
         <FadeUpAnimator transition={{ delay: 0.4 }}>
           <p className="typography-R14 leading-4 col-span-2 max-w-xl">
-            Unlock your potential with Levntura&apos;s seasoned counselors. Dive
-            into a world where expert advice meets personalized support, guiding
-            you towards your educational and career aspirations. Let&apos;s
-            chart your journey to success together.
+            Real stories. Real journeys. Real change. From classrooms to
+            airports, our students are living the Levntura experience—studying
+            abroad, working in new cultures, and growing beyond borders. Each
+            story is a glimpse into what it means to take the leap, explore the
+            world, and come back transformed.
           </p>
         </FadeUpAnimator>
         <FadeUpAnimator transition={{ delay: 0.5 }}>
-          <Button className="self-end justify-self-start">See more</Button>
+          <Button asChild className="self-end justify-self-start">
+          <Link href={Routes.blogs}>See More →</Link>
+        </Button>
         </FadeUpAnimator>
       </article>
     </SectionWrapper>
