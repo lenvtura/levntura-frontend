@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Blog Homepage -->
+  <url>
+    <loc>https://levntura.com/blogs</loc>
+    <lastmod>2025-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Individual Blog Posts -->
+  <url>
+    <loc>https://levntura.com/blogs/study-abroad-agencies-in-ksa</loc>
+    <lastmod>2025-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://levntura.com/blogs/j1-agencies-in-ksa</loc>
+    <lastmod>2025-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://levntura.com/blogs/scholarships-for-saudi-students-to-study-abroad</loc>
+    <lastmod>2025-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://levntura.com/blogs/work-and-travel-in-agency-ksa</loc>
+    <lastmod>2025-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
