@@ -1,4 +1,3 @@
-
 export function BagSvg() {
   return (
     <svg
@@ -17,7 +16,7 @@ export function BagSvg() {
             transform="translate(357 8991)"
             fill="#fff"
             stroke="#707070"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </clipPath>
       </defs>
@@ -25,7 +24,7 @@ export function BagSvg() {
         id="Mask_Group_2667"
         data-name="Mask Group 2667"
         transform="translate(-357 -8991)"
-        clip-path="url(#clip-path)"
+        clipPath="url(#clip-path)"
       >
         <g id="briefcase" transform="translate(357 8996.833)">
           <path
