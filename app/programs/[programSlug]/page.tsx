@@ -2,6 +2,10 @@ import { notFound } from "next/navigation";
 import { PROGRAM_CONFIG } from "./program-config";
 import { ProgramPage } from "./program-page";
 
+export function generateStaticParams() {
+  return Object.keys(PROGRAM_CONFIG).map((programSlug) => ({ programSlug }));
+}
+
 export default async function Page({
   params,
 }: {
