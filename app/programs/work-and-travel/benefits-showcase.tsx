@@ -3,12 +3,13 @@ import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 import { cn } from "@/design-system/helpers";
 
 const benefits = [
-  "30-day traveltime after program ends",
-  "Housing accommodation",
-  "Health insurance coverage",
-  "Job offers in your preferred field",
-  'Work permit "DS-2019"',
-  "Social Security number",
+  "30-day travel period after your program ends",
+  "Comfortable housing accommodation",
+  "Comprehensive health insurance coverage",
+  "Paid Job placement in your preferred field",
+  'Official work permit "DS-2019"',
+  "U.S. Social Security number",
+  "Sponsorship & Visa Assistance",
 ];
 
 export function BenefitsShowcase() {
@@ -41,7 +42,7 @@ export function BenefitsShowcase() {
                 className={cn(
                   "border h-[100px] sm:h-[150px] text-lev-blue-dark flex justify-center items-center border-lev-blue rounded-full p-8 text-center",
                   idx === 1 && "lg:rounded-ee-none",
-                  idx === 4 && "lg:rounded-ss-none"
+                  idx === 4 && "lg:rounded-ss-none",
                 )}
               >
                 <p className="typography-R34 text-[24px] sm:text-[32px] leading-9">

@@ -93,7 +93,9 @@ export function ProgramCard({
 
       <div className="p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-3">
-          <h3 className="typography-R24! text-lev-black">{title}</h3>
+          <Link href={href}>
+            <h3 className="typography-R24! text-lev-black">{title}</h3>
+          </Link>
           <div className="flex items-center gap-2">
             <span className="typography-S12 uppercase text-lev-black">
               {country}

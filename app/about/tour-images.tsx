@@ -16,8 +16,10 @@ import Link from "next/link";
 import { Routes } from "@/constants/routes";
 
 export default function TourImages({
+  title = "We are creating memories, are you joining?",
   gradientProps: { className, ...props } = {},
 }: {
+  title?: string;
   gradientProps?: ComponentProps<"div">;
 }) {
   return (
@@ -44,18 +46,13 @@ export default function TourImages({
         <div
           className={cn(
             "absolute h-[500px] left-0 right-0 bottom-0 bg-gradient-to-t from-[10%]  from-white to-transparent",
-            className
+            className,
           )}
           {...props}
         />
       </div>
       <FadeUpAnimator className="flex flex-col -translate-y-[100px] gap-4 items-center">
-        <SectionTitle className="text-center">
-          We are creating <br />
-          memories, are <br />
-          you joining?
-        </SectionTitle>
-
+        <SectionTitle className="text-center w-1/2">{title}</SectionTitle>
         <StartNowBtn />
         <Link
           href={Routes.gallery}

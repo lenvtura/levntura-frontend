@@ -1,7 +1,5 @@
 import { Routes } from "@/constants/routes";
 
-import womanStudyPhoto from "@/assets/photos/woman-study.png";
-import manStudyPhoto from "@/assets/photos/man-study.png";
 import Image from "next/image";
 import { cn } from "@/design-system/helpers";
 import { StartNowBtn } from "@/atoms/start-now-btn";
@@ -13,13 +11,13 @@ import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 const Cards = [
   {
     label: "Work & Travel",
-    src: womanStudyPhoto,
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/left-work-and-travel.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=795vCoAK69qzHeeXffmNFSR9C34%3D&Expires=1772906444",
     bgColor: "bg-lev-blue-light",
     textColor: "text-lev-blue-light",
   },
   {
     label: "Camp Counselor",
-    src: manStudyPhoto,
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/right-camp-counselor.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=oRg4Prm5d7vLib7KvgWMWEK8OvQ%3D&Expires=1772906444",
     bgColor: "bg-lev-orange",
     textColor: "text-lev-orange",
   },
@@ -66,7 +64,7 @@ export function WorkAndTravelSection() {
               transition={{ delay: 0.5 + index * 0.2 }}
               className="max-w-[500px] group overflow-hidden"
             >
-              <div className="relative overflow-hidden">
+              <div className="relative aspect-square overflow-hidden">
                 <Image
                   width={500}
                   height={500}

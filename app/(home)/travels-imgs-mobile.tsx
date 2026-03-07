@@ -45,10 +45,12 @@ export function TravelsImgsMobile({
         {Travels.map((t) => (
           <div
             key={t.label}
-            className="w-full h-fullshrink-0 pointer-events-none relative  overflow-hidden"
+            className="w-full h-full shrink-0 pointer-events-none relative  overflow-hidden"
           >
             <Image
               alt=""
+              width={200}
+              height={200}
               src={t.src}
               className="object-contain pointer-events-none w-full h-full"
             />

@@ -1,9 +1,6 @@
 import { Routes } from "@/constants/routes";
 import Image from "next/image";
 
-import heroImage from "@/assets/photos/1.png";
-// import heroVideo from "@/assets/videos/demo.mp4";
-
 import { HEADER_HEIGHT } from "@/constants/header-height";
 import { OurProgramSection } from "./our-program-section";
 import { WhoWeAreSection } from "./who-we-are-section";
@@ -41,12 +38,11 @@ export default function Home() {
         }}
         className="absolute top-0 -z-1 inset-x-0 h-full w-full"
       >
-        {/* <video src={heroVideo}  /> */}
         <Image
           alt=""
-          src={heroImage}
+          src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home-hero.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=gTjnXwslMm%2BtJ9TvXWCnfTJaBRw%3D&Expires=1772905738"
           fill
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full object-center"
         />
       </div>
 

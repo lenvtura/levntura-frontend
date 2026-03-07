@@ -1,8 +1,5 @@
 import { StaticImageData } from "next/image";
 import counselorImage from "@/assets/photos/counselor.png";
-import studyImage from "@/assets/photos/study.png";
-import workImage from "@/assets/photos/work.png";
-import internshipImage from "@/assets/photos/internship.png";
 
 export interface Program {
   id: string;
@@ -18,99 +15,68 @@ export interface Program {
 
 export const PROGRAMS_DATA: Program[] = [
   {
-    id: "counselor-3-month",
-    title: "Counselor",
+    id: "camp-counselor",
+    title: "Camp Counselor",
     country: "USA",
     countryCode: "USA",
     duration: "3 month",
     description:
       "Compassionate counselor skilled in supporting individuals through life's challenges. I create a safe, non-judgmental space for clients to explore and grow.",
-    image: counselorImage,
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=N5ForCdnZ8PpzphAkYOnYf4BdBM%3D&Expires=1772913994",
     category: ["All", "Usa"],
     href: "/programs/calendly/counselor",
   },
   {
-    id: "counselor-3-4-month",
-    title: "Counselor",
-    country: "USA",
-    countryCode: "USA",
-    duration: "3-4 month",
-    description:
-      "Compassionate counselor skilled in supporting individuals through life's challenges. I create a safe, non-judgmental space for clients to explore and grow.",
-    image: counselorImage,
-    category: ["All", "Usa"],
-    href: "/programs/calendly/counselor",
-  },
-  {
-    id: "counselor-2-weeks",
-    title: "Counselor",
-    country: "USA",
-    countryCode: "USA",
-    duration: "2 weeks",
-    description:
-      "Compassionate counselor skilled in supporting individuals through life's challenges. I create a safe, non-judgmental space for clients to explore and grow.",
-    image: counselorImage,
-    category: ["All", "Usa"],
-    href: "/programs/calendly/counselor",
-  },
-  {
-    id: "work-travel-usa",
+    id: "work-and-travel",
     title: "Work & Travel",
     country: "USA",
     countryCode: "USA",
     duration: "3-4 month",
     description:
-      "Experience the American dream while working and traveling. Gain professional experience, improve your English skills, and explore the United States.",
-    image: workImage,
+      "Compassionate counselor skilled in supporting individuals through life's challenges. I create a safe, non-judgmental space for clients to explore and grow.",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_work-and-travel.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=FUWbXzDw%2BTSkFc63OTeSjIlNtHA%3D&Expires=1772913786",
     category: ["All", "Usa"],
     href: "/programs/work-and-travel",
   },
   {
-    id: "study-travel-usa",
-    title: "Study & Travel",
+    id: "study-abroad",
+    title: "Study Abroad",
     country: "USA",
     countryCode: "USA",
-    duration: "1 semester",
+    duration: "2 weeks",
+    description:
+      "Compassionate counselor skilled in supporting individuals through life's challenges. I create a safe, non-judgmental space for clients to explore and grow.",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_study-abroad.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=n%2B%2BfEOfiVclzU2pbcKp6fRJDyaU%3D&Expires=1772913382",
+    category: ["All", "Usa"],
+    href: "/programs/calendly/counselor",
+  },
+  {
+    id: "internship",
+    title: "Internship",
+    country: "USA",
+    countryCode: "USA",
+    duration: "12 month",
+    description:
+      "Experience the American dream while working and traveling. Gain professional experience, improve your English skills, and explore the United States.",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_internship.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=PLvGTGO5tcwLtBmVGLbMCW7n%2BvY%3D&Expires=1772913600",
+    category: ["All", "Usa"],
+    href: "/programs/work-and-travel",
+  },
+  {
+    id: "volunteering",
+    title: "Volunteering",
+    country: "USA",
+    countryCode: "USA",
+    duration: "1 month",
     description:
       "Combine academic excellence with cultural immersion. Study at prestigious institutions while experiencing American culture and lifestyle.",
-    image: studyImage,
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_volunteering.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=NA7a%2F60EtOkTHY0q3WQyg5Ylcw0%3D&Expires=1772913256",
     category: ["All", "Usa"],
     href: "/programs/calendly/study-travel",
-  },
-  {
-    id: "internship-usa",
-    title: "Internship",
-    country: "USA",
-    countryCode: "USA",
-    duration: "6 month",
-    description:
-      "Professional internship opportunities in leading American companies. Gain valuable work experience and build your international career.",
-    image: internshipImage,
-    category: ["All", "Usa"],
-    href: "/programs/calendly/internship",
-  },
-  {
-    id: "study-travel-uk",
-    title: "Study & Travel",
-    country: "UK",
-    countryCode: "UK",
-    duration: "1 semester",
-    description:
-      "Experience British education excellence while exploring the rich history and culture of the United Kingdom.",
-    image: studyImage,
-    category: ["All", "Uk"],
-    href: "/programs/calendly/study-travel",
-  },
-  {
-    id: "internship-uk",
-    title: "Internship",
-    country: "UK",
-    countryCode: "UK",
-    duration: "6 month",
-    description:
-      "Professional internship opportunities in the UK. Work with leading British companies and enhance your international career prospects.",
-    image: internshipImage,
-    category: ["All", "Uk"],
-    href: "/programs/calendly/internship",
   },
 ];

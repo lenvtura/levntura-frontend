@@ -23,10 +23,13 @@ const ProgramTypes = [
 ];
 
 const programs = [
-  { label: "Summer Work & Travel", src: workImage },
-  { label: "Camp Counselor", src: counselorImage },
-  { label: "Internship & Trainee", src: internshipImage },
+  { label: "Summer Work & Travel", src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-program_work-and-travel.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=Qma16OAk4Fej%2FGr3oy%2FlIOwaCZo%3D&Expires=1772908770" },
+  { label: "Camp Counselor", src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=kCp%2FHwNB3ZHn26oX2eGfDCbBqEU%3D&Expires=1772908878" },
+  { label: "Internship & Trainee", src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-program_internship.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=nM0sYN2tPguWb5%2BEL0Zv8Xt0fho%3D&Expires=1772908924" },
   { label: "Study Abroad", src: studyImage },
+  { label: "Language Programs", src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_language.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=rFOWtLtcsKXA8Zskna0LmKCfjes%3D&Expires=1772909197" },
+  { label: "Summer Camp", src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_summer-camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=%2B5Z4dm0Gx1pgDZELLKEgP1vYHFo%3D&Expires=1772908989" },
+  { label: "Volunteering Programs", src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_volunteering.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=27ej%2BTx%2B%2BQvsN4uMUU8BJN7w93Y%3D&Expires=1772909545" },
 ];
 
 export function OurProgramSection() {
@@ -71,12 +74,14 @@ export function OurProgramSection() {
           return (
             <div
               key={item.label}
-              className="  shrink-0  relative w-[400px] overflow-hidden h-full"
+              className="  shrink-0 relative w-[325px] overflow-hidden h-full"
             >
               <Image
                 alt=""
+                width={300}
+                height={300}
                 src={item.src}
-                className="object-contain group-hover:scale-105 transition-[scale] pointer-events-none w-full h-full"
+                className="object-cover group-hover:scale-105 transition-[scale] pointer-events-none w-full h-full"
               />
               <div className="absolute typography-R34 left-[16px] bottom-[16px] text-white">
                 {item.label}

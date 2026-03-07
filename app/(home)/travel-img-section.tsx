@@ -65,7 +65,7 @@ export function TravelImgSection() {
         </div>
       </div>
 
-      <TravelsImgsDsk scrollYProgress={scrollYProgress} />
+      <TravelsImgsDsk />
     </div>
   );
 }

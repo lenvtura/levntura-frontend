@@ -19,11 +19,9 @@ import { PeopleSvg } from "./people-svg";
 import { CheckSvg } from "./check-svg";
 import { TitleWithBreaks } from "./title-with-breaks";
 
-import languageImprovementPhoto from "@/app/programs/work-and-travel/language-improvement-photo.svg";
 import meetNewFriendsPhoto from "@/app/programs/work-and-travel/meet-new-friends-photo.svg";
 import professionalGrowthPhoto from "@/app/programs/work-and-travel/professional-growth-photo.svg";
 import discoverYourselfPhoto from "@/app/programs/work-and-travel/discover-yourself-photo.svg";
-import culturalExchangePhoto from "@/app/programs/work-and-travel/culture-exchange-photo.svg";
 import travelAroundTheUSAPhoto from "@/app/programs/work-and-travel/travel-around-photo.webp";
 
 import nationalParkPhoto from "@/app/programs/work-and-travel/national-park-photo.svg";
@@ -32,10 +30,8 @@ import grandCanyonPhoto from "@/app/programs/work-and-travel/grand-canyon-photo.
 import sixFlagsPhoto from "@/app/programs/work-and-travel/great-america-photo.svg";
 import { PassportSvg } from "./passport-svg";
 import { CollegeSvg } from "./college-svg";
-import { EducationSvg } from "./education-svg";
 import { LanguageSvg } from "./language-svg";
 import { AgeSvg } from "./age-svg";
-import { InfinitySvg } from "./infinity-svg";
 import { DiplomaSvg } from "./diploma-svg";
 
 import firstPhoto from "@/assets/photos/3.png";
@@ -50,49 +46,91 @@ const jobs = [
   {
     title: "LIFEGUARD",
     image:
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
-  },
-  {
-    title: "FOOD RUNNER",
-    image:
-      "https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=400&h=400&fit=crop",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
-  },
-  {
-    title: "WAITER",
-    image:
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=400&fit=crop",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
-  },
-  {
-    title: "CHEF",
-    image:
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=400&fit=crop",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-life_guard.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=xK8gTiBfqBu5B8iLTr%2FX6V0nt2g%3D&Expires=1772918119",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
   },
   {
     title: "PHOTOGRAPHY",
     image:
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=400&fit=crop",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-photography.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=av%2FHcCFta4jnlbiFtG5Pgfn2HRU%3D&Expires=1772918461",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
   },
   {
     title: "RIDE OPERATOR",
     image:
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=400&fit=crop",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-ride_operator.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=dloHT99%2FCPP2R0AJMh79n13D4e8%3D&Expires=1772918695",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
   },
   {
     title: "HOUSE KEEPING",
     image:
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=400&fit=crop",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-housekeeping.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=rePPESJk26VcG4ePfe3XeoKuxPI%3D&Expires=1772918740",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
+  },
+  {
+    title: "WAITER",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-waiter.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=4RyISc%2Fej9T9BoYrddVG1WU5jY4%3D&Expires=1772920221",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
+  },
+  {
+    title: "CHEF",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-cook.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=FF3kKcwsFYNSgGvJzauCQacstck%3D&Expires=1772919021",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
+  },
+  {
+    title: "FOOD RUNNER",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-food_runner.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=ZgrYtGeVF%2FdDHJ3%2BZSOwDDOTb%2Bc%3D&Expires=1772919062",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
+  },
+  {
+    title: "WATER PARK WORKER",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-water-worker.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=E1m4KU1mdgMDMJOFFIFuhT6TYPY%3D&Expires=1772919573",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
+  },
+  {
+    title: "CASHIER",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-cashier.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=du4OQvz4p9ZfyaTSq7sXoZmxJKE%3D&Expires=1772919479",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
+  },
+  {
+    title: "RECEPTIONIST",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-receptionist.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=gAZWEn4TXDEqBA58jHb%2FLYtueN0%3D&Expires=1772919436",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
+  },
+  {
+    title: "FOOD SERVICE",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-food_worker.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=WBQ3w4sJFXGPZmTsl02gVrVi9og%3D&Expires=1772919378",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
+  },
+  {
+    title: "DISH WASHER",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-dishwasher.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=6AW74CJgNrEjl4kDhaGrNghu7Iw%3D&Expires=1772919274",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
+  },
+  {
+    title: "BARISTA",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-barista.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=kGKN%2FBksBlUWXasFwgldiH0n6II%3D&Expires=1772919215",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonumy eirmod tempor",
   },
@@ -112,7 +150,7 @@ const benefits = [
       "Beyond the workplace, take advantage of your time in the USA to explore its rich landscapes, iconic landmarks, and vibrant cities. From coast to coast, this is your chance to discover the beauty of the United States.",
   },
   {
-    src: culturalExchangePhoto,
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=m5p2rMs%2Be8xZONd2S5APOl7xLEM%3D&Expires=1772914451",
     title: "Cultural Exchange",
     description:
       "Immerse yourself in the diverse tapestry of American culture. Engage with locals, understand their traditions, and share your own experiences. This exchange is a two-way street, offering you a deeper understanding of the world.",
@@ -130,7 +168,7 @@ const benefits = [
       "Gain hands-on work experience in the USA, adding an international flair to your resume. Whether you choose to work in hospitality, tourism, or a variety of other sectors, this program opens doors to new opportunities.",
   },
   {
-    src: languageImprovementPhoto,
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_language-improvement.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=5qAJXqUUQwvzd3RrawgdYxweIfg%3D&Expires=1772914328",
     title: "Language Improvement",
     description:
       "Enhance your English language skills in real-life situations. Engage with locals, overcome language barriers, and return home with newfound confidence in your language abilities.",
@@ -139,14 +177,14 @@ const benefits = [
 
 const countries = [
   {
-    src: nationalParkPhoto,
-    area: "Yellowstone National Park",
-    country: "Montana, Idaho, Wyoming",
-  },
-  {
     src: cedarPointPhoto,
     area: "Cedar Point",
     country: "Ohio",
+  },
+  {
+    src: nationalParkPhoto,
+    area: "Yellowstone National Park",
+    country: "Montana, Idaho, Wyoming",
   },
   {
     src: grandCanyonPhoto,
@@ -158,43 +196,68 @@ const countries = [
     area: "Six Flags Great America",
     country: "Arizona",
   },
+  {
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_culture-exchange.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=MTJKuUkLiJmb3Dsp6%2B%2FMPZvTlTA%3D&Expires=1772915023",
+    area: "Continental Pool",
+    country: "Maryland",
+  },
+  {
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_smugglers-notch_resort.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=U7Nit2TzJYfpvNUjRz7Z3MFu%2F4M%3D&Expires=1772915203",
+    area: "Smugglers Notch Resort- Vermont ",
+    country: "Vermont ",
+  },
+  {
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_food-lion.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=u%2BMTKHnzPtNLe9YbdlQp7wcw%2FmM%3D&Expires=1772915287",
+    area: "Food Lion",
+    country: "Maryland",
+  },
+  {
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_fun-city.webp?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=TeBf9mcbv3faWEkpLGKbC9EJxrg%3D&Expires=1772915367",
+    area: "Fun City",
+    country: "Colorado",
+  },
+  {
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_aramark-kauffman-stadium.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=%2BNlg3NysF8XlZw49WSMudCO%2FSxY%3D&Expires=1772915470",
+    area: "Aramark-Kauffman Stadium",
+    country: "Missouri",
+  },
+  {
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_kalahari-resort.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=lgZzV%2FqZo53dJHHbBaHOmr19i9U%3D&Expires=1772915578",
+    area: "Kalahari Resort",
+    country: "Ohio",
+  },
+  {
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-next_destination-point_sebago.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=lArjK1fJyNiaUghsgnxv8d%2Fbiuw%3D&Expires=1772915680",
+    area: "Point Sebago",
+    country: "Main ",
+  },
 ];
 
 const requirements = [
   {
     svg: <PassportSvg />,
-    title: "Valid passport",
-    description: "Lorem ipsum dolor sit amet.",
+    title: "Passport",
+    description: "Valid Passport",
   },
   {
     svg: <CollegeSvg />,
-    title: "Enrollment in a college",
-    description: "Lorem ipsum dolor sit amet.",
-  },
-  {
-    svg: <EducationSvg />,
     title: "Education",
-    description: "Bachelor’s or higher",
+    description: "Enrollment as a Full-Time University Student",
   },
   {
     svg: <LanguageSvg />,
     title: "Language",
-    description: "conversational level of English",
+    description: "English Language Proficiency",
   },
   {
     svg: <AgeSvg />,
     title: "Age",
-    description: "between 19 and 26 years old.",
+    description: "between 18–25",
   },
   {
     svg: <DiplomaSvg />,
-    title: "Degrees Transcript",
-    description: "Lorem ipsum dolor sit amet.",
-  },
-  {
-    svg: <InfinitySvg />,
-    title: "Ready for infinity?",
-    description: "Lorem ipsum dolor sit amet.",
+    title: "Interview",
+    description: "Interview & Application Form",
   },
 ];
 
@@ -239,7 +302,7 @@ const features = [
 
 function ScrollRevealText() {
   const text =
-    "Calling all university students seeking an unforgettable summer experience! If you're yearning for a combination of adventure, cultural exchange, language improvement, and professional growth, look no further than the Summer Work and Travel Program to the USA, proudly provided by the Department of State.";
+    "Calling all university students ready for a summer that blends adventure, cultural discovery, and real-world experience! If you’re eager to improve your English, meet new friends from around the globe, and gain professional growth along the way, the USA Work & Travel Program, officially designated by the U.S. Department of State, is your gateway to a truly unforgettable season.";
 
   return (
     <p className="typography-S34 leading-9 text-center text-lev-blue-dark">
@@ -294,7 +357,8 @@ export default function Page() {
 
       <SectionWrapper className="mb-[64px]">
         <p className="typography-S16 text-center text-lev-blue-light mb-4">
-          Embark on a Summer Adventure with the USA Work and Travel Program
+          Embark on a Summer Adventure with Levntura’s USA Work & Travel
+          Program.
         </p>
         <ScrollRevealText />
       </SectionWrapper>
@@ -302,17 +366,22 @@ export default function Page() {
       <SectionWrapper className="container-md">
         <FadeUpAnimator>
           <SectionTitle className="mb-[80px]">
-            What is the <br /> Summer Work <br /> and Travel <br /> Program?{" "}
+            What is the <br /> Summer Work <br /> and Travel <br />{" "}
+            Program?{" "}
           </SectionTitle>
         </FadeUpAnimator>
         <FadeUpAnimator className="flex">
           <p className="ms-auto text-lev-red-dark w-[300px]">
-            The Summer Work and Travel Program offers students the chance to
-            work and travel in the United States during their summer break. It
-            provides an opportunity for cultural exchange, language improvement,
-            and valuable work experience. Participants engage in temporary jobs
-            while exploring diverse landscapes and forging friendships with
-            people from around the world.
+            <strong>The Summer Work and Travel Program</strong> allows
+            university students to spend their summer working and exploring the
+            United States. It’s a unique opportunity for{" "}
+            <strong>
+              cultural exchange, language improvement, and hands-on work
+              experience
+            </strong>{" "}
+            within real American communities. Participants engage in seasonal
+            jobs, discover new cities, and build lifelong friendships while
+            immersing themselves in U.S. culture and everyday life.
           </p>
         </FadeUpAnimator>
       </SectionWrapper>
@@ -332,12 +401,12 @@ export default function Page() {
         </FadeUpAnimator>
         <FadeUpAnimator className="flex lg:-translate-y-[50px]">
           <p className="ms-auto text-lev-red-dark w-[300px]">
-            making new friends from around the world, and gaining valuable work
-            experience – all while basking in the summer sun. The USA Work and
-            Travel Program isn’t just a job opportunity; it’s a gateway to a
-            life-changing adventure. By participating, you’ll immerse yourself
-            in a unique blend of cultural exchange, language improvement, and
-            pure happiness.
+            meeting friends from every corner of the world, discovering new
+            places, and gaining hands-on experience under the summer sun. The
+            USA Work & Travel Program isn’t just a seasonal job; it’s your
+            ticket to a life-changing adventure. By joining, you’ll grow
+            personally and professionally while enjoying a perfect mix of
+            cultural exchange, language improvement, and unforgettable joy.
           </p>
         </FadeUpAnimator>
       </SectionWrapper>
@@ -367,8 +436,11 @@ export default function Page() {
           </FadeUpAnimator>
           <FadeUpAnimator className="flex ">
             <p className="ms-auto text-lev-red-dark w-[300px]">
-              Immerse Yourself In A Unique Blend Of Cultural Exchange, Language
-              Improvement, And Pure Happiness.
+              Immerse yourself in a once-in-a-lifetime journey that blends work
+              experience, cultural discovery, and language growth, all wrapped
+              in the excitement of an American summer. It’s more than a program;
+              it’s a season of new friendships, freedom, and unforgettable
+              moments.
             </p>
           </FadeUpAnimator>
         </SectionWrapper>
@@ -379,6 +451,8 @@ export default function Page() {
               <div>
                 <div className="relative h-[400px] sm:h-[670px] w-[300px] sm:w-[480px] flex flex-col gap-7">
                   <Image
+                    width={500}
+                    height={500}
                     className="absolute object-cover pointer-events-none w-full h-full inset-0"
                     src={benefit.src}
                     alt=""
@@ -406,11 +480,12 @@ export default function Page() {
           </FadeUpAnimator>
           <FadeUpAnimator className="flex ">
             <p className="ms-auto text-lev-red-dark w-[300px]">
-              The Summer Work and Travel Program offers a range of job
-              opportunities tailored to your interests and skills. From working
-              in bustling cities to charming tourist destinations, choose a job
-              that aligns with your passions and allows you to make the most of
-              your summer.
+              The Summer Work & Travel Program opens doors to exciting seasonal
+              jobs across the U.S., from theme parks and beach resorts to
+              national landmarks and city cafés. Choose a role that matches your
+              interests, sharpen your skills, and experience what it’s like to
+              work and live in a new culture, all while making the most of your
+              American summer.
             </p>
           </FadeUpAnimator>
         </SectionWrapper>
@@ -419,7 +494,16 @@ export default function Page() {
           <Slider
             data={jobs}
             renderItem={(job) => (
-              <div className="flex w-[300px] lg:w-[480px] bg-white p-10 flex-col gap-7">
+              <div className="flex size-[300px] lg:size-[450px] justify-center bg-white p-10 flex-col gap-7">
+                <div className="size-[200px] self-center shrink-0 lg:size-[300px] aspect-square overflow-hidden rounded-full">
+                  <Image
+                    src={job.image}
+                    className="object-cover w-full h-full pointer-events-none"
+                    width={300}
+                    height={300}
+                    alt={job.title}
+                  />
+                </div>
                 <h4 className="typography-EB34 min-h-[200px lg:typography-EB48 text-lev-red-dark">
                   {job.title}
                 </h4>
@@ -434,8 +518,10 @@ export default function Page() {
         <SectionWrapper>
           <FadeUpAnimator>
             <p className="mb-12 text-lev-red-dark w-[300px]">
-              Discover Your Summer Work Adventure: Top Employers and Locations
-              for the USA Work and Travel Program!
+              <strong>Discover your next summer adventure!</strong> Explore top
+              employers and destinations across the U.S. through the Work &
+              Travel Program, where every job brings new skills, friendships,
+              and unforgettable memories.
             </p>
           </FadeUpAnimator>
           <FadeUpAnimator className="flex">
@@ -447,17 +533,22 @@ export default function Page() {
         <Slider
           data={countries}
           renderItem={(country) => (
-            <div className="relative w-[300px] lg:w-[480px] grid gap-7">
-              <Image
-                className="pointer-events-none w-full object-cover"
-                src={country.src}
-                alt=""
-              />
-              <TitleWithBreaks
-                title={country.area}
-                className="typography-S24 sm:typography-S34 uppercase "
-              />
-              <p className="typography-R18 leading-6">{country.country}</p>
+            <div className="flex flex-col gap-4 w-[400px]">
+              <div className="relative shrink-0  overflow-hidden rounded-full  h-[300px] aspect-square grid gap-7">
+                <Image
+                  fill
+                  className="pointer-events-none w-full object-cover"
+                  src={country.src}
+                  alt=""
+                />
+              </div>
+              <div className="self-center text-center">
+                <TitleWithBreaks
+                  title={country.area}
+                  className="typography-S24 leading-9! sm:typography-S34 uppercase "
+                />
+                <p className="typography-R18 leading-6">{country.country}</p>
+              </div>
             </div>
           )}
         />
@@ -481,9 +572,9 @@ export default function Page() {
                   title={requirement.title}
                   className="typography-S24 lg:typography-M24 self-end"
                 />
-                {/* <p className="typography-R18 leading-6">
+                <p className="typography-R18 leading-6">
                   {requirement.description}
-                </p> */}
+                </p>
               </div>
             )}
           />
@@ -491,7 +582,10 @@ export default function Page() {
       </div>
 
       <SectionWrapper sectionColor="bg-[#F7F7F8]">
-        <TourImages gradientProps={{ className: "from-[#F7F7F8]" }} />
+        <TourImages
+          gradientProps={{ className: "from-[#F7F7F8]" }}
+          title="WE’RE CREATING MEMORIES, WILL YOU BE PART OF THEM?"
+        />
       </SectionWrapper>
 
       <SectionWrapper className="min-h-screen container-md mb-[100px]">

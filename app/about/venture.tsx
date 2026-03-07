@@ -1,8 +1,4 @@
 import { SectionWrapper } from "../(home)/section-wrapper";
-import img1 from "@/assets/photos/a-v-1.png";
-import img2 from "@/assets/photos/a-v-2.png";
-import img3 from "@/assets/photos/a-v-3.png";
-import img4 from "@/assets/photos/a-v-4.png";
 import Image from "next/image";
 
 export function Venture() {
@@ -27,7 +23,9 @@ export function Venture() {
         <div className="sm:flex gap-x-4 space-y-4">
           <div className="relative w-70 h-90 overflow-hidden">
             <Image
-              src={img1}
+              src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_internship.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=eGT37Q4nwT1x5KWkw2bLxUUAbVE%3D&Expires=1772910176"
+              width={300}
+              height={300}
               alt="img1"
               className="w-full h-full hover:scale-110 transition-transform duration-300"
             />
@@ -39,8 +37,10 @@ export function Venture() {
 
           <div className="relative w-70 h-90 overflow-hidden">
             <Image
-              src={img2}
+              src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=oGWaV5rbDZhRtNcJRpUKMt%2B5oWQ%3D&Expires=1772910128"
               alt="img2"
+              width={300}
+              height={300}
               className="w-full h-full hover:scale-110 transition-transform duration-300"
             />
 
@@ -54,7 +54,9 @@ export function Venture() {
         <section className="sm:flex gap-x-4 space-y-4">
           <div className="relative hover:translate-x-[-100px] transition-transform duration-300 w-70 h-90 overflow-hidden">
             <Image
-              src={img3}
+              src={"https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_study.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=WIsI9V2ww14cRxJ%2FmBopAKXJYgE%3D&Expires=1772909930"}
+              width={300}
+              height={300}
               alt="img3"
               className="w-full h-full hover:scale-110 transition-transform duration-300"
             />
@@ -66,8 +68,10 @@ export function Venture() {
 
           <div className="relative w-70 h-90 overflow-hidden">
             <Image
-              src={img4}
+              src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_work-and-travel.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=KmR8kIt0p0kMu%2FG78L9RknHO8XE%3D&Expires=1772910220"
               alt="img4"
+              width={300}
+              height={300}
               className="w-full h-full hover:scale-110 transition-transform duration-300"
             />
 

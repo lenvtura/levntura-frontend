@@ -1,5 +1,4 @@
 import Image from "next/image";
-import hero from "@/assets/photos/about_hero.png";
 import { StartNowBtn } from "@/atoms/start-now-btn";
 
 export function WhereJourneysBegin() {
@@ -7,11 +6,11 @@ export function WhereJourneysBegin() {
     <section className="relative overflow-hidden min-h-screen flex flex-col justify-center bg-lev-yellow">
       <div className="bg-lev-yellow-light lg:block hidden absolute inset-y-0 right-0 w-[37%]" />
       <Image
-        src={hero}
+        src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_journeys.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=Qt6gBMBck2zU8A4kbfs0%2FTXIsJI%3D&Expires=1772910367"
         alt="about"
-        // height={500}
-        // width={700}
-        className="lg:absolute right-0 top-0 md:max-w-1/2 max-h-[60vh] mb-12 lg:mb-0"
+        height={500}
+        width={700}
+        className="lg:absolute object-cover right-0 top-0 md:max-w-1/2 max-h-[55vh] mb-12 lg:mb-0"
       />
       <div className="container-md pb-12 lg:pb-0 space-y-12">
         <div className="flex flex-col gap-y-4 self-end">

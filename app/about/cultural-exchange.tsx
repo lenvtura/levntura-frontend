@@ -57,7 +57,7 @@ export default function CulturalExchange() {
       </article>
       <article className="flex flex-col md:flex-row-reverse container-md">
         <div className="shrink-0">
-          <Image src={img1} alt="img1" />
+          <Image width={500} height={500}  src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_culture-exchange.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=eLnt1e1LVobhHj8x1A5Se%2B%2B3K8M%3D&Expires=1772910576" alt="img1" />
         </div>
         <div className="space-y-8">
           <p className="w-2/3 text-lev-red-dark typography-R14 leading-relaxed">
