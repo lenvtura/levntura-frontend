@@ -683,4 +683,249 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
       },
     ],
   },
+  internship: {
+    hero: {
+      tag: "",
+      title: "INTERNSHIP & TRAINEE PROGRAM",
+      subtitle: "FOR UNIVERSITY STUDENTS & RECENT GRADUATES:",
+      note: "Program available only in the usa",
+      image:
+        "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-hero.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=XBLD%2FBXx4JjcDyUNU4OFDU%2BuceQ%3D&Expires=1772923526",
+    },
+    photo2,
+    photo3,
+    intro: {
+      eyebrow:
+        "Start Your Professional Journey with Levntura’s Internship & Trainee Program",
+      body: "Calling all ambitious university students and recent graduates eager to take their careers global! If you’re seeking a unique blend of professional experience, cultural exchange, personal growth, and real-world learning, Levntura’s Internship & Trainee Program in the USA is your next step toward success. Join a program officially regulated by the U.S. Department of State, designed to shape your future through hands-on experience in American companies.",
+    },
+    whatIs: {
+      title: (
+        <>
+          What is the <br /> Internship & Trainee <br /> Program?{" "}
+        </>
+      ),
+      body: (
+        <>
+          The Internship & Trainee Program gives university students and recent
+          graduates the opportunity to gain{" "}
+          <strong> hands-on professional experience</strong> in the United
+          States. <br />
+          It promotes <strong>
+            cultural exchange, career development,
+          </strong>{" "}
+          and <strong>global networking,</strong> allowing participants to train
+          in real U.S. companies while exploring American culture and lifestyle.
+        </>
+      ),
+    },
+    pictureYourself: {
+      eyebrow: "Why You Should Participate",
+      body: "collaborating with professionals from around the world, gaining real-world experience, and building your future with confidence, all while exploring life in the U.S. The Internship & Trainee Program isn’t just professional training; it’s an inspiring journey of growth where every day brings new skills, global friendships, and unforgettable moments of cultural exchange.",
+      circleHeading: "unforgettable journey",
+      circleBody:
+        "Join the Internship & Trainee Program and make this experience the highlight of your career journey.",
+    },
+    whyParticipate: {
+      body: "Immerse yourself in a unique blend of professional growth, cultural exchange, and unforgettable experiences.",
+      benefits: [
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-paid_training.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T103622Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=0f2f97362ffceddebb9a0409c64e33c3fa284271d18328071c30f2231782eb0e",
+          title: "Paid Training",
+          description: "",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-professional_training.JPG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T103852Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=db61d59ae782e8bcd248c6d6eb2a08c78b582c5aa69bd5642e09cf9479820677",
+          title: "Professional Training",
+          description: "",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-language.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T104125Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ea0b9c64ea5e74ecc5e248c0f9190855aa32323b5f5e91aea150d674aaa0ca88",
+          title: "Language Advancement",
+          description: "",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-program_work-and-travel.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=Qma16OAk4Fej%2FGr3oy%2FlIOwaCZo%3D&Expires=1772908770",
+          title: "Strengthen Your Passport",
+          description: "",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_study-abroad.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=n%2B%2BfEOfiVclzU2pbcKp6fRJDyaU%3D&Expires=1772913382",
+          title: "Cultural Exchange",
+          description: "",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/left-work-and-travel.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=795vCoAK69qzHeeXffmNFSR9C34%3D&Expires=1772906444",
+          title: "Resume Power",
+          description: "",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-personal_development.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T103756Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=616151db80e0848009ef0bb17d403e8a495d89e9a6da94f9e9eb09e68d14393f",
+          title: "Personal Development",
+          description: "",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-explore_usa.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T104038Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=62a8de2c97fc7b5858519de5935a467f8b8142820c921bd0d9005d5033d234bb",
+          title: "Explore the United States",
+          description: "",
+        },
+      ],
+    },
+    jobs: {
+      body: "The Internship & Trainee Program offers a wide range of professional opportunities across multiple industries in the United States. Whether you’re pursuing hands-on training or advanced career experience, choose a field that matches your studies and ambitions to make the most of your journey.",
+      items: [
+        {
+          title: "HOSPITALITY & TOURISM",
+          image:
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-cook.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=FF3kKcwsFYNSgGvJzauCQacstck%3D&Expires=1772919021",
+        },
+        {
+          title: "BUSINESS & MANAGEMENT",
+          image:
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-waiter.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=4RyISc%2Fej9T9BoYrddVG1WU5jY4%3D&Expires=1772920221",
+        },
+        {
+          title: "ENGINEERING & ARCHITECTURE",
+          image:
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-art_and_carfts.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=N0cZM8mlJQmXSH5CNw0II2P9pUI%3D&Expires=1772926841",
+        },
+        {
+          title: "INFORMATION & MEDIA",
+          image:
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-jobs-information_and_media.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T104629Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=53a39369f1402aff6e3e77c9ff28ffee21085c87e05d068a55d58ae3c14cbf45",
+        },
+        {
+          title: "EDUCATION & PUBLIC ADMINISTRATION",
+          image:
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-jobs-education_administration.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T104812Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c08b0820a534ca5e4faa8c9ad9b161acfd97c7354eddf96c5066c10e9dcb30fa",
+        },
+        {
+          title: "AGRICULTURE & ENVIRONMENTAL STUDIES",
+          image:
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-jobs-agriculture_studies.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105019Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=771572f7a0c06503e3edf50fb2ce6c2cdd88de5939cb5ba8846b6eeb77f4b84f",
+        },
+      ],
+    },
+    destinations: {
+      leadText:
+        "Discover where your professional journey begins. From world-class business hubs to culturally rich cities, each destination offers unique opportunities to learn, grow, and explore.",
+      items: [
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-ritz_carton.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105939Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c65fb9e01b8a83cbe110729cb26a96c24373f47eda5060ebec76d2fb195a378e",
+          area: "The Ritz carton",
+          country: "Lake Tahoe, California",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-spruce_restaurant.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T110027Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b00d0ad9f245522a28a418ce891c8f6d3c024287aba4159922fd78b46f166ad8",
+          area: "Spruce Restaurant",
+          country: "San Francisco, California",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-perry_lane.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105852Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d58299473545c726d5fa7a58c63ba52188a02b0a670b0d601d3c609dd3c05325",
+          area: "Perry Lane Hotel",
+          country: "Savannah, Georgia",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-stanly_ra.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T110107Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b440eb9b15215fd4267576c105ab38708a455909a007a2c3cf29fd11ddbcc8f4",
+          area: "Stanly Ranch",
+          country: "Napa, California",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-mourad.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105811Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f0a7717214cab85ba8a14c26df494c6b0c2c2ebaa47340bf3cb6ba7eab0a3956",
+          area: "Mourad",
+          country: "San Francisco, California",
+        },
+        {
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-grand_pacific.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105710Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=cd16f865938e8142b02d08ca1f2a60a5f22659e5c118ce423fd0b18ab3722a92",
+          area: "Grand Pacific Carlsbad Hotel",
+          country: "Carlsbad, California",
+        },
+      ],
+    },
+    memories: {
+      title: "WE'RE CREATING MEMORIES, WILL YOU BE PART OF THEM?",
+    },
+    benefitsShowcase: {
+      title: (
+        <>
+          <span className="text-lev-blue-dark">AN </span>
+          <span className="text-lev-blue">AMAZING</span>
+          <br />
+          <span className="text-lev-blue">EXPERIENCE </span>
+          <span className="text-lev-blue-dark">AND</span>
+          <br />
+          <span className="text-lev-blue-dark">YET YOU WILL GET</span>
+        </>
+      ),
+      items: [
+        "Paid Internship (USD 2,000–3,000 / Month)",
+        'Work permit "DS-2019"',
+        "Sponsorship & Visa Assistance",
+        "U.S. Social Security number",
+        "Health insurance coverage",
+        "Housing Assistance",
+        "30-day travel time after program ends",
+      ],
+    },
+    requirements: [
+      {
+        svg: <PassportSvg />,
+        title: "Passport",
+        description: "Valid Passport",
+      },
+      {
+        svg: <CollegeSvg />,
+        title: "Education",
+        description: "Relevant Education",
+      },
+      {
+        svg: <LanguageSvg />,
+        title: "Language",
+        description: "English Language Proficiency",
+      },
+      {
+        svg: <AgeSvg />,
+        title: "Letter",
+        description: "Experience Letter (if applicable)",
+      },
+    ],
+    features: [
+      {
+        icon: <StarSvg />,
+        title: "5-Star\nRatings",
+        description:
+          "Recognized with top-notch reviews on Google Maps and Facebook, showcasing our commitment to client satisfaction.",
+      },
+      {
+        icon: <BagSvg />,
+        title: "Diverse Job\nOffers",
+        description:
+          "Explore a wide range of exciting job opportunities tailored to your preferences and professional goals.",
+      },
+      {
+        icon: <HandSvg />,
+        title: "Rich Cultural\nExperience",
+        description:
+          "Founded by individuals with active participation in cultural exchange programs, offering valuable insights and a seamless immersion process.",
+      },
+      {
+        icon: <PeopleSvg />,
+        title: "Effortless\nRegistration",
+        description:
+          "Simple and smooth steps to register with Levntura, ensuring a hassle-free onboarding experience.",
+      },
+      {
+        icon: <FaceSvg />,
+        title: "Comprehensive\nSupport",
+        description:
+          "From embassy assistance to job interviews, count on us for thorough guidance and support throughout your journey.",
+      },
+      {
+        icon: <CheckSvg />,
+        title: "Experience-\nCentric Approach",
+        description:
+          "We prioritize creating meaningful experiences, ensuring participants get the most out of their cultural exchange programs.",
+      },
+    ],
+  },
 };

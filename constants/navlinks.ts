@@ -25,12 +25,12 @@ export const Navlinks = [
   //   },
   //   path: Routes.gallery,
   // },
-  // {
-  //   label(label: string = "Programs") {
-  //     return label;
-  //   },
-  //   path: Routes.programs,
-  // },
+  {
+    label(label: string = "Programs") {
+      return label;
+    },
+    path: Routes.programs,
+  },
   // {
   //   label(label: string = "Careers") {
   //     return label;

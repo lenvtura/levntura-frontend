@@ -25,7 +25,7 @@ export const PROGRAMS_DATA: Program[] = [
     image:
       "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=N5ForCdnZ8PpzphAkYOnYf4BdBM%3D&Expires=1772913994",
     category: ["All", "Usa"],
-    href: "/programs/calendly/counselor",
+    href: "/programs/camp-counselor",
   },
   {
     id: "work-and-travel",
@@ -64,7 +64,7 @@ export const PROGRAMS_DATA: Program[] = [
     image:
       "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_internship.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=PLvGTGO5tcwLtBmVGLbMCW7n%2BvY%3D&Expires=1772913600",
     category: ["All", "Usa"],
-    href: "/programs/work-and-travel",
+    href: "/programs/internship",
   },
   {
     id: "volunteering",
