@@ -1,17 +1,10 @@
 import { StaticImageData } from "next/image";
-import studyImage from "@/assets/photos/study.png";
-import workImage from "@/assets/photos/work.png";
-import internshipImage from "@/assets/photos/internship.png";
-import counselorImage from "@/assets/photos/counselor.png";
-import studentsImage from "@/assets/photos/students.png";
-import australiaImage from "@/assets/photos/australia.png";
-import canadaImage from "@/assets/photos/canada.png";
-import londonImage from "@/assets/photos/london.png";
-import usaImage from "@/assets/photos/usa.png";
 import { j1AgenciesInKsa } from "./data/j1-agencies-in-ksa";
 import { scholarshipsForSaudiStudentsToStudyAbroad } from "./data/scholarships-for-saudi-students-to-study-abroad";
 import { studyAbroadAgenciesInKsa } from "./data/study-abroad-agencies-in-ksa";
 import { workAndTravel } from "./data/work-and-travel";
+import { scholarshipsInGermanyForSaudiStudents } from "./data/scholarships-in-germany-for-saudi-students";
+import { studentExchangeProgramsInKsa } from "./data/student-exchange-programs-in-ksa";
 
 export interface BlogSection {
   id: string;
@@ -55,4 +48,7 @@ export const BLOG_DETAIL_DATA: Record<string, BlogDetail> = {
   "scholarships-for-saudi-students-to-study-abroad":
     scholarshipsForSaudiStudentsToStudyAbroad,
   "work-and-travel-in-agency-ksa": workAndTravel,
+  "scholarships-in-germany-for-saudi-students":
+    scholarshipsInGermanyForSaudiStudents,
+  "student-exchange-programs-in-ksa": studentExchangeProgramsInKsa,
 };

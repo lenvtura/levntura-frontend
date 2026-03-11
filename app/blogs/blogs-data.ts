@@ -70,6 +70,32 @@ export const BLOGS_DATA: BlogPost[] = [
     categories: ["All", "Articles"],
     href: "/blogs/work-and-travel-in-agency-ksa",
   },
+  {
+    id: "scholarships-in-germany-for-saudi-students",
+    title: "SCHOLARSHIPS IN GERMANY FOR SAUDI STUDENTS | LEVNTURA",
+    category: "GETTING STARTED",
+    readTime: "10MIN READ",
+    description:
+      "Looking for scholarships in Germany for Saudi students? Discover scholarships, eligibility, and agency support for Saudi students in Germany.",
+    date: "FEB 24,2025",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/scholarships-in-germany-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=DQZuG9cZm4p0JL7RrLzFbYiK%2BXk%3D&Expires=1772340296",
+    categories: ["All", "Articles"],
+    href: "/blogs/scholarships-in-germany-for-saudi-students",
+  },
+  {
+    id: "student-exchange-programs-in-ksa",
+    title: "STUDENT EXCHANGE PROGRAMS IN KSA | LEVNTURA",
+    category: "GETTING STARTED",
+    readTime: "10MIN READ",
+    description:
+      "Looking for student exchange programs in KSA? Discover programs, eligibility, and agency support for Saudi students in KSA.",
+    date: "FEB 24,2025",
+    image:
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/student-exchange-programs-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=4DcJIPxXyC9f9yVzN1%2B%2FzJb7E8M%3D&Expires=1772340296",
+    categories: ["All", "Articles"],
+    href: "/blogs/student-exchange-programs-in-ksa",
+  },
 ];
 
 // Pagination helper
