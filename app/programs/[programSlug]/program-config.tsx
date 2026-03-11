@@ -13,7 +13,6 @@ import { LanguageSvg } from "@/app/programs/work-and-travel/language-svg";
 import { AgeSvg } from "@/app/programs/work-and-travel/age-svg";
 import { DiplomaSvg } from "@/app/programs/work-and-travel/diploma-svg";
 
-import programHeroPhoto from "@/app/programs/work-and-travel/program-hero.webp";
 import photo2 from "@/app/programs/work-and-travel/photo2.webp";
 import photo3 from "@/app/programs/work-and-travel/photo3.webp";
 import meetNewFriendsPhoto from "@/app/programs/work-and-travel/meet-new-friends-photo.svg";
@@ -109,7 +108,7 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
       subtitle: "BACHELOR & MASTER'S DEGREE STUDENTS",
       note: "Program only to USA.",
       image:
-        "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-hero.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=7Gd1rBOxsFBAsNFqpOMZewuKO7M%3D&Expires=1772926389",
+        "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-hero_Ul9fA9V.jpg",
     },
     photo2,
     photo3,
@@ -162,7 +161,7 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
             "Beyond the workplace, take advantage of your time in the USA to explore its rich landscapes, iconic landmarks, and vibrant cities. From coast to coast, this is your chance to discover the beauty of the United States.",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=m5p2rMs%2Be8xZONd2S5APOl7xLEM%3D&Expires=1772914451",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp_dRkOpqL.jpg",
           title: "Cultural Exchange",
           description:
             "Immerse yourself in the diverse tapestry of American culture. Engage with locals, understand their traditions, and share your own experiences. This exchange is a two-way street, offering you a deeper understanding of the world.",
@@ -180,7 +179,7 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
             "Gain hands-on work experience in the USA, adding an international flair to your resume. Whether you choose to work in hospitality, tourism, or a variety of other sectors, this program opens doors to new opportunities.",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_language-improvement.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=5qAJXqUUQwvzd3RrawgdYxweIfg%3D&Expires=1772914328",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_language-improvement_iEsA3rg.jpg",
           title: "Language Improvement",
           description:
             "Enhance your English language skills in real-life situations. Engage with locals, overcome language barriers, and return home with newfound confidence in your language abilities.",
@@ -193,67 +192,67 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
         {
           title: "LIFEGUARD",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-life_guard.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=xK8gTiBfqBu5B8iLTr%2FX6V0nt2g%3D&Expires=1772918119",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-life_guard_YtXoOkg.jpeg",
         },
         {
           title: "PHOTOGRAPHY",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-photography.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=av%2FHcCFta4jnlbiFtG5Pgfn2HRU%3D&Expires=1772918461",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-photography_DyGSsld.JPG",
         },
         {
           title: "RIDE OPERATOR",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-ride_operator.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=dloHT99%2FCPP2R0AJMh79n13D4e8%3D&Expires=1772918695",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-ride_operator_rgyjmjB.jpg",
         },
         {
           title: "HOUSE KEEPING",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-housekeeping.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=rePPESJk26VcG4ePfe3XeoKuxPI%3D&Expires=1772918740",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-housekeeping_zbxeFeJ.JPG",
         },
         {
           title: "WAITER",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-waiter.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=4RyISc%2Fej9T9BoYrddVG1WU5jY4%3D&Expires=1772920221",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-waiter_YCfRw4y.jpg",
         },
         {
           title: "CHEF",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-cook.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=FF3kKcwsFYNSgGvJzauCQacstck%3D&Expires=1772919021",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-cook_sAoQyNF.jpg",
         },
         {
           title: "FOOD RUNNER",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-food_runner.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=ZgrYtGeVF%2FdDHJ3%2BZSOwDDOTb%2Bc%3D&Expires=1772919062",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-food_runner_bYW0DTZ.JPG",
         },
         {
           title: "WATER PARK WORKER",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-water-worker.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=E1m4KU1mdgMDMJOFFIFuhT6TYPY%3D&Expires=1772919573",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-water-worker_O8y836C.JPG",
         },
         {
           title: "CASHIER",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-cashier.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=du4OQvz4p9ZfyaTSq7sXoZmxJKE%3D&Expires=1772919479",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-cashier_p0PnC4b.jpg",
         },
         {
           title: "RECEPTIONIST",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-receptionist.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=gAZWEn4TXDEqBA58jHb%2FLYtueN0%3D&Expires=1772919436",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-receptionist_QIgteOq.jpeg",
         },
         {
           title: "FOOD SERVICE",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-food_worker.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=WBQ3w4sJFXGPZmTsl02gVrVi9og%3D&Expires=1772919378",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-food_worker_JQcbMCU.jpg",
         },
         {
           title: "DISH WASHER",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-dishwasher.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=6AW74CJgNrEjl4kDhaGrNghu7Iw%3D&Expires=1772919274",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-dishwasher_CRD54CX.jpg",
         },
         {
           title: "BARISTA",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-barista.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=kGKN%2FBksBlUWXasFwgldiH0n6II%3D&Expires=1772919215",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-barista_EjX8hKw.jpg",
         },
       ],
     },
@@ -278,37 +277,37 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
           country: "Arizona",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_culture-exchange.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=MTJKuUkLiJmb3Dsp6%2B%2FMPZvTlTA%3D&Expires=1772915023",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_culture-exchange_vF9hqNc.jpeg",
           area: "Continental Pool",
           country: "Maryland",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_smugglers-notch_resort.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=U7Nit2TzJYfpvNUjRz7Z3MFu%2F4M%3D&Expires=1772915203",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_smugglers-notch_resort_iNwhxF4.jpg",
           area: "Smugglers Notch Resort- Vermont ",
           country: "Vermont ",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_food-lion.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=u%2BMTKHnzPtNLe9YbdlQp7wcw%2FmM%3D&Expires=1772915287",
+          src: "http://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_food-lion_UkqwzVL.jpg",
           area: "Food Lion",
           country: "Maryland",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_fun-city.webp?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=TeBf9mcbv3faWEkpLGKbC9EJxrg%3D&Expires=1772915367",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_fun-city_AQoTxNt.webp",
           area: "Fun City",
           country: "Colorado",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_aramark-kauffman-stadium.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=%2BNlg3NysF8XlZw49WSMudCO%2FSxY%3D&Expires=1772915470",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_aramark-kauffman-stadium_N5OiFuF.jpg",
           area: "Aramark-Kauffman Stadium",
           country: "Missouri",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_kalahari-resort.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=lgZzV%2FqZo53dJHHbBaHOmr19i9U%3D&Expires=1772915578",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_kalahari-resort_0zxFCfG.jpg",
           area: "Kalahari Resort",
           country: "Ohio",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-next_destination-point_sebago.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=lArjK1fJyNiaUghsgnxv8d%2Fbiuw%3D&Expires=1772915680",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-next_destination-point_sebago_xr9kC0v.jpg",
           area: "Point Sebago",
           country: "Main ",
         },
@@ -412,7 +411,7 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
       subtitle: "BACHELOR & MASTER’S DEGREE STUDENTS OR GRADUATES",
       note: "Program only to USA.",
       image:
-        "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-hero.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=XBLD%2FBXx4JjcDyUNU4OFDU%2BuceQ%3D&Expires=1772923526",
+        "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-hero_cnNHDpN.jpg",
     },
     photo2,
     photo3,
@@ -463,7 +462,7 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
             "Beyond the workplace, take advantage of your time in the USA to explore its rich landscapes, iconic landmarks, and vibrant cities. From coast to coast, this is your chance to discover the beauty of the United States.",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=m5p2rMs%2Be8xZONd2S5APOl7xLEM%3D&Expires=1772914451",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp_dRkOpqL.jpg",
           title: "Cultural Exchange",
           description:
             "Immerse yourself in the diverse tapestry of American culture. Engage with locals, understand their traditions, and share your own experiences. This exchange is a two-way street, offering you a deeper understanding of the world.",
@@ -481,7 +480,7 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
             "Gain hands-on work experience in the USA, adding an international flair to your resume. Whether you choose to work in hospitality, tourism, or a variety of other sectors, this program opens doors to new opportunities.",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_language-improvement.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=5qAJXqUUQwvzd3RrawgdYxweIfg%3D&Expires=1772914328",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_language-improvement_iEsA3rg.jpg",
           title: "Language Improvement",
           description:
             "Enhance your English language skills in real-life situations. Engage with locals, overcome language barriers, and return home with newfound confidence in your language abilities.",
@@ -494,42 +493,42 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
         {
           title: "LIFEGUARD",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-lifeguard.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=mLac3CMx7d7JgoykdSUmNoHEHjA%3D&Expires=1772925601",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-lifeguard_z2MWzHi.jpg",
         },
         {
           title: "PHOTOGRAPHY",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-photography.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=ExwTu%2F%2BPoZuNd4avo7v2CJjB%2BB4%3D&Expires=1772925674",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-photography_37o6vfj.jpg",
         },
         {
           title: "Horse Counselor",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=KAmN5XjwsknO%2Bo3iyBw3sX7FIRs%3D&Expires=1772926701",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp_dRkOpqL.jpg",
         },
         {
           title: "Activity Counselor",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-activity.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=GjAidnDyspTyemZ6PRlCEH5vZlA%3D&Expires=1772926056",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-activity_EqM1nXd.jpg",
         },
         {
           title: "Cabin Counselor",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-cabin.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=5na%2Br9lrmbu5jxpLhhQjRYu4HW0%3D&Expires=1772925749",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-cabin_u9tjvCT.jpg",
         },
         {
           title: "Waterfront Counselor",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-waterfront.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=V7lC8fHnRci1eHknF5jRGHfZrfM%3D&Expires=1772925977",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-waterfront_KaBDbki.jpg",
         },
         {
           title: "Arts and Crafts Counselor",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-art_and_carfts.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=N0cZM8mlJQmXSH5CNw0II2P9pUI%3D&Expires=1772926841",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-art_and_carfts_9NjfP5B.jpg",
         },
         {
           title: "Sports Counselor",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-sports.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=aIOH1XHx3PGlBxxbHVjK7pdYKwU%3D&Expires=1772925833",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-sports_Piz40rf.jpg",
         },
       ],
     },
@@ -554,37 +553,37 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
           country: "Arizona",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_culture-exchange.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=MTJKuUkLiJmb3Dsp6%2B%2FMPZvTlTA%3D&Expires=1772915023",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_culture-exchange_vF9hqNc.jpeg",
           area: "Continental Pool",
           country: "Maryland",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_smugglers-notch_resort.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=U7Nit2TzJYfpvNUjRz7Z3MFu%2F4M%3D&Expires=1772915203",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_smugglers-notch_resort_iNwhxF4.jpg",
           area: "Smugglers Notch Resort- Vermont ",
           country: "Vermont ",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_food-lion.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=u%2BMTKHnzPtNLe9YbdlQp7wcw%2FmM%3D&Expires=1772915287",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_food-lion_UkqwzVL.jpg",
           area: "Food Lion",
           country: "Maryland",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_fun-city.webp?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=TeBf9mcbv3faWEkpLGKbC9EJxrg%3D&Expires=1772915367",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_fun-city_AQoTxNt.webp",
           area: "Fun City",
           country: "Colorado",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_aramark-kauffman-stadium.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=%2BNlg3NysF8XlZw49WSMudCO%2FSxY%3D&Expires=1772915470",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_aramark-kauffman-stadium_N5OiFuF.jpg",
           area: "Aramark-Kauffman Stadium",
           country: "Missouri",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_kalahari-resort.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=lgZzV%2FqZo53dJHHbBaHOmr19i9U%3D&Expires=1772915578",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel_next-destination_kalahari-resort_0zxFCfG.jpg",
           area: "Kalahari Resort",
           country: "Ohio",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-next_destination-point_sebago.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=lArjK1fJyNiaUghsgnxv8d%2Fbiuw%3D&Expires=1772915680",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-next_destination-point_sebago_xr9kC0v.jpg",
           area: "Point Sebago",
           country: "Main ",
         },
@@ -690,7 +689,7 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
       subtitle: "FOR UNIVERSITY STUDENTS & RECENT GRADUATES:",
       note: "Program available only in the usa",
       image:
-        "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-hero.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=XBLD%2FBXx4JjcDyUNU4OFDU%2BuceQ%3D&Expires=1772923526",
+        "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-hero_cnNHDpN.jpg",
     },
     photo2,
     photo3,
@@ -730,42 +729,42 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
       body: "Immerse yourself in a unique blend of professional growth, cultural exchange, and unforgettable experiences.",
       benefits: [
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-paid_training.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T103622Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=0f2f97362ffceddebb9a0409c64e33c3fa284271d18328071c30f2231782eb0e",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-paid_training_mhopSxM.jpg",
           title: "Paid Training",
           description: "",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-professional_training.JPG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T103852Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=db61d59ae782e8bcd248c6d6eb2a08c78b582c5aa69bd5642e09cf9479820677",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-professional_training_SqmqHW9.JPG",
           title: "Professional Training",
           description: "",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-language.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T104125Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ea0b9c64ea5e74ecc5e248c0f9190855aa32323b5f5e91aea150d674aaa0ca88",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-language_tOTfZ04.jpg",
           title: "Language Advancement",
           description: "",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-program_work-and-travel.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=Qma16OAk4Fej%2FGr3oy%2FlIOwaCZo%3D&Expires=1772908770",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-program_work-and-travel_24LYy63.jpg",
           title: "Strengthen Your Passport",
           description: "",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_study-abroad.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=n%2B%2BfEOfiVclzU2pbcKp6fRJDyaU%3D&Expires=1772913382",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_study-abroad_fEhPXO1.JPG",
           title: "Cultural Exchange",
           description: "",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/left-work-and-travel.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=795vCoAK69qzHeeXffmNFSR9C34%3D&Expires=1772906444",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/left-work-and-travel_Prn1fcB.jpg",
           title: "Resume Power",
           description: "",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-personal_development.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T103756Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=616151db80e0848009ef0bb17d403e8a495d89e9a6da94f9e9eb09e68d14393f",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-personal_development_Fc3gKRH.jpg",
           title: "Personal Development",
           description: "",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-explore_usa.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T104038Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=62a8de2c97fc7b5858519de5935a467f8b8142820c921bd0d9005d5033d234bb",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-explore_usa_QLE3RKu.jpg",
           title: "Explore the United States",
           description: "",
         },
@@ -777,32 +776,32 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
         {
           title: "HOSPITALITY & TOURISM",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-cook.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=FF3kKcwsFYNSgGvJzauCQacstck%3D&Expires=1772919021",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-cook_sAoQyNF.jpg",
         },
         {
           title: "BUSINESS & MANAGEMENT",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-waiter.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=4RyISc%2Fej9T9BoYrddVG1WU5jY4%3D&Expires=1772920221",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work_and_travel-waiter_YCfRw4y.jpg",
         },
         {
           title: "ENGINEERING & ARCHITECTURE",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-art_and_carfts.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=N0cZM8mlJQmXSH5CNw0II2P9pUI%3D&Expires=1772926841",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/camp_counselor-art_and_carfts_9NjfP5B.jpg",
         },
         {
           title: "INFORMATION & MEDIA",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-jobs-information_and_media.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T104629Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=53a39369f1402aff6e3e77c9ff28ffee21085c87e05d068a55d58ae3c14cbf45",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-jobs-information_and_media_YLWqAKa.jpg",
         },
         {
           title: "EDUCATION & PUBLIC ADMINISTRATION",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-jobs-education_administration.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T104812Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c08b0820a534ca5e4faa8c9ad9b161acfd97c7354eddf96c5066c10e9dcb30fa",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-jobs-education_administration_CY66omg.jpg",
         },
         {
           title: "AGRICULTURE & ENVIRONMENTAL STUDIES",
           image:
-            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-jobs-agriculture_studies.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105019Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=771572f7a0c06503e3edf50fb2ce6c2cdd88de5939cb5ba8846b6eeb77f4b84f",
+            "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-jobs-agriculture_studies_XKoMVTN.jpg",
         },
       ],
     },
@@ -811,32 +810,32 @@ export const PROGRAM_CONFIG: Record<string, ProgramPageConfig> = {
         "Discover where your professional journey begins. From world-class business hubs to culturally rich cities, each destination offers unique opportunities to learn, grow, and explore.",
       items: [
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-ritz_carton.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105939Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c65fb9e01b8a83cbe110729cb26a96c24373f47eda5060ebec76d2fb195a378e",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-ritz_carton_p1s2aa6.webp",
           area: "The Ritz carton",
           country: "Lake Tahoe, California",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-spruce_restaurant.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T110027Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b00d0ad9f245522a28a418ce891c8f6d3c024287aba4159922fd78b46f166ad8",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-spruce_restaurant_7n2W30r.webp",
           area: "Spruce Restaurant",
           country: "San Francisco, California",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-perry_lane.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105852Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d58299473545c726d5fa7a58c63ba52188a02b0a670b0d601d3c609dd3c05325",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-perry_lane_XTH6zkj.jpg",
           area: "Perry Lane Hotel",
           country: "Savannah, Georgia",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-stanly_ra.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T110107Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b440eb9b15215fd4267576c105ab38708a455909a007a2c3cf29fd11ddbcc8f4",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-stanly_ra_w5DMjzz.jpg",
           area: "Stanly Ranch",
           country: "Napa, California",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-mourad.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105811Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f0a7717214cab85ba8a14c26df494c6b0c2c2ebaa47340bf3cb6ba7eab0a3956",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-mourad_iTw5Z7c.webp",
           area: "Mourad",
           country: "San Francisco, California",
         },
         {
-          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-grand_pacific.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DO00JHP28VRPKZVHGEGN%2F20260308%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260308T105710Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=cd16f865938e8142b02d08ca1f2a60a5f22659e5c118ce423fd0b18ab3722a92",
+          src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/internship-destination-grand_pacific_IXlli5L.jpg",
           area: "Grand Pacific Carlsbad Hotel",
           country: "Carlsbad, California",
         },

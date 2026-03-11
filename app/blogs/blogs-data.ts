@@ -26,7 +26,7 @@ export const BLOGS_DATA: BlogPost[] = [
       "Looking for trusted study abroad agencies in KSA? Levntura guides Saudi students through universities, internships, visas, and global programs.",
     date: "FEB 24,2025",
     image:
-      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/study-abroad-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=%2Bzt9%2BctdgxuV%2BXbrpe%2BEIx3q%2FzA%3D&Expires=1772340296",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/blogs-study_abroad.webp",
     categories: ["All", "Articles"],
     href: "/blogs/study-abroad-agencies-in-ksa",
     featured: true,
@@ -78,7 +78,7 @@ export const BLOGS_PER_PAGE = 6;
 export function getPaginatedBlogs(
   blogs: BlogPost[],
   page: number,
-  perPage: number = BLOGS_PER_PAGE,
+  perPage: number = BLOGS_PER_PAGE
 ) {
   const startIndex = (page - 1) * perPage;
   const endIndex = startIndex + perPage;
@@ -87,7 +87,7 @@ export function getPaginatedBlogs(
 
 export function getTotalPages(
   totalBlogs: number,
-  perPage: number = BLOGS_PER_PAGE,
+  perPage: number = BLOGS_PER_PAGE
 ) {
   return Math.ceil(totalBlogs / perPage);
 }

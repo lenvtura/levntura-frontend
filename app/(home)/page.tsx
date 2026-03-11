@@ -40,7 +40,7 @@ export default function Home() {
       >
         <Image
           alt=""
-          src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home-hero.jpg"
+          src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home-hero_yxhrSNq.jpg"
           fill
           className="object-cover w-full h-full object-center"
         />

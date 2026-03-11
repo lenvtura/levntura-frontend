@@ -11,13 +11,13 @@ import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 const Cards = [
   {
     label: "Work & Travel",
-    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/left-work-and-travel.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=795vCoAK69qzHeeXffmNFSR9C34%3D&Expires=1772906444",
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/left-work-and-travel_Prn1fcB.jpg",
     bgColor: "bg-lev-blue-light",
     textColor: "text-lev-blue-light",
   },
   {
     label: "Camp Counselor",
-    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/right-camp-counselor.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=oRg4Prm5d7vLib7KvgWMWEK8OvQ%3D&Expires=1772906444",
+    src: "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/right-camp-counselor_q6tqoVf.jpg",
     bgColor: "bg-lev-orange",
     textColor: "text-lev-orange",
   },

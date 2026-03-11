@@ -23,7 +23,7 @@ export function Venture() {
         <div className="sm:flex gap-x-4 space-y-4">
           <div className="relative w-70 h-90 overflow-hidden">
             <Image
-              src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_internship.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=eGT37Q4nwT1x5KWkw2bLxUUAbVE%3D&Expires=1772910176"
+              src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_internship_YNUWzjn.jpg"
               width={300}
               height={300}
               alt="img1"
@@ -37,7 +37,7 @@ export function Venture() {
 
           <div className="relative w-70 h-90 overflow-hidden">
             <Image
-              src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=oGWaV5rbDZhRtNcJRpUKMt%2B5oWQ%3D&Expires=1772910128"
+              src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_camp_dRkOpqL.jpg"
               alt="img2"
               width={300}
               height={300}
@@ -54,7 +54,9 @@ export function Venture() {
         <section className="sm:flex gap-x-4 space-y-4">
           <div className="relative hover:translate-x-[-100px] transition-transform duration-300 w-70 h-90 overflow-hidden">
             <Image
-              src={"https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_study.jpeg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=WIsI9V2ww14cRxJ%2FmBopAKXJYgE%3D&Expires=1772909930"}
+              src={
+                "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_study_FJIrlWL.jpeg"
+              }
               width={300}
               height={300}
               alt="img3"
@@ -68,7 +70,7 @@ export function Venture() {
 
           <div className="relative w-70 h-90 overflow-hidden">
             <Image
-              src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_work-and-travel.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=KmR8kIt0p0kMu%2FG78L9RknHO8XE%3D&Expires=1772910220"
+              src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_work-and-travel_3iAmDpM.jpg"
               alt="img4"
               width={300}
               height={300}

@@ -1,5 +1,4 @@
 import { StaticImageData } from "next/image";
-import counselorImage from "@/assets/photos/counselor.png";
 
 export interface Program {
   id: string;
@@ -23,7 +22,7 @@ export const PROGRAMS_DATA: Program[] = [
     description:
       "Compassionate counselor skilled in supporting individuals through life's challenges. I create a safe, non-judgmental space for clients to explore and grow.",
     image:
-      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_camp.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=N5ForCdnZ8PpzphAkYOnYf4BdBM%3D&Expires=1772913994",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_camp_kBDwgKc.jpg",
     category: ["All", "Usa"],
     href: "/programs/camp-counselor",
   },
@@ -36,7 +35,7 @@ export const PROGRAMS_DATA: Program[] = [
     description:
       "Compassionate counselor skilled in supporting individuals through life's challenges. I create a safe, non-judgmental space for clients to explore and grow.",
     image:
-      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_work-and-travel.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=FUWbXzDw%2BTSkFc63OTeSjIlNtHA%3D&Expires=1772913786",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_work-and-travel_oCbFfGz.JPG",
     category: ["All", "Usa"],
     href: "/programs/work-and-travel",
   },
@@ -49,7 +48,7 @@ export const PROGRAMS_DATA: Program[] = [
     description:
       "Compassionate counselor skilled in supporting individuals through life's challenges. I create a safe, non-judgmental space for clients to explore and grow.",
     image:
-      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_study-abroad.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=n%2B%2BfEOfiVclzU2pbcKp6fRJDyaU%3D&Expires=1772913382",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_study-abroad_fEhPXO1.JPG",
     category: ["All", "Usa"],
     href: "/programs/calendly/counselor",
   },
@@ -62,7 +61,7 @@ export const PROGRAMS_DATA: Program[] = [
     description:
       "Experience the American dream while working and traveling. Gain professional experience, improve your English skills, and explore the United States.",
     image:
-      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_internship.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=PLvGTGO5tcwLtBmVGLbMCW7n%2BvY%3D&Expires=1772913600",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/programs_internship_k9ifDtY.jpg",
     category: ["All", "Usa"],
     href: "/programs/internship",
   },
@@ -75,7 +74,7 @@ export const PROGRAMS_DATA: Program[] = [
     description:
       "Combine academic excellence with cultural immersion. Study at prestigious institutions while experiencing American culture and lifestyle.",
     image:
-      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_volunteering.jpg?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=NA7a%2F60EtOkTHY0q3WQyg5Ylcw0%3D&Expires=1772913256",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_volunteering_V6OdEt3.jpg",
     category: ["All", "Usa"],
     href: "/programs/calendly/study-travel",
   },

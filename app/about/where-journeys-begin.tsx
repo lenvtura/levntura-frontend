@@ -6,7 +6,7 @@ export function WhereJourneysBegin() {
     <section className="relative overflow-hidden min-h-screen flex flex-col justify-center bg-lev-yellow">
       <div className="bg-lev-yellow-light lg:block hidden absolute inset-y-0 right-0 w-[37%]" />
       <Image
-        src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_journeys.JPG?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=Qt6gBMBck2zU8A4kbfs0%2FTXIsJI%3D&Expires=1772910367"
+        src="https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/about-us_journeys_dGm3u0H.JPG"
         alt="about"
         height={500}
         width={700}

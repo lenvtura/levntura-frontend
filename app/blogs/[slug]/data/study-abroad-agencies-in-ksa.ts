@@ -3,7 +3,7 @@ import type { BlogDetail } from "../blog-detail-data";
 export const studyAbroadAgenciesInKsa: BlogDetail = {
   slug: "study-abroad-agencies-in-ksa",
   heroImage:
-    "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/study-abroad-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=%2Bzt9%2BctdgxuV%2BXbrpe%2BEIx3q%2FzA%3D&Expires=1772340296",
+    "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/blogs-study_abroad.webp",
   heroImageAlt: "Study Abroad Agencies in KSA | Global Education with Levntura",
   breadcrumbs: [
     "Home",
