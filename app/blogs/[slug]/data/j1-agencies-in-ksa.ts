@@ -3,7 +3,7 @@ import type { BlogDetail } from "../blog-detail-data";
 export const j1AgenciesInKsa: BlogDetail = {
   slug: "j1-agencies-in-ksa",
   heroImage:
-    "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/j1-agencies-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=MIRt0onwxubqgCH8I82rXdr%2Bf%2B4%3D&Expires=1772340296",
+    "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/blogs-j1_agencies.webp",
   heroImageAlt: "j1 agencies in ksa | j1 visa programs for saudi students",
   breadcrumbs: [
     "Home",

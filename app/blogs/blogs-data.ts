@@ -40,7 +40,7 @@ export const BLOGS_DATA: BlogPost[] = [
       "Looking for trusted j1 agencies in KSA? Discover J1 visa programs, eligibility, and agency support for Saudi students in the USA.",
     date: "FEB 24,2025",
     image:
-      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/j1-agencies-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=MIRt0onwxubqgCH8I82rXdr%2Bf%2B4%3D&Expires=1772340296",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/blogs-j1_agencies.webp",
     categories: ["All", "Articles"],
     href: "/blogs/j1-agencies-in-ksa",
   },
@@ -53,7 +53,7 @@ export const BLOGS_DATA: BlogPost[] = [
       "Discover scholarships for Saudi students to study abroad. Levntura helps students explore funded programs, universities, and application guidance worldwide.",
     date: "FEB 24,2025",
     image:
-      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/scholarships-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=JSDrF1Z6WBnyVBwxfy6%2FFFQTENc%3D&Expires=1772340296",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/blogs-scholarships.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=JSDrF1Z6WBnyVBwxfy6%2FFFQTENc%3D&Expires=1772340296",
     categories: ["All", "Articles"],
     href: "/blogs/scholarships-for-saudi-students-to-study-abroad",
   },
@@ -66,7 +66,7 @@ export const BLOGS_DATA: BlogPost[] = [
       "Looking for Work and Travel in Agency KSA? Discover programs, top destinations, and agency support for Saudi students abroad.",
     date: "FEB 24,2025",
     image:
-      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=SsPggLGf97lKt1AlONo%2BbXncDMw%3D&Expires=1772340296",
+      "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/blogs-work_and_travel.webp",
     categories: ["All", "Articles"],
     href: "/blogs/work-and-travel-in-agency-ksa",
   },

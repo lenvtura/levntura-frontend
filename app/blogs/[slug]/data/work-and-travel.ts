@@ -3,7 +3,7 @@ import { BlogDetail } from "../blog-detail-data";
 export const workAndTravel: BlogDetail = {
   slug: "work-and-travel-in-agency-ksa",
   heroImage:
-    "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/work-and-travel-blog-photo.png?AWSAccessKeyId=DO00JHP28VRPKZVHGEGN&Signature=SsPggLGf97lKt1AlONo%2BbXncDMw%3D&Expires=1772340296",
+    "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/blogs-work_and_travel.webp",
   heroImageAlt:
     "Work and Travel in Agency KSA | Global Programs for Saudi Students",
   breadcrumbs: [
