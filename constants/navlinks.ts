@@ -19,12 +19,12 @@ export const Navlinks = [
     },
     path: Routes.about,
   },
-  // {
-  //   label(label: string = "Gallery") {
-  //     return label;
-  //   },
-  //   path: Routes.gallery,
-  // },
+  {
+    label(label: string = "Gallery") {
+      return label;
+    },
+    path: Routes.gallery,
+  },
   {
     label(label: string = "Programs") {
       return label;

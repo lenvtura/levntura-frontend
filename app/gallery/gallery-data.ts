@@ -1,36 +1,33 @@
-import { StaticImageData } from "next/image";
-import studentsImage from "@/assets/photos/students.png";
-import workingTogetherImage from "@/assets/photos/working-together.png";
-import happyFriendshipImage from "@/assets/photos/happy-friendship.png";
-import counselorImage from "@/assets/photos/counselor.png";
-import studyImage from "@/assets/photos/study.png";
-import workImage from "@/assets/photos/work.png";
-import internshipImage from "@/assets/photos/internship.png";
-import australiaImage from "@/assets/photos/australia.png";
-import canadaImage from "@/assets/photos/canada.png";
-import londonImage from "@/assets/photos/london.png";
-import usaImage from "@/assets/photos/usa.png";
-import studentAtCollegeImage from "@/assets/photos/student-at-college.png";
-import manStudyImage from "@/assets/photos/man-study.png";
-import womanStudyImage from "@/assets/photos/woman-study.png";
+export const GALLERY_IMAGES: string[] = [
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-1.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-2.JPG",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-3.JPG",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-4.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-5.jpeg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-6.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-7.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-8.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-9.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-10.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-11.jpeg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-21.JPG",
 
-// First grid: 8 photos (3x3 with bottom-right empty)
-export const GALLERY_GRID_1: (StaticImageData | string)[] = [
-  workingTogetherImage,
-  studentsImage,
-  happyFriendshipImage,
-  counselorImage,
-  studyImage,
-  workImage,
-  internshipImage,
-  studentAtCollegeImage,
-  internshipImage,
-  australiaImage,
-  canadaImage,
-  womanStudyImage,
-  usaImage,
-  manStudyImage,
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-13.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-14.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-15.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-16.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-17.JPG",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-18.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-19.JPG",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-20.JPG",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-12.jpeg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-22.JPG",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-23.JPG",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-24.JPG",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-25.JPG",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-26.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-27.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-28.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-29.jpg",
+  "https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/gallary-30.jpg",
 ];
-
-
-

@@ -1,7 +1,4 @@
 import { StaticImageData } from "next/image";
-import studyImage from "@/assets/photos/study.png";
-import workImage from "@/assets/photos/work.png";
-import internshipImage from "@/assets/photos/internship.png";
 
 export interface BlogPost {
   id: string;
