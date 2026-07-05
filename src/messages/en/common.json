@@ -1,0 +1,22 @@
+{
+  "breadcrumbs": {
+    "home": "Home",
+    "blogs": "Blogs",
+    "programs": "Programs"
+  },
+
+  "search": "Search",
+  "searchPlaceholder": "Search",
+  "all": "All",
+
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next"
+  },
+
+  "inspireOthers": {
+    "heading": "LET YOUR JOURNEY INSPIRE OTHERS",
+    "body": "Your experience has the power to motivate future explorers. Share your feedback or story with the Levntura team—together, we celebrate every journey that shapes tomorrow's leaders.",
+    "contactOurTeam": "Contact our team"
+  }
+}
