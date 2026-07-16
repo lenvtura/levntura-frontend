@@ -13,5 +13,7 @@
   "filters": {
     "allCountries": "كل الدول",
     "countryLabel": "الدولة"
-  }
+  },
+  "share": "شارك هذا البرنامج",
+  "emptyState": "لا توجد برامج مطابقة لبحثك."
 }

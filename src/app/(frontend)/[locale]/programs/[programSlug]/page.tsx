@@ -6,6 +6,7 @@ import { SocialShareIcons } from "@/atoms/social-share-icons";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 import { BlockRenderer } from "@/components/blocks/block-renderer";
 import { resolveLocale, resolvePreview } from "@/lib/server-request";
+import { getTranslations } from "next-intl/server";
 import type { CmsForm, Locale, Program, ProgramType } from "@/lib/types";
 
 import { ProgramDetail } from "./program-detail";
@@ -108,6 +109,8 @@ export default async function Page({
 
   if (!program) notFound();
 
+  const t = await getTranslations("programs");
+
   const canonical =
     program.meta?.canonicalURL ||
     localeCanonical(SITE_URL, locale, `/programs/${programSlug}`);
@@ -153,7 +156,7 @@ export default async function Page({
 
       <FadeUpAnimator transition={{ delay: 0.4 }}>
         <div className="container-md mt-12 flex flex-col items-center justify-center pb-24">
-          <p className="typography-M18 text-lev-gray mb-4">Share this program</p>
+          <p className="typography-M18 text-lev-gray mb-4">{t("share")}</p>
           <SocialShareIcons size="lg" />
         </div>
       </FadeUpAnimator>

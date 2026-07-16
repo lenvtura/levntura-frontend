@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import type { BlogPost, Locale } from "@/lib/types";
 import { mediaUrl, mediaAlt } from "@/lib/url";
@@ -17,7 +17,6 @@ export function RelatedPosts({ posts, locale, heading }: RelatedPostsProps) {
 
   if (populated.length === 0) return null;
 
-  const pathPrefix = locale === "ar" ? "/ar" : "";
   const title = heading ?? (locale === "ar" ? "اقرأ المزيد" : "More to read");
 
   return (
@@ -29,7 +28,7 @@ export function RelatedPosts({ posts, locale, heading }: RelatedPostsProps) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {populated.slice(0, 3).map((post) => (
-            <RelatedPostCard key={post.id} post={post} pathPrefix={pathPrefix} />
+            <RelatedPostCard key={post.id} post={post} />
           ))}
         </div>
       </div>
@@ -37,18 +36,12 @@ export function RelatedPosts({ posts, locale, heading }: RelatedPostsProps) {
   );
 }
 
-function RelatedPostCard({
-  post,
-  pathPrefix,
-}: {
-  post: BlogPost;
-  pathPrefix: string;
-}) {
+function RelatedPostCard({ post }: { post: BlogPost }) {
   const imageURL = mediaUrl(post.featuredImage, "card") ?? mediaUrl(post.featuredImage);
 
   return (
     <Link
-      href={`${pathPrefix}/blogs/${post.slug}`}
+      href={`/blogs/${post.slug}`}
       className="group flex flex-col gap-4 hover:opacity-90 transition-opacity"
     >
       {imageURL && (

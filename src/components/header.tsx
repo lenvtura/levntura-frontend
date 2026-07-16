@@ -22,9 +22,11 @@ import { resolveNav } from "@/lib/nav";
 import { resolveLocale } from "@/lib/server-request";
 
 import { HeaderNavLinks } from "@/atoms/nav-links";
+import { getTranslations } from "next-intl/server";
 
 export async function Header() {
   const locale = await resolveLocale();
+  const t = await getTranslations("common");
 
   const header = await getHeader(locale);
   const navItems = resolveNav(header, locale);
@@ -67,7 +69,7 @@ export async function Header() {
           />
         </SheetTrigger>
         <SheetContent className="z-999 w-full ">
-          <SheetTitle className="sr-only">Navigation menu</SheetTitle>
+          <SheetTitle className="sr-only">{t("navigationMenu")}</SheetTitle>
           <SheetHeader>
             <Link href={homeHref} className="max-w-[160px] block">
               <LevunturaFullLogo />

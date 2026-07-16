@@ -13,5 +13,7 @@
   "filters": {
     "allCountries": "All countries",
     "countryLabel": "Country"
-  }
+  },
+  "share": "Share this program",
+  "emptyState": "No programs found matching your criteria."
 }

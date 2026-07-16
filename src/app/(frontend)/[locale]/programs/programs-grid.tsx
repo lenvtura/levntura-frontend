@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 import { ProgramCard } from "./program-card";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 import type { Program } from "@/lib/types";
@@ -7,14 +11,14 @@ interface ProgramsGridProps {
   locale: "en" | "ar";
 }
 
-export function ProgramsGrid({ programs, locale }: ProgramsGridProps) {
-  const linkPrefix = locale === "ar" ? "/ar" : "";
+export function ProgramsGrid({ programs }: ProgramsGridProps) {
+  const t = useTranslations("programs");
 
   if (programs.length === 0) {
     return (
       <div className="container py-12">
         <p className="text-center text-lev-gray typography-M18">
-          No programs found matching your criteria.
+          {t("emptyState")}
         </p>
       </div>
     );
@@ -40,7 +44,7 @@ export function ProgramsGrid({ programs, locale }: ProgramsGridProps) {
               countryCode={program.country}
               duration={program.duration || ""}
               description={program.shortDescription || ""}
-              href={`${linkPrefix}/programs/${program.slug}`}
+              href={`/programs/${program.slug}`}
             />
           </FadeUpAnimator>
         ))}

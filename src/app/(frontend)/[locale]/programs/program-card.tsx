@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import { Button } from "@/design-system/button";
 import { cn } from "@/design-system/helpers";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { StartNowBtn } from "@/atoms/start-now-btn";
 
 interface ProgramCardProps {
