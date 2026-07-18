@@ -18,7 +18,7 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 
 export const dynamic = 'force-dynamic'
-export const maxDuration = 300
+export const maxDuration = 60
 
 interface LegacyBlog {
   slug: string

@@ -10,7 +10,7 @@ import ExcelJS from 'exceljs'
 import { userIsAdmin } from '@/access/roles'
 
 export const dynamic = 'force-dynamic'
-export const maxDuration = 120
+export const maxDuration = 60
 
 interface FormField {
   name?: string
