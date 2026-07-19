@@ -76,13 +76,6 @@ export function getVercelOrigins(): string[] {
     )
 }
 
-/**
- * Primary public site origin for SEO, metadata, Payload serverURL, and
- * canonical URLs.
- *
- * On Vercel, a leftover `NEXT_PUBLIC_SITE_URL=http://localhost:3000` makes
- * the Payload admin blank (CSRF/cookies fail). Prefer the deployment URL.
- */
 export function getSiteOrigin(): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL
     ? parseSiteOrigin(process.env.NEXT_PUBLIC_SITE_URL)
@@ -98,42 +91,19 @@ export function getSiteOrigin(): string {
   return configured || DEFAULT_SITE_ORIGIN
 }
 
-// Single-origin now (frontend + Payload merged into one app). Media URLs
-// from Payload are already absolute (built from PAYLOAD_PUBLIC_SERVER_URL);
-// this base only prefixes the rare relative path. No separate CMS URL.
-const SERVER_URL = (
-  process.env.PAYLOAD_PUBLIC_SERVER_URL
-    ? parseSiteOrigin(process.env.PAYLOAD_PUBLIC_SERVER_URL)
-    : getSiteOrigin()
-).replace(/\/+$/, '')
-
 /**
- * Resolve a CMS media path for <Image> / <img>.
- *
- * Payload often stores absolute URLs like
- * `http://localhost:3000/api/media/file/...` (from local seeding). In
- * production Next.js Image optimization rejects private IPs
- * (`INVALID_IMAGE_OPTIMIZE_REQUEST` on Vercel). Convert those to
- * same-origin relative paths so `images.localPatterns` (`/api/media/**`)
- * can serve them. Leave real remote URLs (DO Spaces, etc.) untouched.
+ * Media from Spaces is already an absolute CDN URL — return as-is.
+ * Relative `/api/media/...` paths stay relative (local-disk dev only).
+ * Never pass `http://localhost:...` into Next Image in production.
  */
 export function resolveCmsUrl(path: string | undefined | null): string | undefined {
   if (!path) return undefined
-
-  // Already same-origin relative — do not prefix with SERVER_URL (that
-  // would reintroduce localhost absolute URLs when SITE_URL is local).
   if (path.startsWith('/')) return path
 
   if (/^https?:\/\//i.test(path)) {
     try {
       const url = new URL(path)
-      if (isLocalOrigin(url.origin)) {
-        return `${url.pathname}${url.search}`
-      }
-      // Our own public origin → relative (localPatterns / same host).
-      if (SERVER_URL && url.origin === SERVER_URL) {
-        return `${url.pathname}${url.search}`
-      }
+      if (isLocalOrigin(url.origin)) return `${url.pathname}${url.search}`
       return path
     } catch {
       return path
@@ -156,12 +126,6 @@ export function mediaAlt(media: Media | undefined | null, fallback = ''): string
   return media?.alt || fallback
 }
 
-/**
- * Build a locale-aware absolute canonical URL. Matches the 'as-needed'
- * routing: English stays at the root, Arabic gets the `/ar` prefix — so each
- * locale page is its own canonical instead of pointing at the English URL
- * (which would tell Google the Arabic page is a duplicate of the English one).
- */
 export function localeCanonical(
   siteUrl: string,
   locale: Locale,
@@ -170,7 +134,6 @@ export function localeCanonical(
   const base = siteUrl.replace(/\/+$/, '')
   const clean = path.startsWith('/') ? path : `/${path}`
   if (locale === 'ar') {
-    // Arabic home is `/ar` (no trailing slash); otherwise `/ar` + path.
     return clean === '/' ? `${base}/ar` : `${base}/ar${clean}`
   }
   return `${base}${clean}`

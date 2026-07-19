@@ -33,9 +33,18 @@ import {
   parseSiteOrigin,
   parseSiteOrigins,
 } from './lib/url'
+import { isSpacesConfigured, spacesFileUrl } from './lib/storage/spaces'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+const spacesReady = isSpacesConfigured()
+
+if (process.env.VERCEL && !spacesReady) {
+  console.error(
+    '[payload] Set DO_SPACES_* on Vercel — media must live in Spaces, not on the serverless disk.',
+  )
+}
 
 // Single source of truth for the public domain (frontend + Payload share one
 // origin now). On Vercel previews, serverURL must match the *.vercel.app host
@@ -259,12 +268,21 @@ export default buildConfig({
       redirectRelationships: ['pages'],
     }),
 
-    // Activates only when DO_SPACES_BUCKET is set — falls back to local /media in dev.
-    ...(process.env.DO_SPACES_BUCKET
+    // Images live in DigitalOcean Spaces (S3), not on Vercel’s filesystem.
+    ...(spacesReady
       ? [
           s3Storage({
-            collections: { media: true },
-            bucket: process.env.DO_SPACES_BUCKET,
+            clientUploads: true, // upload in browser → Spaces (avoids Vercel 4.5MB limit)
+            bucket: process.env.DO_SPACES_BUCKET!,
+            acl: 'public-read',
+            collections: {
+              media: {
+                // Public CDN URLs instead of /api/media proxy (no localhost URLs)
+                disablePayloadAccessControl: true,
+                generateFileURL: ({ filename, prefix }) =>
+                  spacesFileUrl(filename, prefix),
+              },
+            },
             config: {
               endpoint: process.env.DO_SPACES_ENDPOINT,
               region: process.env.DO_SPACES_REGION,
