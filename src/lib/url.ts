@@ -107,12 +107,40 @@ const SERVER_URL = (
     : getSiteOrigin()
 ).replace(/\/+$/, '')
 
-// Normalises localhost → 127.0.0.1 to dodge Next 16 IPv6 image-fetch issues.
+/**
+ * Resolve a CMS media path for <Image> / <img>.
+ *
+ * Payload often stores absolute URLs like
+ * `http://localhost:3000/api/media/file/...` (from local seeding). In
+ * production Next.js Image optimization rejects private IPs
+ * (`INVALID_IMAGE_OPTIMIZE_REQUEST` on Vercel). Convert those to
+ * same-origin relative paths so `images.localPatterns` (`/api/media/**`)
+ * can serve them. Leave real remote URLs (DO Spaces, etc.) untouched.
+ */
 export function resolveCmsUrl(path: string | undefined | null): string | undefined {
   if (!path) return undefined
-  const normalized = path.replace(/^http:\/\/localhost(:\d+)?/i, 'http://127.0.0.1$1')
-  if (/^https?:\/\//i.test(normalized)) return normalized
-  return `${SERVER_URL}${normalized.startsWith('/') ? '' : '/'}${normalized}`
+
+  // Already same-origin relative — do not prefix with SERVER_URL (that
+  // would reintroduce localhost absolute URLs when SITE_URL is local).
+  if (path.startsWith('/')) return path
+
+  if (/^https?:\/\//i.test(path)) {
+    try {
+      const url = new URL(path)
+      if (isLocalOrigin(url.origin)) {
+        return `${url.pathname}${url.search}`
+      }
+      // Our own public origin → relative (localPatterns / same host).
+      if (SERVER_URL && url.origin === SERVER_URL) {
+        return `${url.pathname}${url.search}`
+      }
+      return path
+    } catch {
+      return path
+    }
+  }
+
+  return `/${path.replace(/^\/+/, '')}`
 }
 
 export function mediaUrl(

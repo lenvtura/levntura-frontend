@@ -12,11 +12,31 @@ import {
 } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
+import type { StaticImageData } from "next/image";
+
 import { Slider } from "@/app/(frontend)/[locale]/programs/work-and-travel/jobs-slider";
+import { Travels } from "@/constants/travels";
 import { mediaUrl, mediaAlt } from "@/lib/url";
 import type { TravelDestinationsBlock } from "@/lib/types";
 
 type TravelImage = NonNullable<TravelDestinationsBlock["images"]>[number];
+type TravelSrc = string | StaticImageData;
+
+/** Static/DO fallbacks for cards whose CMS media still points at local disk. */
+const FALLBACK_BY_LABEL = new Map<string, TravelSrc>(
+  Travels.map((t) => [t.label.toLowerCase(), t.src]),
+);
+
+function resolveTravelSrc(item: TravelImage): TravelSrc | undefined {
+  const fromCms = mediaUrl(item.image, "card") ?? mediaUrl(item.image);
+  const fallback = FALLBACK_BY_LABEL.get((item.label || "").toLowerCase());
+
+  // Prefer bundled assets when CMS only has a local /api/media path — those
+  // files are not on Vercel’s filesystem even after URL rewriting.
+  if (fromCms?.startsWith("/api/media") && fallback) return fallback;
+
+  return fromCms || fallback;
+}
 
 interface TravelDestinationsStripProps {
   images: TravelImage[];
@@ -103,7 +123,7 @@ function TravelCard({
   item: TravelImage;
   variant: "desktop" | "mobile";
 }) {
-  const src = mediaUrl(item.image, "card") ?? mediaUrl(item.image);
+  const src = resolveTravelSrc(item);
   const alt = mediaAlt(item.image, item.label);
 
   // We deliberately do NOT wrap the whole card in <Link> — it would conflict

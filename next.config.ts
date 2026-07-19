@@ -44,6 +44,23 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      // Production + apex (absolute media URLs saved with these hosts).
+      {
+        protocol: 'https',
+        hostname: 'www.levntura.com',
+        pathname: '/api/media/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'levntura.com',
+        pathname: '/api/media/**',
+      },
+      // Vercel preview deployments
+      {
+        protocol: 'https',
+        hostname: '*.vercel.app',
+        pathname: '/api/media/**',
+      },
       // Flag icons for the locale toggle
       {
         protocol: 'https',
