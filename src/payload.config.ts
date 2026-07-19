@@ -33,23 +33,12 @@ import {
   parseSiteOrigin,
   parseSiteOrigins,
 } from './lib/url'
-import { isSpacesConfigured, missingSpacesEnvKeys, spacesEnv, spacesFileUrl } from './lib/storage/spaces'
+import { isSpacesConfigured, spacesEnv, spacesFileUrl } from './lib/storage/spaces'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 const spacesReady = isSpacesConfigured()
-
-if (process.env.VERCEL && !spacesReady) {
-  console.error(
-    `[payload] Spaces OFF on Vercel (missing: ${missingSpacesEnvKeys().join(', ') || 'unknown'}). ` +
-      'Uploads use /api/media local disk and fail. Set DO_SPACES_* for this environment (Preview AND Production), then redeploy. Check GET /api/storage-status',
-  )
-} else if (spacesReady) {
-  console.info(
-    `[payload] Spaces ON (bucket=${spacesEnv('DO_SPACES_BUCKET')}, clientUploads=true)`,
-  )
-}
 
 // Single source of truth for the public domain (frontend + Payload share one
 // origin now). On Vercel previews, serverURL must match the *.vercel.app host

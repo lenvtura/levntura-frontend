@@ -3,6 +3,7 @@ import { anyone } from '../../access/anyone'
 import { isAdmin, isContentEditor } from '../../access/roles'
 import { seedTranslation } from '../../hooks/seedTranslation'
 import { defaultAltFromFilename } from './hooks/defaultAltFromFilename'
+import { setSpacesPublicAcl } from './hooks/setSpacesPublicAcl'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -25,7 +26,7 @@ export const Media: CollectionConfig = {
 
   hooks: {
     beforeValidate: [defaultAltFromFilename],
-    afterChange: [seedTranslation],
+    afterChange: [seedTranslation, setSpacesPublicAcl],
   },
 
   upload: {

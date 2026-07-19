@@ -8,19 +8,15 @@ const SPACES_ENV_KEYS = [
   'DO_SPACES_SECRET_KEY',
 ] as const
 
-/** Read env and strip accidental quotes from Vercel/dashboard pastes. */
+/** Read env and strip accidental quotes from dashboard pastes. */
 export function spacesEnv(name: string): string {
   return (process.env[name] ?? '')
     .trim()
     .replace(/^['"]+|['"]+$/g, '')
 }
 
-export function missingSpacesEnvKeys(): string[] {
-  return SPACES_ENV_KEYS.filter((key) => !spacesEnv(key))
-}
-
 export function isSpacesConfigured(): boolean {
-  return missingSpacesEnvKeys().length === 0
+  return SPACES_ENV_KEYS.every((key) => Boolean(spacesEnv(key)))
 }
 
 /** e.g. `https://levntura.sfo3.digitaloceanspaces.com/photo.webp` */
@@ -31,4 +27,13 @@ export function spacesFileUrl(filename: string, prefix?: string | null): string 
     .filter(Boolean)
     .join('/')
   return `https://${bucket}.${endpoint}/${key}`
+}
+
+export function spacesObjectKey(
+  filename: string,
+  prefix?: string | null,
+): string {
+  return [prefix?.replace(/^\/+|\/+$/g, ''), filename.replace(/^\/+/, '')]
+    .filter(Boolean)
+    .join('/')
 }
