@@ -19,9 +19,7 @@ const nextConfig: NextConfig = {
   cacheComponents: false,
 
   images: {
-    // Skip Next.js image optimization in development so we can load images
-    // from localhost/127.0.0.1 (Next 16 blocks private IPs by default).
-    unoptimized: process.env.NODE_ENV === 'development',
+    unoptimized: true,
     localPatterns: [
       {
         pathname: '/api/media/**',
