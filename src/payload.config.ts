@@ -27,6 +27,7 @@ import { dashboardEmailAdapter } from './lib/email/emailAdapter'
 import { dispatchWebhookHook } from './lib/webhooks'
 import { notifyFormSubmission } from './hooks/notifyFormSubmission'
 import {
+  getPreviewOrigin,
   getSiteOrigin,
   getVercelOrigins,
   isLocalOrigin,
@@ -42,14 +43,11 @@ const spacesReady = isSpacesConfigured()
 
 // Single source of truth for the public domain (frontend + Payload share one
 // origin now). On Vercel previews, serverURL must match the *.vercel.app host
-// the browser is on — otherwise CSRF/cookies break and /admin is blank.
+// the browser is on — otherwise CSRF/cookies break and clientUploads CORS-fail.
 const configuredServerURL = process.env.PAYLOAD_PUBLIC_SERVER_URL
   ? parseSiteOrigin(process.env.PAYLOAD_PUBLIC_SERVER_URL)
   : null
-const previewServerURL =
-  process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_URL
-    ? parseSiteOrigin(`https://${process.env.VERCEL_URL}`)
-    : null
+const previewServerURL = getPreviewOrigin()
 const serverURL =
   previewServerURL ||
   (configuredServerURL &&
@@ -266,9 +264,12 @@ export default buildConfig({
     ...(spacesReady
       ? [
           s3Storage({
+            // Browser → Spaces direct upload (bypasses Vercel’s 4.5MB limit).
+            // Do NOT set `acl` here: the client PUT omits `x-amz-acl`, so signing
+            // with ACL breaks the Spaces upload (often surfaces as a CORS error).
+            // Public-read is applied after upload via Media `setSpacesPublicAcl`.
             clientUploads: true,
             bucket: spacesEnv('DO_SPACES_BUCKET'),
-            acl: 'public-read',
             collections: {
               media: {
                 disablePayloadAccessControl: true,

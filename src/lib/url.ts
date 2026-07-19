@@ -76,6 +76,22 @@ export function getVercelOrigins(): string[] {
     )
 }
 
+/**
+ * Stable origin for Vercel Preview deploys.
+ * Prefer VERCEL_BRANCH_URL (git-…vercel.app) — that is the URL people open.
+ * VERCEL_URL is a per-deployment host; using it as serverURL while browsing
+ * the branch alias makes clientUploads hit a different origin → CORS errors
+ * on `/storage-s3-generate-signed-url`.
+ */
+export function getPreviewOrigin(): string | null {
+  if (process.env.VERCEL_ENV !== 'preview') return null
+
+  const host = process.env.VERCEL_BRANCH_URL || process.env.VERCEL_URL
+  if (!host) return null
+
+  return parseSiteOrigin(host.startsWith('http') ? host : `https://${host}`)
+}
+
 export function getSiteOrigin(): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL
     ? parseSiteOrigin(process.env.NEXT_PUBLIC_SITE_URL)
