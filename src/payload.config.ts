@@ -26,19 +26,38 @@ import { authenticated } from './access/authenticated'
 import { dashboardEmailAdapter } from './lib/email/emailAdapter'
 import { dispatchWebhookHook } from './lib/webhooks'
 import { notifyFormSubmission } from './hooks/notifyFormSubmission'
+import {
+  getSiteOrigin,
+  getVercelOrigins,
+  isLocalOrigin,
+  parseSiteOrigin,
+  parseSiteOrigins,
+} from './lib/url'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 // Single source of truth for the public domain (frontend + Payload share one
-// origin now). PAYLOAD_PUBLIC_SERVER_URL stays supported as an optional
-// override, but NEXT_PUBLIC_SITE_URL alone is enough.
-const siteOrigins = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000')
-  .split(',')
-  .map((s) => s.trim())
-  .filter(Boolean)
+// origin now). On Vercel previews, serverURL must match the *.vercel.app host
+// the browser is on — otherwise CSRF/cookies break and /admin is blank.
+const configuredServerURL = process.env.PAYLOAD_PUBLIC_SERVER_URL
+  ? parseSiteOrigin(process.env.PAYLOAD_PUBLIC_SERVER_URL)
+  : null
+const previewServerURL =
+  process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_URL
+    ? parseSiteOrigin(`https://${process.env.VERCEL_URL}`)
+    : null
 const serverURL =
-  process.env.PAYLOAD_PUBLIC_SERVER_URL || siteOrigins[0] || 'http://localhost:3000'
+  previewServerURL ||
+  (configuredServerURL &&
+  !(process.env.VERCEL && isLocalOrigin(configuredServerURL))
+    ? configuredServerURL
+    : getSiteOrigin())
+
+const siteOrigins = parseSiteOrigins()
+const allowedOrigins = Array.from(
+  new Set([serverURL, ...siteOrigins, ...getVercelOrigins()]),
+)
 
 export default buildConfig({
   admin: {
@@ -53,10 +72,9 @@ export default buildConfig({
 
   serverURL,
 
-  // Single origin now — the server URL and the site origins are the same.
-  cors: Array.from(new Set([serverURL, ...siteOrigins])),
+  cors: allowedOrigins,
 
-  csrf: Array.from(new Set([serverURL, ...siteOrigins])),
+  csrf: allowedOrigins,
 
   collections: [
     Users,
@@ -85,7 +103,8 @@ export default buildConfig({
     push: process.env.NODE_ENV !== 'production',
     pool: {
       connectionString: process.env.DATABASE_URL || '',
-      // ssl: { rejectUnauthorized: false },
+      // Managed Postgres on Vercel usually needs TLS.
+      ...(process.env.VERCEL ? { ssl: { rejectUnauthorized: false } } : {}),
     },
   }),
 
