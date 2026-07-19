@@ -33,7 +33,7 @@ import {
   parseSiteOrigin,
   parseSiteOrigins,
 } from './lib/url'
-import { isSpacesConfigured, spacesFileUrl } from './lib/storage/spaces'
+import { isSpacesConfigured, missingSpacesEnvKeys, spacesEnv, spacesFileUrl } from './lib/storage/spaces'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -42,7 +42,12 @@ const spacesReady = isSpacesConfigured()
 
 if (process.env.VERCEL && !spacesReady) {
   console.error(
-    '[payload] Set DO_SPACES_* on Vercel — media must live in Spaces, not on the serverless disk.',
+    `[payload] Spaces OFF on Vercel (missing: ${missingSpacesEnvKeys().join(', ') || 'unknown'}). ` +
+      'Uploads use /api/media local disk and fail. Set DO_SPACES_* for this environment (Preview AND Production), then redeploy. Check GET /api/storage-status',
+  )
+} else if (spacesReady) {
+  console.info(
+    `[payload] Spaces ON (bucket=${spacesEnv('DO_SPACES_BUCKET')}, clientUploads=true)`,
   )
 }
 
@@ -272,23 +277,22 @@ export default buildConfig({
     ...(spacesReady
       ? [
           s3Storage({
-            clientUploads: true, // upload in browser → Spaces (avoids Vercel 4.5MB limit)
-            bucket: process.env.DO_SPACES_BUCKET!,
+            clientUploads: true,
+            bucket: spacesEnv('DO_SPACES_BUCKET'),
             acl: 'public-read',
             collections: {
               media: {
-                // Public CDN URLs instead of /api/media proxy (no localhost URLs)
                 disablePayloadAccessControl: true,
                 generateFileURL: ({ filename, prefix }) =>
                   spacesFileUrl(filename, prefix),
               },
             },
             config: {
-              endpoint: process.env.DO_SPACES_ENDPOINT,
-              region: process.env.DO_SPACES_REGION,
+              endpoint: spacesEnv('DO_SPACES_ENDPOINT'),
+              region: spacesEnv('DO_SPACES_REGION'),
               credentials: {
-                accessKeyId: process.env.DO_SPACES_ACCESS_KEY!,
-                secretAccessKey: process.env.DO_SPACES_SECRET_KEY!,
+                accessKeyId: spacesEnv('DO_SPACES_ACCESS_KEY'),
+                secretAccessKey: spacesEnv('DO_SPACES_SECRET_KEY'),
               },
               forcePathStyle: false,
             },
