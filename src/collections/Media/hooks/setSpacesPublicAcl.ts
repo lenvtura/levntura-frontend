@@ -1,11 +1,7 @@
 import type { CollectionAfterChangeHook } from 'payload'
 import { PutObjectAclCommand, S3Client } from '@aws-sdk/client-s3'
 
-import {
-  isSpacesConfigured,
-  spacesEnv,
-  spacesObjectKey,
-} from '../../../lib/storage/spaces'
+import { isSpacesConfigured, spacesEnv, spacesObjectKey } from '../../../lib/storage/spaces'
 
 let client: S3Client | null = null
 
@@ -28,10 +24,7 @@ function getS3Client(): S3Client {
  * Ensure each uploaded media object is publicly readable on Spaces.
  * clientUploads sometimes leave objects private if the browser omits x-amz-acl.
  */
-export const setSpacesPublicAcl: CollectionAfterChangeHook = async ({
-  doc,
-  req,
-}) => {
+export const setSpacesPublicAcl: CollectionAfterChangeHook = async ({ doc, req }) => {
   if (!isSpacesConfigured()) return doc
 
   const filename = typeof doc.filename === 'string' ? doc.filename : null
