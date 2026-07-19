@@ -48,22 +48,8 @@ export const Media: CollectionConfig = {
     // PNG, WebP, SVG, GIF, HEIC, AVIF, …) and every video container (mp4,
     // webm, mov, m4v, mkv, …) so editors don't hit MIME-type errors on
     // common phone / camera exports.
-    //
-    // Sharp processing (formatOptions) only runs on `image/*` types —
-    // videos and PDFs are stored as-is.
     mimeTypes: ['image/*', 'video/*', 'application/pdf'],
 
-    // Every upload gets converted to WebP at 85% quality. Big space saving
-    // vs JPG/PNG with no visible difference. Frontend uses Next.js Image
-    // for responsive sizing on the fly, so we don't generate variants
-    // here — one file per upload, that's it.
-    //
-    // If you need an OG image for social sharing, upload it manually at
-    // 1200×630 into `page.meta.image`.
-    formatOptions: {
-      format: 'webp',
-      options: { quality: 85 },
-    },
   },
 
   fields: [
