@@ -45,11 +45,10 @@ const DROPDOWN_WIDTH = 160;
  * Dropdown language switcher.
  *
  * The dropdown panel is rendered via React portal to document.body so it
- * escapes any parent stacking context (notably the Header's
- * `mix-blend-difference`, which would otherwise blend the dropdown into
- * the page behind and ruin its contrast). Position is computed from the
- * trigger button's viewport rect, and we flip to "open upward" when the
- * trigger is near the bottom of the viewport (e.g. inside the footer).
+ * escapes any parent stacking context and stays above the fixed header.
+ * Position is computed from the trigger button's viewport rect, and we flip
+ * to "open upward" when the trigger is near the bottom of the viewport
+ * (e.g. inside the footer).
  *
  * Uses plain anchors so locale changes trigger a full page reload — that
  * guarantees fresh translated CMS data and the correct <html dir>.
@@ -131,7 +130,7 @@ export function LocaleToggle({ className }: { className?: string }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "flex items-center gap-1.5 typography-S14 text-white px-2 py-1 rounded hover:opacity-80 transition-opacity",
+          "flex items-center gap-1.5 typography-S14 text-lev-black px-2 py-1 rounded hover:opacity-80 transition-opacity",
           className,
         )}
         aria-haspopup="listbox"

@@ -199,12 +199,12 @@ export async function Footer() {
             {socialLinks.length > 0 && (
               <div className="flex flex-wrap max-sm:justify-center items-center gap-4 mt-4">
                 <SocialIconsFromCMS links={socialLinks} />
-                <LocaleToggle />
+                <LocaleToggle className="text-white" />
               </div>
             )}
             {socialLinks.length === 0 && (
               <div className="flex max-sm:justify-center mt-4">
-                <LocaleToggle />
+                <LocaleToggle className="text-white" />
               </div>
             )}
           </div>

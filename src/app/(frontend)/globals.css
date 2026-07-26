@@ -28,6 +28,7 @@
   --color-lev-blue-light: var(--lev-blue-light, #7abaff);
   --color-lev-blue: var(--lev-blue, #5862ed);
   --color-lev-blue-dark: var(--lev-blue-dark, #000037);
+  --color-lev-blue-highlighter: var(--lev-blue-highlighter, #eeeffd);
 
   --animate-to-bottom: var(--scroll-to-bottom-animation);
   --animate-to-top: var(--scroll-to-top-animation);
@@ -136,6 +137,7 @@
   --lev-blue-light: #7abaff;
   --lev-blue: #5862ed;
   --lev-blue-dark: #000037;
+  --lev-blue-highlighter: #eeeffd;
   --scroll-to-bottom-animation: scrollBottom 20s linear infinite;
   --scroll-to-top-animation: scrollTop 20s linear infinite;
   --scroll-horizontal-animation: scrollHorizontal 30s linear infinite;
