@@ -218,7 +218,7 @@ export async function Footer() {
 
       {/* Bottom legal bar — sits below the wordmark per design. */}
       {(copyright || bottomLinks.length > 0) && (
-        <div className="container-md py-4 flex flex-wrap items-center justify-between gap-4 typography-S14 text-white/70 max-sm:justify-center max-sm:text-center">
+        <div className="container-md py-4 flex flex-wrap items-end justify-between gap-4 typography-S14 text-white/70 max-sm:justify-center max-sm:text-center">
           <div className="flex flex-col gap-2">
             <span id="iasBadge" data-account-id="5064" style={{ width: '56px !important' }}></span>
             {copyright && <span>{copyright}</span>}
