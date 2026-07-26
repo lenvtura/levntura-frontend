@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense } from 'react'
 import {
   FaFacebook,
   FaInstagram,
@@ -7,82 +7,78 @@ import {
   FaTiktok,
   FaTwitter,
   FaWhatsapp,
-} from "react-icons/fa";
+} from 'react-icons/fa'
 
-import { LeventuraSymbolLogo, LeventuraTextLogo } from "@/atoms/logo";
-import { YoutubeIcon } from "@/assets/icons/youtube";
-import { cn } from "@/design-system/helpers";
-import { getFooter, getHeader } from "@/lib/api";
-import { resolveNav } from "@/lib/nav";
-import { resolveLocale } from "@/lib/server-request";
-import type {
-  FooterGlobal,
-  FooterSocialLink,
-  SocialPlatform,
-} from "@/lib/types";
+import { LeventuraSymbolLogo, LeventuraTextLogo } from '@/atoms/logo'
+import { YoutubeIcon } from '@/assets/icons/youtube'
+import { cn } from '@/design-system/helpers'
+import { getFooter, getHeader } from '@/lib/api'
+import { resolveNav } from '@/lib/nav'
+import { resolveLocale } from '@/lib/server-request'
+import type { FooterGlobal, FooterSocialLink, SocialPlatform } from '@/lib/types'
 
-import { Link } from "@/i18n/navigation";
-import { FooterLinks } from "./footer-link";
-import { FooterWrapper } from "./footer-wrapper";
-import { LocaleToggle } from "./locale-toggle";
+import { Link } from '@/i18n/navigation'
+import { FooterLinks } from './footer-link'
+import { FooterWrapper } from './footer-wrapper'
+import { LocaleToggle } from './locale-toggle'
 
 // Fallback content — used only when CMS Footer is empty (e.g. before seed runs).
 const FALLBACK: FooterGlobal = {
   columns: [
     {
-      title: "",
+      title: '',
       links: [
-        { label: "Travel & Work", url: "/" },
-        { label: "Camp Counselor", url: "/about" },
-        { label: "Travel & Study", url: "/blogs" },
-        { label: "Internship", url: "/careers" },
-        { label: "Student Portal", url: "/careers" },
+        { label: 'Travel & Work', url: '/' },
+        { label: 'Camp Counselor', url: '/about' },
+        { label: 'Travel & Study', url: '/blogs' },
+        { label: 'Internship', url: '/careers' },
+        { label: 'Student Portal', url: '/careers' },
       ],
     },
   ],
   addresses: [
-    { address: "Mecca st, Buld 145, office 408, Amman Jordan, 11185" },
-    { address: "3 Skies Plaza, S 90th st, New Cairo, Egypt, 11835" },
+    { address: 'Mecca st, Buld 145, office 408, Amman Jordan, 11185' },
+    { address: '3 Skies Plaza, S 90th st, New Cairo, Egypt, 11835' },
   ],
-  phones: [{ number: "+962 79 082 2202" }, { number: "+20 150 0050392" }],
+  phones: [{ number: '+962 79 082 2202' }, { number: '+20 150 0050392' }],
   socialLinks: [
     {
-      platform: "whatsapp",
-      url: "https://api.whatsapp.com/send/?phone=962790922202",
+      platform: 'whatsapp',
+      url: 'https://api.whatsapp.com/send/?phone=962790922202',
     },
-    { platform: "instagram", url: "https://www.instagram.com/levntura.jo/" },
+    { platform: 'instagram', url: 'https://www.instagram.com/levntura.jo/' },
     {
-      platform: "linkedin",
-      url: "https://www.linkedin.com/company/levntura/",
+      platform: 'linkedin',
+      url: 'https://www.linkedin.com/company/levntura/',
     },
-    { platform: "facebook", url: "https://www.facebook.com/levntura" },
-    { platform: "youtube", url: "https://www.youtube.com/@Levntura" },
+    { platform: 'facebook', url: 'https://www.facebook.com/levntura' },
+    { platform: 'youtube', url: 'https://www.youtube.com/@Levntura' },
   ],
   showLogo: true,
   showWatermark: true,
-};
+}
 
 const SOCIAL_ICON_MAP: Record<
   SocialPlatform,
   { Icon: React.ComponentType<{ className?: string }>; label: string }
 > = {
-  whatsapp: { Icon: FaWhatsapp, label: "WhatsApp" },
-  instagram: { Icon: FaInstagram, label: "Instagram" },
-  linkedin: { Icon: FaLinkedinIn, label: "LinkedIn" },
-  facebook: { Icon: FaFacebook, label: "Facebook" },
-  youtube: { Icon: YoutubeIcon, label: "YouTube" },
-  twitter: { Icon: FaTwitter, label: "Twitter" },
-  tiktok: { Icon: FaTiktok, label: "TikTok" },
-  telegram: { Icon: FaTelegram, label: "Telegram" },
-};
+  whatsapp: { Icon: FaWhatsapp, label: 'WhatsApp' },
+  instagram: { Icon: FaInstagram, label: 'Instagram' },
+  linkedin: { Icon: FaLinkedinIn, label: 'LinkedIn' },
+  facebook: { Icon: FaFacebook, label: 'Facebook' },
+  youtube: { Icon: YoutubeIcon, label: 'YouTube' },
+  twitter: { Icon: FaTwitter, label: 'Twitter' },
+  tiktok: { Icon: FaTiktok, label: 'TikTok' },
+  telegram: { Icon: FaTelegram, label: 'Telegram' },
+}
 
 function SocialIconsFromCMS({ links }: { links: FooterSocialLink[] }) {
   return (
     <div className="flex items-center gap-3">
       {links.map((link) => {
-        const config = SOCIAL_ICON_MAP[link.platform];
-        if (!config) return null;
-        const { Icon, label } = config;
+        const config = SOCIAL_ICON_MAP[link.platform]
+        if (!config) return null
+        const { Icon, label } = config
         return (
           <a
             key={`${link.platform}-${link.url}`}
@@ -94,45 +90,38 @@ function SocialIconsFromCMS({ links }: { links: FooterSocialLink[] }) {
           >
             <Icon className="w-5 h-5 text-white group-hover/social-share-icon:text-lev-blue" />
           </a>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
 
 export async function Footer() {
-  const locale = await resolveLocale();
+  const locale = await resolveLocale()
 
-  const [cms, header] = await Promise.all([
-    getFooter(locale),
-    getHeader(locale),
-  ]);
-  const data = cms ?? FALLBACK;
-  const navItems = resolveNav(header, locale);
+  const [cms, header] = await Promise.all([getFooter(locale), getHeader(locale)])
+  const data = cms ?? FALLBACK
+  const navItems = resolveNav(header, locale)
 
-  const columns = data.columns?.filter((c) => (c.links?.length ?? 0) > 0) ?? [];
-  const addresses = data.addresses ?? [];
-  const phones = data.phones ?? [];
-  const socialLinks = data.socialLinks ?? [];
-  const showLogo = data.showLogo ?? true;
-  const copyright = data.copyright;
-  const bottomLinks = data.bottomLinks ?? [];
-  const tagline = data.tagline;
+  const columns = data.columns?.filter((c) => (c.links?.length ?? 0) > 0) ?? []
+  const addresses = data.addresses ?? []
+  const phones = data.phones ?? []
+  const socialLinks = data.socialLinks ?? []
+  const showLogo = data.showLogo ?? true
+  const copyright = data.copyright
+  const bottomLinks = data.bottomLinks ?? []
+  const tagline = data.tagline
 
   // Total visible columns in the main grid:
   //   - 1 fixed for nav links (always present, sourced from header nav)
   //   - columns.length extra CMS columns (Opportunities, etc.)
   //   - 1 fixed for the contact column (addresses + phones + socials)
-  const totalCols = 2 + columns.length;
+  const totalCols = 2 + columns.length
   const gridColsClass =
-    totalCols >= 4
-      ? "grid-cols-4"
-      : totalCols === 3
-        ? "grid-cols-3"
-        : "grid-cols-2";
+    totalCols >= 4 ? 'grid-cols-4' : totalCols === 3 ? 'grid-cols-3' : 'grid-cols-2'
 
   // Address label prefix per locale
-  const addressPrefix = locale === "ar" ? "العنوان" : "Address";
+  const addressPrefix = locale === 'ar' ? 'العنوان' : 'Address'
 
   return (
     <FooterWrapper>
@@ -144,14 +133,12 @@ export async function Footer() {
         )}
 
         {tagline && (
-          <p className="mt-3 text-white/80 typography-S14 max-w-md max-sm:mx-auto">
-            {tagline}
-          </p>
+          <p className="mt-3 text-white/80 typography-S14 max-w-md max-sm:mx-auto">{tagline}</p>
         )}
 
         <div
           className={cn(
-            "max-sm:flex max-sm:flex-col max-sm:items-center gap-14 grid mt-6",
+            'max-sm:flex max-sm:flex-col max-sm:items-center gap-14 grid mt-6',
             gridColsClass,
           )}
         >
@@ -165,21 +152,16 @@ export async function Footer() {
 
           {/* Optional extra link columns from CMS */}
           {columns.map((col, idx) => (
-            <div
-              key={col.id ?? `col-${idx}`}
-              className="flex flex-col whitespace-nowrap gap-2"
-            >
+            <div key={col.id ?? `col-${idx}`} className="flex flex-col whitespace-nowrap gap-2">
               {col.title && (
-                <span className="typography-S14 font-semibold mb-2 opacity-80">
-                  {col.title}
-                </span>
+                <span className="typography-S14 font-semibold mb-2 opacity-80">{col.title}</span>
               )}
               {col.links?.map((link, linkIdx) => (
                 <Link
                   key={link.id ?? `link-${linkIdx}`}
                   href={link.url}
-                  target={link.openInNewTab ? "_blank" : undefined}
-                  rel={link.openInNewTab ? "noopener noreferrer" : undefined}
+                  target={link.openInNewTab ? '_blank' : undefined}
+                  rel={link.openInNewTab ? 'noopener noreferrer' : undefined}
                   className="hover:text-lev-yellow"
                 >
                   {link.label}
@@ -205,7 +187,7 @@ export async function Footer() {
                 {phones.map((phone, idx) => (
                   <a
                     key={phone.id ?? `phone-${idx}`}
-                    href={`tel:${phone.number.replace(/\s+/g, "")}`}
+                    href={`tel:${phone.number.replace(/\s+/g, '')}`}
                     className="hover:text-lev-yellow"
                   >
                     {phone.number}
@@ -237,7 +219,10 @@ export async function Footer() {
       {/* Bottom legal bar — sits below the wordmark per design. */}
       {(copyright || bottomLinks.length > 0) && (
         <div className="container-md py-4 flex flex-wrap items-center justify-between gap-4 typography-S14 text-white/70 max-sm:justify-center max-sm:text-center">
-          {copyright && <span>{copyright}</span>}
+          <div className="flex flex-col gap-2">
+            <span id="iasBadge" data-account-id="5064" style={{ width: '56px !important' }}></span>
+            {copyright && <span>{copyright}</span>}
+          </div>
           {bottomLinks.length > 0 && (
             <div className="flex flex-wrap gap-4">
               {bottomLinks.map((link, idx) => (
@@ -254,5 +239,5 @@ export async function Footer() {
         </div>
       )}
     </FooterWrapper>
-  );
+  )
 }
