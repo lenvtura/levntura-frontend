@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Script from "next/script";
+import { Suspense } from "react";
 
 import { LeventuraSymbolLogo, LeventuraTextLogo } from "@/atoms/logo";
 import { Routes } from "@/constants/routes";
-import { Suspense } from "react";
 import { SocialShareIcons } from "@/atoms/social-share-icons";
 import { FooterLinks } from "./footer-link";
 import { FooterWrapper } from "./footer-wrapper";
@@ -65,9 +66,19 @@ export function Footer() {
                 <SocialShareIcons size="sm" variant="white-border" />
               </Suspense>
             </div>
+
+            <div className="mt-4 size-[56px] max-sm:mx-auto">
+              <span id="iasBadge" data-account-id="5064" />
+            </div>
           </div>
         </div>
       </div>
+
+      <Script
+        src="https://www-cdn.icef.com/scripts/iasbadgeid.js"
+        strategy="lazyOnload"
+        crossOrigin="anonymous"
+      />
 
       <div className="bg-blend-overlay mix-blend-overlay text-white/15 px-4">
         <LeventuraTextLogo />
