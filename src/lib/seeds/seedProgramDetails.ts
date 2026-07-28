@@ -198,6 +198,9 @@ async function buildAndPatchProgramDetail(
     collection: 'programs',
     id: programId,
     data: patch as never,
+    // Detail content lands via update (after create), so opt in to the
+    // seedTranslation copy — the AR locale is still fresh at this point.
+    context: { seedTranslate: true },
   })
 }
 

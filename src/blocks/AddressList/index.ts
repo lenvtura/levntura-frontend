@@ -31,6 +31,15 @@ export const AddressListBlock: Block = {
           directionsLabel: 'DIRECTIONS',
           directionsURL:
             'https://maps.google.com/?q=Mecca+st+145+Amman+Jordan',
+          socials: [
+            {
+              platform: 'whatsapp',
+              url: 'https://api.whatsapp.com/send/?phone=962790922202&text&type=phone_number&app_absent=0',
+            },
+            { platform: 'instagram', url: 'https://www.instagram.com/levntura.jo/' },
+            { platform: 'facebook', url: 'https://www.facebook.com/levntura' },
+            { platform: 'linkedin', url: 'https://www.linkedin.com/company/levntura/' },
+          ],
         },
         {
           code: 'CAI',
@@ -40,6 +49,15 @@ export const AddressListBlock: Block = {
           directionsLabel: 'DIRECTIONS',
           directionsURL:
             'https://maps.google.com/?q=Skies+Plaza+New+Cairo+Egypt',
+          socials: [
+            {
+              platform: 'whatsapp',
+              url: 'https://api.whatsapp.com/send/?phone=201500050392&text&type=phone_number&app_absent=0',
+            },
+            { platform: 'instagram', url: 'https://www.instagram.com/levntura.eg/' },
+            { platform: 'facebook', url: 'https://www.facebook.com/levntura.eg/' },
+            { platform: 'linkedin', url: 'https://www.linkedin.com/company/levntura/' },
+          ],
         },
       ],
       fields: [
@@ -75,6 +93,33 @@ export const AddressListBlock: Block = {
           name: 'directionsURL',
           type: 'text',
           admin: { description: 'Google Maps link.' },
+        },
+        {
+          name: 'socials',
+          type: 'array',
+          labels: { singular: 'Social Link', plural: 'Social Links' },
+          admin: {
+            description: 'Social icons shown under this office. Empty = no icons.',
+          },
+          fields: [
+            {
+              name: 'platform',
+              type: 'select',
+              required: true,
+              enumName: 'enum_al_office_social',
+              options: [
+                { label: 'WhatsApp', value: 'whatsapp' },
+                { label: 'Instagram', value: 'instagram' },
+                { label: 'Facebook', value: 'facebook' },
+                { label: 'LinkedIn', value: 'linkedin' },
+                { label: 'YouTube', value: 'youtube' },
+                { label: 'X (Twitter)', value: 'twitter' },
+                { label: 'TikTok', value: 'tiktok' },
+                { label: 'Telegram', value: 'telegram' },
+              ],
+            },
+            { name: 'url', type: 'text', required: true },
+          ],
         },
       ],
     },

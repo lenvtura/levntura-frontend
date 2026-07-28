@@ -2,8 +2,12 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
+import { FaTelegram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { YoutubeIcon } from "@/assets/icons/youtube";
 import { cn } from "@/design-system/helpers";
+import { getSiteSettings } from "@/lib/api";
 import { ComponentProps } from "react";
 import { headers } from "next/headers";
 
@@ -13,6 +17,22 @@ export type SocialPlatform =
   | "linkedin"
   | "facebook"
   | "youtube";
+
+// Icon per platform for CMS-managed links (SiteSettings → Social Links).
+// Covers every option the admin select offers.
+const CMS_ICON_MAP: Record<
+  string,
+  { icon: React.ComponentType<{ className?: string }>; label: string }
+> = {
+  whatsapp: { icon: FaWhatsapp, label: "WhatsApp" },
+  instagram: { icon: FaInstagram, label: "Instagram" },
+  linkedin: { icon: FaLinkedinIn, label: "LinkedIn" },
+  facebook: { icon: FaFacebook, label: "Facebook" },
+  youtube: { icon: YoutubeIcon, label: "YouTube" },
+  twitter: { icon: FaXTwitter, label: "X" },
+  tiktok: { icon: FaTiktok, label: "TikTok" },
+  telegram: { icon: FaTelegram, label: "Telegram" },
+};
 
 interface SocialShareIconsProps extends ComponentProps<"div"> {
   platforms?: SocialPlatform[];
@@ -104,11 +124,26 @@ export async function SocialShareIcons({
 }: SocialShareIconsProps) {
   const sizeStyles = sizeConfig[size];
 
-  const headersList = await headers();
-  const userCountry = headersList.get("user-country");
+  // CMS-managed links first: SiteSettings → Social Links (admin-editable).
+  // Falls back to the legacy hardcoded country-aware lists only when the
+  // admin hasn't configured any.
+  const settings = await getSiteSettings().catch(() => null);
+  const cmsSocials = (settings?.socials ?? []).filter(
+    (s) => s?.platform && s?.url && CMS_ICON_MAP[s.platform],
+  );
 
-  const isFromEgypt = userCountry === "EG";
-  const platforms = isFromEgypt ? EGYPT_PLATFORMS : JORDAN_PLATFORMS;
+  let platforms;
+  if (cmsSocials.length > 0) {
+    platforms = cmsSocials.map((s) => {
+      const cfg = CMS_ICON_MAP[s.platform];
+      return { icon: cfg.icon, label: cfg.label, href: s.url };
+    });
+  } else {
+    const headersList = await headers();
+    const userCountry = headersList.get("user-country");
+    const isFromEgypt = userCountry === "EG";
+    platforms = isFromEgypt ? EGYPT_PLATFORMS : JORDAN_PLATFORMS;
+  }
 
   const baseContainerClass =
     variant === "default"
@@ -122,10 +157,10 @@ export async function SocialShareIcons({
 
   return (
     <div className={cn("flex items-center gap-3", className)} {...props}>
-      {platforms.map((platform) => {
+      {platforms.map((platform, i) => {
         return (
           <a
-            key={platform.label}
+            key={`${platform.label}-${i}`}
             href={platform.href}
             target="_blank"
             rel="noopener noreferrer"

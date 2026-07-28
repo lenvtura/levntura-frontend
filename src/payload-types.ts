@@ -1082,6 +1082,24 @@ export interface Page {
                * Google Maps link.
                */
               directionsURL?: string | null;
+              /**
+               * Social icons shown under this office. Empty = no icons.
+               */
+              socials?:
+                | {
+                    platform:
+                      | 'whatsapp'
+                      | 'instagram'
+                      | 'facebook'
+                      | 'linkedin'
+                      | 'youtube'
+                      | 'twitter'
+                      | 'tiktok'
+                      | 'telegram';
+                    url: string;
+                    id?: string | null;
+                  }[]
+                | null;
               id?: string | null;
             }[]
           | null;
@@ -1237,6 +1255,14 @@ export interface Page {
         blockType: 'photoGrid';
       }
     | {
+        /**
+         * Headline — line breaks are kept. Words listed in "Highlighted Words" render in bright red.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the headline to color in bright red (e.g. "CREATING MEMORIES,").
+         */
+        highlightedWords?: string | null;
         /**
          * Centered intro paragraph rendered below the headline.
          */
@@ -2880,6 +2906,24 @@ export interface ProgramType {
                    * Google Maps link.
                    */
                   directionsURL?: string | null;
+                  /**
+                   * Social icons shown under this office. Empty = no icons.
+                   */
+                  socials?:
+                    | {
+                        platform:
+                          | 'whatsapp'
+                          | 'instagram'
+                          | 'facebook'
+                          | 'linkedin'
+                          | 'youtube'
+                          | 'twitter'
+                          | 'tiktok'
+                          | 'telegram';
+                        url: string;
+                        id?: string | null;
+                      }[]
+                    | null;
                   id?: string | null;
                 }[]
               | null;
@@ -3087,6 +3131,14 @@ export interface ProgramType {
             blockType: 'photoGrid';
           }
         | {
+            /**
+             * Headline — line breaks are kept. Words listed in "Highlighted Words" render in bright red.
+             */
+            heading?: string | null;
+            /**
+             * Exact consecutive words from the headline to color in bright red (e.g. "CREATING MEMORIES,").
+             */
+            highlightedWords?: string | null;
             /**
              * Centered intro paragraph rendered below the headline.
              */
@@ -4297,6 +4349,24 @@ export interface Program {
                    * Google Maps link.
                    */
                   directionsURL?: string | null;
+                  /**
+                   * Social icons shown under this office. Empty = no icons.
+                   */
+                  socials?:
+                    | {
+                        platform:
+                          | 'whatsapp'
+                          | 'instagram'
+                          | 'facebook'
+                          | 'linkedin'
+                          | 'youtube'
+                          | 'twitter'
+                          | 'tiktok'
+                          | 'telegram';
+                        url: string;
+                        id?: string | null;
+                      }[]
+                    | null;
                   id?: string | null;
                 }[]
               | null;
@@ -4504,6 +4574,14 @@ export interface Program {
             blockType: 'photoGrid';
           }
         | {
+            /**
+             * Headline — line breaks are kept. Words listed in "Highlighted Words" render in bright red.
+             */
+            heading?: string | null;
+            /**
+             * Exact consecutive words from the headline to color in bright red (e.g. "CREATING MEMORIES,").
+             */
+            highlightedWords?: string | null;
             /**
              * Centered intro paragraph rendered below the headline.
              */
@@ -5372,6 +5450,13 @@ export interface PagesSelect<T extends boolean = true> {
                         };
                     directionsLabel?: T;
                     directionsURL?: T;
+                    socials?:
+                      | T
+                      | {
+                          platform?: T;
+                          url?: T;
+                          id?: T;
+                        };
                     id?: T;
                   };
               backgroundColor?: T;
@@ -5476,6 +5561,8 @@ export interface PagesSelect<T extends boolean = true> {
         galleryHero?:
           | T
           | {
+              heading?: T;
+              highlightedWords?: T;
               body?: T;
               backgroundColor?: T;
               id?: T;
@@ -6108,6 +6195,13 @@ export interface ProgramTypesSelect<T extends boolean = true> {
                         };
                     directionsLabel?: T;
                     directionsURL?: T;
+                    socials?:
+                      | T
+                      | {
+                          platform?: T;
+                          url?: T;
+                          id?: T;
+                        };
                     id?: T;
                   };
               backgroundColor?: T;
@@ -6250,6 +6344,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         galleryHero?:
           | T
           | {
+              heading?: T;
+              highlightedWords?: T;
               body?: T;
               backgroundColor?: T;
               id?: T;
@@ -6980,6 +7076,13 @@ export interface ProgramsSelect<T extends boolean = true> {
                         };
                     directionsLabel?: T;
                     directionsURL?: T;
+                    socials?:
+                      | T
+                      | {
+                          platform?: T;
+                          url?: T;
+                          id?: T;
+                        };
                     id?: T;
                   };
               backgroundColor?: T;
@@ -7122,6 +7225,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         galleryHero?:
           | T
           | {
+              heading?: T;
+              highlightedWords?: T;
               body?: T;
               backgroundColor?: T;
               id?: T;

@@ -1,9 +1,15 @@
 import * as migration_20260625_094114_initial from './20260625_094114_initial';
+import * as migration_20260728_103204_office_socials_gallery_heading from './20260728_103204_office_socials_gallery_heading';
 
 export const migrations = [
   {
     up: migration_20260625_094114_initial.up,
     down: migration_20260625_094114_initial.down,
-    name: '20260625_094114_initial'
+    name: '20260625_094114_initial',
+  },
+  {
+    up: migration_20260728_103204_office_socials_gallery_heading.up,
+    down: migration_20260728_103204_office_socials_gallery_heading.down,
+    name: '20260728_103204_office_socials_gallery_heading'
   },
 ];

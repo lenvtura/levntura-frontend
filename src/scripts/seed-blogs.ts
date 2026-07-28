@@ -22,6 +22,7 @@ import { fileURLToPath } from 'url'
 import { getPayload } from 'payload'
 import config from '../payload.config'
 import { ensureFirstAdmin } from '../lib/seeds/ensureFirstAdmin'
+import { flushSeedTranslations } from '../hooks/seedTranslation'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -749,6 +750,9 @@ const seed = async (): Promise<void> => {
   }
 
   log(`done. created=${created}, updated=${updated}, skipped=${skipped}, total=${LEGACY_BLOGS.length}`)
+  // Let the deferred EN→AR translation copies finish before exiting —
+  // process.exit would kill the ones still in flight.
+  await flushSeedTranslations()
   process.exit(0)
 }
 

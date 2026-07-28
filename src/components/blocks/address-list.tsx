@@ -1,12 +1,36 @@
-import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTelegram,
+  FaTiktok,
+  FaWhatsapp,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
+import { YoutubeIcon } from "@/assets/icons/youtube";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 import { SectionWrapper } from "@/components/sections/section-wrapper";
 import { cn } from "@/design-system/helpers";
 import type {
   AddressListBgColor,
   AddressListBlock as AddressListBlockData,
+  SocialPlatform,
 } from "@/lib/types";
+
+const SOCIAL_ICON_MAP: Record<
+  SocialPlatform,
+  { Icon: React.ComponentType<{ className?: string }>; label: string }
+> = {
+  whatsapp: { Icon: FaWhatsapp, label: "WhatsApp" },
+  instagram: { Icon: FaInstagram, label: "Instagram" },
+  facebook: { Icon: FaFacebook, label: "Facebook" },
+  linkedin: { Icon: FaLinkedinIn, label: "LinkedIn" },
+  youtube: { Icon: YoutubeIcon, label: "YouTube" },
+  twitter: { Icon: FaXTwitter, label: "X" },
+  tiktok: { Icon: FaTiktok, label: "TikTok" },
+  telegram: { Icon: FaTelegram, label: "Telegram" },
+};
 
 const BG_CLASS: Record<AddressListBgColor, string> = {
   "gray-light": "bg-[#f5f6f7]",
@@ -84,17 +108,27 @@ export function AddressListBlock({ block }: AddressListBlockProps) {
                 </a>
               )}
 
-              <div className="flex gap-x-8 mt-5">
-                <a href="#" aria-label="Instagram">
-                  <InstagramIcon size={16} />
-                </a>
-                <a href="#" aria-label="Twitter">
-                  <TwitterIcon size={16} />
-                </a>
-                <a href="#" aria-label="Facebook">
-                  <FacebookIcon size={16} />
-                </a>
-              </div>
+              {office.socials && office.socials.length > 0 && (
+                <div className="flex gap-x-8 mt-5">
+                  {office.socials.map((social, k) => {
+                    const cfg = SOCIAL_ICON_MAP[social.platform];
+                    if (!cfg || !social.url) return null;
+                    const { Icon, label } = cfg;
+                    return (
+                      <a
+                        key={social.id ?? `soc-${k}`}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        className="hover:text-lev-red transition-colors"
+                      >
+                        <Icon className="w-4 h-4" />
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
             </FadeUpAnimator>
           ))}
         </div>

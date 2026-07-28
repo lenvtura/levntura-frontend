@@ -92,6 +92,17 @@ const stripIds = (value: unknown): unknown => {
   return value
 }
 
+// Deferred copy jobs started by the hook. Seed scripts MUST await
+// `flushSeedTranslations()` before `process.exit`, otherwise pending
+// copies (especially for the last-created docs) are killed mid-flight.
+const pendingCopies = new Set<Promise<void>>()
+
+export const flushSeedTranslations = async (): Promise<void> => {
+  while (pendingCopies.size > 0) {
+    await Promise.allSettled([...pendingCopies])
+  }
+}
+
 export const seedTranslation: CollectionAfterChangeHook = async ({
   doc,
   operation,
@@ -99,55 +110,80 @@ export const seedTranslation: CollectionAfterChangeHook = async ({
   collection,
 }) => {
   const { payload, locale, context } = req
-  const effectiveLocale = locale || DEFAULT_LOCALE
+  const sourceLocale = locale || DEFAULT_LOCALE
 
   if ((context as { autoSeed?: boolean })?.autoSeed) return doc
-  if (effectiveLocale !== DEFAULT_LOCALE) return doc
   if (!doc?.id) return doc
 
-  // Create-only: running on update would bump `updatedAt` and trigger
-  // a "Document modified" warning on the editor's next save.
-  if (operation !== 'create') return doc
+  // Create-only: copying on update would overwrite the other locale's
+  // translations on every save. Exception: seed patches (e.g. program
+  // detail content added right after create) opt in via
+  // `context.seedTranslate` — the target locale is still fresh there.
+  const seedPatch = Boolean((context as { seedTranslate?: boolean })?.seedTranslate)
+  if (operation !== 'create' && !seedPatch) return doc
+
+  // Mirror to the "other" locale, whichever side the doc was created on.
+  if (sourceLocale !== 'en' && sourceLocale !== 'ar') return doc
+  const targetLocale = sourceLocale === 'en' ? TARGET_LOCALE : DEFAULT_LOCALE
 
   const docId = doc.id
   const collectionSlug = collection.slug
+  const supportsDrafts = Boolean(collection.versions && collection.versions.drafts)
 
-  // Awaited (not setImmediate) so the create response includes the bumped
-  // updatedAt — prevents the editor's freshly-opened page from going stale.
-  try {
-    const paths = collectLocalizedPaths(collection.fields as Field[])
-    const updates: Record<string, unknown> = {}
+  // Deferred until AFTER the create's transaction commits:
+  //  - a nested read inside the same transaction can't see the new row
+  //    ("Not Found")
+  //  - a failed statement inside a shared Postgres transaction poisons it
+  //    and rolls back the document creation itself.
+  const job = new Promise<void>((resolveJob) => {
+    setImmediate(async () => {
+    try {
+      // depth 0 → relationship/upload fields come back as plain IDs. The
+      // populated `doc` from afterChange carries full objects, which the
+      // target-locale write can't store in relation columns.
+      const raw = await payload.findByID({
+        collection: collectionSlug,
+        id: docId,
+        locale: sourceLocale,
+        depth: 0,
+        ...(supportsDrafts ? { draft: true } : {}),
+      })
 
-    for (const path of paths) {
-      const enValue = getByPath(doc, path)
-      if (isEmpty(enValue)) continue
-      setByPath(updates, path, stripIds(enValue))
+      const paths = collectLocalizedPaths(collection.fields as Field[])
+      const updates: Record<string, unknown> = {}
+
+      for (const path of paths) {
+        const value = getByPath(raw, path)
+        if (isEmpty(value)) continue
+        setByPath(updates, path, stripIds(value))
+      }
+
+      if (Object.keys(updates).length === 0) return
+
+      await payload.update({
+        collection: collectionSlug,
+        id: docId,
+        locale: targetLocale,
+        data: updates,
+        overrideAccess: true,
+        context: { autoSeed: true },
+        ...(supportsDrafts ? { draft: true } : {}),
+      })
+
+      payload.logger.info(
+        `[seedTranslation] ${collectionSlug}/${docId} → copied ${Object.keys(updates).length} field(s) ${sourceLocale} → ${targetLocale}`,
+      )
+    } catch (err) {
+      payload.logger.warn(
+        `[seedTranslation] ${collectionSlug}/${docId} translation seed failed: ${(err as Error).message}`,
+      )
+    } finally {
+      resolveJob()
     }
-
-    if (Object.keys(updates).length === 0) {
-      return doc
-    }
-
-    const supportsDrafts = Boolean(collection.versions && collection.versions.drafts)
-
-    await payload.update({
-      collection: collectionSlug,
-      id: docId,
-      locale: TARGET_LOCALE,
-      data: updates,
-      overrideAccess: true,
-      context: { autoSeed: true },
-      ...(supportsDrafts ? { draft: true } : {}),
     })
-
-    payload.logger.info(
-      `[seedTranslation] ${collectionSlug}/${docId} → copied ${Object.keys(updates).length} field(s) to ar`,
-    )
-  } catch (err) {
-    payload.logger.warn(
-      `[seedTranslation] ${collectionSlug}/${docId} translation seed failed: ${(err as Error).message}`,
-    )
-  }
+  })
+  pendingCopies.add(job)
+  void job.finally(() => pendingCopies.delete(job))
 
   return doc
 }

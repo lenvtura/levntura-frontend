@@ -11,6 +11,7 @@ import { getPayload } from 'payload'
 
 import config from '../payload.config'
 import { ensureFirstAdmin } from '../lib/seeds/ensureFirstAdmin'
+import { flushSeedTranslations } from '../hooks/seedTranslation'
 import { seedSite } from '../lib/seeds/seedSite'
 
 const run = async (): Promise<void> => {
@@ -23,6 +24,9 @@ const run = async (): Promise<void> => {
   const report = await seedSite(payload)
 
   process.stdout.write(JSON.stringify(report, null, 2) + '\n')
+  // Let the deferred EN→AR translation copies finish before exiting —
+  // process.exit would kill the ones still in flight.
+  await flushSeedTranslations()
   process.exit(report.ok ? 0 : 1)
 }
 

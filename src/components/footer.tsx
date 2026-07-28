@@ -5,9 +5,9 @@ import {
   FaLinkedinIn,
   FaTelegram,
   FaTiktok,
-  FaTwitter,
   FaWhatsapp,
 } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
 
 import { LeventuraSymbolLogo, LeventuraTextLogo } from '@/atoms/logo'
 import { YoutubeIcon } from '@/assets/icons/youtube'
@@ -67,7 +67,7 @@ const SOCIAL_ICON_MAP: Record<
   linkedin: { Icon: FaLinkedinIn, label: 'LinkedIn' },
   facebook: { Icon: FaFacebook, label: 'Facebook' },
   youtube: { Icon: YoutubeIcon, label: 'YouTube' },
-  twitter: { Icon: FaTwitter, label: 'Twitter' },
+  twitter: { Icon: FaXTwitter, label: 'X' },
   tiktok: { Icon: FaTiktok, label: 'TikTok' },
   telegram: { Icon: FaTelegram, label: 'Telegram' },
 }

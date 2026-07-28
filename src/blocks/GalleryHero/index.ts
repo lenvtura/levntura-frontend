@@ -15,18 +15,37 @@ import type { Block } from 'payload'
  *     layout exactly (py-30, max-w-3xl) — different from the generic
  *     Hero's centered variant.
  *
- * Editor controls intentionally minimal:
+ * Editor controls:
+ *   - heading: the headline, line breaks preserved (localized)
+ *   - highlightedWords: consecutive words from the headline rendered in
+ *     the bright accent red — the rest renders in dark red (localized)
  *   - body: the intro paragraph under the title (localized)
  *   - backgroundColor: optional section bg
- *
- * The headline text is fixed in the frontend component to preserve the
- * exact visual. If a future page needs a different headline, fork this
- * block or add a `headingOverride` field then.
  */
 export const GalleryHeroBlock: Block = {
   slug: 'galleryHero',
   labels: { singular: 'Gallery Hero', plural: 'Gallery Heros' },
   fields: [
+    {
+      name: 'heading',
+      type: 'textarea',
+      localized: true,
+      defaultValue: 'WE ARE CREATING\nMEMORIES, ARE\nYOU JOINING?',
+      admin: {
+        description:
+          'Headline — line breaks are kept. Words listed in "Highlighted Words" render in bright red.',
+      },
+    },
+    {
+      name: 'highlightedWords',
+      type: 'text',
+      localized: true,
+      defaultValue: 'CREATING MEMORIES,',
+      admin: {
+        description:
+          'Exact consecutive words from the headline to color in bright red (e.g. "CREATING MEMORIES,").',
+      },
+    },
     {
       name: 'body',
       type: 'textarea',

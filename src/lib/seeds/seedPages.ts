@@ -12,6 +12,9 @@
  * can point to a real form.
  */
 
+import { readFileSync } from 'fs'
+import path from 'path'
+
 import type { Payload } from 'payload'
 
 import { GALLERY_PHOTOS } from './data/galleryImages'
@@ -404,33 +407,398 @@ export interface SeedPagesOptions {
  * copy / images / colors set automatically.
  */
 
+// ─── Home page assets (fallback parity) ──────────────────────────────────
+//
+// The home blocks that hold images can't carry defaultValues (Media IDs
+// only exist at seed time), so their frontend components ship with
+// hardcoded fallbacks. Everything below mirrors those fallbacks 1:1 so
+// the seeded page shows in admin the SAME content visitors see on the
+// site — fully editable, fully translatable.
+
+const HOME_HERO_BG = {
+  url: 'https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home-hero_yxhrSNq.jpg',
+  filename: 'home-hero.jpg',
+  alt: 'Levntura — home hero background',
+} as const
+
+/** Mirrors `feature-cards.tsx` FALLBACK_CARDS. */
+const HOME_FEATURE_CARDS: ReadonlyArray<{
+  label: string
+  url: string
+  filename: string
+  panelColor: string
+  overlayTextColor: string
+  ctaUrl: string
+}> = [
+  {
+    label: 'Work & Travel',
+    url: 'https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/left-work-and-travel_Prn1fcB.jpg',
+    filename: 'home-card-work-and-travel.jpg',
+    panelColor: 'lev-blue-light',
+    overlayTextColor: 'lev-blue-light',
+    ctaUrl: '/programs',
+  },
+  {
+    label: 'Camp Counselor',
+    url: 'https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/right-camp-counselor_q6tqoVf.jpg',
+    filename: 'home-card-camp-counselor.jpg',
+    panelColor: 'lev-orange',
+    overlayTextColor: 'lev-orange',
+    ctaUrl: '/programs',
+  },
+]
+
+/** Mirrors `program-showcase.tsx` FALLBACK_PROGRAMS (7 cards, in order). */
+const HOME_SHOWCASE_PROGRAMS: ReadonlyArray<
+  { label: string } & ({ url: string; filename: string } | { localFile: string })
+> = [
+  {
+    label: 'Summer Work & Travel',
+    url: 'https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-program_work-and-travel_24LYy63.jpg',
+    filename: 'home-showcase-work-and-travel.jpg',
+  },
+  {
+    label: 'Camp Counselor',
+    url: 'https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_camp_kBDwgKc.jpg',
+    filename: 'home-showcase-camp.jpg',
+  },
+  {
+    label: 'Internship & Trainee',
+    url: 'https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-program_internship_6JEKEIn.jpg',
+    filename: 'home-showcase-internship.jpg',
+  },
+  { label: 'Study Abroad', localFile: 'home-showcase-study.png' },
+  {
+    label: 'Language Programs',
+    url: 'https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_language_xMMqzY7.jpg',
+    filename: 'home-showcase-language.jpg',
+  },
+  {
+    label: 'Summer Camp',
+    url: 'https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_summer-camp_2hf7glA.jpg',
+    filename: 'home-showcase-summer-camp.jpg',
+  },
+  {
+    label: 'Volunteering Programs',
+    url: 'https://sfo3.digitaloceanspaces.com/levntura/uploads/media/images/home_our-programs_volunteering_V6OdEt3.jpg',
+    filename: 'home-showcase-volunteering.jpg',
+  },
+]
+
 /**
- * The travelDestinations block's images array can't carry a defaultValue
- * (Media IDs only exist after the seed resolves them), so we inject the
- * resolved 9 destination cards here. Editor opens the admin and sees the
- * strip pre-populated with the original Travels constant entries.
- *
- * HeroHome block uses field defaults for everything (background, headline,
- * CTA, opportunities, intro heading + paragraphs).
+ * Mirrors `partners-carousel.tsx` FALLBACK_LOGOS — the 5 partner logos,
+ * exported from the inline SVG components into standalone .svg files
+ * (fill fixed to --lev-blue-dark to match the on-site look).
+ */
+const HOME_PARTNER_LOGOS: ReadonlyArray<{ name: string; localFile: string }> = [
+  { name: 'Cenet', localFile: 'partner-logo-cenet.svg' },
+  { name: 'IENA', localFile: 'partner-logo-iena.svg' },
+  { name: 'Royal Academy', localFile: 'partner-logo-royal-academy.svg' },
+  { name: 'United Studies', localFile: 'partner-logo-united-studies.svg' },
+  { name: 'WISE', localFile: 'partner-logo-wise.svg' },
+]
+
+/** Story image slot on the home PartnersCarousel — same tour photo the
+ *  component falls back to (`tour-images/i6.png`, already bundled). */
+const HOME_PARTNERS_STORY = { localFile: 'tour-i6.png', alt: 'Levntura community' } as const
+
+/** Mirrors `alternating-content.tsx` FALLBACK_ROWS. */
+const HOME_ALTERNATING_ROWS: ReadonlyArray<{
+  tag: string
+  heading: string
+  paragraph: string
+  localFile: string
+  imagePosition: 'left' | 'right'
+}> = [
+  {
+    tag: 'Explore',
+    heading: 'Adventure Awaits\nwith Global\nInternships',
+    paragraph:
+      "Take your first step into the world of professional growth. Levntura's Global Internship Programs connect students with international companies and organizations that value ambition, creativity, and fresh perspectives.",
+    localFile: 'home-alt-students.png',
+    imagePosition: 'left',
+  },
+  {
+    tag: 'Empower',
+    heading: 'Expert Guidance to Unlock Your Potential',
+    paragraph:
+      'Our expert counsellors are here to guide your path—from choosing the right program to building your confidence abroad. With personal mentorship and continuous support, we help you navigate challenges, seize opportunities, and shape a journey that reflects your goals.',
+    localFile: 'home-alt-happy-young-man.png',
+    imagePosition: 'right',
+  },
+]
+
+/** Mirrors `media-showcase.tsx` FALLBACK_ITEMS (home m-1..m-4). */
+const HOME_MEDIA_SHOWCASE: ReadonlyArray<{ localFile: string; alt: string }> = [
+  { localFile: 'home-m-1.png', alt: 'Levntura moments' },
+  { localFile: 'home-m-2.png', alt: 'Levntura moments' },
+  { localFile: 'home-m-3.png', alt: 'Levntura moments' },
+  { localFile: 'home-m-4.png', alt: 'Levntura moments' },
+]
+
+/** Mirrors `image-feature.tsx` fallbackImage. */
+const HOME_IMAGE_FEATURE = {
+  localFile: 'home-feature-student-at-college.png',
+  alt: 'Student at college',
+} as const
+
+/** Mirrors `social-feed.tsx` background fallback. */
+const HOME_SOCIAL_BG = {
+  localFile: 'home-social-happy-friendship.png',
+  alt: 'Levntura community',
+} as const
+
+/** Home DecoratedCTA — same photos as the component's FALLBACK_TOP
+ *  ([3,4]) and FALLBACK_BOTTOM ([6,5]); files already bundled for About. */
+const HOME_DECOR_CTA = {
+  top: ['cta-decor-3.png', 'cta-decor-4.png'],
+  bottom: ['cta-decor-6.png', 'cta-decor-5.png'],
+} as const
+
+/** Mirrors `video-testimonials.tsx` FALLBACK_VIDEOS — served from /public. */
+const HOME_VIDEO_TESTIMONIALS = ['media-1.mp4', 'media-2.mp4'] as const
+
+interface HomeAssets {
+  heroBgId: number | null
+  showcasePrograms: Array<{ label: string; image: number }>
+  partners: Array<{ name: string; logo: number }>
+  partnersStoryId: number | null
+  featureCards: Array<{
+    label: string
+    image: number
+    panelColor: string
+    overlayTextColor: string
+    ctaUrl: string
+  }>
+  alternatingRows: Array<{
+    tag: string
+    heading: string
+    paragraph: string
+    image: number
+    imagePosition: 'left' | 'right'
+  }>
+  mediaItems: Array<{ image: number }>
+  imageFeatureId: number | null
+  socialBgId: number | null
+  decorTop: Array<{ image: number }>
+  decorBottom: Array<{ image: number }>
+  videos: Array<{ video: number }>
+}
+
+/**
+ * Videos live in /public (not `local-images`), so this sibling of
+ * `ensureMediaFromFile` reads from there. Same dedup-by-basename rule.
+ */
+async function ensureMediaFromPublicVideo(
+  payload: Payload,
+  fileName: string,
+  alt: string,
+): Promise<number | null> {
+  const basename = fileName.replace(/\.[^./]+$/, '')
+  const existing = await payload.find({
+    collection: 'media',
+    where: { filename: { like: basename } },
+    limit: 1,
+  })
+  if (existing.docs[0]) {
+    log(`  ↳ reusing existing media for ${basename}.* (id=${existing.docs[0].id})`)
+    return existing.docs[0].id as number
+  }
+
+  try {
+    const fullPath = path.resolve(process.cwd(), 'public', 'assets', 'videos', fileName)
+    const buffer = readFileSync(fullPath)
+    const created = await payload.create({
+      collection: 'media',
+      data: { alt },
+      file: { data: buffer, mimetype: 'video/mp4', name: fileName, size: buffer.length },
+    })
+    log(`  ✓ uploaded video ${fileName} → media id=${created.id}`)
+    return created.id as number
+  } catch (err) {
+    log(`  ⚠ ${fileName}: video upload failed (${(err as Error).message}) — skipping`)
+    return null
+  }
+}
+
+/**
+ * Resolves every home-page image/video to a Media ID in one pass.
+ * Failures are tolerated (null / skipped item) so a single broken URL
+ * doesn't break the whole seed.
+ */
+async function seedHomeAssets(payload: Payload): Promise<HomeAssets> {
+  log(
+    'seeding Home page assets (1 hero bg + 7 showcase + 5 partner logos + 1 story + 2 cards + 2 rows + 4 media + 1 feature + 1 social bg + 4 cta decor + 2 videos)…',
+  )
+
+  const heroBgId = await ensureMediaFromUrl(
+    payload,
+    HOME_HERO_BG.url,
+    HOME_HERO_BG.filename,
+    HOME_HERO_BG.alt,
+  )
+
+  const showcasePrograms: HomeAssets['showcasePrograms'] = []
+  for (const p of HOME_SHOWCASE_PROGRAMS) {
+    const id =
+      'localFile' in p
+        ? await ensureMediaFromFile(payload, p.localFile, `Program — ${p.label}`)
+        : await ensureMediaFromUrl(payload, p.url, p.filename, `Program — ${p.label}`)
+    if (id != null) showcasePrograms.push({ label: p.label, image: id })
+  }
+
+  const partners: HomeAssets['partners'] = []
+  for (const l of HOME_PARTNER_LOGOS) {
+    const id = await ensureMediaFromFile(payload, l.localFile, `Partner — ${l.name}`)
+    if (id != null) partners.push({ name: l.name, logo: id })
+  }
+
+  const partnersStoryId = await ensureMediaFromFile(
+    payload,
+    HOME_PARTNERS_STORY.localFile,
+    HOME_PARTNERS_STORY.alt,
+  )
+
+  const featureCards: HomeAssets['featureCards'] = []
+  for (const c of HOME_FEATURE_CARDS) {
+    const id = await ensureMediaFromUrl(payload, c.url, c.filename, `Card — ${c.label}`)
+    if (id != null)
+      featureCards.push({
+        label: c.label,
+        image: id,
+        panelColor: c.panelColor,
+        overlayTextColor: c.overlayTextColor,
+        ctaUrl: c.ctaUrl,
+      })
+  }
+
+  const alternatingRows: HomeAssets['alternatingRows'] = []
+  for (const r of HOME_ALTERNATING_ROWS) {
+    const id = await ensureMediaFromFile(payload, r.localFile, r.heading.replace(/\n/g, ' '))
+    if (id != null)
+      alternatingRows.push({
+        tag: r.tag,
+        heading: r.heading,
+        paragraph: r.paragraph,
+        image: id,
+        imagePosition: r.imagePosition,
+      })
+  }
+
+  const mediaItems: HomeAssets['mediaItems'] = []
+  for (const m of HOME_MEDIA_SHOWCASE) {
+    const id = await ensureMediaFromFile(payload, m.localFile, m.alt)
+    if (id != null) mediaItems.push({ image: id })
+  }
+
+  const imageFeatureId = await ensureMediaFromFile(
+    payload,
+    HOME_IMAGE_FEATURE.localFile,
+    HOME_IMAGE_FEATURE.alt,
+  )
+
+  const socialBgId = await ensureMediaFromFile(
+    payload,
+    HOME_SOCIAL_BG.localFile,
+    HOME_SOCIAL_BG.alt,
+  )
+
+  const decorTop: HomeAssets['decorTop'] = []
+  for (const f of HOME_DECOR_CTA.top) {
+    const id = await ensureMediaFromFile(payload, f, 'Decorative photo')
+    if (id != null) decorTop.push({ image: id })
+  }
+  const decorBottom: HomeAssets['decorBottom'] = []
+  for (const f of HOME_DECOR_CTA.bottom) {
+    const id = await ensureMediaFromFile(payload, f, 'Decorative photo')
+    if (id != null) decorBottom.push({ image: id })
+  }
+
+  const videos: HomeAssets['videos'] = []
+  for (const v of HOME_VIDEO_TESTIMONIALS) {
+    const id = await ensureMediaFromPublicVideo(payload, v, 'Levntura testimonial video')
+    if (id != null) videos.push({ video: id })
+  }
+
+  log(
+    `  ✓ resolved Home assets: hero=${heroBgId ? 1 : 0}/1, showcase=${showcasePrograms.length}/7, partners=${partners.length}/5, cards=${featureCards.length}/2, rows=${alternatingRows.length}/2, media=${mediaItems.length}/4, decor=${decorTop.length + decorBottom.length}/4, videos=${videos.length}/2`,
+  )
+
+  return {
+    heroBgId,
+    showcasePrograms,
+    partners,
+    partnersStoryId,
+    featureCards,
+    alternatingRows,
+    mediaItems,
+    imageFeatureId,
+    socialBgId,
+    decorTop,
+    decorBottom,
+    videos,
+  }
+}
+
+/**
+ * Build the home block list with every image slot pre-attached (same
+ * pattern as `buildAboutBlocks`). Text copy still comes from each
+ * block's schema defaultValues; only the fields that CAN'T have
+ * defaults (uploads + arrays containing uploads) are injected here —
+ * mirroring the frontend components' hardcoded fallbacks 1:1 so admin
+ * matches what visitors see.
  */
 const buildHomeBlocks = (
   travelDestinations: Array<{ image: number; label: string }>,
+  home: HomeAssets,
 ) => [
-  { blockType: 'heroHome' },
+  {
+    blockType: 'heroHome',
+    ...(home.heroBgId ? { backgroundImage: home.heroBgId } : {}),
+  },
   {
     blockType: 'travelDestinations',
     ...(travelDestinations.length > 0 ? { images: travelDestinations } : {}),
   },
-  { blockType: 'programShowcase' },
-  { blockType: 'partnersCarousel' },
-  { blockType: 'featureCards' },
-  { blockType: 'alternatingContent' },
+  {
+    blockType: 'programShowcase',
+    ...(home.showcasePrograms.length > 0 ? { programs: home.showcasePrograms } : {}),
+  },
+  {
+    blockType: 'partnersCarousel',
+    ...(home.partners.length > 0 ? { partners: home.partners } : {}),
+    ...(home.partnersStoryId ? { storyImage: home.partnersStoryId } : {}),
+  },
+  {
+    blockType: 'featureCards',
+    ...(home.featureCards.length > 0 ? { cards: home.featureCards } : {}),
+  },
+  {
+    blockType: 'alternatingContent',
+    ...(home.alternatingRows.length > 0 ? { rows: home.alternatingRows } : {}),
+  },
   { blockType: 'blogPostsList' },
-  { blockType: 'mediaShowcase' },
-  { blockType: 'imageFeature' },
-  { blockType: 'videoTestimonials' },
-  { blockType: 'socialFeed' },
-  { blockType: 'decoratedCTA' },
+  {
+    blockType: 'mediaShowcase',
+    ...(home.mediaItems.length > 0 ? { items: home.mediaItems } : {}),
+  },
+  {
+    blockType: 'imageFeature',
+    ...(home.imageFeatureId ? { image: home.imageFeatureId } : {}),
+  },
+  {
+    blockType: 'videoTestimonials',
+    ...(home.videos.length > 0 ? { videos: home.videos } : {}),
+  },
+  {
+    blockType: 'socialFeed',
+    ...(home.socialBgId ? { backgroundImage: home.socialBgId } : {}),
+  },
+  {
+    blockType: 'decoratedCTA',
+    ...(home.decorTop.length > 0 ? { topImages: home.decorTop } : {}),
+    ...(home.decorBottom.length > 0 ? { bottomImages: home.decorBottom } : {}),
+  },
 ]
 
 /**
@@ -673,11 +1041,17 @@ export async function seedPages(
   // matches the legacy frontend's static images.
   const aboutAssets = await seedAboutAssets(payload)
 
+  // Resolve all Home-page assets (hero bg, showcase cards, partner logos,
+  // feature cards, alternating rows, media items, videos …) so every image
+  // slot in the Home blocks is pre-populated and matches the frontend's
+  // fallback content — editable in admin instead of baked into code.
+  const homeAssets = await seedHomeAssets(payload)
+
   const pages: PageSeed[] = [
     {
       slug: 'home',
       title: 'Home',
-      blocks: buildHomeBlocks(travelDestinations),
+      blocks: buildHomeBlocks(travelDestinations, homeAssets),
     },
     {
       slug: 'about',

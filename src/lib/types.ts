@@ -610,6 +610,7 @@ export interface AddressListBlock extends BaseBlock {
     phones?: Array<{ id?: string; number: string }>
     directionsLabel?: string
     directionsURL?: string
+    socials?: Array<{ id?: string; platform: SocialPlatform; url: string }>
   }>
   backgroundColor?: AddressListBgColor
 }
@@ -749,6 +750,8 @@ export type GalleryHeroBgColor =
 
 export interface GalleryHeroBlock extends BaseBlock {
   blockType: 'galleryHero'
+  heading?: string
+  highlightedWords?: string
   body?: string
   backgroundColor?: GalleryHeroBgColor
 }

@@ -31,10 +31,11 @@ function resolveTravelSrc(item: TravelImage): TravelSrc | undefined {
   const fromCms = mediaUrl(item.image, "card") ?? mediaUrl(item.image);
   const fallback = FALLBACK_BY_LABEL.get((item.label || "").toLowerCase());
 
-  // Prefer bundled assets when CMS only has a local /api/media path — those
-  // files are not on Vercel’s filesystem even after URL rewriting.
-  if (fromCms?.startsWith("/api/media") && fallback) return fallback;
-
+  // Editor content always wins; bundled assets only fill truly-empty slots.
+  // (The old "/api/media → prefer bundled" guard papered over pre-Spaces
+  // media rows missing from Vercel's filesystem, but it also silently
+  // discarded fresh editor uploads. With media on DO Spaces — and Payload's
+  // /api/media handler streaming from Spaces — the guard is obsolete.)
   return fromCms || fallback;
 }
 

@@ -25,7 +25,6 @@ import { default as default_adfece69f4031338b084a56f9444506f } from '@/component
 import { default as default_9ef722cf9dcd1d3e59b7d9f5fa57bd21 } from '@/components/admin/SubmissionDataField'
 import { default as default_7280a49819910bc7be220d65710bc73a } from '@/components/admin/SubmissionsExportButton'
 import { default as default_01044ecea0e6871a793487000c795212 } from '@/components/admin/AdminAvatar'
-import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
@@ -57,6 +56,5 @@ export const importMap = {
   "@/components/admin/SubmissionDataField#default": default_9ef722cf9dcd1d3e59b7d9f5fa57bd21,
   "@/components/admin/SubmissionsExportButton#default": default_7280a49819910bc7be220d65710bc73a,
   "@/components/admin/AdminAvatar#default": default_01044ecea0e6871a793487000c795212,
-  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }
