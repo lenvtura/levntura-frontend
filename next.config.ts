@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
   cacheComponents: false,
 
   images: {
-    unoptimized: true,
+    unoptimized: process.env.NODE_ENV === 'development',
     localPatterns: [
       {
         pathname: '/api/media/**',
