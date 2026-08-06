@@ -1,8 +1,13 @@
 import type { Block } from "@/lib/types";
 import { cn } from "@/design-system/helpers";
+import { RICH_TEXT_STATE_CSS } from "@/lib/richTextState";
 
 interface RichTextBlockProps {
-  block: Block & { content: unknown; width?: "narrow" | "medium" | "wide" };
+  block: {
+    content: unknown;
+    width?: string;
+    blockType?: string;
+  };
 }
 
 type LexicalNode = {
@@ -13,7 +18,28 @@ type LexicalNode = {
   url?: string;
   listType?: "number" | "bullet" | "check";
   children?: LexicalNode[];
+  // Inline text-state (color / size) applied to a selection — Payload stores
+  // it under `$` on the text node.
+  $?: Record<string, string>;
 };
+
+const hyphenToCamel = (s: string) =>
+  s.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase());
+
+// Turn a text node's `$` state (e.g. { color: 'red', size: '20' }) into an
+// inline React style using the shared RICH_TEXT_STATE_CSS map.
+function stateStyle(node: LexicalNode): React.CSSProperties | undefined {
+  const state = node.$;
+  if (!state) return undefined;
+  const style: Record<string, string> = {};
+  for (const [stateKey, value] of Object.entries(state)) {
+    const css = RICH_TEXT_STATE_CSS[stateKey]?.[value];
+    if (css) {
+      for (const [k, v] of Object.entries(css)) style[hyphenToCamel(k)] = v;
+    }
+  }
+  return Object.keys(style).length ? (style as React.CSSProperties) : undefined;
+}
 
 function extractText(node: LexicalNode | undefined): string {
   if (!node) return "";
@@ -79,7 +105,11 @@ function renderText(node: LexicalNode, key: string) {
   if (f & FORMAT_STRIKETHROUGH) content = <s>{content}</s>;
   if (f & FORMAT_SUBSCRIPT) content = <sub>{content}</sub>;
   if (f & FORMAT_SUPERSCRIPT) content = <sup>{content}</sup>;
-  return <span key={key}>{content}</span>;
+  return (
+    <span key={key} style={stateStyle(node)}>
+      {content}
+    </span>
+  );
 }
 
 function renderChildren(
@@ -198,7 +228,14 @@ export function RichTextBlock({ block }: RichTextBlockProps) {
         : "max-w-5xl";
 
   return (
-    <div className={cn("mx-auto px-4", widthClass)}>
+    <div
+      className={cn(
+        // `[&_p]:leading-relaxed` wins over the paragraph's built-in
+        // typography line-height (which otherwise renders body text cramped).
+        "mx-auto px-4 [&_p]:leading-relaxed",
+        widthClass,
+      )}
+    >
       <RichTextContent content={block.content} />
     </div>
   );

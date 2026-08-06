@@ -36,6 +36,24 @@ import { GalleryHeroBlock } from './GalleryHero'
 import { GalleryCtaBlock } from './GalleryCta'
 import { FormBlock } from './FormBlock'
 
+import type { Block } from 'payload'
+
+import { ProgramHeroBlock } from './ProgramHero'
+import { ProgramIntroBlock } from './ProgramIntro'
+import { ProgramWhatIsBlock } from './ProgramWhatIs'
+import { ProgramPhotoBreakBlock } from './ProgramPhotoBreak'
+import { ProgramPictureYourselfBlock } from './ProgramPictureYourself'
+import { ProgramWhyParticipateBlock } from './ProgramWhyParticipate'
+import { ProgramJobsBlock } from './ProgramJobs'
+import { ProgramDestinationsBlock } from './ProgramDestinations'
+import { ProgramRequirementsBlock } from './ProgramRequirements'
+import { ProgramBenefitsShowcaseBlock } from './ProgramBenefitsShowcase'
+import { ProgramWhyChooseBlock } from './ProgramWhyChoose'
+import { ProgramApplyBlock } from './ProgramApply'
+import { ProgramShareBlock } from './ProgramShare'
+
+import { withBlockMeta } from './withBlockMeta'
+
 /**
  * Re-export all blocks individually so collections can pick exactly what they need.
  */
@@ -129,7 +147,78 @@ export const contentBlocks = [
   GalleryCtaBlock,
   FormBlock,
   ProgramsListBlock,
+  // Every block gets the shared section meta (hide toggle + sync key).
+].map(withBlockMeta)
+
+/**
+ * Tag a block with an admin group so the "Add Section" drawer splits blocks
+ * into labelled categories (Payload `admin.group`).
+ */
+const withGroup =
+  (group: string) =>
+  (block: Block): Block => ({
+    ...block,
+    admin: { ...(block.admin ?? {}), group },
+  })
+
+/**
+ * Short DB table names for the program blocks. Payload derives table names
+ * from the slug, and under the versioned `_programs_v_blocks_*` prefix the
+ * long program-block slugs push some constraint names past Postgres's
+ * 63-char identifier limit (which breaks schema push). A short `dbName`
+ * fixes that — it only changes the table name, not the `blockType`/API.
+ */
+const PROGRAM_BLOCK_DBNAMES: Record<string, string> = {
+  programHero: 'pgm_hero',
+  programIntro: 'pgm_intro',
+  programWhatIs: 'pgm_wi',
+  programPhotoBreak: 'pgm_pb',
+  programPictureYourself: 'pgm_py',
+  programWhyParticipate: 'pgm_wp',
+  programJobs: 'pgm_jobs',
+  programDestinations: 'pgm_dst',
+  programBenefitsShowcase: 'pgm_bs',
+  programRequirements: 'pgm_req',
+  programWhyChoose: 'pgm_wc',
+  programApply: 'pgm_apply',
+  programShare: 'pgm_share',
+}
+
+const withShortDbName = (block: Block): Block => {
+  const dbName = PROGRAM_BLOCK_DBNAMES[block.slug]
+  return dbName ? { ...block, dbName } : block
+}
+
+/**
+ * Program-page-specific section blocks (migrated from the fixed
+ * program-detail layout). Grows as each section is converted.
+ */
+const programSectionBlocks: Block[] = [
+  ProgramHeroBlock,
+  ProgramIntroBlock,
+  ProgramWhatIsBlock,
+  ProgramPhotoBreakBlock,
+  ProgramPictureYourselfBlock,
+  ProgramWhyParticipateBlock,
+  ProgramJobsBlock,
+  ProgramDestinationsBlock,
+  ProgramRequirementsBlock,
+  ProgramBenefitsShowcaseBlock,
+  ProgramWhyChooseBlock,
+  ProgramApplyBlock,
+  ProgramShareBlock,
 ]
+
+/**
+ * Program blocks — program-specific sections grouped under "Program
+ * sections", plus the standard content blocks grouped under "General", so
+ * the picker clearly separates the two. withBlockMeta is idempotent, so
+ * re-wrapping the already-wrapped contentBlocks is a no-op.
+ */
+export const programBlocks = [
+  ...programSectionBlocks.map(withGroup('Program sections')).map(withShortDbName),
+  ...contentBlocks.map(withGroup('General')),
+].map(withBlockMeta)
 
 /**
  * Article blocks — for Blog posts.
@@ -143,4 +232,5 @@ export const articleBlocks = [
   GalleryBlock,
   FAQBlock,
   CTABlock,
+  ProgramShareBlock, // "Share" — share the current post on socials
 ]

@@ -16,6 +16,8 @@
 import type { Payload } from 'payload'
 
 import { ensureMediaFromUrl as ensureMediaFromUrlShared } from './utils/ensureMediaFromUrl'
+import { resolveProgramSectionsFromData } from './seedProgramDetails'
+import { PROGRAM_DETAIL_BY_SLUG } from './data/programDetailContent'
 
 const log = (msg: string) => {
   process.stdout.write(`[seed-programs] ${msg}\n`)
@@ -164,223 +166,6 @@ const PROGRAMS: ProgramSeed[] = [
   },
 ]
 
-/**
- * Default `sections` blocks for a generic Program. Editors can customize
- * per-program from admin afterward — this is just so the program detail
- * page never renders blank on first load.
- *
- * Specific programs that need rich starter content (like Work & Travel)
- * override this via `programSectionsBySlug` below.
- */
-function defaultProgramSections(
-  programTitle: string,
-  programDescription: string,
-) {
-  return [
-    {
-      blockType: 'content',
-      heading: `Why join ${programTitle}?`,
-      subheading: programDescription,
-    },
-    {
-      blockType: 'featureCards',
-      heading: 'What you get',
-      description:
-        "Earn, learn, and explore. Every program is built around real growth and lasting memories.",
-      sectionCta: { label: 'View all programs', url: '/programs' },
-      backgroundColor: 'lev-blue-dark',
-      cards: [
-        { label: 'Earn', panelColor: 'lev-yellow', overlayTextColor: 'lev-blue-dark', ctaUrl: '/programs' },
-        { label: 'Learn', panelColor: 'lev-orange', overlayTextColor: 'white', ctaUrl: '/programs' },
-        { label: 'Explore', panelColor: 'lev-green-light', overlayTextColor: 'lev-blue-dark', ctaUrl: '/programs' },
-      ],
-    },
-    {
-      blockType: 'decoratedCTA',
-      heading: 'Ready to start your journey?',
-      description:
-        "Don't let another season pass. Apply today and join thousands of students who've already changed their lives.",
-      cta: { label: 'Apply now', url: '#apply' },
-      backgroundColor: 'lev-yellow-light',
-    },
-  ]
-}
-
-// ─── Rich seed: Work & Travel ────────────────────────────────────────────
-
-/**
- * Full content port of the legacy `app/programs/work-and-travel/` static
- * page mapped onto our CMS blocks.
- *
- * Each section corresponds to a region of the original page:
- *   - intro / what is the program       → content
- *   - picture yourself + features        → alternatingContent
- *   - 6 benefits                         → featureCards
- *   - jobs slider (14 jobs)              → mediaShowcase
- *   - destinations (11 spots)            → mediaShowcase
- *   - amazing experience (7 perks)       → valuesList
- *   - requirements (5)                   → valuesList
- *   - memories title                     → memoriesGrid
- *
- * URLs reference the original DO Spaces images so the section is visually
- * accurate before any editor uploads. Editors can replace images via admin
- * by uploading new Media docs and re-pointing each block.
- *
- * NOTE: image fields here use the *URL* form as `caption` text only —
- * actual `image` relationship can't be set without a Media doc ID. Until
- * DO Spaces is wired, the frontend block fallbacks render packaged images
- * so the layout doesn't break.
- */
-function workAndTravelSections() {
-  return [
-    // ── Intro + What Is the Program ─────────────────────────────────────
-    {
-      blockType: 'content',
-      heading: "What is the Summer Work and Travel Program?",
-      subheading:
-        "Embark on a Summer Adventure with Levntura's USA Work & Travel Program. Calling all university students ready for a summer that blends adventure, cultural discovery, and real-world experience! If you're eager to improve your English, meet new friends from around the globe, and gain professional growth along the way, the USA Work & Travel Program, officially designated by the U.S. Department of State, is your gateway to a truly unforgettable season.\n\nThe Summer Work and Travel Program allows university students to spend their summer working and exploring the United States. It's a unique opportunity for cultural exchange, language improvement, and hands-on work experience within real American communities. Participants engage in seasonal jobs, discover new cities, and build lifelong friendships while immersing themselves in U.S. culture and everyday life.",
-    },
-
-    // ── Picture Yourself / Why You Should Participate ───────────────────
-    {
-      blockType: 'imageFeature',
-      eyebrow: 'Why You Should Participate',
-      heading: 'PICTURE YOURSELF ON AN UNFORGETTABLE JOURNEY',
-      paragraph:
-        "Meeting friends from every corner of the world, discovering new places, and gaining hands-on experience under the summer sun. The USA Work & Travel Program isn't just a seasonal job; it's your ticket to a life-changing adventure. By joining, you'll grow personally and professionally while enjoying a perfect mix of cultural exchange, language improvement, and unforgettable joy.",
-      backgroundColor: 'lev-yellow-light',
-    },
-
-    // ── 6 Benefit Cards ──────────────────────────────────────────────────
-    {
-      blockType: 'featureCards',
-      heading: 'WHY PARTICIPATE',
-      description:
-        "Immerse yourself in a once-in-a-lifetime journey that blends work experience, cultural discovery, and language growth, all wrapped in the excitement of an American summer.",
-      sectionCta: { label: 'Apply now', url: '#apply' },
-      backgroundColor: 'lev-blue-dark',
-      cards: [
-        { label: 'Meet New Friends', panelColor: 'lev-yellow', overlayTextColor: 'white', ctaUrl: '#apply' },
-        { label: 'Travel Around USA', panelColor: 'lev-orange', overlayTextColor: 'white', ctaUrl: '#apply' },
-        { label: 'Cultural Exchange', panelColor: 'lev-green-light', overlayTextColor: 'white', ctaUrl: '#apply' },
-        { label: 'Discover Yourself', panelColor: 'lev-pink', overlayTextColor: 'white', ctaUrl: '#apply' },
-      ],
-    },
-
-    // ── Jobs (carousel of seasonal jobs) ────────────────────────────────
-    {
-      blockType: 'mediaShowcase',
-      heading: 'AVAILABLE JOBS',
-      description:
-        "The Summer Work & Travel Program opens doors to exciting seasonal jobs across the U.S., from theme parks and beach resorts to national landmarks and city cafés. Choose a role that matches your interests, sharpen your skills, and experience what it's like to work and live in a new culture.",
-      aspectRatio: 'portrait',
-      autoplay: true,
-      autoplayDelay: 4000,
-      items: [
-        { caption: 'LIFEGUARD' },
-        { caption: 'PHOTOGRAPHY' },
-        { caption: 'RIDE OPERATOR' },
-        { caption: 'HOUSE KEEPING' },
-        { caption: 'WAITER' },
-        { caption: 'CHEF' },
-        { caption: 'FOOD RUNNER' },
-        { caption: 'WATER PARK WORKER' },
-        { caption: 'CASHIER' },
-        { caption: 'RECEPTIONIST' },
-        { caption: 'FOOD SERVICE' },
-        { caption: 'DISH WASHER' },
-        { caption: 'BARISTA' },
-      ],
-    },
-
-    // ── Destinations (top employer locations) ───────────────────────────
-    {
-      blockType: 'mediaShowcase',
-      heading: 'NEXT DESTINATION',
-      description:
-        "Discover your next summer adventure! Explore top employers and destinations across the U.S. through the Work & Travel Program, where every job brings new skills, friendships, and unforgettable memories.",
-      aspectRatio: 'landscape',
-      autoplay: true,
-      autoplayDelay: 5000,
-      items: [
-        { caption: 'Cedar Point — Ohio' },
-        { caption: 'Yellowstone National Park — Montana, Idaho, Wyoming' },
-        { caption: 'Grand Canyon National Park — Arizona' },
-        { caption: 'Six Flags Great America — Illinois' },
-        { caption: 'Continental Pool — Maryland' },
-        { caption: 'Smugglers Notch Resort — Vermont' },
-        { caption: 'Food Lion — Maryland' },
-        { caption: 'Fun City — Colorado' },
-        { caption: 'Aramark-Kauffman Stadium — Missouri' },
-        { caption: 'Kalahari Resort — Ohio' },
-        { caption: 'Point Sebago — Maine' },
-      ],
-    },
-
-    // ── What You Get (perks) ─────────────────────────────────────────────
-    {
-      blockType: 'valuesList',
-      heading: 'AN AMAZING EXPERIENCE AND YET YOU WILL GET',
-      backgroundColor: 'lev-yellow-light',
-      values: [
-        { number: '01', title: 'Travel Period', description: '30-day travel period after your program ends.' },
-        { number: '02', title: 'Housing', description: 'Comfortable housing accommodation throughout your program.' },
-        { number: '03', title: 'Insurance', description: 'Comprehensive health insurance coverage.' },
-        { number: '04', title: 'Paid Placement', description: 'Paid job placement in your preferred field.' },
-        { number: '05', title: 'Work Permit', description: 'Official work permit (DS-2019).' },
-        { number: '06', title: 'SSN', description: 'U.S. Social Security number issued during your stay.' },
-        { number: '07', title: 'Sponsorship', description: 'Sponsorship & visa assistance from day one.' },
-      ],
-    },
-
-    // ── Requirements ─────────────────────────────────────────────────────
-    {
-      blockType: 'valuesList',
-      heading: 'REQUIREMENTS',
-      backgroundColor: 'white',
-      values: [
-        { number: '01', title: 'Passport', description: 'Valid passport with at least 6 months remaining.' },
-        { number: '02', title: 'Education', description: 'Enrollment as a Full-Time University Student.' },
-        { number: '03', title: 'Language', description: 'English language proficiency (conversational level).' },
-        { number: '04', title: 'Age', description: 'Between 18–25 years old.' },
-        { number: '05', title: 'Interview', description: 'Interview & completed application form.' },
-      ],
-    },
-
-    // ── Memories ─────────────────────────────────────────────────────────
-    {
-      blockType: 'memoriesGrid',
-      title: "WE'RE CREATING MEMORIES, WILL YOU BE PART OF THEM?",
-      backgroundColor: 'lev-yellow-light',
-      primaryCta: { label: 'Apply now!', url: '#apply' },
-      secondaryLink: { label: 'See all photos', url: '/gallery' },
-    },
-
-    // ── Final CTA ─────────────────────────────────────────────────────────
-    {
-      blockType: 'decoratedCTA',
-      heading: 'READY FOR AN AMERICAN SUMMER?',
-      description:
-        "Apply now and lock in your spot. Our team will walk you through every step — from interview prep to flight tips.",
-      cta: { label: 'Apply now', url: '#apply' },
-      backgroundColor: 'lev-yellow-light',
-    },
-  ]
-}
-
-// Per-slug overrides for richer starter content. Slugs not listed here get
-// the generic `defaultProgramSections` set.
-//
-// NOTE: Work & Travel's rich seed is deferred until we finalize the unified
-// program-detail template (Task #5). The rich version requires uploading 24+
-// images for the AVAILABLE JOBS and NEXT DESTINATION carousels — work we'll
-// do once as part of the template rebuild rather than now. Until then, all
-// programs (including Work & Travel) use `defaultProgramSections` so each
-// listing card has an image and the listing page renders.
-const programSectionsBySlug: Record<string, () => Array<Record<string, unknown>>> = {
-  // 'work-and-travel': workAndTravelSections,  // deferred — see comment above
-}
-void workAndTravelSections // silence "declared but unused" until re-enabled
 
 // ─── Public API ──────────────────────────────────────────────────────────
 
@@ -521,13 +306,20 @@ export async function seedPrograms(
         continue
       }
 
-      // The structured "Detail Page" tab (populated by seedProgramDetails
-      // later in this run) now handles every program's main content. We
-      // intentionally leave the "Extra Sections" blocks array empty so
-      // editors can add ad-hoc CMS blocks AFTER the structured page only
-      // when they actually need them.
-      void programSectionsBySlug
-      void defaultProgramSections
+      // Build the whole program page (sections blocks) from its detail
+      // content — downloading its images — then create the program with the
+      // sections in one step, exactly like Pages. Creating with the content
+      // present means the seedTranslation copy fires on create (EN → AR).
+      const detailData = PROGRAM_DETAIL_BY_SLUG[program.slug]
+      const sections = detailData
+        ? await resolveProgramSectionsFromData(payload, {
+            programSlug: program.slug,
+            data: detailData,
+            title: program.title,
+            featuredImageId,
+            isOpen: program.isOpen,
+          })
+        : []
 
       const created = await payload.create({
         collection: 'programs',
@@ -544,7 +336,7 @@ export async function seedPrograms(
           // level inheritance) so the admin's per-program field shows it
           // selected and editors don't have to pick it manually.
           ...(applicationFormId ? { applicationForm: applicationFormId } : {}),
-          sections: [],
+          sections,
           translationComplete: true,
           _status: publish ? 'published' : 'draft',
         } as never,

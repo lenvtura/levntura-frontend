@@ -83,7 +83,11 @@ export function ProgramCard({
   href = "#",
 }: ProgramCardProps) {
   return (
-    <div className="bg-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow group h-full flex flex-col">
+    <div className="relative bg-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow group h-full flex flex-col">
+      {/* Stretched link — clicking anywhere on the card (image or text)
+          opens the program. Interactive controls sit above it via z-index. */}
+      <Link href={href} aria-label={title} className="absolute inset-0 z-10" />
+
       <div className="relative h-[240px] overflow-hidden shrink-0 bg-gray-200">
         {image ? (
           <Image
@@ -97,9 +101,7 @@ export function ProgramCard({
 
       <div className="p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-3">
-          <Link href={href}>
-            <h3 className="typography-R24! text-lev-black">{title}</h3>
-          </Link>
+          <h3 className="typography-R24! text-lev-black">{title}</h3>
           <div className="flex items-center gap-2">
             <span className="typography-S12 uppercase text-lev-black">
               {country}
@@ -114,7 +116,7 @@ export function ProgramCard({
           {description}
         </p>
 
-        <StartNowBtn href={href} className="w-full" />
+        <StartNowBtn href={href} className="w-full relative z-20" />
       </div>
     </div>
   );

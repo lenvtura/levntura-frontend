@@ -1,5 +1,7 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, TextStateFeature } from '@payloadcms/richtext-lexical'
+
+import { richTextState } from './lib/richTextState'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { s3Storage } from '@payloadcms/storage-s3'
 import path from 'path'
@@ -90,7 +92,13 @@ export default buildConfig({
 
   globals: [SiteSettings, Header, Footer],
 
-  editor: lexicalEditor(),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      // Inline color + size on selected text (see lib/richTextState).
+      TextStateFeature({ state: richTextState }),
+    ],
+  }),
   secret: process.env.PAYLOAD_SECRET || '',
 
   typescript: {

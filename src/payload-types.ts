@@ -208,6 +208,11 @@ export interface Page {
   sections: (
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Optional small text above the headline.
          */
         eyebrow?: string | null;
@@ -276,6 +281,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Horizontal strip of destination cards. Reorder by dragging. Empty list hides the block entirely.
          */
         images?:
@@ -300,6 +310,11 @@ export interface Page {
         blockType: 'travelDestinations';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         variant?: ('centered' | 'splitRight' | 'splitLeft' | 'fullBackground') | null;
         /**
          * Small text above the heading.
@@ -360,6 +375,11 @@ export interface Page {
         blockType: 'hero';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         content: {
           root: {
             type: string;
@@ -381,6 +401,11 @@ export interface Page {
         blockType: 'richText';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Optional section heading shown above the columns. Rendered in the brand SectionTitle style (uppercase, blue-dark, large).
          */
@@ -420,6 +445,11 @@ export interface Page {
         blockType: 'content';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         heading?: string | null;
         layout?: ('grid' | 'carousel' | 'masonry') | null;
         images?:
@@ -434,6 +464,11 @@ export interface Page {
         blockType: 'gallery';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         heading?: string | null;
         subheading?: string | null;
         items?:
@@ -463,6 +498,11 @@ export interface Page {
         blockType: 'faq';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         heading: string;
         description?: string | null;
         actions?:
@@ -480,6 +520,11 @@ export interface Page {
         blockType: 'cta';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Small label above the heading. Rendered uppercase.
          */
@@ -512,6 +557,11 @@ export interface Page {
         blockType: 'imageFeature';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Section heading. Rendered uppercase in SectionTitle style.
          */
@@ -548,6 +598,11 @@ export interface Page {
         blockType: 'mediaShowcase';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Centered heading rendered in SectionTitle style.
          */
@@ -586,6 +641,11 @@ export interface Page {
         blockType: 'decoratedCTA';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Optional intro paragraph rendered above the main heading (used on About for the "From exchange programs..." intro).
          */
@@ -649,6 +709,11 @@ export interface Page {
         blockType: 'partnersCarousel';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Section heading. Rendered uppercase. Use a line break (\n) for a 2-line title in HTML markup.
          */
@@ -735,6 +800,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Small uppercase label above the title.
          */
         eyebrow?: string | null;
@@ -768,6 +838,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Small uppercase label above the heading.
          */
         eyebrow?: string | null;
@@ -798,6 +873,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Section title. Rendered uppercase.
          */
         heading: string;
@@ -825,6 +905,11 @@ export interface Page {
         blockType: 'videoTestimonials';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Numbered highlights across the top. 3 items by default.
          */
@@ -868,6 +953,11 @@ export interface Page {
         blockType: 'socialFeed';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         heading: string;
         /**
          * Tag list shown to the left of the heading.
@@ -904,6 +994,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * List of founders / team leaders. Falls back to the original Ahmad + Abdulrahman pair when empty.
          */
         founders?:
@@ -927,6 +1022,11 @@ export interface Page {
         blockType: 'foundersCarousel';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Section heading. Use \n for a line break.
          */
@@ -957,6 +1057,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Section heading. Use \n for a line break.
          */
         heading: string;
@@ -976,6 +1081,11 @@ export interface Page {
         blockType: 'valuesList';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Small uppercase label above the heading.
          */
@@ -1002,6 +1112,11 @@ export interface Page {
         blockType: 'textTestimonials';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Small uppercase label above the heading.
          */
@@ -1041,6 +1156,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Section heading. Use \n for line breaks. The word "START" is highlighted by default in the frontend — edit `highlightedWord` to change it.
          */
         heading: string;
@@ -1063,6 +1183,11 @@ export interface Page {
         blockType: 'contactForm';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         intro?: string | null;
         offices?:
           | {
@@ -1110,6 +1235,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Small uppercase label above the heading.
          */
         eyebrow?: string | null;
@@ -1136,6 +1266,11 @@ export interface Page {
         blockType: 'heroWithImageGrid';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Overlay title shown centered at the bottom.
          */
@@ -1166,6 +1301,11 @@ export interface Page {
         blockType: 'memoriesGrid';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Use \n for line breaks.
          */
@@ -1206,6 +1346,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Use \n for line breaks.
          */
         heading: string;
@@ -1235,6 +1380,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Pick photos from the Media library (multi-select). Bulk-upload to Media first if you have many. Leave empty to use the packaged fallback set.
          */
         images?: (number | Media)[] | null;
@@ -1256,6 +1406,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Headline — line breaks are kept. Words listed in "Highlighted Words" render in bright red.
          */
         heading?: string | null;
@@ -1275,6 +1430,11 @@ export interface Page {
         blockType: 'galleryHero';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         /**
          * Big heading on the left. Use \n for line breaks.
          */
@@ -1308,6 +1468,11 @@ export interface Page {
         blockType: 'galleryCta';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         form: number | Form;
         enableIntro?: boolean | null;
         introContent?: {
@@ -1331,6 +1496,11 @@ export interface Page {
       }
     | {
         /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
          * Heading. Use \n for a line break.
          */
         heading: string;
@@ -1347,6 +1517,11 @@ export interface Page {
         blockType: 'promptCTA';
       }
     | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         heading: string;
         /**
          * Small label on the left of the "View All" row.
@@ -1605,6 +1780,15 @@ export interface Blog {
         id?: string | null;
         blockName?: string | null;
         blockType: 'cta';
+      }
+    | {
+        /**
+         * Heading above the share buttons.
+         */
+        heading?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programShare';
       }
   )[];
   category: number | BlogCategory;
@@ -2040,6 +2224,11 @@ export interface ProgramType {
   sections?:
     | (
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             variant?: ('centered' | 'splitRight' | 'splitLeft' | 'fullBackground') | null;
             /**
              * Small text above the heading.
@@ -2109,6 +2298,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Optional small text above the headline.
              */
             eyebrow?: string | null;
@@ -2176,6 +2370,11 @@ export interface ProgramType {
             blockType: 'heroHome';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             content: {
               root: {
                 type: string;
@@ -2197,6 +2396,11 @@ export interface ProgramType {
             blockType: 'richText';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Optional section heading shown above the columns. Rendered in the brand SectionTitle style (uppercase, blue-dark, large).
              */
@@ -2236,6 +2440,11 @@ export interface ProgramType {
             blockType: 'content';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             heading?: string | null;
             layout?: ('grid' | 'carousel' | 'masonry') | null;
             images?:
@@ -2250,6 +2459,11 @@ export interface ProgramType {
             blockType: 'gallery';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             heading?: string | null;
             subheading?: string | null;
             items?:
@@ -2279,6 +2493,11 @@ export interface ProgramType {
             blockType: 'faq';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             heading: string;
             description?: string | null;
             actions?:
@@ -2296,6 +2515,11 @@ export interface ProgramType {
             blockType: 'cta';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Small label above the heading. Rendered uppercase.
              */
@@ -2328,6 +2552,11 @@ export interface ProgramType {
             blockType: 'imageFeature';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Section heading. Rendered uppercase in SectionTitle style.
              */
@@ -2364,6 +2593,11 @@ export interface ProgramType {
             blockType: 'mediaShowcase';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Centered heading rendered in SectionTitle style.
              */
@@ -2402,6 +2636,11 @@ export interface ProgramType {
             blockType: 'decoratedCTA';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Optional intro paragraph rendered above the main heading (used on About for the "From exchange programs..." intro).
              */
@@ -2473,6 +2712,11 @@ export interface ProgramType {
             blockType: 'partnersCarousel';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Section heading. Rendered uppercase. Use a line break (\n) for a 2-line title in HTML markup.
              */
@@ -2559,6 +2803,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Small uppercase label above the title.
              */
             eyebrow?: string | null;
@@ -2592,6 +2841,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Small uppercase label above the heading.
              */
             eyebrow?: string | null;
@@ -2622,6 +2876,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Section title. Rendered uppercase.
              */
             heading: string;
@@ -2649,6 +2908,11 @@ export interface ProgramType {
             blockType: 'videoTestimonials';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Numbered highlights across the top. 3 items by default.
              */
@@ -2692,6 +2956,11 @@ export interface ProgramType {
             blockType: 'socialFeed';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             heading: string;
             /**
              * Tag list shown to the left of the heading.
@@ -2728,6 +2997,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * List of founders / team leaders. Falls back to the original Ahmad + Abdulrahman pair when empty.
              */
             founders?:
@@ -2751,6 +3025,11 @@ export interface ProgramType {
             blockType: 'foundersCarousel';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Section heading. Use \n for a line break.
              */
@@ -2781,6 +3060,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Section heading. Use \n for a line break.
              */
             heading: string;
@@ -2800,6 +3084,11 @@ export interface ProgramType {
             blockType: 'valuesList';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Small uppercase label above the heading.
              */
@@ -2826,6 +3115,11 @@ export interface ProgramType {
             blockType: 'textTestimonials';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Small uppercase label above the heading.
              */
@@ -2865,6 +3159,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Section heading. Use \n for line breaks. The word "START" is highlighted by default in the frontend — edit `highlightedWord` to change it.
              */
             heading: string;
@@ -2887,6 +3186,11 @@ export interface ProgramType {
             blockType: 'contactForm';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             intro?: string | null;
             offices?:
               | {
@@ -2934,6 +3238,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Small uppercase label above the heading.
              */
             eyebrow?: string | null;
@@ -2961,6 +3270,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Heading. Use \n for a line break.
              */
             heading: string;
@@ -2977,6 +3291,11 @@ export interface ProgramType {
             blockType: 'promptCTA';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             heading: string;
             /**
              * Small label on the left of the "View All" row.
@@ -3004,6 +3323,11 @@ export interface ProgramType {
             blockType: 'relatedItems';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Overlay title shown centered at the bottom.
              */
@@ -3042,6 +3366,11 @@ export interface ProgramType {
             blockType: 'memoriesGrid';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Use \n for line breaks.
              */
@@ -3082,6 +3411,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Use \n for line breaks.
              */
             heading: string;
@@ -3111,6 +3445,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Pick photos from the Media library (multi-select). Bulk-upload to Media first if you have many. Leave empty to use the packaged fallback set.
              */
             images?: (number | Media)[] | null;
@@ -3132,6 +3471,11 @@ export interface ProgramType {
           }
         | {
             /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
+            /**
              * Headline — line breaks are kept. Words listed in "Highlighted Words" render in bright red.
              */
             heading?: string | null;
@@ -3151,6 +3495,11 @@ export interface ProgramType {
             blockType: 'galleryHero';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             /**
              * Big heading on the left. Use \n for line breaks.
              */
@@ -3184,6 +3533,11 @@ export interface ProgramType {
             blockType: 'galleryCta';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             form: number | Form;
             enableIntro?: boolean | null;
             introContent?: {
@@ -3206,6 +3560,11 @@ export interface ProgramType {
             blockType: 'formBlock';
           }
         | {
+            /**
+             * Hide this section on the live site without deleting it. Untick to show it again.
+             */
+            hidden?: boolean | null;
+            syncKey?: string | null;
             heading?: string | null;
             subheading?: string | null;
             displayMode?: ('auto' | 'manual') | null;
@@ -3354,1355 +3713,1703 @@ export interface Program {
    */
   calendlyURL?: string | null;
   /**
-   * Top of the program detail page.
+   * Build the page by adding sections. Drag to reorder.
    */
-  detailHero?: {
-    /**
-     * Small label above the title, e.g. "SUMMER".
-     */
-    tag?: string | null;
-    /**
-     * e.g. "BACHELOR & MASTER'S DEGREE STUDENTS".
-     */
-    subtitle?: string | null;
-    /**
-     * e.g. "Program only to USA.".
-     */
-    note?: string | null;
-    /**
-     * Hero background image. Falls back to featuredImage if empty.
-     */
-    image?: (number | null) | Media;
-  };
-  detailIntro?: {
-    eyebrow?: string | null;
-    body?: string | null;
-  };
-  detailWhatIs?: {
-    title?: string | null;
-    /**
-     * Use **bold** markers around words to make them bold.
-     */
-    body?: string | null;
-  };
-  /**
-   * Decorative visual break between "What is" and "Picture yourself".
-   */
-  detailPhotoMiddle?: (number | null) | Media;
-  detailPictureYourself?: {
-    eyebrow?: string | null;
-    body?: string | null;
-    circleHeading?: string | null;
-    circleBody?: string | null;
-    /**
-     * Round photo behind the yellow circle.
-     */
-    photo?: (number | null) | Media;
-  };
-  detailWhyParticipate?: {
-    body?: string | null;
-    benefits?:
-      | {
-          image?: (number | null) | Media;
-          title: string;
-          description?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  detailJobs?: {
-    body?: string | null;
-    items?:
-      | {
-          image?: (number | null) | Media;
-          title: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  detailDestinations?: {
-    leadText?: string | null;
-    items?:
-      | {
-          image?: (number | null) | Media;
-          area: string;
-          country?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  detailBenefitsShowcase?: {
-    title?: string | null;
-    items?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  detailRequirements?:
+  sections: (
     | {
-        iconKey: 'passport' | 'college' | 'language' | 'age' | 'diploma';
-        title: string;
-        description?: string | null;
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small label above the title, e.g. "SUMMER".
+         */
+        tag?: string | null;
+        /**
+         * The big hero title (usually the program name).
+         */
+        heading: string;
+        /**
+         * e.g. "BACHELOR & MASTER'S DEGREE STUDENTS".
+         */
+        subtitle?: string | null;
+        /**
+         * e.g. "Program only to USA.".
+         */
+        note?: string | null;
+        /**
+         * Full-screen hero background. If left empty, a default hero image is shown so the section still looks complete.
+         */
+        image?: (number | null) | Media;
         id?: string | null;
-      }[]
-    | null;
-  /**
-   * Photo grid + heading + CTAs (same look as the about-page Memories block). Editor-uploaded photos are stored in Media. Falls back to packaged tour-images when empty.
-   */
-  detailMemories?: {
-    title?: string | null;
-    images?:
-      | {
-          image?: (number | null) | Media;
-          alt?: string | null;
-          id?: string | null;
-        }[]
-      | null;
-    primaryCta?: {
-      label?: string | null;
-      url?: string | null;
-    };
-    secondaryLink?: {
-      label?: string | null;
-      url?: string | null;
-    };
-  };
-  detailFeatures?:
+        blockName?: string | null;
+        blockType: 'programHero';
+      }
     | {
-        iconKey: 'star' | 'bag' | 'hand' | 'people' | 'face' | 'check';
-        title: string;
-        description?: string | null;
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small centered label above the intro text.
+         */
+        eyebrow?: string | null;
+        body?: string | null;
         id?: string | null;
-      }[]
-    | null;
-  /**
-   * Build extra sections with blocks. Drag to reorder.
-   */
-  sections?:
-    | (
-        | {
-            variant?: ('centered' | 'splitRight' | 'splitLeft' | 'fullBackground') | null;
-            /**
-             * Small text above the heading.
-             */
-            eyebrow?: string | null;
-            /**
-             * Use \n for line breaks.
-             */
-            heading: string;
-            /**
-             * Substring of the heading rendered in the highlight color. Leave empty for a single-color heading.
-             */
-            highlightedWord?: string | null;
-            highlightColor?:
-              | (
-                  | 'lev-orange'
-                  | 'lev-red'
-                  | 'lev-green'
-                  | 'lev-green-light'
-                  | 'lev-blue'
-                  | 'lev-blue-light'
-                  | 'lev-yellow'
-                )
-              | null;
-            /**
-             * Body text below the heading. Use line breaks to split into paragraphs.
-             */
-            subheading?: string | null;
-            media?: (number | null) | Media;
-            actions?:
-              | {
-                  label: string;
-                  url: string;
-                  style?: ('primary' | 'secondary' | 'ghost') | null;
-                  id?: string | null;
-                }[]
-              | null;
-            /**
-             * Section background color (ignored when variant is "Full Background" — that uses the uploaded image).
-             */
-            backgroundColor?:
-              | (
-                  | 'none'
-                  | 'lev-yellow'
-                  | 'lev-yellow-light'
-                  | 'lev-blue'
-                  | 'lev-blue-light'
-                  | 'lev-blue-dark'
-                  | 'lev-green'
-                  | 'lev-green-light'
-                  | 'lev-green-dark'
-                  | 'lev-red'
-                  | 'lev-red-dark'
-                  | 'lev-orange'
-                  | 'lev-pink'
-                  | 'lev-black'
-                  | 'white'
-                )
-              | null;
-            /**
-             * Text + UI color, choose based on bg contrast.
-             */
-            textColor?: ('dark' | 'light') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'hero';
-          }
-        | {
-            /**
-             * Optional small text above the headline.
-             */
-            eyebrow?: string | null;
-            /**
-             * Main headline. Will be rendered with a stroked outline style.
-             */
-            headline: string;
-            subheadline?: string | null;
-            /**
-             * Use an uploaded image or a solid brand color as the hero background.
-             */
-            backgroundType?: ('image' | 'color') | null;
-            /**
-             * Full-screen hero background. 1920x1080+ recommended.
-             */
-            backgroundImage?: (number | null) | Media;
-            /**
-             * Pick a brand color for the hero background.
-             */
-            backgroundColor?:
-              | (
-                  | 'lev-blue'
-                  | 'lev-blue-dark'
-                  | 'lev-green-dark'
-                  | 'lev-green'
-                  | 'lev-red'
-                  | 'lev-orange'
-                  | 'lev-yellow'
-                  | 'lev-black'
-                )
-              | null;
-            opportunities?:
-              | {
-                  label: string;
-                  id?: string | null;
-                }[]
-              | null;
-            cta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Render social share icons. Pulled from Site Settings → Social Links.
-             */
-            showSocialIcons?: boolean | null;
-            /**
-             * Optional text section that appears below the hero — heading + 2 paragraph columns. Leave all fields empty to skip it entirely.
-             */
-            intro?: {
+        blockName?: string | null;
+        blockType: 'programIntro';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        title?: string | null;
+        /**
+         * Exact consecutive words from the title to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        /**
+         * Use **bold** markers around words to make them bold.
+         */
+        body?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programWhatIs';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Decorative photo between sections. If left empty, a default image is shown.
+         */
+        image?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programPhotoBreak';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small label above the "Picture yourself" title.
+         */
+        eyebrow?: string | null;
+        body?: string | null;
+        /**
+         * Bold text inside the yellow circle overlay.
+         */
+        circleHeading?: string | null;
+        /**
+         * Smaller text under the circle heading.
+         */
+        circleBody?: string | null;
+        /**
+         * Round photo behind the yellow circle. A default is shown if empty.
+         */
+        photo?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programPictureYourself';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        body?: string | null;
+        benefits?:
+          | {
+              image?: (number | null) | Media;
               /**
-               * Section heading on the left column. Rendered uppercase in the brand SectionTitle style. Press Enter to control line breaks.
+               * Use \n for line breaks.
                */
-              heading?: string | null;
-              /**
-               * Left column paragraph (under the heading).
-               */
-              paragraph1?: string | null;
-              /**
-               * Right column paragraph. Leave empty for a single-column layout.
-               */
-              paragraph2?: string | null;
-            };
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'heroHome';
-          }
-        | {
-            content: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            };
-            width?: ('narrow' | 'normal' | 'wide') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'richText';
-          }
-        | {
-            /**
-             * Optional section heading shown above the columns. Rendered in the brand SectionTitle style (uppercase, blue-dark, large).
-             */
-            heading?: string | null;
-            /**
-             * Optional supporting text shown below the heading.
-             */
-            subheading?: string | null;
-            columns?:
-              | {
-                  size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-                  content?: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: any;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  } | null;
-                  enableLink?: boolean | null;
-                  link?: {
-                    label: string;
-                    url: string;
-                  };
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'content';
-          }
-        | {
-            heading?: string | null;
-            layout?: ('grid' | 'carousel' | 'masonry') | null;
-            images?:
-              | {
-                  image: number | Media;
-                  caption?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'gallery';
-          }
-        | {
-            heading?: string | null;
-            subheading?: string | null;
-            items?:
-              | {
-                  question: string;
-                  answer: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: any;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  };
-                  id?: string | null;
-                }[]
-              | null;
-            enableSchema?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'faq';
-          }
-        | {
-            heading: string;
-            description?: string | null;
-            actions?:
-              | {
-                  label: string;
-                  url: string;
-                  style?: ('primary' | 'secondary') | null;
-                  id?: string | null;
-                }[]
-              | null;
-            background?: ('default' | 'brand' | 'dark' | 'image') | null;
-            backgroundImage?: (number | null) | Media;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'cta';
-          }
-        | {
-            /**
-             * Small label above the heading. Rendered uppercase.
-             */
-            eyebrow?: string | null;
-            /**
-             * Section heading. Rendered uppercase in SectionTitle style.
-             */
-            heading: string;
-            paragraph?: string | null;
-            /**
-             * Full-width image shown below the content.
-             */
-            image?: (number | null) | Media;
-            /**
-             * Background color for the content area.
-             */
-            backgroundColor?:
-              | (
-                  | 'lev-yellow'
-                  | 'lev-yellow-light'
-                  | 'lev-blue-light'
-                  | 'lev-green-light'
-                  | 'lev-pink'
-                  | 'lev-gray-light'
-                  | 'white'
-                )
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'imageFeature';
-          }
-        | {
-            /**
-             * Section heading. Rendered uppercase in SectionTitle style.
-             */
-            heading: string;
-            description?: string | null;
-            /**
-             * Normalizes all images to the same shape regardless of upload size. Use "Natural" to keep each image at its original ratio.
-             */
-            aspectRatio?: ('portrait' | 'square' | 'landscape' | 'wide' | 'natural') | null;
-            items?:
-              | {
-                  image: number | Media;
-                  /**
-                   * Optional text overlay shown at the bottom-left of the image (e.g. "Australia", "USA").
-                   */
-                  caption?: string | null;
-                  /**
-                   * Optional link. When set, the whole image is clickable. Use a relative path like /programs/work-and-travel or an external https:// URL.
-                   */
-                  url?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            /**
-             * Auto-advance through the carousel.
-             */
-            autoplay?: boolean | null;
-            /**
-             * Milliseconds between slides (when autoplay is on).
-             */
-            autoplayDelay?: number | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'mediaShowcase';
-          }
-        | {
-            /**
-             * Centered heading rendered in SectionTitle style.
-             */
-            heading: string;
-            description?: string | null;
-            cta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Decorative images shown above the CTA. Usually 2 images.
-             */
-            topImages?:
-              | {
-                  image: number | Media;
-                  id?: string | null;
-                }[]
-              | null;
-            /**
-             * Decorative images shown below the CTA. Usually 2 images.
-             */
-            bottomImages?:
-              | {
-                  image: number | Media;
-                  id?: string | null;
-                }[]
-              | null;
-            /**
-             * Background color for the section.
-             */
-            backgroundColor?:
-              | ('lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'decoratedCTA';
-          }
-        | {
-            /**
-             * Optional intro paragraph rendered above the main heading (used on About for the "From exchange programs..." intro).
-             */
-            eyebrow?: string | null;
-            /**
-             * Main heading. Use \n for line breaks. The "highlightedWord" substring (if set) is rendered in the highlight color.
-             */
-            heading: string;
-            /**
-             * Substring of the heading rendered in the highlight color. Leave empty for a single-color heading.
-             */
-            highlightedWord?: string | null;
-            highlightColor?:
-              | (
-                  | 'none'
-                  | 'lev-orange'
-                  | 'lev-red'
-                  | 'lev-red-dark'
-                  | 'lev-blue'
-                  | 'lev-blue-dark'
-                  | 'lev-green'
-                  | 'lev-green-dark'
-                  | 'lev-yellow'
-                )
-              | null;
-            /**
-             * Color of the (non-highlighted part of) the heading.
-             */
-            headingColor?: ('lev-blue-dark' | 'lev-red-dark' | 'lev-green-dark' | 'lev-black' | 'white') | null;
-            paragraph1?: string | null;
-            paragraph2?: string | null;
-            /**
-             * Upload partner / university logos. Leave the list empty to render the original 5 logo set as a fallback.
-             */
-            partners?:
-              | {
-                  logo: number | Media;
-                  /**
-                   * Alt text — used by screen readers.
-                   */
-                  name?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            /**
-             * Optional photo rendered on the right side next to paragraph2 + CTA (mirrors the "pool team" photo in the About Cultural Exchange section).
-             */
-            storyImage?: (number | null) | Media;
-            cta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Section background color.
-             */
-            backgroundColor?:
-              | (
-                  | 'none'
-                  | 'white'
-                  | 'lev-yellow-light'
-                  | 'lev-yellow'
-                  | 'lev-blue-light'
-                  | 'lev-green-light'
-                  | 'lev-pink'
-                )
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'partnersCarousel';
-          }
-        | {
-            /**
-             * Section heading. Rendered uppercase. Use a line break (\n) for a 2-line title in HTML markup.
-             */
-            heading: string;
-            description?: string | null;
-            sectionCta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Each card: image + label (rendered over the image) + colored panel + Start Now button.
-             */
-            cards?:
-              | {
-                  label: string;
-                  image?: (number | null) | Media;
-                  /**
-                   * Color of the panel below the image.
-                   */
-                  panelColor?:
-                    | (
-                        | 'lev-blue-light'
-                        | 'lev-blue'
-                        | 'lev-blue-dark'
-                        | 'lev-orange'
-                        | 'lev-yellow'
-                        | 'lev-yellow-light'
-                        | 'lev-green'
-                        | 'lev-green-light'
-                        | 'lev-green-dark'
-                        | 'lev-red'
-                        | 'lev-pink'
-                        | 'white'
-                      )
-                    | null;
-                  /**
-                   * Color of the label that floats over the image.
-                   */
-                  overlayTextColor?:
-                    | (
-                        | 'lev-blue-light'
-                        | 'lev-blue'
-                        | 'lev-blue-dark'
-                        | 'lev-orange'
-                        | 'lev-yellow'
-                        | 'lev-yellow-light'
-                        | 'lev-green'
-                        | 'lev-green-light'
-                        | 'lev-green-dark'
-                        | 'lev-red'
-                        | 'lev-pink'
-                        | 'white'
-                      )
-                    | null;
-                  /**
-                   * Where the card's Start Now button links.
-                   */
-                  ctaUrl?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            /**
-             * Section background color.
-             */
-            backgroundColor?:
-              | (
-                  | 'lev-blue-light'
-                  | 'lev-blue'
-                  | 'lev-blue-dark'
-                  | 'lev-orange'
-                  | 'lev-yellow'
-                  | 'lev-yellow-light'
-                  | 'lev-green'
-                  | 'lev-green-light'
-                  | 'lev-green-dark'
-                  | 'lev-red'
-                  | 'lev-pink'
-                  | 'white'
-                )
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'featureCards';
-          }
-        | {
-            /**
-             * Small uppercase label above the title.
-             */
-            eyebrow?: string | null;
-            /**
-             * Main section title. Rendered uppercase.
-             */
-            heading: string;
-            /**
-             * Paragraph shown under the eyebrow (sticky on desktop).
-             */
-            introParagraph?: string | null;
-            /**
-             * Each row alternates image and text. Use imagePosition to control the order on desktop.
-             */
-            rows?:
-              | {
-                  /**
-                   * Small pill label above the heading (e.g. "Explore").
-                   */
-                  tag?: string | null;
-                  heading: string;
-                  paragraph?: string | null;
-                  image?: (number | null) | Media;
-                  imagePosition?: ('left' | 'right') | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'alternatingContent';
-          }
-        | {
-            /**
-             * Small uppercase label above the heading.
-             */
-            eyebrow?: string | null;
-            heading: string;
-            description?: string | null;
-            displayMode?: ('auto' | 'manual') | null;
-            /**
-             * Number of posts to fetch (auto mode only).
-             */
-            limit?: number | null;
-            /**
-             * Pick specific posts to show.
-             */
-            selectedPosts?: (number | Blog)[] | null;
-            cta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Section background color.
-             */
-            backgroundColor?:
-              | ('lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'blogPostsList';
-          }
-        | {
-            /**
-             * Section title. Rendered uppercase.
-             */
-            heading: string;
-            /**
-             * Smaller heading next to the videos. Use \n for a line break.
-             */
-            subheading?: string | null;
-            description?: string | null;
-            videos?:
-              | {
-                  /**
-                   * Upload an .mp4 file. Falls back to the original 2 home videos if the list is empty.
-                   */
-                  video: number | Media;
-                  caption?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            cta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'videoTestimonials';
-          }
-        | {
-            /**
-             * Numbered highlights across the top. 3 items by default.
-             */
-            stats?:
-              | {
-                  number: string;
-                  numberColor?:
-                    | (
-                        | 'lev-blue-light'
-                        | 'lev-blue'
-                        | 'lev-yellow'
-                        | 'lev-yellow-light'
-                        | 'lev-green'
-                        | 'lev-green-light'
-                        | 'lev-orange'
-                        | 'lev-red'
-                        | 'lev-pink'
-                      )
-                    | null;
-                  category: string;
-                  paragraph?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            /**
-             * Title on the banner. Use \n for a line break.
-             */
-            communityHeading: string;
-            communityDescription?: string | null;
-            platform?: ('facebook' | 'instagram' | 'linkedin' | 'tiktok' | 'youtube') | null;
-            /**
-             * Banner background image. Falls back to the original happy-friendship photo if empty.
-             */
-            backgroundImage?: (number | null) | Media;
-            cta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'socialFeed';
-          }
-        | {
-            heading: string;
-            /**
-             * Tag list shown to the left of the heading.
-             */
-            programTypes?:
-              | {
-                  label: string;
-                  id?: string | null;
-                }[]
-              | null;
-            cta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Cards shown in the horizontal slider. Leave empty to render the original 7 program set as a fallback.
-             */
-            programs?:
-              | {
-                  label: string;
-                  image?: (number | null) | Media;
-                  id?: string | null;
-                }[]
-              | null;
-            /**
-             * Section background.
-             */
-            backgroundColor?:
-              | ('tealLight' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'programShowcase';
-          }
-        | {
-            /**
-             * List of founders / team leaders. Falls back to the original Ahmad + Abdulrahman pair when empty.
-             */
-            founders?:
-              | {
-                  /**
-                   * Role title (e.g. "Co-Founder", "CEO").
-                   */
-                  title: string;
-                  name: string;
-                  description?: string | null;
-                  photo?: (number | null) | Media;
-                  id?: string | null;
-                }[]
-              | null;
-            cta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'foundersCarousel';
-          }
-        | {
-            /**
-             * Section heading. Use \n for a line break.
-             */
-            heading: string;
-            paragraphs?:
-              | {
-                  text: string;
-                  id?: string | null;
-                }[]
-              | null;
-            stats?:
-              | {
-                  value: string;
-                  label: string;
-                  id?: string | null;
-                }[]
-              | null;
-            backgroundColor?:
-              | ('lev-orange' | 'lev-red' | 'lev-blue' | 'lev-blue-dark' | 'lev-green-dark' | 'lev-black')
-              | null;
-            /**
-             * Color of the big stat numbers.
-             */
-            statValueColor?: ('lev-yellow' | 'lev-orange' | 'lev-green-light' | 'lev-blue-light' | 'white') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'missionStats';
-          }
-        | {
-            /**
-             * Section heading. Use \n for a line break.
-             */
-            heading: string;
-            values?:
-              | {
-                  number: string;
-                  title: string;
-                  description?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            backgroundColor?:
-              | ('lev-yellow-light' | 'lev-yellow' | 'lev-pink' | 'lev-blue-light' | 'lev-green-light' | 'white')
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'valuesList';
-          }
-        | {
-            /**
-             * Small uppercase label above the heading.
-             */
-            eyebrow?: string | null;
-            /**
-             * First part of the title — rendered at 20% opacity ("ghost" word).
-             */
-            headingFaded: string;
-            /**
-             * Second part of the title — rendered fully opaque on a separate line.
-             */
-            headingSolid: string;
-            testimonials?:
-              | {
-                  name: string;
-                  description: string;
-                  role?: string | null;
-                  photo?: (number | null) | Media;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'textTestimonials';
-          }
-        | {
-            /**
-             * Small uppercase label above the heading.
-             */
-            eyebrow?: string | null;
-            /**
-             * Section heading. Use \n for line breaks.
-             */
-            heading: string;
-            supportingParagraphs?:
-              | {
-                  text: string;
-                  id?: string | null;
-                }[]
-              | null;
-            /**
-             * Decorative map image. Falls back to the original Group 6210.png if empty.
-             */
-            mapImage?: (number | null) | Media;
-            /**
-             * Optional Google Maps share link. Editor can copy from Google Maps. Leave empty for a static image-only section.
-             */
-            mapLink?: string | null;
-            stat?: {
-              /**
-               * Big number.
-               */
-              value?: string | null;
-              label?: string | null;
+              title: string;
               description?: string | null;
-            };
-            backgroundColor?:
-              | ('lev-yellow-light' | 'lev-yellow' | 'lev-pink' | 'lev-blue-light' | 'lev-green-light' | 'white')
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'mapEmbed';
-          }
-        | {
-            /**
-             * Section heading. Use \n for line breaks. The word "START" is highlighted by default in the frontend — edit `highlightedWord` to change it.
-             */
-            heading: string;
-            /**
-             * Word inside the heading to highlight in lev-blue-light. Case-sensitive substring match.
-             */
-            highlightedWord?: string | null;
-            /**
-             * Small label above the social icon row.
-             */
-            socialsLabel?: string | null;
-            showSocials?: boolean | null;
-            /**
-             * Pick the form to display. Create / edit forms in Globals → Forms (or the Forms collection). Leave empty to render a placeholder.
-             */
-            form?: (number | null) | Form;
-            backgroundColor?: ('lev-blue-dark' | 'lev-black' | 'lev-green-dark' | 'lev-red-dark') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'contactForm';
-          }
-        | {
-            intro?: string | null;
-            offices?:
-              | {
-                  /**
-                   * 3-letter city code shown as a huge title (e.g. AMM, CAI).
-                   */
-                  code: string;
-                  address: string;
-                  phones?:
-                    | {
-                        number: string;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  directionsLabel?: string | null;
-                  /**
-                   * Google Maps link.
-                   */
-                  directionsURL?: string | null;
-                  /**
-                   * Social icons shown under this office. Empty = no icons.
-                   */
-                  socials?:
-                    | {
-                        platform:
-                          | 'whatsapp'
-                          | 'instagram'
-                          | 'facebook'
-                          | 'linkedin'
-                          | 'youtube'
-                          | 'twitter'
-                          | 'tiktok'
-                          | 'telegram';
-                        url: string;
-                        id?: string | null;
-                      }[]
-                    | null;
-                  id?: string | null;
-                }[]
-              | null;
-            backgroundColor?: ('gray-light' | 'lev-yellow-light' | 'lev-blue-light' | 'white') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'addressList';
-          }
-        | {
-            /**
-             * Small uppercase label above the heading.
-             */
-            eyebrow?: string | null;
-            heading: string;
-            /**
-             * Substring inside the heading to highlight in a brand color. Leave empty for no highlight.
-             */
-            highlightedWord?: string | null;
-            highlightColor?: ('lev-green-light' | 'lev-yellow' | 'lev-orange' | 'lev-red' | 'lev-blue-light') | null;
-            description?: string | null;
-            /**
-             * 2-3 images. First spans both columns, others split underneath. Falls back to the home m-1, m-3, m-4 set when empty.
-             */
-            images?:
-              | {
-                  image: number | Media;
-                  alt?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            backgroundColor?: ('lev-green-dark' | 'lev-blue-dark' | 'lev-black' | 'lev-red-dark' | 'lev-orange') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'heroWithImageGrid';
-          }
-        | {
-            /**
-             * Heading. Use \n for a line break.
-             */
-            heading: string;
-            /**
-             * Wide image on the left. Falls back to the students.png photo when empty.
-             */
-            image?: (number | null) | Media;
-            cta: {
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programWhyParticipate';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        body?: string | null;
+        items?:
+          | {
+              image?: (number | null) | Media;
+              title: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programJobs';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        leadText?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        items?:
+          | {
+              image?: (number | null) | Media;
+              area: string;
+              country?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programDestinations';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section title.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        items?:
+          | {
+              iconKey: 'passport' | 'college' | 'language' | 'age' | 'diploma';
+              title: string;
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programRequirements';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        title?: string | null;
+        /**
+         * Exact consecutive words from the title to color in the accent (e.g. "AMAZING EXPERIENCE"). Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        items?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programBenefitsShowcase';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        features?:
+          | {
+              iconKey: 'star' | 'bag' | 'hand' | 'people' | 'face' | 'check';
+              title: string;
+              description?: string | null;
+              /**
+               * Optional image shown instead of the icon. Leave empty to use the icon.
+               */
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programWhyChoose';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * The application form shown in this section. Leave empty to use the program's own form (or its type's form).
+         */
+        form?: (number | null) | Form;
+        /**
+         * Use \n for line breaks. The application form is added automatically from the program.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        /**
+         * Decorative photo, top-left. A default is shown if empty.
+         */
+        photoTopLeft?: (number | null) | Media;
+        /**
+         * Decorative photo, top-right. A default is shown if empty.
+         */
+        photoTopRight?: (number | null) | Media;
+        /**
+         * Decorative photo, bottom-left. A default is shown if empty.
+         */
+        photoBottomLeft?: (number | null) | Media;
+        /**
+         * Decorative photo, bottom-right. A default is shown if empty.
+         */
+        photoBottomRight?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programApply';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Heading above the share buttons.
+         */
+        heading?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programShare';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        variant?: ('centered' | 'splitRight' | 'splitLeft' | 'fullBackground') | null;
+        /**
+         * Small text above the heading.
+         */
+        eyebrow?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading: string;
+        /**
+         * Substring of the heading rendered in the highlight color. Leave empty for a single-color heading.
+         */
+        highlightedWord?: string | null;
+        highlightColor?:
+          | ('lev-orange' | 'lev-red' | 'lev-green' | 'lev-green-light' | 'lev-blue' | 'lev-blue-light' | 'lev-yellow')
+          | null;
+        /**
+         * Body text below the heading. Use line breaks to split into paragraphs.
+         */
+        subheading?: string | null;
+        media?: (number | null) | Media;
+        actions?:
+          | {
               label: string;
               url: string;
-            };
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'promptCTA';
-          }
-        | {
-            heading: string;
-            /**
-             * Small label on the left of the "View All" row.
-             */
-            sectionLabel?: string | null;
-            viewAll?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            items?:
-              | {
-                  title: string;
-                  image: number | Media;
-                  /**
-                   * Where the card links to.
-                   */
-                  url: string;
-                  id?: string | null;
-                }[]
-              | null;
-            columns?: ('2' | '3' | '4') | null;
-            backgroundColor?: ('lev-green-dark' | 'lev-blue-dark' | 'lev-black' | 'lev-yellow-light' | 'white') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'relatedItems';
-          }
-        | {
-            /**
-             * Overlay title shown centered at the bottom.
-             */
-            title: string;
-            /**
-             * Pick photos from the Media library (multi-select). Distributed across 3 columns in masonry layout. Leave empty to use the packaged fallback set (8 photos).
-             */
-            images?: (number | Media)[] | null;
-            primaryCta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Small text link under the primary CTA.
-             */
-            secondaryLink?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Section background. The gradient fade at the bottom is matched to this color.
-             */
-            backgroundColor?:
-              | (
-                  | 'none'
-                  | 'lev-yellow-light'
-                  | 'lev-yellow'
-                  | 'lev-blue-light'
-                  | 'lev-green-light'
-                  | 'lev-pink'
-                  | 'white'
-                )
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'memoriesGrid';
-          }
-        | {
-            /**
-             * Use \n for line breaks.
-             */
-            heading: string;
-            paragraph?: string | null;
-            cta?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Up to 4 stats. Renders as 2 columns × 2 rows. Each stat: number + label + description.
-             */
-            stats?:
-              | {
-                  /**
-                   * e.g. "1.5K", "20+", "6.5K"
-                   */
-                  value: string;
-                  /**
-                   * Short label next to the value, e.g. "UNIVERSITIES"
-                   */
-                  label: string;
-                  /**
-                   * Paragraph below explaining the number.
-                   */
-                  description?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            backgroundColor?:
-              | ('none' | 'white' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
-              | null;
-            headingColor?: ('lev-red-dark' | 'lev-blue-dark' | 'lev-green-dark' | 'lev-black') | null;
-            statValueColor?: ('lev-orange' | 'lev-red' | 'lev-blue' | 'lev-green' | 'lev-yellow') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'educationStats';
-          }
-        | {
-            /**
-             * Use \n for line breaks.
-             */
-            heading: string;
-            /**
-             * Small label under the heading (e.g. "Venture").
-             */
-            subtitle?: string | null;
-            /**
-             * Exactly 4 cards is the intended layout — 2 in the top row + 2 in the bottom row. Falls back to the original Internship / Counselor / Study & Travel / Work & Travel set when left empty.
-             */
-            cards?:
-              | {
-                  label: string;
-                  image?: (number | null) | Media;
-                  id?: string | null;
-                }[]
-              | null;
-            paragraph1?: string | null;
-            paragraph2?: string | null;
-            backgroundColor?:
-              | ('none' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
-              | null;
-            headingColor?: ('lev-blue-dark' | 'lev-red-dark' | 'lev-green-dark' | 'lev-black') | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'ventureGrid';
-          }
-        | {
-            /**
-             * Pick photos from the Media library (multi-select). Bulk-upload to Media first if you have many. Leave empty to use the packaged fallback set.
-             */
-            images?: (number | Media)[] | null;
-            /**
-             * How many images to show before clicking "Show more".
-             */
-            initialCount?: number | null;
-            /**
-             * How many more images to reveal per "Show more" click.
-             */
-            batchSize?: number | null;
-            showMoreLabel?: string | null;
-            backgroundColor?:
-              | ('white' | 'none' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'photoGrid';
-          }
-        | {
-            /**
-             * Headline — line breaks are kept. Words listed in "Highlighted Words" render in bright red.
-             */
-            heading?: string | null;
-            /**
-             * Exact consecutive words from the headline to color in bright red (e.g. "CREATING MEMORIES,").
-             */
-            highlightedWords?: string | null;
-            /**
-             * Centered intro paragraph rendered below the headline.
-             */
-            body?: string | null;
-            backgroundColor?:
-              | ('none' | 'white' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'galleryHero';
-          }
-        | {
-            /**
-             * Big heading on the left. Use \n for line breaks.
-             */
-            heading: string;
-            /**
-             * Substring of the heading rendered in the highlight color. Leave empty for a single-color heading.
-             */
-            highlightedWord?: string | null;
-            highlightColor?:
-              | ('none' | 'lev-red' | 'lev-red-dark' | 'lev-orange' | 'lev-blue' | 'lev-green' | 'lev-yellow')
-              | null;
-            headingColor?: ('lev-red-dark' | 'lev-blue-dark' | 'lev-green-dark' | 'lev-black') | null;
-            /**
-             * Small heading rendered on top of the form card.
-             */
-            formTitle?: string | null;
-            /**
-             * Form to render inside the card. Submissions are stored in admin Submissions. Recommended: the seeded "Program Application" form.
-             */
-            form?: (number | null) | Form;
-            contactLink?: {
-              label?: string | null;
-              url?: string | null;
-            };
-            /**
-             * Subtle dot pattern behind the section (matches the original Gallery design).
-             */
-            showDotPattern?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'galleryCta';
-          }
-        | {
-            form: number | Form;
-            enableIntro?: boolean | null;
-            introContent?: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
+              style?: ('primary' | 'secondary' | 'ghost') | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Section background color (ignored when variant is "Full Background" — that uses the uploaded image).
+         */
+        backgroundColor?:
+          | (
+              | 'none'
+              | 'lev-yellow'
+              | 'lev-yellow-light'
+              | 'lev-blue'
+              | 'lev-blue-light'
+              | 'lev-blue-dark'
+              | 'lev-green'
+              | 'lev-green-light'
+              | 'lev-green-dark'
+              | 'lev-red'
+              | 'lev-red-dark'
+              | 'lev-orange'
+              | 'lev-pink'
+              | 'lev-black'
+              | 'white'
+            )
+          | null;
+        /**
+         * Text + UI color, choose based on bg contrast.
+         */
+        textColor?: ('dark' | 'light') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'hero';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Optional small text above the headline.
+         */
+        eyebrow?: string | null;
+        /**
+         * Main headline. Will be rendered with a stroked outline style.
+         */
+        headline: string;
+        subheadline?: string | null;
+        /**
+         * Use an uploaded image or a solid brand color as the hero background.
+         */
+        backgroundType?: ('image' | 'color') | null;
+        /**
+         * Full-screen hero background. 1920x1080+ recommended.
+         */
+        backgroundImage?: (number | null) | Media;
+        /**
+         * Pick a brand color for the hero background.
+         */
+        backgroundColor?:
+          | (
+              | 'lev-blue'
+              | 'lev-blue-dark'
+              | 'lev-green-dark'
+              | 'lev-green'
+              | 'lev-red'
+              | 'lev-orange'
+              | 'lev-yellow'
+              | 'lev-black'
+            )
+          | null;
+        opportunities?:
+          | {
+              label: string;
+              id?: string | null;
+            }[]
+          | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Render social share icons. Pulled from Site Settings → Social Links.
+         */
+        showSocialIcons?: boolean | null;
+        /**
+         * Optional text section that appears below the hero — heading + 2 paragraph columns. Leave all fields empty to skip it entirely.
+         */
+        intro?: {
+          /**
+           * Section heading on the left column. Rendered uppercase in the brand SectionTitle style. Press Enter to control line breaks.
+           */
+          heading?: string | null;
+          /**
+           * Left column paragraph (under the heading).
+           */
+          paragraph1?: string | null;
+          /**
+           * Right column paragraph. Leave empty for a single-column layout.
+           */
+          paragraph2?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'heroHome';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
               [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'formBlock';
-          }
-        | {
-            heading?: string | null;
-            subheading?: string | null;
-            displayMode?: ('auto' | 'manual') | null;
-            selectedPrograms?: (number | Program)[] | null;
-            filters?: {
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        width?: ('narrow' | 'normal' | 'wide') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'richText';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Optional section heading shown above the columns. Rendered in the brand SectionTitle style (uppercase, blue-dark, large).
+         */
+        heading?: string | null;
+        /**
+         * Optional supporting text shown below the heading.
+         */
+        subheading?: string | null;
+        columns?:
+          | {
+              size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+              content?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              } | null;
+              enableLink?: boolean | null;
+              link?: {
+                label: string;
+                url: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'content';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading?: string | null;
+        layout?: ('grid' | 'carousel' | 'masonry') | null;
+        images?:
+          | {
+              image: number | Media;
+              caption?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'gallery';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading?: string | null;
+        subheading?: string | null;
+        items?:
+          | {
+              question: string;
+              answer: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        enableSchema?: boolean | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'faq';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading: string;
+        description?: string | null;
+        actions?:
+          | {
+              label: string;
+              url: string;
+              style?: ('primary' | 'secondary') | null;
+              id?: string | null;
+            }[]
+          | null;
+        background?: ('default' | 'brand' | 'dark' | 'image') | null;
+        backgroundImage?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'cta';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small label above the heading. Rendered uppercase.
+         */
+        eyebrow?: string | null;
+        /**
+         * Section heading. Rendered uppercase in SectionTitle style.
+         */
+        heading: string;
+        paragraph?: string | null;
+        /**
+         * Full-width image shown below the content.
+         */
+        image?: (number | null) | Media;
+        /**
+         * Background color for the content area.
+         */
+        backgroundColor?:
+          | (
+              | 'lev-yellow'
+              | 'lev-yellow-light'
+              | 'lev-blue-light'
+              | 'lev-green-light'
+              | 'lev-pink'
+              | 'lev-gray-light'
+              | 'white'
+            )
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'imageFeature';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Rendered uppercase in SectionTitle style.
+         */
+        heading: string;
+        description?: string | null;
+        /**
+         * Normalizes all images to the same shape regardless of upload size. Use "Natural" to keep each image at its original ratio.
+         */
+        aspectRatio?: ('portrait' | 'square' | 'landscape' | 'wide' | 'natural') | null;
+        items?:
+          | {
+              image: number | Media;
               /**
-               * Empty = show all types.
+               * Optional text overlay shown at the bottom-left of the image (e.g. "Australia", "USA").
                */
-              byType?: (number | ProgramType)[] | null;
+              caption?: string | null;
               /**
-               * Empty = show all countries.
+               * Optional link. When set, the whole image is clickable. Use a relative path like /programs/work-and-travel or an external https:// URL.
                */
-              byCountry?:
-                | (
-                    | 'US'
-                    | 'UK'
-                    | 'CA'
-                    | 'DE'
-                    | 'FR'
-                    | 'ES'
-                    | 'IT'
-                    | 'AU'
-                    | 'IE'
-                    | 'ZA'
-                    | 'EG'
-                    | 'JO'
-                    | 'SA'
-                    | 'AE'
-                    | 'multi'
-                  )[]
-                | null;
-              onlyOpen?: boolean | null;
-              limit?: number | null;
-              sortBy?: ('newest' | 'oldest' | 'titleAZ') | null;
-            };
-            layout?: {
-              cardsPerRow?: ('2' | '3' | '4') | null;
-              cardStyle?: ('default' | 'compact' | 'featured') | null;
-              showCountry?: boolean | null;
-              showDuration?: boolean | null;
-              showDeadline?: boolean | null;
-            };
-            cta?: {
-              enabled?: boolean | null;
-              label?: string | null;
               url?: string | null;
-            };
-            emptyMessage?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'programsList';
-          }
-      )[]
-    | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Auto-advance through the carousel.
+         */
+        autoplay?: boolean | null;
+        /**
+         * Milliseconds between slides (when autoplay is on).
+         */
+        autoplayDelay?: number | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'mediaShowcase';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Centered heading rendered in SectionTitle style.
+         */
+        heading: string;
+        description?: string | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Decorative images shown above the CTA. Usually 2 images.
+         */
+        topImages?:
+          | {
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Decorative images shown below the CTA. Usually 2 images.
+         */
+        bottomImages?:
+          | {
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Background color for the section.
+         */
+        backgroundColor?:
+          | ('lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'decoratedCTA';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Optional intro paragraph rendered above the main heading (used on About for the "From exchange programs..." intro).
+         */
+        eyebrow?: string | null;
+        /**
+         * Main heading. Use \n for line breaks. The "highlightedWord" substring (if set) is rendered in the highlight color.
+         */
+        heading: string;
+        /**
+         * Substring of the heading rendered in the highlight color. Leave empty for a single-color heading.
+         */
+        highlightedWord?: string | null;
+        highlightColor?:
+          | (
+              | 'none'
+              | 'lev-orange'
+              | 'lev-red'
+              | 'lev-red-dark'
+              | 'lev-blue'
+              | 'lev-blue-dark'
+              | 'lev-green'
+              | 'lev-green-dark'
+              | 'lev-yellow'
+            )
+          | null;
+        /**
+         * Color of the (non-highlighted part of) the heading.
+         */
+        headingColor?: ('lev-blue-dark' | 'lev-red-dark' | 'lev-green-dark' | 'lev-black' | 'white') | null;
+        paragraph1?: string | null;
+        paragraph2?: string | null;
+        /**
+         * Upload partner / university logos. Leave the list empty to render the original 5 logo set as a fallback.
+         */
+        partners?:
+          | {
+              logo: number | Media;
+              /**
+               * Alt text — used by screen readers.
+               */
+              name?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Optional photo rendered on the right side next to paragraph2 + CTA (mirrors the "pool team" photo in the About Cultural Exchange section).
+         */
+        storyImage?: (number | null) | Media;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Section background color.
+         */
+        backgroundColor?:
+          | ('none' | 'white' | 'lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'partnersCarousel';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Rendered uppercase. Use a line break (\n) for a 2-line title in HTML markup.
+         */
+        heading: string;
+        description?: string | null;
+        sectionCta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Each card: image + label (rendered over the image) + colored panel + Start Now button.
+         */
+        cards?:
+          | {
+              label: string;
+              image?: (number | null) | Media;
+              /**
+               * Color of the panel below the image.
+               */
+              panelColor?:
+                | (
+                    | 'lev-blue-light'
+                    | 'lev-blue'
+                    | 'lev-blue-dark'
+                    | 'lev-orange'
+                    | 'lev-yellow'
+                    | 'lev-yellow-light'
+                    | 'lev-green'
+                    | 'lev-green-light'
+                    | 'lev-green-dark'
+                    | 'lev-red'
+                    | 'lev-pink'
+                    | 'white'
+                  )
+                | null;
+              /**
+               * Color of the label that floats over the image.
+               */
+              overlayTextColor?:
+                | (
+                    | 'lev-blue-light'
+                    | 'lev-blue'
+                    | 'lev-blue-dark'
+                    | 'lev-orange'
+                    | 'lev-yellow'
+                    | 'lev-yellow-light'
+                    | 'lev-green'
+                    | 'lev-green-light'
+                    | 'lev-green-dark'
+                    | 'lev-red'
+                    | 'lev-pink'
+                    | 'white'
+                  )
+                | null;
+              /**
+               * Where the card's Start Now button links.
+               */
+              ctaUrl?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Section background color.
+         */
+        backgroundColor?:
+          | (
+              | 'lev-blue-light'
+              | 'lev-blue'
+              | 'lev-blue-dark'
+              | 'lev-orange'
+              | 'lev-yellow'
+              | 'lev-yellow-light'
+              | 'lev-green'
+              | 'lev-green-light'
+              | 'lev-green-dark'
+              | 'lev-red'
+              | 'lev-pink'
+              | 'white'
+            )
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'featureCards';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the title.
+         */
+        eyebrow?: string | null;
+        /**
+         * Main section title. Rendered uppercase.
+         */
+        heading: string;
+        /**
+         * Paragraph shown under the eyebrow (sticky on desktop).
+         */
+        introParagraph?: string | null;
+        /**
+         * Each row alternates image and text. Use imagePosition to control the order on desktop.
+         */
+        rows?:
+          | {
+              /**
+               * Small pill label above the heading (e.g. "Explore").
+               */
+              tag?: string | null;
+              heading: string;
+              paragraph?: string | null;
+              image?: (number | null) | Media;
+              imagePosition?: ('left' | 'right') | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'alternatingContent';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the heading.
+         */
+        eyebrow?: string | null;
+        heading: string;
+        description?: string | null;
+        displayMode?: ('auto' | 'manual') | null;
+        /**
+         * Number of posts to fetch (auto mode only).
+         */
+        limit?: number | null;
+        /**
+         * Pick specific posts to show.
+         */
+        selectedPosts?: (number | Blog)[] | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Section background color.
+         */
+        backgroundColor?:
+          | ('lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'blogPostsList';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section title. Rendered uppercase.
+         */
+        heading: string;
+        /**
+         * Smaller heading next to the videos. Use \n for a line break.
+         */
+        subheading?: string | null;
+        description?: string | null;
+        videos?:
+          | {
+              /**
+               * Upload an .mp4 file. Falls back to the original 2 home videos if the list is empty.
+               */
+              video: number | Media;
+              caption?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'videoTestimonials';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Numbered highlights across the top. 3 items by default.
+         */
+        stats?:
+          | {
+              number: string;
+              numberColor?:
+                | (
+                    | 'lev-blue-light'
+                    | 'lev-blue'
+                    | 'lev-yellow'
+                    | 'lev-yellow-light'
+                    | 'lev-green'
+                    | 'lev-green-light'
+                    | 'lev-orange'
+                    | 'lev-red'
+                    | 'lev-pink'
+                  )
+                | null;
+              category: string;
+              paragraph?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Title on the banner. Use \n for a line break.
+         */
+        communityHeading: string;
+        communityDescription?: string | null;
+        platform?: ('facebook' | 'instagram' | 'linkedin' | 'tiktok' | 'youtube') | null;
+        /**
+         * Banner background image. Falls back to the original happy-friendship photo if empty.
+         */
+        backgroundImage?: (number | null) | Media;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'socialFeed';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading: string;
+        /**
+         * Tag list shown to the left of the heading.
+         */
+        programTypes?:
+          | {
+              label: string;
+              id?: string | null;
+            }[]
+          | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Cards shown in the horizontal slider. Leave empty to render the original 7 program set as a fallback.
+         */
+        programs?:
+          | {
+              label: string;
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Section background.
+         */
+        backgroundColor?:
+          | ('tealLight' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programShowcase';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * List of founders / team leaders. Falls back to the original Ahmad + Abdulrahman pair when empty.
+         */
+        founders?:
+          | {
+              /**
+               * Role title (e.g. "Co-Founder", "CEO").
+               */
+              title: string;
+              name: string;
+              description?: string | null;
+              photo?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'foundersCarousel';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Use \n for a line break.
+         */
+        heading: string;
+        paragraphs?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        stats?:
+          | {
+              value: string;
+              label: string;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?:
+          | ('lev-orange' | 'lev-red' | 'lev-blue' | 'lev-blue-dark' | 'lev-green-dark' | 'lev-black')
+          | null;
+        /**
+         * Color of the big stat numbers.
+         */
+        statValueColor?: ('lev-yellow' | 'lev-orange' | 'lev-green-light' | 'lev-blue-light' | 'white') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'missionStats';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Use \n for a line break.
+         */
+        heading: string;
+        values?:
+          | {
+              number: string;
+              title: string;
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?:
+          | ('lev-yellow-light' | 'lev-yellow' | 'lev-pink' | 'lev-blue-light' | 'lev-green-light' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'valuesList';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the heading.
+         */
+        eyebrow?: string | null;
+        /**
+         * First part of the title — rendered at 20% opacity ("ghost" word).
+         */
+        headingFaded: string;
+        /**
+         * Second part of the title — rendered fully opaque on a separate line.
+         */
+        headingSolid: string;
+        testimonials?:
+          | {
+              name: string;
+              description: string;
+              role?: string | null;
+              photo?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'textTestimonials';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the heading.
+         */
+        eyebrow?: string | null;
+        /**
+         * Section heading. Use \n for line breaks.
+         */
+        heading: string;
+        supportingParagraphs?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Decorative map image. Falls back to the original Group 6210.png if empty.
+         */
+        mapImage?: (number | null) | Media;
+        /**
+         * Optional Google Maps share link. Editor can copy from Google Maps. Leave empty for a static image-only section.
+         */
+        mapLink?: string | null;
+        stat?: {
+          /**
+           * Big number.
+           */
+          value?: string | null;
+          label?: string | null;
+          description?: string | null;
+        };
+        backgroundColor?:
+          | ('lev-yellow-light' | 'lev-yellow' | 'lev-pink' | 'lev-blue-light' | 'lev-green-light' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'mapEmbed';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Use \n for line breaks. The word "START" is highlighted by default in the frontend — edit `highlightedWord` to change it.
+         */
+        heading: string;
+        /**
+         * Word inside the heading to highlight in lev-blue-light. Case-sensitive substring match.
+         */
+        highlightedWord?: string | null;
+        /**
+         * Small label above the social icon row.
+         */
+        socialsLabel?: string | null;
+        showSocials?: boolean | null;
+        /**
+         * Pick the form to display. Create / edit forms in Globals → Forms (or the Forms collection). Leave empty to render a placeholder.
+         */
+        form?: (number | null) | Form;
+        backgroundColor?: ('lev-blue-dark' | 'lev-black' | 'lev-green-dark' | 'lev-red-dark') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contactForm';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        intro?: string | null;
+        offices?:
+          | {
+              /**
+               * 3-letter city code shown as a huge title (e.g. AMM, CAI).
+               */
+              code: string;
+              address: string;
+              phones?:
+                | {
+                    number: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              directionsLabel?: string | null;
+              /**
+               * Google Maps link.
+               */
+              directionsURL?: string | null;
+              /**
+               * Social icons shown under this office. Empty = no icons.
+               */
+              socials?:
+                | {
+                    platform:
+                      | 'whatsapp'
+                      | 'instagram'
+                      | 'facebook'
+                      | 'linkedin'
+                      | 'youtube'
+                      | 'twitter'
+                      | 'tiktok'
+                      | 'telegram';
+                    url: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?: ('gray-light' | 'lev-yellow-light' | 'lev-blue-light' | 'white') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'addressList';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the heading.
+         */
+        eyebrow?: string | null;
+        heading: string;
+        /**
+         * Substring inside the heading to highlight in a brand color. Leave empty for no highlight.
+         */
+        highlightedWord?: string | null;
+        highlightColor?: ('lev-green-light' | 'lev-yellow' | 'lev-orange' | 'lev-red' | 'lev-blue-light') | null;
+        description?: string | null;
+        /**
+         * 2-3 images. First spans both columns, others split underneath. Falls back to the home m-1, m-3, m-4 set when empty.
+         */
+        images?:
+          | {
+              image: number | Media;
+              alt?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?: ('lev-green-dark' | 'lev-blue-dark' | 'lev-black' | 'lev-red-dark' | 'lev-orange') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'heroWithImageGrid';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Heading. Use \n for a line break.
+         */
+        heading: string;
+        /**
+         * Wide image on the left. Falls back to the students.png photo when empty.
+         */
+        image?: (number | null) | Media;
+        cta: {
+          label: string;
+          url: string;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'promptCTA';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading: string;
+        /**
+         * Small label on the left of the "View All" row.
+         */
+        sectionLabel?: string | null;
+        viewAll?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        items?:
+          | {
+              title: string;
+              image: number | Media;
+              /**
+               * Where the card links to.
+               */
+              url: string;
+              id?: string | null;
+            }[]
+          | null;
+        columns?: ('2' | '3' | '4') | null;
+        backgroundColor?: ('lev-green-dark' | 'lev-blue-dark' | 'lev-black' | 'lev-yellow-light' | 'white') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'relatedItems';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Overlay title shown centered at the bottom.
+         */
+        title: string;
+        /**
+         * Pick photos from the Media library (multi-select). Distributed across 3 columns in masonry layout. Leave empty to use the packaged fallback set (8 photos).
+         */
+        images?: (number | Media)[] | null;
+        primaryCta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Small text link under the primary CTA.
+         */
+        secondaryLink?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Section background. The gradient fade at the bottom is matched to this color.
+         */
+        backgroundColor?:
+          | ('none' | 'lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'memoriesGrid';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading: string;
+        paragraph?: string | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Up to 4 stats. Renders as 2 columns × 2 rows. Each stat: number + label + description.
+         */
+        stats?:
+          | {
+              /**
+               * e.g. "1.5K", "20+", "6.5K"
+               */
+              value: string;
+              /**
+               * Short label next to the value, e.g. "UNIVERSITIES"
+               */
+              label: string;
+              /**
+               * Paragraph below explaining the number.
+               */
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?:
+          | ('none' | 'white' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
+          | null;
+        headingColor?: ('lev-red-dark' | 'lev-blue-dark' | 'lev-green-dark' | 'lev-black') | null;
+        statValueColor?: ('lev-orange' | 'lev-red' | 'lev-blue' | 'lev-green' | 'lev-yellow') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'educationStats';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading: string;
+        /**
+         * Small label under the heading (e.g. "Venture").
+         */
+        subtitle?: string | null;
+        /**
+         * Exactly 4 cards is the intended layout — 2 in the top row + 2 in the bottom row. Falls back to the original Internship / Counselor / Study & Travel / Work & Travel set when left empty.
+         */
+        cards?:
+          | {
+              label: string;
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        paragraph1?: string | null;
+        paragraph2?: string | null;
+        backgroundColor?:
+          | ('none' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        headingColor?: ('lev-blue-dark' | 'lev-red-dark' | 'lev-green-dark' | 'lev-black') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ventureGrid';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Pick photos from the Media library (multi-select). Bulk-upload to Media first if you have many. Leave empty to use the packaged fallback set.
+         */
+        images?: (number | Media)[] | null;
+        /**
+         * How many images to show before clicking "Show more".
+         */
+        initialCount?: number | null;
+        /**
+         * How many more images to reveal per "Show more" click.
+         */
+        batchSize?: number | null;
+        showMoreLabel?: string | null;
+        backgroundColor?:
+          | ('white' | 'none' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'photoGrid';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Headline — line breaks are kept. Words listed in "Highlighted Words" render in bright red.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the headline to color in bright red (e.g. "CREATING MEMORIES,").
+         */
+        highlightedWords?: string | null;
+        /**
+         * Centered intro paragraph rendered below the headline.
+         */
+        body?: string | null;
+        backgroundColor?:
+          | ('none' | 'white' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'galleryHero';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Big heading on the left. Use \n for line breaks.
+         */
+        heading: string;
+        /**
+         * Substring of the heading rendered in the highlight color. Leave empty for a single-color heading.
+         */
+        highlightedWord?: string | null;
+        highlightColor?:
+          | ('none' | 'lev-red' | 'lev-red-dark' | 'lev-orange' | 'lev-blue' | 'lev-green' | 'lev-yellow')
+          | null;
+        headingColor?: ('lev-red-dark' | 'lev-blue-dark' | 'lev-green-dark' | 'lev-black') | null;
+        /**
+         * Small heading rendered on top of the form card.
+         */
+        formTitle?: string | null;
+        /**
+         * Form to render inside the card. Submissions are stored in admin Submissions. Recommended: the seeded "Program Application" form.
+         */
+        form?: (number | null) | Form;
+        contactLink?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Subtle dot pattern behind the section (matches the original Gallery design).
+         */
+        showDotPattern?: boolean | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'galleryCta';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        form: number | Form;
+        enableIntro?: boolean | null;
+        introContent?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'formBlock';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading?: string | null;
+        subheading?: string | null;
+        displayMode?: ('auto' | 'manual') | null;
+        selectedPrograms?: (number | Program)[] | null;
+        filters?: {
+          /**
+           * Empty = show all types.
+           */
+          byType?: (number | ProgramType)[] | null;
+          /**
+           * Empty = show all countries.
+           */
+          byCountry?:
+            | (
+                | 'US'
+                | 'UK'
+                | 'CA'
+                | 'DE'
+                | 'FR'
+                | 'ES'
+                | 'IT'
+                | 'AU'
+                | 'IE'
+                | 'ZA'
+                | 'EG'
+                | 'JO'
+                | 'SA'
+                | 'AE'
+                | 'multi'
+              )[]
+            | null;
+          onlyOpen?: boolean | null;
+          limit?: number | null;
+          sortBy?: ('newest' | 'oldest' | 'titleAZ') | null;
+        };
+        layout?: {
+          cardsPerRow?: ('2' | '3' | '4') | null;
+          cardStyle?: ('default' | 'compact' | 'featured') | null;
+          showCountry?: boolean | null;
+          showDuration?: boolean | null;
+          showDeadline?: boolean | null;
+        };
+        cta?: {
+          enabled?: boolean | null;
+          label?: string | null;
+          url?: string | null;
+        };
+        emptyMessage?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programsList';
+      }
+  )[];
   meta?: {
     /**
      * 50-60 chars. Falls back to page title.
@@ -4953,6 +5660,8 @@ export interface PagesSelect<T extends boolean = true> {
         heroHome?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               headline?: T;
               subheadline?: T;
@@ -4985,6 +5694,8 @@ export interface PagesSelect<T extends boolean = true> {
         travelDestinations?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               images?:
                 | T
                 | {
@@ -4999,6 +5710,8 @@ export interface PagesSelect<T extends boolean = true> {
         hero?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               variant?: T;
               eyebrow?: T;
               heading?: T;
@@ -5022,6 +5735,8 @@ export interface PagesSelect<T extends boolean = true> {
         richText?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               content?: T;
               width?: T;
               id?: T;
@@ -5030,6 +5745,8 @@ export interface PagesSelect<T extends boolean = true> {
         content?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               columns?:
@@ -5052,6 +5769,8 @@ export interface PagesSelect<T extends boolean = true> {
         gallery?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               layout?: T;
               images?:
@@ -5067,6 +5786,8 @@ export interface PagesSelect<T extends boolean = true> {
         faq?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               items?:
@@ -5083,6 +5804,8 @@ export interface PagesSelect<T extends boolean = true> {
         cta?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               actions?:
@@ -5101,6 +5824,8 @@ export interface PagesSelect<T extends boolean = true> {
         imageFeature?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               paragraph?: T;
@@ -5112,6 +5837,8 @@ export interface PagesSelect<T extends boolean = true> {
         mediaShowcase?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               aspectRatio?: T;
@@ -5131,6 +5858,8 @@ export interface PagesSelect<T extends boolean = true> {
         decoratedCTA?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               cta?:
@@ -5158,6 +5887,8 @@ export interface PagesSelect<T extends boolean = true> {
         partnersCarousel?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               highlightedWord?: T;
@@ -5186,6 +5917,8 @@ export interface PagesSelect<T extends boolean = true> {
         featureCards?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               sectionCta?:
@@ -5211,6 +5944,8 @@ export interface PagesSelect<T extends boolean = true> {
         alternatingContent?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               introParagraph?: T;
@@ -5230,6 +5965,8 @@ export interface PagesSelect<T extends boolean = true> {
         blogPostsList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               description?: T;
@@ -5249,6 +5986,8 @@ export interface PagesSelect<T extends boolean = true> {
         videoTestimonials?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               description?: T;
@@ -5271,6 +6010,8 @@ export interface PagesSelect<T extends boolean = true> {
         socialFeed?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               stats?:
                 | T
                 | {
@@ -5296,6 +6037,8 @@ export interface PagesSelect<T extends boolean = true> {
         programShowcase?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               programTypes?:
                 | T
@@ -5323,6 +6066,8 @@ export interface PagesSelect<T extends boolean = true> {
         foundersCarousel?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               founders?:
                 | T
                 | {
@@ -5344,6 +6089,8 @@ export interface PagesSelect<T extends boolean = true> {
         missionStats?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               paragraphs?:
                 | T
@@ -5366,6 +6113,8 @@ export interface PagesSelect<T extends boolean = true> {
         valuesList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               values?:
                 | T
@@ -5382,6 +6131,8 @@ export interface PagesSelect<T extends boolean = true> {
         textTestimonials?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               headingFaded?: T;
               headingSolid?: T;
@@ -5400,6 +6151,8 @@ export interface PagesSelect<T extends boolean = true> {
         mapEmbed?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               supportingParagraphs?:
@@ -5424,6 +6177,8 @@ export interface PagesSelect<T extends boolean = true> {
         contactForm?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               highlightedWord?: T;
               socialsLabel?: T;
@@ -5436,6 +6191,8 @@ export interface PagesSelect<T extends boolean = true> {
         addressList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               intro?: T;
               offices?:
                 | T
@@ -5466,6 +6223,8 @@ export interface PagesSelect<T extends boolean = true> {
         heroWithImageGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               highlightedWord?: T;
@@ -5485,6 +6244,8 @@ export interface PagesSelect<T extends boolean = true> {
         memoriesGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               title?: T;
               images?: T;
               primaryCta?:
@@ -5506,6 +6267,8 @@ export interface PagesSelect<T extends boolean = true> {
         educationStats?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               paragraph?: T;
               cta?:
@@ -5531,6 +6294,8 @@ export interface PagesSelect<T extends boolean = true> {
         ventureGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subtitle?: T;
               cards?:
@@ -5550,6 +6315,8 @@ export interface PagesSelect<T extends boolean = true> {
         photoGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               images?: T;
               initialCount?: T;
               batchSize?: T;
@@ -5561,6 +6328,8 @@ export interface PagesSelect<T extends boolean = true> {
         galleryHero?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               highlightedWords?: T;
               body?: T;
@@ -5571,6 +6340,8 @@ export interface PagesSelect<T extends boolean = true> {
         galleryCta?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               highlightedWord?: T;
               highlightColor?: T;
@@ -5590,6 +6361,8 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               form?: T;
               enableIntro?: T;
               introContent?: T;
@@ -5599,6 +6372,8 @@ export interface PagesSelect<T extends boolean = true> {
         promptCTA?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               image?: T;
               cta?:
@@ -5613,6 +6388,8 @@ export interface PagesSelect<T extends boolean = true> {
         relatedItems?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               sectionLabel?: T;
               viewAll?:
@@ -5712,6 +6489,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         hero?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               variant?: T;
               eyebrow?: T;
               heading?: T;
@@ -5735,6 +6514,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         heroHome?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               headline?: T;
               subheadline?: T;
@@ -5767,6 +6548,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         richText?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               content?: T;
               width?: T;
               id?: T;
@@ -5775,6 +6558,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         content?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               columns?:
@@ -5797,6 +6582,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         gallery?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               layout?: T;
               images?:
@@ -5812,6 +6599,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         faq?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               items?:
@@ -5828,6 +6617,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         cta?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               actions?:
@@ -5846,6 +6637,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         imageFeature?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               paragraph?: T;
@@ -5857,6 +6650,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         mediaShowcase?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               aspectRatio?: T;
@@ -5876,6 +6671,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         decoratedCTA?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               cta?:
@@ -5903,6 +6700,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         partnersCarousel?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               highlightedWord?: T;
@@ -5931,6 +6730,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         featureCards?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               sectionCta?:
@@ -5956,6 +6757,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         alternatingContent?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               introParagraph?: T;
@@ -5975,6 +6778,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         blogPostsList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               description?: T;
@@ -5994,6 +6799,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         videoTestimonials?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               description?: T;
@@ -6016,6 +6823,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         socialFeed?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               stats?:
                 | T
                 | {
@@ -6041,6 +6850,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         programShowcase?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               programTypes?:
                 | T
@@ -6068,6 +6879,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         foundersCarousel?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               founders?:
                 | T
                 | {
@@ -6089,6 +6902,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         missionStats?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               paragraphs?:
                 | T
@@ -6111,6 +6926,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         valuesList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               values?:
                 | T
@@ -6127,6 +6944,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         textTestimonials?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               headingFaded?: T;
               headingSolid?: T;
@@ -6145,6 +6964,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         mapEmbed?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               supportingParagraphs?:
@@ -6169,6 +6990,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         contactForm?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               highlightedWord?: T;
               socialsLabel?: T;
@@ -6181,6 +7004,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         addressList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               intro?: T;
               offices?:
                 | T
@@ -6211,6 +7036,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         heroWithImageGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               highlightedWord?: T;
@@ -6230,6 +7057,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         promptCTA?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               image?: T;
               cta?:
@@ -6244,6 +7073,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         relatedItems?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               sectionLabel?: T;
               viewAll?:
@@ -6268,6 +7099,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         memoriesGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               title?: T;
               images?: T;
               primaryCta?:
@@ -6289,6 +7122,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         educationStats?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               paragraph?: T;
               cta?:
@@ -6314,6 +7149,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         ventureGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subtitle?: T;
               cards?:
@@ -6333,6 +7170,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         photoGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               images?: T;
               initialCount?: T;
               batchSize?: T;
@@ -6344,6 +7183,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         galleryHero?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               highlightedWords?: T;
               body?: T;
@@ -6354,6 +7195,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         galleryCta?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               highlightedWord?: T;
               highlightColor?: T;
@@ -6373,6 +7216,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         formBlock?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               form?: T;
               enableIntro?: T;
               introContent?: T;
@@ -6382,6 +7227,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
         programsList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               displayMode?: T;
@@ -6468,131 +7315,203 @@ export interface ProgramsSelect<T extends boolean = true> {
   featuredImage?: T;
   isOpen?: T;
   calendlyURL?: T;
-  detailHero?:
-    | T
-    | {
-        tag?: T;
-        subtitle?: T;
-        note?: T;
-        image?: T;
-      };
-  detailIntro?:
-    | T
-    | {
-        eyebrow?: T;
-        body?: T;
-      };
-  detailWhatIs?:
-    | T
-    | {
-        title?: T;
-        body?: T;
-      };
-  detailPhotoMiddle?: T;
-  detailPictureYourself?:
-    | T
-    | {
-        eyebrow?: T;
-        body?: T;
-        circleHeading?: T;
-        circleBody?: T;
-        photo?: T;
-      };
-  detailWhyParticipate?:
-    | T
-    | {
-        body?: T;
-        benefits?:
-          | T
-          | {
-              image?: T;
-              title?: T;
-              description?: T;
-              id?: T;
-            };
-      };
-  detailJobs?:
-    | T
-    | {
-        body?: T;
-        items?:
-          | T
-          | {
-              image?: T;
-              title?: T;
-              id?: T;
-            };
-      };
-  detailDestinations?:
-    | T
-    | {
-        leadText?: T;
-        items?:
-          | T
-          | {
-              image?: T;
-              area?: T;
-              country?: T;
-              id?: T;
-            };
-      };
-  detailBenefitsShowcase?:
-    | T
-    | {
-        title?: T;
-        items?:
-          | T
-          | {
-              text?: T;
-              id?: T;
-            };
-      };
-  detailRequirements?:
-    | T
-    | {
-        iconKey?: T;
-        title?: T;
-        description?: T;
-        id?: T;
-      };
-  detailMemories?:
-    | T
-    | {
-        title?: T;
-        images?:
-          | T
-          | {
-              image?: T;
-              alt?: T;
-              id?: T;
-            };
-        primaryCta?:
-          | T
-          | {
-              label?: T;
-              url?: T;
-            };
-        secondaryLink?:
-          | T
-          | {
-              label?: T;
-              url?: T;
-            };
-      };
-  detailFeatures?:
-    | T
-    | {
-        iconKey?: T;
-        title?: T;
-        description?: T;
-        id?: T;
-      };
   sections?:
     | T
     | {
+        programHero?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              tag?: T;
+              heading?: T;
+              subtitle?: T;
+              note?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programIntro?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              body?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programWhatIs?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              title?: T;
+              highlightedWords?: T;
+              body?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programPhotoBreak?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programPictureYourself?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              body?: T;
+              circleHeading?: T;
+              circleBody?: T;
+              photo?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programWhyParticipate?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              benefits?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programJobs?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programDestinations?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              leadText?: T;
+              heading?: T;
+              highlightedWords?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    area?: T;
+                    country?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programRequirements?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              items?:
+                | T
+                | {
+                    iconKey?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programBenefitsShowcase?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              title?: T;
+              highlightedWords?: T;
+              items?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programWhyChoose?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              features?:
+                | T
+                | {
+                    iconKey?: T;
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programApply?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              form?: T;
+              heading?: T;
+              highlightedWords?: T;
+              photoTopLeft?: T;
+              photoTopRight?: T;
+              photoBottomLeft?: T;
+              photoBottomRight?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programShare?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
         hero?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               variant?: T;
               eyebrow?: T;
               heading?: T;
@@ -6616,6 +7535,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         heroHome?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               headline?: T;
               subheadline?: T;
@@ -6648,6 +7569,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         richText?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               content?: T;
               width?: T;
               id?: T;
@@ -6656,6 +7579,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         content?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               columns?:
@@ -6678,6 +7603,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         gallery?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               layout?: T;
               images?:
@@ -6693,6 +7620,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         faq?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               items?:
@@ -6709,6 +7638,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         cta?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               actions?:
@@ -6727,6 +7658,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         imageFeature?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               paragraph?: T;
@@ -6738,6 +7671,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         mediaShowcase?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               aspectRatio?: T;
@@ -6757,6 +7692,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         decoratedCTA?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               cta?:
@@ -6784,6 +7721,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         partnersCarousel?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               highlightedWord?: T;
@@ -6812,6 +7751,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         featureCards?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               description?: T;
               sectionCta?:
@@ -6837,6 +7778,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         alternatingContent?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               introParagraph?: T;
@@ -6856,6 +7799,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         blogPostsList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               description?: T;
@@ -6875,6 +7820,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         videoTestimonials?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               description?: T;
@@ -6897,6 +7844,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         socialFeed?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               stats?:
                 | T
                 | {
@@ -6922,6 +7871,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         programShowcase?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               programTypes?:
                 | T
@@ -6949,6 +7900,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         foundersCarousel?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               founders?:
                 | T
                 | {
@@ -6970,6 +7923,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         missionStats?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               paragraphs?:
                 | T
@@ -6992,6 +7947,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         valuesList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               values?:
                 | T
@@ -7008,6 +7965,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         textTestimonials?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               headingFaded?: T;
               headingSolid?: T;
@@ -7026,6 +7985,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         mapEmbed?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               supportingParagraphs?:
@@ -7050,6 +8011,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         contactForm?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               highlightedWord?: T;
               socialsLabel?: T;
@@ -7062,6 +8025,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         addressList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               intro?: T;
               offices?:
                 | T
@@ -7092,6 +8057,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         heroWithImageGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               eyebrow?: T;
               heading?: T;
               highlightedWord?: T;
@@ -7111,6 +8078,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         promptCTA?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               image?: T;
               cta?:
@@ -7125,6 +8094,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         relatedItems?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               sectionLabel?: T;
               viewAll?:
@@ -7149,6 +8120,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         memoriesGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               title?: T;
               images?: T;
               primaryCta?:
@@ -7170,6 +8143,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         educationStats?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               paragraph?: T;
               cta?:
@@ -7195,6 +8170,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         ventureGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subtitle?: T;
               cards?:
@@ -7214,6 +8191,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         photoGrid?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               images?: T;
               initialCount?: T;
               batchSize?: T;
@@ -7225,6 +8204,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         galleryHero?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               highlightedWords?: T;
               body?: T;
@@ -7235,6 +8216,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         galleryCta?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               highlightedWord?: T;
               highlightColor?: T;
@@ -7254,6 +8237,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         formBlock?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               form?: T;
               enableIntro?: T;
               introContent?: T;
@@ -7263,6 +8248,8 @@ export interface ProgramsSelect<T extends boolean = true> {
         programsList?:
           | T
           | {
+              hidden?: T;
+              syncKey?: T;
               heading?: T;
               subheading?: T;
               displayMode?: T;
@@ -7484,6 +8471,13 @@ export interface BlogSelect<T extends boolean = true> {
                   };
               background?: T;
               backgroundImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programShare?:
+          | T
+          | {
+              heading?: T;
               id?: T;
               blockName?: T;
             };

@@ -5,7 +5,6 @@
 import type { Payload } from 'payload'
 
 import {
-  PROGRAM_DETAIL_BY_SLUG,
   type ProgramDetailBenefitData,
   type ProgramDetailContentData,
   type ProgramDetailDestinationData,
@@ -18,6 +17,7 @@ const log = (msg: string) => {
 
 import { ensureMediaFromUrl as ensureMediaFromUrlShared } from './utils/ensureMediaFromUrl'
 import { ensureMediaFromFile as ensureMediaFromFileShared } from './utils/ensureMediaFromFile'
+import { buildProgramSections } from './buildProgramSections'
 
 const ensureMediaFromUrl = (
   payload: Payload,
@@ -78,16 +78,24 @@ function deriveFilename(programSlug: string, url: string): string {
 
 // ─── Detail seed (per program) ────────────────────────────────────────────
 
-interface PatchInput {
-  programId: string | number
+interface ResolveInput {
   programSlug: string
   data: ProgramDetailContentData
+  title?: string
+  featuredImageId?: string | number | null
+  isOpen?: boolean
 }
 
-async function buildAndPatchProgramDetail(
+/**
+ * Resolve a program's detail content (downloading/linking ~all its images)
+ * into the `sections` blocks array. Called by seedPrograms BEFORE create, so
+ * the program is created in one step with its full page — exactly like Pages,
+ * which means the seedTranslation copy fires on create too.
+ */
+export async function resolveProgramSectionsFromData(
   payload: Payload,
-  { programId, programSlug, data }: PatchInput,
-): Promise<void> {
+  { programSlug, data, title, featuredImageId, isOpen }: ResolveInput,
+): Promise<Record<string, unknown>[]> {
   // 1. Hero image (URL or bundled local file)
   const heroImageId = await resolveImageRef(
     payload,
@@ -156,6 +164,24 @@ async function buildAndPatchProgramDetail(
     }),
   )
 
+  // Memories grid — resolve each photo (bundled tour images) so the block
+  // stores real Media ids and the admin shows the photos, not just a blank
+  // grid that relies on the component fallback.
+  const memoryImages = (
+    await Promise.all(
+      (data.memories?.images ?? []).map(async (m, i) =>
+        resolveImageRef(
+          payload,
+          m,
+          m.imageUrl ? deriveFilename(programSlug, m.imageUrl) : '',
+          m.alt ?? `${programSlug} memory ${i + 1}`,
+        ),
+      ),
+    )
+  )
+    .filter((id): id is number => id != null)
+    .map((id) => ({ image: id }))
+
   // Build the patch payload — every top-level field is the entire group, not
   // a partial. Payload merges arrays naïvely (replaces), which is what we want
   // for an idempotent first-time seed.
@@ -190,85 +216,30 @@ async function buildAndPatchProgramDetail(
       items: (data.benefitsShowcase?.items ?? []).map((text) => ({ text })),
     },
     detailRequirements: data.requirements ?? [],
-    detailMemories: data.memories ?? {},
+    detailMemories: { ...(data.memories ?? {}), images: memoryImages },
     detailFeatures: data.features ?? [],
   }
 
-  await payload.update({
-    collection: 'programs',
-    id: programId,
-    data: patch as never,
-    // Detail content lands via update (after create), so opt in to the
-    // seedTranslation copy — the AR locale is still fresh at this point.
-    context: { seedTranslate: true },
+  // Apply-section decorative photos (bundled brand images) — seeded so the
+  // admin shows real, editable uploads instead of relying on the fallback.
+  const applyPhotos = {
+    topLeft: await ensureMediaFromFile(payload, 'apply-decor-top-left.png', `${programSlug} apply photo`),
+    topRight: await ensureMediaFromFile(payload, 'apply-decor-top-right.png', `${programSlug} apply photo`),
+    bottomLeft: await ensureMediaFromFile(payload, 'apply-decor-bottom-left.png', `${programSlug} apply photo`),
+    bottomRight: await ensureMediaFromFile(payload, 'apply-decor-bottom-right.png', `${programSlug} apply photo`),
+  }
+
+  // Turn the resolved detail content into the program `sections` blocks. The
+  // caller creates the program with these, so the page is built in one step.
+  return buildProgramSections({
+    title,
+    featuredImage: featuredImageId ?? undefined,
+    isOpen,
+    applyPhotos,
+    ...patch,
   })
 }
 
-// ─── Public API ───────────────────────────────────────────────────────────
-
-export interface SeedProgramDetailsResult {
-  ok: boolean
-  message: string
-  patched: string[]
-  skipped: string[]
-  errors: string[]
-}
-
-/**
- * Patch the detail fields on every program that has a known config AND is
- * still missing structured content. `programIdsBySlug` comes from the
- * preceding seedPrograms run.
- *
- * If a program's `detailHero` already has any value, we treat it as "edited
- * by the editor" and leave it alone — re-runs preserve manual changes.
- */
-export async function seedProgramDetails(
-  payload: Payload,
-  programIdsBySlug: Record<string, string | number>,
-): Promise<SeedProgramDetailsResult> {
-  const result: SeedProgramDetailsResult = {
-    ok: true,
-    message: '',
-    patched: [],
-    skipped: [],
-    errors: [],
-  }
-
-  for (const [slug, programId] of Object.entries(programIdsBySlug)) {
-    const data = PROGRAM_DETAIL_BY_SLUG[slug]
-    if (!data) {
-      result.skipped.push(`${slug} (no config)`)
-      continue
-    }
-
-    try {
-      const existing = await payload.findByID({
-        collection: 'programs',
-        id: programId,
-        depth: 0,
-      })
-      const existingHero = (existing as { detailHero?: { subtitle?: string; tag?: string; note?: string } } | null)?.detailHero
-      const alreadyHasContent = Boolean(
-        existingHero && (existingHero.subtitle || existingHero.tag || existingHero.note),
-      )
-
-      if (alreadyHasContent) {
-        log(`${slug} already has detail content — skipping (set detailHero fields empty to re-seed)`)
-        result.skipped.push(`${slug} (already populated)`)
-        continue
-      }
-
-      log(`patching ${slug}...`)
-      await buildAndPatchProgramDetail(payload, { programId, programSlug: slug, data })
-      log(`  ✓ patched ${slug}`)
-      result.patched.push(slug)
-    } catch (err) {
-      log(`  ⚠ ${slug}: ${(err as Error).message}`)
-      result.errors.push(`${slug}: ${(err as Error).message}`)
-    }
-  }
-
-  result.message = `Program details seed done. patched=${result.patched.length}, skipped=${result.skipped.length}, errors=${result.errors.length}.`
-  if (result.errors.length) result.ok = false
-  return result
-}
+// The public `seedProgramDetails` loop is gone: seedPrograms now calls
+// `resolveProgramSectionsFromData` directly and creates each program with its
+// sections in one step (see seedPrograms).

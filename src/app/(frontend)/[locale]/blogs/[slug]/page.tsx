@@ -200,7 +200,12 @@ function CmsBlogDetail({
 
             <BlogAuthor post={post} locale={locale} />
 
-            <BlockRenderer blocks={post.sections} post={post} locale={locale} />
+            <BlockRenderer
+              blocks={post.sections}
+              post={post}
+              locale={locale}
+              shareUrl={canonical}
+            />
 
             <RelatedPosts posts={post.relatedPosts} locale={locale} />
           </main>

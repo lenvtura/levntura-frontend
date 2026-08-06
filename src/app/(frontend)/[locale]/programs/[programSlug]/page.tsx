@@ -2,14 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProgram, getPrograms } from "@/lib/api";
 import { ProgramApplyForm } from "@/components/program-apply-form";
-import { SocialShareIcons } from "@/atoms/social-share-icons";
-import { FadeUpAnimator } from "@/atoms/fade-up-animator";
 import { BlockRenderer } from "@/components/blocks/block-renderer";
 import { resolveLocale, resolvePreview } from "@/lib/server-request";
-import { getTranslations } from "next-intl/server";
 import type { CmsForm, Locale, Program, ProgramType } from "@/lib/types";
 
-import { ProgramDetail } from "./program-detail";
 import { mediaUrl, mediaAlt, localeCanonical } from "@/lib/url";
 import { JsonLd } from "@/components/json-ld";
 import { buildCourseSchema } from "@/lib/structuredData";
@@ -109,8 +105,6 @@ export default async function Page({
 
   if (!program) notFound();
 
-  const t = await getTranslations("programs");
-
   const canonical =
     program.meta?.canonicalURL ||
     localeCanonical(SITE_URL, locale, `/programs/${programSlug}`);
@@ -118,6 +112,18 @@ export default async function Page({
   // Build the apply-form block once here so the page knows whether to use
   // Calendly, the dynamic form, or nothing — and ProgramDetail just renders
   // whatever we hand it.
+  // The Apply section can pick its own form; fall back to the program's form
+  // (or its type's form) when the block leaves it empty.
+  const applyBlockForm = (() => {
+    const b = Array.isArray(program.sections)
+      ? program.sections.find(
+          (s) => (s as { blockType?: string })?.blockType === "programApply",
+        )
+      : undefined;
+    const f = (b as { form?: unknown } | undefined)?.form;
+    return f && typeof f === "object" ? (f as CmsForm) : null;
+  })();
+
   const applyForm = program.calendlyURL ? (
     <div className="w-full h-[700px] rounded-lg overflow-hidden border border-gray-100 bg-gray-50">
       <iframe
@@ -130,36 +136,26 @@ export default async function Page({
     </div>
   ) : (
     <ProgramApplyForm
-      form={resolveApplicationForm(program)}
+      form={applyBlockForm ?? resolveApplicationForm(program)}
       programId={program.id}
       programTitle={program.title}
     />
   );
 
   // Render any extra CMS blocks on the server so async blocks (e.g.
-  // BlogPostsListBlock) can fetch data. We pass the rendered output to
-  // ProgramDetail as a prop because ProgramDetail itself is a Client
-  // Component (needs to be — its sliders use framer-motion).
-  const extraSections =
-    program.sections && program.sections.length > 0 ? (
-      <BlockRenderer blocks={program.sections} locale={locale} />
-    ) : null;
+  // BlogPostsListBlock) can fetch data.
 
   return (
     <>
       <JsonLd data={buildCourseSchema(program, canonical)} />
-      <ProgramDetail
-        program={program}
-        applyForm={applyForm}
-        extraSections={extraSections}
-      />
-
-      <FadeUpAnimator transition={{ delay: 0.4 }}>
-        <div className="container-md mt-12 flex flex-col items-center justify-center pb-24">
-          <p className="typography-M18 text-lev-gray mb-4">{t("share")}</p>
-          <SocialShareIcons size="lg" />
-        </div>
-      </FadeUpAnimator>
+      <div className="bg-[#F7F7F8]">
+        <BlockRenderer
+          blocks={program.sections}
+          locale={locale}
+          applyForm={program.isOpen ? applyForm : undefined}
+          shareUrl={canonical}
+        />
+      </div>
     </>
   );
 }

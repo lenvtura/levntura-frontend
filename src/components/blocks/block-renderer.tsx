@@ -68,20 +68,50 @@ import { GalleryHeroBlock } from "./gallery-hero";
 import { GalleryCtaBlock } from "./gallery-cta";
 import { PromptCTABlock } from "./prompt-cta";
 import { RelatedItemsBlock } from "./related-items";
+import { ProgramHeroBlock } from "./program-hero";
+import { ProgramIntroBlock } from "./program-intro";
+import { ProgramWhatIsBlock } from "./program-what-is";
+import { ProgramPhotoBreakBlock } from "./program-photo-break";
+import { ProgramPictureYourselfBlock } from "./program-picture-yourself";
+import { ProgramWhyParticipateBlock } from "./program-why-participate";
+import { ProgramJobsBlock } from "./program-jobs";
+import { ProgramDestinationsBlock } from "./program-destinations";
+import { ProgramRequirementsBlock } from "./program-requirements";
+import { ProgramBenefitsShowcaseBlock } from "./program-benefits-showcase";
+import { ProgramWhyChooseBlock } from "./program-why-choose";
+import { ProgramApplyBlock } from "./program-apply";
+import { ProgramShareBlock } from "./program-share";
+import type { ReactNode } from "react";
 
 interface BlockRendererProps {
   blocks: Block[] | undefined;
   post?: BlogPost;
   locale?: Locale;
+  // Program-specific application form (Calendly / dynamic form), built on the
+  // server in the program page and consumed by the `programApply` block.
+  applyForm?: ReactNode;
+  // Canonical URL of the current page — consumed by the `programShare` block.
+  shareUrl?: string;
 }
 
-export function BlockRenderer({ blocks, post, locale = "en" }: BlockRendererProps) {
+export function BlockRenderer({
+  blocks,
+  post,
+  locale = "en",
+  applyForm,
+  shareUrl,
+}: BlockRendererProps) {
   if (!blocks || blocks.length === 0) return null;
 
   return (
     <>
       {blocks.map((block, index) => {
         const key = block.id ?? `${block.blockType}-${index}`;
+
+        // Editor-controlled visibility — skip any section the editor ticked
+        // "Hide this section" on (see withBlockMeta). Kept out of the live
+        // page but preserved in the admin so it can be shown again later.
+        if ((block as { hidden?: boolean | null }).hidden) return null;
 
         switch (block.blockType) {
           case "hero":
@@ -307,6 +337,208 @@ export function BlockRenderer({ blocks, post, locale = "en" }: BlockRendererProp
               <RelatedItemsBlock
                 key={key}
                 block={block as RelatedItemsBlockData}
+              />
+            );
+
+          case "programHero":
+            return (
+              <ProgramHeroBlock
+                key={key}
+                block={
+                  block as Block & {
+                    heading?: string;
+                    tag?: string;
+                    subtitle?: string;
+                    note?: string;
+                    image?: import("@/lib/types").Media;
+                  }
+                }
+              />
+            );
+
+          case "programIntro":
+            return (
+              <ProgramIntroBlock
+                key={key}
+                block={block as Block & { eyebrow?: string; body?: string }}
+              />
+            );
+
+          case "programWhatIs":
+            return (
+              <ProgramWhatIsBlock
+                key={key}
+                block={
+                  block as Block & {
+                    title?: string;
+                    highlightedWords?: string;
+                    body?: string;
+                  }
+                }
+              />
+            );
+
+          case "programPhotoBreak":
+            return (
+              <ProgramPhotoBreakBlock
+                key={key}
+                block={block as Block & { image?: import("@/lib/types").Media }}
+              />
+            );
+
+          case "programPictureYourself":
+            return (
+              <ProgramPictureYourselfBlock
+                key={key}
+                block={
+                  block as Block & {
+                    eyebrow?: string;
+                    body?: string;
+                    circleHeading?: string;
+                    circleBody?: string;
+                    photo?: import("@/lib/types").Media;
+                  }
+                }
+              />
+            );
+
+          case "programWhyParticipate":
+            return (
+              <ProgramWhyParticipateBlock
+                key={key}
+                block={
+                  block as Block & {
+                    heading?: string;
+                    highlightedWords?: string;
+                    body?: string;
+                    benefits?: Array<{
+                      image?: import("@/lib/types").Media;
+                      title: string;
+                      description?: string;
+                    }>;
+                  }
+                }
+              />
+            );
+
+          case "programJobs":
+            return (
+              <ProgramJobsBlock
+                key={key}
+                block={
+                  block as Block & {
+                    heading?: string;
+                    highlightedWords?: string;
+                    body?: string;
+                    items?: Array<{
+                      image?: import("@/lib/types").Media;
+                      title: string;
+                    }>;
+                  }
+                }
+              />
+            );
+
+          case "programDestinations":
+            return (
+              <ProgramDestinationsBlock
+                key={key}
+                block={
+                  block as Block & {
+                    leadText?: string;
+                    heading?: string;
+                    highlightedWords?: string;
+                    items?: Array<{
+                      image?: import("@/lib/types").Media;
+                      area: string;
+                      country?: string;
+                    }>;
+                  }
+                }
+              />
+            );
+
+          case "programRequirements":
+            return (
+              <ProgramRequirementsBlock
+                key={key}
+                block={
+                  block as Block & {
+                    heading?: string;
+                    highlightedWords?: string;
+                    items?: Array<{
+                      iconKey:
+                        | "passport"
+                        | "college"
+                        | "language"
+                        | "age"
+                        | "diploma";
+                      title: string;
+                      description?: string;
+                    }>;
+                  }
+                }
+              />
+            );
+
+          case "programBenefitsShowcase":
+            return (
+              <ProgramBenefitsShowcaseBlock
+                key={key}
+                block={
+                  block as Block & {
+                    title?: string;
+                    highlightedWords?: string;
+                    items?: Array<{ id?: string; text: string }>;
+                  }
+                }
+              />
+            );
+
+          case "programWhyChoose":
+            return (
+              <ProgramWhyChooseBlock
+                key={key}
+                block={
+                  block as Block & {
+                    heading?: string;
+                    highlightedWords?: string;
+                    features?: Array<{
+                      id?: string;
+                      iconKey: "star" | "bag" | "hand" | "people" | "face" | "check";
+                      title: string;
+                      description?: string;
+                      image?: import("@/lib/types").Media;
+                    }>;
+                  }
+                }
+              />
+            );
+
+          case "programApply":
+            return (
+              <ProgramApplyBlock
+                key={key}
+                block={
+                  block as Block & {
+                    heading?: string;
+                    highlightedWords?: string;
+                    photoTopLeft?: import("@/lib/types").Media;
+                    photoTopRight?: import("@/lib/types").Media;
+                    photoBottomLeft?: import("@/lib/types").Media;
+                    photoBottomRight?: import("@/lib/types").Media;
+                  }
+                }
+                applyForm={applyForm}
+              />
+            );
+
+          case "programShare":
+            return (
+              <ProgramShareBlock
+                key={key}
+                block={block as Block & { heading?: string }}
+                shareUrl={shareUrl}
               />
             );
 

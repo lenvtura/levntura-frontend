@@ -102,6 +102,7 @@ export interface ProgramDetailContentData {
   requirements?: ProgramDetailRequirementData[]
   memories?: {
     title?: string
+    images?: Array<{ localFile?: string; imageUrl?: string; alt?: string }>
     primaryCta?: { label?: string; url?: string }
     secondaryLink?: { label?: string; url?: string }
   }
@@ -159,6 +160,19 @@ const DEFAULT_REQUIREMENTS: ProgramDetailRequirementData[] = [
 
 const DEFAULT_MEMORIES = {
   title: "WE'RE CREATING MEMORIES, WILL YOU BE PART OF THEM?",
+  // Same packaged tour photos the About page uses — seeded into Media so the
+  // memories grid shows real, editable images in the admin (not just the
+  // component fallback).
+  images: [
+    { localFile: 'tour-i1.png', alt: 'Memory photo 1' },
+    { localFile: 'tour-i2.png', alt: 'Memory photo 2' },
+    { localFile: 'tour-i3.png', alt: 'Memory photo 3' },
+    { localFile: 'tour-i4.png', alt: 'Memory photo 4' },
+    { localFile: 'tour-i5.png', alt: 'Memory photo 5' },
+    { localFile: 'tour-i6.png', alt: 'Memory photo 6' },
+    { localFile: 'tour-i8.png', alt: 'Memory photo 7' },
+    { localFile: 'tour-i9.png', alt: 'Memory photo 8' },
+  ],
   primaryCta: { label: 'START NOW!', url: '#apply' },
   secondaryLink: { label: 'See all photos', url: '/gallery' },
 }

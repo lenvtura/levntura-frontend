@@ -12,6 +12,7 @@ import { translationGate } from '../../hooks/translationGate'
 import { seedTranslation } from '../../hooks/seedTranslation'
 import { createRedirectOnSlugChange } from '../../hooks/createRedirectOnSlugChange'
 
+import { withBlockMeta } from '../../blocks/withBlockMeta'
 import { HeroBlock } from '../../blocks/Hero'
 import { HeroHomeBlock } from '../../blocks/HeroHome'
 import { TravelDestinationsBlock } from '../../blocks/TravelDestinations'
@@ -154,7 +155,8 @@ export const Pages: CollectionConfig = {
                 FormBlock,
                 PromptCTABlock,
                 RelatedItemsBlock,
-              ],
+                // Every block gets the shared section meta (hide toggle + sync key).
+              ].map(withBlockMeta),
             },
           ],
         },

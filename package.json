@@ -17,6 +17,7 @@
     "seed:site": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" node src/scripts/seed-site.ts",
     "seed:blogs": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" node src/scripts/seed-blogs.ts",
     "seed:all": "npm run seed:globals && npm run seed:site && npm run seed:blogs",
+    "migrate:programs": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" node src/scripts/migrate-programs-to-sections.ts",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
