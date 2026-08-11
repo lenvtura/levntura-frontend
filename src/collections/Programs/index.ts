@@ -48,9 +48,9 @@ export const Programs: CollectionConfig = {
     maxPerDoc: 30,
   },
 
-  // See Pages collection — disabled to stop the spurious "Document
-  // modified" warning from the locking poll.
-  lockDocuments: false,
+  // See Pages collection — locking re-enabled after fixing the
+  // seedTranslation no-op writes that used to false-alarm the poll.
+  lockDocuments: { duration: 300 },
 
   hooks: {
     beforeChange: [populatePublishedAt, populateDateModified, translationGate],

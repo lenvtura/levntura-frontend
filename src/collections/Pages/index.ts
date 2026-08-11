@@ -82,9 +82,13 @@ export const Pages: CollectionConfig = {
     maxPerDoc: 50,
   },
 
-  // Disabled to suppress spurious "Document modified" warnings from the
-  // 10s poll. Re-enable if multi-editor conflicts become an issue.
-  lockDocuments: false,
+  // Document locking (WordPress-style "someone is editing / take over" UX) is
+  // ON. It was previously disabled because the seedTranslation hook wrote to
+  // the doc on every save — even no-op writes — bumping updatedAt and tripping
+  // the 10s poll into a false "Document modified" alarm, even in single-tab
+  // editing. That root cause is fixed (the hook now skips no-op writes and
+  // bypasses the lock via overrideLock), so locking is safe to enable.
+  lockDocuments: { duration: 300 },
 
   hooks: {
     beforeChange: [

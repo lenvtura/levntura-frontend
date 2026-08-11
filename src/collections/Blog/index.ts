@@ -49,10 +49,9 @@ export const Blog: CollectionConfig = {
     maxPerDoc: 30,
   },
 
-  // Document-locking polls + stale-data warning were tripping spuriously
-  // in single-tab editing — see Pages collection comment for the full
-  // rationale.
-  lockDocuments: false,
+  // See Pages collection — locking re-enabled after fixing the
+  // seedTranslation no-op writes that used to false-alarm the poll.
+  lockDocuments: { duration: 300 },
 
   hooks: {
     beforeChange: [

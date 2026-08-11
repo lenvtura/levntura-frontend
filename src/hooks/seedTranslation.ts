@@ -78,6 +78,30 @@ const setByPath = (
   curr[path[path.length - 1]] = value
 }
 
+// Order-sensitive for arrays (block order matters), key-order-insensitive for
+// objects. Used to skip redundant target-locale writes — see run() below.
+const deepEqual = (a: unknown, b: unknown): boolean => {
+  if (a === b) return true
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) return false
+    return a.every((x, i) => deepEqual(x, b[i]))
+  }
+  if (a && b && typeof a === 'object' && typeof b === 'object') {
+    const ak = Object.keys(a as Record<string, unknown>)
+    const bk = Object.keys(b as Record<string, unknown>)
+    if (ak.length !== bk.length) return false
+    return ak.every(
+      (k) =>
+        Object.prototype.hasOwnProperty.call(b, k) &&
+        deepEqual(
+          (a as Record<string, unknown>)[k],
+          (b as Record<string, unknown>)[k],
+        ),
+    )
+  }
+  return false
+}
+
 const stripIds = (value: unknown): unknown => {
   if (Array.isArray(value)) {
     return value.map(stripIds)
@@ -259,7 +283,16 @@ export const seedTranslation: CollectionAfterChangeHook = async ({
         for (const name of blocksFields) {
           const sourceArr = getByPath(raw, [name])
           if (!Array.isArray(sourceArr) || sourceArr.length === 0) continue
-          updates[name] = syncBlocksArray(sourceArr, getByPath(rawTarget, [name]))
+          const existingTarget = getByPath(rawTarget, [name])
+          const synced = syncBlocksArray(sourceArr, existingTarget)
+          // Only write when the structure actually changed. An interactive
+          // edit that touched source *content* (not order/add/remove) leaves
+          // the synced result identical to what AR already has — writing it
+          // anyway would bump the doc's `updatedAt` and make the editor's open
+          // view show "Document modified / your view is out of date" on every
+          // single save. Skipping the no-op write removes that entirely.
+          if (deepEqual(synced, existingTarget)) continue
+          updates[name] = synced
         }
       }
 
@@ -271,6 +304,11 @@ export const seedTranslation: CollectionAfterChangeHook = async ({
         locale: targetLocale,
         data: updates,
         overrideAccess: true,
+        // Document locking is enabled on these collections. Without this, a
+        // background sync onto a doc the editor currently holds a lock on
+        // would be rejected — breaking translation. The sync is a trusted
+        // system write, so it always bypasses the lock.
+        overrideLock: true,
         context: { autoSeed: true },
         ...(supportsDrafts ? { draft: true } : {}),
       })
