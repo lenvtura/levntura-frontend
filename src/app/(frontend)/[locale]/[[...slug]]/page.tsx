@@ -117,16 +117,24 @@ async function CmsPageContent({ params, searchParams }: CmsPageProps) {
   return (
     <>
       <JsonLd data={buildPageSchema(page, canonical)} />
-      <PageBody page={page} locale={locale} />
+      <PageBody page={page} locale={locale} shareUrl={canonical} />
     </>
   );
 }
 
-function PageBody({ page, locale }: { page: Page; locale: Locale }) {
-
+function PageBody({
+  page,
+  locale,
+  shareUrl,
+}: {
+  page: Page;
+  locale: Locale;
+  shareUrl: string;
+}) {
   return (
     <main className="min-h-screen">
-      <BlockRenderer blocks={page.sections} locale={locale} />
+      {/* shareUrl lets the "Share" program section work on pages too. */}
+      <BlockRenderer blocks={page.sections} locale={locale} shareUrl={shareUrl} />
     </main>
   );
 }

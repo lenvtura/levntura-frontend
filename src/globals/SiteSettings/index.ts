@@ -257,6 +257,39 @@ export const SiteSettings: GlobalConfig = {
         },
 
         {
+          label: 'Internship',
+          description:
+            'Forms shown as pop-ups on the Internship page. Manage the fields in Forms; pick which form to use here.',
+          fields: [
+            {
+              name: 'internship',
+              type: 'group',
+              label: false,
+              fields: [
+                {
+                  name: 'applyForm',
+                  type: 'relationship',
+                  relationTo: 'forms',
+                  admin: {
+                    description:
+                      'Opens when a visitor clicks APPLY NOW on a job card.',
+                  },
+                },
+                {
+                  name: 'suggestForm',
+                  type: 'relationship',
+                  relationTo: 'forms',
+                  admin: {
+                    description:
+                      'Opens from the "Suggest New Opportunities" section button.',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+
+        {
           label: 'Code Injection',
           fields: [
             {

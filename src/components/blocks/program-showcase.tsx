@@ -95,11 +95,11 @@ export function ProgramShowcaseBlock({ block }: ProgramShowcaseBlockProps) {
           {programTypes.length > 0 && (
             <FadeUpAnimator
               transition={{ delay: 0.2 }}
-              className="flex max-md:mt-4 max-md:grid grid-cols-2 mr-4 flex-col gap-4"
+              className="flex max-md:mt-4 max-md:grid grid-cols-2 me-4 flex-col gap-4 max-md:gap-x-6"
             >
               {programTypes.map((t, i) => (
                 <span
-                  className="whitespace-nowrap"
+                  className="md:whitespace-nowrap break-words"
                   key={t.id ?? `type-${i}`}
                 >
                   {t.label}
@@ -112,7 +112,7 @@ export function ProgramShowcaseBlock({ block }: ProgramShowcaseBlockProps) {
             {cta?.label && cta?.url && (
               <FadeUpAnimator transition={{ delay: 0.4 }}>
                 <ButtonWithArrow
-                  className="float-right max-md:-mt-2 flex ml-auto top-0 right-0 typography-R18 items-center gap-4"
+                  className="float-end max-md:-mt-2 flex ms-auto top-0 end-0 typography-R18 items-center gap-4"
                   href={cta.url}
                   iconClassName="border-lev-green-dark"
                 >
@@ -152,7 +152,7 @@ export function ProgramShowcaseBlock({ block }: ProgramShowcaseBlockProps) {
                 className="object-cover group-hover:scale-105 transition-[scale] pointer-events-none w-full h-full"
               />
             )}
-            <div className="absolute typography-R34 left-[16px] bottom-[16px] text-white">
+            <div className="absolute typography-R34 start-[16px] bottom-[16px] text-white">
               {item.label}
             </div>
           </div>

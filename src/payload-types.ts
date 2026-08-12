@@ -73,6 +73,8 @@ export interface Config {
     redirects: Redirect;
     'program-types': ProgramType;
     programs: Program;
+    'job-types': JobType;
+    jobs: Job;
     'blog-categories': BlogCategory;
     blog: Blog;
     forms: Form;
@@ -90,6 +92,8 @@ export interface Config {
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     'program-types': ProgramTypesSelect<false> | ProgramTypesSelect<true>;
     programs: ProgramsSelect<false> | ProgramsSelect<true>;
+    'job-types': JobTypesSelect<false> | JobTypesSelect<true>;
+    jobs: JobsSelect<false> | JobsSelect<true>;
     'blog-categories': BlogCategoriesSelect<false> | BlogCategoriesSelect<true>;
     blog: BlogSelect<false> | BlogSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -492,6 +496,11 @@ export interface Page {
               id?: string | null;
             }[]
           | null;
+        enableSearch?: boolean | null;
+        /**
+         * How many questions to show per page (rest go under the page numbers).
+         */
+        pageSize?: number | null;
         enableSchema?: boolean | null;
         id?: string | null;
         blockName?: string | null;
@@ -571,6 +580,9 @@ export interface Page {
          * Normalizes all images to the same shape regardless of upload size. Use "Natural" to keep each image at its original ratio.
          */
         aspectRatio?: ('portrait' | 'square' | 'landscape' | 'wide' | 'natural') | null;
+        /**
+         * The images shown in the carousel — add one item (with an image) per photo. Until you add any, the site shows placeholder photos.
+         */
         items?:
           | {
               image: number | Media;
@@ -1548,6 +1560,349 @@ export interface Page {
         blockName?: string | null;
         blockType: 'relatedItems';
       }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small label above the title, e.g. "SUMMER".
+         */
+        tag?: string | null;
+        /**
+         * The big hero title (usually the program name).
+         */
+        heading: string;
+        /**
+         * e.g. "BACHELOR & MASTER'S DEGREE STUDENTS".
+         */
+        subtitle?: string | null;
+        /**
+         * e.g. "Program only to USA.".
+         */
+        note?: string | null;
+        /**
+         * Full-screen hero background. If left empty, a default hero image is shown so the section still looks complete.
+         */
+        image?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programHero';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small centered label above the intro text.
+         */
+        eyebrow?: string | null;
+        body?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programIntro';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        title?: string | null;
+        /**
+         * Exact consecutive words from the title to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        /**
+         * Use **bold** markers around words to make them bold.
+         */
+        body?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programWhatIs';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Decorative photo between sections. If left empty, a default image is shown.
+         */
+        image?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programPhotoBreak';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small label above the "Picture yourself" title.
+         */
+        eyebrow?: string | null;
+        body?: string | null;
+        /**
+         * Bold text inside the yellow circle overlay.
+         */
+        circleHeading?: string | null;
+        /**
+         * Smaller text under the circle heading.
+         */
+        circleBody?: string | null;
+        /**
+         * Round photo behind the yellow circle. A default is shown if empty.
+         */
+        photo?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programPictureYourself';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        body?: string | null;
+        benefits?:
+          | {
+              image?: (number | null) | Media;
+              /**
+               * Use \n for line breaks.
+               */
+              title: string;
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programWhyParticipate';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        body?: string | null;
+        items?:
+          | {
+              image?: (number | null) | Media;
+              title: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programJobs';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        leadText?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        items?:
+          | {
+              image?: (number | null) | Media;
+              area: string;
+              country?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programDestinations';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section title.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        items?:
+          | {
+              iconKey: 'passport' | 'college' | 'language' | 'age' | 'diploma';
+              title: string;
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programRequirements';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        title?: string | null;
+        /**
+         * Exact consecutive words from the title to color in the accent (e.g. "AMAZING EXPERIENCE"). Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        items?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programBenefitsShowcase';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        features?:
+          | {
+              iconKey: 'star' | 'bag' | 'hand' | 'people' | 'face' | 'check';
+              title: string;
+              description?: string | null;
+              /**
+               * Optional image shown instead of the icon. Leave empty to use the icon.
+               */
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programWhyChoose';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Heading above the share buttons.
+         */
+        heading?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programShare';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * What this slider shows.
+         */
+        source: 'jobs' | 'internships';
+        heading?: string | null;
+        /**
+         * Words within the heading to color (matched exactly).
+         */
+        highlightedWords?: string | null;
+        /**
+         * Optional short text beside the heading.
+         */
+        body?: string | null;
+        /**
+         * Empty = all countries.
+         */
+        byCountry?:
+          | (
+              | 'US'
+              | 'UK'
+              | 'CA'
+              | 'DE'
+              | 'FR'
+              | 'ES'
+              | 'IT'
+              | 'AU'
+              | 'IE'
+              | 'ZA'
+              | 'EG'
+              | 'JO'
+              | 'SA'
+              | 'AE'
+              | 'multi'
+            )[]
+          | null;
+        /**
+         * Empty = all job types.
+         */
+        byJobType?: (number | JobType)[] | null;
+        /**
+         * Empty = all program types.
+         */
+        byProgramType?: (number | ProgramType)[] | null;
+        limit?: number | null;
+        /**
+         * Shown when nothing matches. Empty = hide the section.
+         */
+        emptyMessage?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'dynamicSlider';
+      }
   )[];
   meta?: {
     /**
@@ -1759,6 +2114,11 @@ export interface Blog {
               id?: string | null;
             }[]
           | null;
+        enableSearch?: boolean | null;
+        /**
+         * How many questions to show per page (rest go under the page numbers).
+         */
+        pageSize?: number | null;
         enableSchema?: boolean | null;
         id?: string | null;
         blockName?: string | null;
@@ -2152,43 +2512,39 @@ export interface Form {
   createdAt: string;
 }
 /**
- * Old URLs that should forward to new ones.
+ * Categories for internship jobs (Engineering, Hospitality, etc.)
  *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "redirects".
+ * via the `definition` "job-types".
  */
-export interface Redirect {
+export interface JobType {
   id: number;
   /**
-   * Old path (e.g. /about-us). Must start with /. Without domain.
+   * Display name (e.g. "Engineering", "Hospitality").
    */
-  from: string;
-  to?: {
-    type?: ('page' | 'external' | 'path') | null;
-    /**
-     * The page this old URL should now point to.
-     */
-    page?: (number | null) | Page;
-    /**
-     * Full URL including https://
-     */
-    externalURL?: string | null;
-    /**
-     * Internal path (e.g. /blog/new-article)
-     */
-    customPath?: string | null;
-  };
-  type?: ('301' | '302') | null;
+  name: string;
   /**
-   * Turn off without deleting.
+   * Optional brief description of this job category.
    */
-  enabled?: boolean | null;
+  shortDescription?: string | null;
   /**
-   * Internal note — why was this redirect created?
+   * Optional small icon used in filters/cards.
    */
-  note?: string | null;
+  icon?: (number | null) | Media;
+  /**
+   * URL part. Auto-generated from title; you can edit it.
+   */
+  slug: string;
+  /**
+   * Lower numbers appear first.
+   */
+  order?: number | null;
+  translationComplete?: boolean | null;
+  publishedAt?: string | null;
+  dateModified?: string | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * Categories for programs (Internship, Work & Travel, Study Abroad, etc.)
@@ -2487,6 +2843,11 @@ export interface ProgramType {
                   id?: string | null;
                 }[]
               | null;
+            enableSearch?: boolean | null;
+            /**
+             * How many questions to show per page (rest go under the page numbers).
+             */
+            pageSize?: number | null;
             enableSchema?: boolean | null;
             id?: string | null;
             blockName?: string | null;
@@ -2566,6 +2927,9 @@ export interface ProgramType {
              * Normalizes all images to the same shape regardless of upload size. Use "Natural" to keep each image at its original ratio.
              */
             aspectRatio?: ('portrait' | 'square' | 'landscape' | 'wide' | 'natural') | null;
+            /**
+             * The images shown in the carousel — add one item (with an image) per photo. Until you add any, the site shows placeholder photos.
+             */
             items?:
               | {
                   image: number | Media;
@@ -4045,6 +4409,64 @@ export interface Program {
          */
         hidden?: boolean | null;
         syncKey?: string | null;
+        /**
+         * What this slider shows.
+         */
+        source: 'jobs' | 'internships';
+        heading?: string | null;
+        /**
+         * Words within the heading to color (matched exactly).
+         */
+        highlightedWords?: string | null;
+        /**
+         * Optional short text beside the heading.
+         */
+        body?: string | null;
+        /**
+         * Empty = all countries.
+         */
+        byCountry?:
+          | (
+              | 'US'
+              | 'UK'
+              | 'CA'
+              | 'DE'
+              | 'FR'
+              | 'ES'
+              | 'IT'
+              | 'AU'
+              | 'IE'
+              | 'ZA'
+              | 'EG'
+              | 'JO'
+              | 'SA'
+              | 'AE'
+              | 'multi'
+            )[]
+          | null;
+        /**
+         * Empty = all job types.
+         */
+        byJobType?: (number | JobType)[] | null;
+        /**
+         * Empty = all program types.
+         */
+        byProgramType?: (number | ProgramType)[] | null;
+        limit?: number | null;
+        /**
+         * Shown when nothing matches. Empty = hide the section.
+         */
+        emptyMessage?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'dynamicSlider';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
         variant?: ('centered' | 'splitRight' | 'splitLeft' | 'fullBackground') | null;
         /**
          * Small text above the heading.
@@ -4295,6 +4717,11 @@ export interface Program {
               id?: string | null;
             }[]
           | null;
+        enableSearch?: boolean | null;
+        /**
+         * How many questions to show per page (rest go under the page numbers).
+         */
+        pageSize?: number | null;
         enableSchema?: boolean | null;
         id?: string | null;
         blockName?: string | null;
@@ -4374,6 +4801,9 @@ export interface Program {
          * Normalizes all images to the same shape regardless of upload size. Use "Natural" to keep each image at its original ratio.
          */
         aspectRatio?: ('portrait' | 'square' | 'landscape' | 'wide' | 'natural') | null;
+        /**
+         * The images shown in the carousel — add one item (with an image) per photo. Until you add any, the site shows placeholder photos.
+         */
         items?:
           | {
               image: number | Media;
@@ -5487,6 +5917,1873 @@ export interface Program {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Old URLs that should forward to new ones.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects".
+ */
+export interface Redirect {
+  id: number;
+  /**
+   * Old path (e.g. /about-us). Must start with /. Without domain.
+   */
+  from: string;
+  to?: {
+    type?: ('page' | 'external' | 'path') | null;
+    /**
+     * The page this old URL should now point to.
+     */
+    page?: (number | null) | Page;
+    /**
+     * Full URL including https://
+     */
+    externalURL?: string | null;
+    /**
+     * Internal path (e.g. /blog/new-article)
+     */
+    customPath?: string | null;
+  };
+  type?: ('301' | '302') | null;
+  /**
+   * Turn off without deleting.
+   */
+  enabled?: boolean | null;
+  /**
+   * Internal note — why was this redirect created?
+   */
+  note?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "jobs".
+ */
+export interface Job {
+  id: number;
+  /**
+   * Job / position title (e.g. "Software Engineering Intern").
+   */
+  title: string;
+  /**
+   * Short summary shown on the job card in the slider.
+   */
+  shortDescription?: string | null;
+  country: 'US' | 'UK' | 'CA' | 'DE' | 'FR' | 'ES' | 'IT' | 'AU' | 'IE' | 'ZA' | 'EG' | 'JO' | 'SA' | 'AE' | 'multi';
+  /**
+   * Category used to filter jobs.
+   */
+  jobType: number | JobType;
+  /**
+   * Banner image shown on the job card.
+   */
+  image?: (number | null) | Media;
+  /**
+   * Shown as the badge on the card (e.g. FULLTIME).
+   */
+  employmentType?: ('full-time' | 'part-time' | 'internship' | 'contract' | 'seasonal') | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  /**
+   * Optional pay shown on the card (e.g. 6595$/m).
+   */
+  salary?: {
+    amount?: number | null;
+    currency?: string | null;
+    period?: ('/m' | '/wk' | '/yr' | 'total') | null;
+  };
+  /**
+   * Link for the APPLY button. Empty = hide Apply.
+   */
+  applyUrl?: string | null;
+  /**
+   * Similar jobs shown in the sidebar. Leave empty to auto-fill by same country / job type.
+   */
+  relatedJobs?: (number | Job)[] | null;
+  /**
+   * Build the job page by adding sections. Drag to reorder.
+   */
+  sections: (
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small label above the title, e.g. "SUMMER".
+         */
+        tag?: string | null;
+        /**
+         * The big hero title (usually the program name).
+         */
+        heading: string;
+        /**
+         * e.g. "BACHELOR & MASTER'S DEGREE STUDENTS".
+         */
+        subtitle?: string | null;
+        /**
+         * e.g. "Program only to USA.".
+         */
+        note?: string | null;
+        /**
+         * Full-screen hero background. If left empty, a default hero image is shown so the section still looks complete.
+         */
+        image?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programHero';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small centered label above the intro text.
+         */
+        eyebrow?: string | null;
+        body?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programIntro';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        title?: string | null;
+        /**
+         * Exact consecutive words from the title to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        /**
+         * Use **bold** markers around words to make them bold.
+         */
+        body?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programWhatIs';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Decorative photo between sections. If left empty, a default image is shown.
+         */
+        image?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programPhotoBreak';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small label above the "Picture yourself" title.
+         */
+        eyebrow?: string | null;
+        body?: string | null;
+        /**
+         * Bold text inside the yellow circle overlay.
+         */
+        circleHeading?: string | null;
+        /**
+         * Smaller text under the circle heading.
+         */
+        circleBody?: string | null;
+        /**
+         * Round photo behind the yellow circle. A default is shown if empty.
+         */
+        photo?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programPictureYourself';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        body?: string | null;
+        benefits?:
+          | {
+              image?: (number | null) | Media;
+              /**
+               * Use \n for line breaks.
+               */
+              title: string;
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programWhyParticipate';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        body?: string | null;
+        items?:
+          | {
+              image?: (number | null) | Media;
+              title: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programJobs';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        leadText?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        items?:
+          | {
+              image?: (number | null) | Media;
+              area: string;
+              country?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programDestinations';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section title.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        items?:
+          | {
+              iconKey: 'passport' | 'college' | 'language' | 'age' | 'diploma';
+              title: string;
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programRequirements';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        title?: string | null;
+        /**
+         * Exact consecutive words from the title to color in the accent (e.g. "AMAZING EXPERIENCE"). Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        items?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programBenefitsShowcase';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the heading to color in the accent. Leave empty for a single-color title.
+         */
+        highlightedWords?: string | null;
+        features?:
+          | {
+              iconKey: 'star' | 'bag' | 'hand' | 'people' | 'face' | 'check';
+              title: string;
+              description?: string | null;
+              /**
+               * Optional image shown instead of the icon. Leave empty to use the icon.
+               */
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programWhyChoose';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Heading above the share buttons.
+         */
+        heading?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programShare';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * What this slider shows.
+         */
+        source: 'jobs' | 'internships';
+        heading?: string | null;
+        /**
+         * Words within the heading to color (matched exactly).
+         */
+        highlightedWords?: string | null;
+        /**
+         * Optional short text beside the heading.
+         */
+        body?: string | null;
+        /**
+         * Empty = all countries.
+         */
+        byCountry?:
+          | (
+              | 'US'
+              | 'UK'
+              | 'CA'
+              | 'DE'
+              | 'FR'
+              | 'ES'
+              | 'IT'
+              | 'AU'
+              | 'IE'
+              | 'ZA'
+              | 'EG'
+              | 'JO'
+              | 'SA'
+              | 'AE'
+              | 'multi'
+            )[]
+          | null;
+        /**
+         * Empty = all job types.
+         */
+        byJobType?: (number | JobType)[] | null;
+        /**
+         * Empty = all program types.
+         */
+        byProgramType?: (number | ProgramType)[] | null;
+        limit?: number | null;
+        /**
+         * Shown when nothing matches. Empty = hide the section.
+         */
+        emptyMessage?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'dynamicSlider';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        variant?: ('centered' | 'splitRight' | 'splitLeft' | 'fullBackground') | null;
+        /**
+         * Small text above the heading.
+         */
+        eyebrow?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading: string;
+        /**
+         * Substring of the heading rendered in the highlight color. Leave empty for a single-color heading.
+         */
+        highlightedWord?: string | null;
+        highlightColor?:
+          | ('lev-orange' | 'lev-red' | 'lev-green' | 'lev-green-light' | 'lev-blue' | 'lev-blue-light' | 'lev-yellow')
+          | null;
+        /**
+         * Body text below the heading. Use line breaks to split into paragraphs.
+         */
+        subheading?: string | null;
+        media?: (number | null) | Media;
+        actions?:
+          | {
+              label: string;
+              url: string;
+              style?: ('primary' | 'secondary' | 'ghost') | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Section background color (ignored when variant is "Full Background" — that uses the uploaded image).
+         */
+        backgroundColor?:
+          | (
+              | 'none'
+              | 'lev-yellow'
+              | 'lev-yellow-light'
+              | 'lev-blue'
+              | 'lev-blue-light'
+              | 'lev-blue-dark'
+              | 'lev-green'
+              | 'lev-green-light'
+              | 'lev-green-dark'
+              | 'lev-red'
+              | 'lev-red-dark'
+              | 'lev-orange'
+              | 'lev-pink'
+              | 'lev-black'
+              | 'white'
+            )
+          | null;
+        /**
+         * Text + UI color, choose based on bg contrast.
+         */
+        textColor?: ('dark' | 'light') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'hero';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Optional small text above the headline.
+         */
+        eyebrow?: string | null;
+        /**
+         * Main headline. Will be rendered with a stroked outline style.
+         */
+        headline: string;
+        subheadline?: string | null;
+        /**
+         * Use an uploaded image or a solid brand color as the hero background.
+         */
+        backgroundType?: ('image' | 'color') | null;
+        /**
+         * Full-screen hero background. 1920x1080+ recommended.
+         */
+        backgroundImage?: (number | null) | Media;
+        /**
+         * Pick a brand color for the hero background.
+         */
+        backgroundColor?:
+          | (
+              | 'lev-blue'
+              | 'lev-blue-dark'
+              | 'lev-green-dark'
+              | 'lev-green'
+              | 'lev-red'
+              | 'lev-orange'
+              | 'lev-yellow'
+              | 'lev-black'
+            )
+          | null;
+        opportunities?:
+          | {
+              label: string;
+              id?: string | null;
+            }[]
+          | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Render social share icons. Pulled from Site Settings → Social Links.
+         */
+        showSocialIcons?: boolean | null;
+        /**
+         * Optional text section that appears below the hero — heading + 2 paragraph columns. Leave all fields empty to skip it entirely.
+         */
+        intro?: {
+          /**
+           * Section heading on the left column. Rendered uppercase in the brand SectionTitle style. Press Enter to control line breaks.
+           */
+          heading?: string | null;
+          /**
+           * Left column paragraph (under the heading).
+           */
+          paragraph1?: string | null;
+          /**
+           * Right column paragraph. Leave empty for a single-column layout.
+           */
+          paragraph2?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'heroHome';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        width?: ('narrow' | 'normal' | 'wide') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'richText';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Optional section heading shown above the columns. Rendered in the brand SectionTitle style (uppercase, blue-dark, large).
+         */
+        heading?: string | null;
+        /**
+         * Optional supporting text shown below the heading.
+         */
+        subheading?: string | null;
+        columns?:
+          | {
+              size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+              content?: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              } | null;
+              enableLink?: boolean | null;
+              link?: {
+                label: string;
+                url: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'content';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading?: string | null;
+        layout?: ('grid' | 'carousel' | 'masonry') | null;
+        images?:
+          | {
+              image: number | Media;
+              caption?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'gallery';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading?: string | null;
+        subheading?: string | null;
+        items?:
+          | {
+              question: string;
+              answer: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        enableSearch?: boolean | null;
+        /**
+         * How many questions to show per page (rest go under the page numbers).
+         */
+        pageSize?: number | null;
+        enableSchema?: boolean | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'faq';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading: string;
+        description?: string | null;
+        actions?:
+          | {
+              label: string;
+              url: string;
+              style?: ('primary' | 'secondary') | null;
+              id?: string | null;
+            }[]
+          | null;
+        background?: ('default' | 'brand' | 'dark' | 'image') | null;
+        backgroundImage?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'cta';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small label above the heading. Rendered uppercase.
+         */
+        eyebrow?: string | null;
+        /**
+         * Section heading. Rendered uppercase in SectionTitle style.
+         */
+        heading: string;
+        paragraph?: string | null;
+        /**
+         * Full-width image shown below the content.
+         */
+        image?: (number | null) | Media;
+        /**
+         * Background color for the content area.
+         */
+        backgroundColor?:
+          | (
+              | 'lev-yellow'
+              | 'lev-yellow-light'
+              | 'lev-blue-light'
+              | 'lev-green-light'
+              | 'lev-pink'
+              | 'lev-gray-light'
+              | 'white'
+            )
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'imageFeature';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Rendered uppercase in SectionTitle style.
+         */
+        heading: string;
+        description?: string | null;
+        /**
+         * Normalizes all images to the same shape regardless of upload size. Use "Natural" to keep each image at its original ratio.
+         */
+        aspectRatio?: ('portrait' | 'square' | 'landscape' | 'wide' | 'natural') | null;
+        /**
+         * The images shown in the carousel — add one item (with an image) per photo. Until you add any, the site shows placeholder photos.
+         */
+        items?:
+          | {
+              image: number | Media;
+              /**
+               * Optional text overlay shown at the bottom-left of the image (e.g. "Australia", "USA").
+               */
+              caption?: string | null;
+              /**
+               * Optional link. When set, the whole image is clickable. Use a relative path like /programs/work-and-travel or an external https:// URL.
+               */
+              url?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Auto-advance through the carousel.
+         */
+        autoplay?: boolean | null;
+        /**
+         * Milliseconds between slides (when autoplay is on).
+         */
+        autoplayDelay?: number | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'mediaShowcase';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Centered heading rendered in SectionTitle style.
+         */
+        heading: string;
+        description?: string | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Decorative images shown above the CTA. Usually 2 images.
+         */
+        topImages?:
+          | {
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Decorative images shown below the CTA. Usually 2 images.
+         */
+        bottomImages?:
+          | {
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Background color for the section.
+         */
+        backgroundColor?:
+          | ('lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'decoratedCTA';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Optional intro paragraph rendered above the main heading (used on About for the "From exchange programs..." intro).
+         */
+        eyebrow?: string | null;
+        /**
+         * Main heading. Use \n for line breaks. The "highlightedWord" substring (if set) is rendered in the highlight color.
+         */
+        heading: string;
+        /**
+         * Substring of the heading rendered in the highlight color. Leave empty for a single-color heading.
+         */
+        highlightedWord?: string | null;
+        highlightColor?:
+          | (
+              | 'none'
+              | 'lev-orange'
+              | 'lev-red'
+              | 'lev-red-dark'
+              | 'lev-blue'
+              | 'lev-blue-dark'
+              | 'lev-green'
+              | 'lev-green-dark'
+              | 'lev-yellow'
+            )
+          | null;
+        /**
+         * Color of the (non-highlighted part of) the heading.
+         */
+        headingColor?: ('lev-blue-dark' | 'lev-red-dark' | 'lev-green-dark' | 'lev-black' | 'white') | null;
+        paragraph1?: string | null;
+        paragraph2?: string | null;
+        /**
+         * Upload partner / university logos. Leave the list empty to render the original 5 logo set as a fallback.
+         */
+        partners?:
+          | {
+              logo: number | Media;
+              /**
+               * Alt text — used by screen readers.
+               */
+              name?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Optional photo rendered on the right side next to paragraph2 + CTA (mirrors the "pool team" photo in the About Cultural Exchange section).
+         */
+        storyImage?: (number | null) | Media;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Section background color.
+         */
+        backgroundColor?:
+          | ('none' | 'white' | 'lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'partnersCarousel';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Rendered uppercase. Use a line break (\n) for a 2-line title in HTML markup.
+         */
+        heading: string;
+        description?: string | null;
+        sectionCta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Each card: image + label (rendered over the image) + colored panel + Start Now button.
+         */
+        cards?:
+          | {
+              label: string;
+              image?: (number | null) | Media;
+              /**
+               * Color of the panel below the image.
+               */
+              panelColor?:
+                | (
+                    | 'lev-blue-light'
+                    | 'lev-blue'
+                    | 'lev-blue-dark'
+                    | 'lev-orange'
+                    | 'lev-yellow'
+                    | 'lev-yellow-light'
+                    | 'lev-green'
+                    | 'lev-green-light'
+                    | 'lev-green-dark'
+                    | 'lev-red'
+                    | 'lev-pink'
+                    | 'white'
+                  )
+                | null;
+              /**
+               * Color of the label that floats over the image.
+               */
+              overlayTextColor?:
+                | (
+                    | 'lev-blue-light'
+                    | 'lev-blue'
+                    | 'lev-blue-dark'
+                    | 'lev-orange'
+                    | 'lev-yellow'
+                    | 'lev-yellow-light'
+                    | 'lev-green'
+                    | 'lev-green-light'
+                    | 'lev-green-dark'
+                    | 'lev-red'
+                    | 'lev-pink'
+                    | 'white'
+                  )
+                | null;
+              /**
+               * Where the card's Start Now button links.
+               */
+              ctaUrl?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Section background color.
+         */
+        backgroundColor?:
+          | (
+              | 'lev-blue-light'
+              | 'lev-blue'
+              | 'lev-blue-dark'
+              | 'lev-orange'
+              | 'lev-yellow'
+              | 'lev-yellow-light'
+              | 'lev-green'
+              | 'lev-green-light'
+              | 'lev-green-dark'
+              | 'lev-red'
+              | 'lev-pink'
+              | 'white'
+            )
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'featureCards';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the title.
+         */
+        eyebrow?: string | null;
+        /**
+         * Main section title. Rendered uppercase.
+         */
+        heading: string;
+        /**
+         * Paragraph shown under the eyebrow (sticky on desktop).
+         */
+        introParagraph?: string | null;
+        /**
+         * Each row alternates image and text. Use imagePosition to control the order on desktop.
+         */
+        rows?:
+          | {
+              /**
+               * Small pill label above the heading (e.g. "Explore").
+               */
+              tag?: string | null;
+              heading: string;
+              paragraph?: string | null;
+              image?: (number | null) | Media;
+              imagePosition?: ('left' | 'right') | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'alternatingContent';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the heading.
+         */
+        eyebrow?: string | null;
+        heading: string;
+        description?: string | null;
+        displayMode?: ('auto' | 'manual') | null;
+        /**
+         * Number of posts to fetch (auto mode only).
+         */
+        limit?: number | null;
+        /**
+         * Pick specific posts to show.
+         */
+        selectedPosts?: (number | Blog)[] | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Section background color.
+         */
+        backgroundColor?:
+          | ('lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'blogPostsList';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section title. Rendered uppercase.
+         */
+        heading: string;
+        /**
+         * Smaller heading next to the videos. Use \n for a line break.
+         */
+        subheading?: string | null;
+        description?: string | null;
+        videos?:
+          | {
+              /**
+               * Upload an .mp4 file. Falls back to the original 2 home videos if the list is empty.
+               */
+              video: number | Media;
+              caption?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'videoTestimonials';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Numbered highlights across the top. 3 items by default.
+         */
+        stats?:
+          | {
+              number: string;
+              numberColor?:
+                | (
+                    | 'lev-blue-light'
+                    | 'lev-blue'
+                    | 'lev-yellow'
+                    | 'lev-yellow-light'
+                    | 'lev-green'
+                    | 'lev-green-light'
+                    | 'lev-orange'
+                    | 'lev-red'
+                    | 'lev-pink'
+                  )
+                | null;
+              category: string;
+              paragraph?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Title on the banner. Use \n for a line break.
+         */
+        communityHeading: string;
+        communityDescription?: string | null;
+        platform?: ('facebook' | 'instagram' | 'linkedin' | 'tiktok' | 'youtube') | null;
+        /**
+         * Banner background image. Falls back to the original happy-friendship photo if empty.
+         */
+        backgroundImage?: (number | null) | Media;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'socialFeed';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading: string;
+        /**
+         * Tag list shown to the left of the heading.
+         */
+        programTypes?:
+          | {
+              label: string;
+              id?: string | null;
+            }[]
+          | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Cards shown in the horizontal slider. Leave empty to render the original 7 program set as a fallback.
+         */
+        programs?:
+          | {
+              label: string;
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Section background.
+         */
+        backgroundColor?:
+          | ('tealLight' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programShowcase';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * List of founders / team leaders. Falls back to the original Ahmad + Abdulrahman pair when empty.
+         */
+        founders?:
+          | {
+              /**
+               * Role title (e.g. "Co-Founder", "CEO").
+               */
+              title: string;
+              name: string;
+              description?: string | null;
+              photo?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'foundersCarousel';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Use \n for a line break.
+         */
+        heading: string;
+        paragraphs?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        stats?:
+          | {
+              value: string;
+              label: string;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?:
+          | ('lev-orange' | 'lev-red' | 'lev-blue' | 'lev-blue-dark' | 'lev-green-dark' | 'lev-black')
+          | null;
+        /**
+         * Color of the big stat numbers.
+         */
+        statValueColor?: ('lev-yellow' | 'lev-orange' | 'lev-green-light' | 'lev-blue-light' | 'white') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'missionStats';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Use \n for a line break.
+         */
+        heading: string;
+        values?:
+          | {
+              number: string;
+              title: string;
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?:
+          | ('lev-yellow-light' | 'lev-yellow' | 'lev-pink' | 'lev-blue-light' | 'lev-green-light' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'valuesList';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the heading.
+         */
+        eyebrow?: string | null;
+        /**
+         * First part of the title — rendered at 20% opacity ("ghost" word).
+         */
+        headingFaded: string;
+        /**
+         * Second part of the title — rendered fully opaque on a separate line.
+         */
+        headingSolid: string;
+        testimonials?:
+          | {
+              name: string;
+              description: string;
+              role?: string | null;
+              photo?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'textTestimonials';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the heading.
+         */
+        eyebrow?: string | null;
+        /**
+         * Section heading. Use \n for line breaks.
+         */
+        heading: string;
+        supportingParagraphs?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Decorative map image. Falls back to the original Group 6210.png if empty.
+         */
+        mapImage?: (number | null) | Media;
+        /**
+         * Optional Google Maps share link. Editor can copy from Google Maps. Leave empty for a static image-only section.
+         */
+        mapLink?: string | null;
+        stat?: {
+          /**
+           * Big number.
+           */
+          value?: string | null;
+          label?: string | null;
+          description?: string | null;
+        };
+        backgroundColor?:
+          | ('lev-yellow-light' | 'lev-yellow' | 'lev-pink' | 'lev-blue-light' | 'lev-green-light' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'mapEmbed';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Section heading. Use \n for line breaks. The word "START" is highlighted by default in the frontend — edit `highlightedWord` to change it.
+         */
+        heading: string;
+        /**
+         * Word inside the heading to highlight in lev-blue-light. Case-sensitive substring match.
+         */
+        highlightedWord?: string | null;
+        /**
+         * Small label above the social icon row.
+         */
+        socialsLabel?: string | null;
+        showSocials?: boolean | null;
+        /**
+         * Pick the form to display. Create / edit forms in Globals → Forms (or the Forms collection). Leave empty to render a placeholder.
+         */
+        form?: (number | null) | Form;
+        backgroundColor?: ('lev-blue-dark' | 'lev-black' | 'lev-green-dark' | 'lev-red-dark') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contactForm';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        intro?: string | null;
+        offices?:
+          | {
+              /**
+               * 3-letter city code shown as a huge title (e.g. AMM, CAI).
+               */
+              code: string;
+              address: string;
+              phones?:
+                | {
+                    number: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              directionsLabel?: string | null;
+              /**
+               * Google Maps link.
+               */
+              directionsURL?: string | null;
+              /**
+               * Social icons shown under this office. Empty = no icons.
+               */
+              socials?:
+                | {
+                    platform:
+                      | 'whatsapp'
+                      | 'instagram'
+                      | 'facebook'
+                      | 'linkedin'
+                      | 'youtube'
+                      | 'twitter'
+                      | 'tiktok'
+                      | 'telegram';
+                    url: string;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?: ('gray-light' | 'lev-yellow-light' | 'lev-blue-light' | 'white') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'addressList';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Small uppercase label above the heading.
+         */
+        eyebrow?: string | null;
+        heading: string;
+        /**
+         * Substring inside the heading to highlight in a brand color. Leave empty for no highlight.
+         */
+        highlightedWord?: string | null;
+        highlightColor?: ('lev-green-light' | 'lev-yellow' | 'lev-orange' | 'lev-red' | 'lev-blue-light') | null;
+        description?: string | null;
+        /**
+         * 2-3 images. First spans both columns, others split underneath. Falls back to the home m-1, m-3, m-4 set when empty.
+         */
+        images?:
+          | {
+              image: number | Media;
+              alt?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?: ('lev-green-dark' | 'lev-blue-dark' | 'lev-black' | 'lev-red-dark' | 'lev-orange') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'heroWithImageGrid';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Heading. Use \n for a line break.
+         */
+        heading: string;
+        /**
+         * Wide image on the left. Falls back to the students.png photo when empty.
+         */
+        image?: (number | null) | Media;
+        cta: {
+          label: string;
+          url: string;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'promptCTA';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading: string;
+        /**
+         * Small label on the left of the "View All" row.
+         */
+        sectionLabel?: string | null;
+        viewAll?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        items?:
+          | {
+              title: string;
+              image: number | Media;
+              /**
+               * Where the card links to.
+               */
+              url: string;
+              id?: string | null;
+            }[]
+          | null;
+        columns?: ('2' | '3' | '4') | null;
+        backgroundColor?: ('lev-green-dark' | 'lev-blue-dark' | 'lev-black' | 'lev-yellow-light' | 'white') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'relatedItems';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Overlay title shown centered at the bottom.
+         */
+        title: string;
+        /**
+         * Pick photos from the Media library (multi-select). Distributed across 3 columns in masonry layout. Leave empty to use the packaged fallback set (8 photos).
+         */
+        images?: (number | Media)[] | null;
+        primaryCta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Small text link under the primary CTA.
+         */
+        secondaryLink?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Section background. The gradient fade at the bottom is matched to this color.
+         */
+        backgroundColor?:
+          | ('none' | 'lev-yellow-light' | 'lev-yellow' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'memoriesGrid';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading: string;
+        paragraph?: string | null;
+        cta?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Up to 4 stats. Renders as 2 columns × 2 rows. Each stat: number + label + description.
+         */
+        stats?:
+          | {
+              /**
+               * e.g. "1.5K", "20+", "6.5K"
+               */
+              value: string;
+              /**
+               * Short label next to the value, e.g. "UNIVERSITIES"
+               */
+              label: string;
+              /**
+               * Paragraph below explaining the number.
+               */
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        backgroundColor?:
+          | ('none' | 'white' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
+          | null;
+        headingColor?: ('lev-red-dark' | 'lev-blue-dark' | 'lev-green-dark' | 'lev-black') | null;
+        statValueColor?: ('lev-orange' | 'lev-red' | 'lev-blue' | 'lev-green' | 'lev-yellow') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'educationStats';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Use \n for line breaks.
+         */
+        heading: string;
+        /**
+         * Small label under the heading (e.g. "Venture").
+         */
+        subtitle?: string | null;
+        /**
+         * Exactly 4 cards is the intended layout — 2 in the top row + 2 in the bottom row. Falls back to the original Internship / Counselor / Study & Travel / Work & Travel set when left empty.
+         */
+        cards?:
+          | {
+              label: string;
+              image?: (number | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        paragraph1?: string | null;
+        paragraph2?: string | null;
+        backgroundColor?:
+          | ('none' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink' | 'white')
+          | null;
+        headingColor?: ('lev-blue-dark' | 'lev-red-dark' | 'lev-green-dark' | 'lev-black') | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'ventureGrid';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Pick photos from the Media library (multi-select). Bulk-upload to Media first if you have many. Leave empty to use the packaged fallback set.
+         */
+        images?: (number | Media)[] | null;
+        /**
+         * How many images to show before clicking "Show more".
+         */
+        initialCount?: number | null;
+        /**
+         * How many more images to reveal per "Show more" click.
+         */
+        batchSize?: number | null;
+        showMoreLabel?: string | null;
+        backgroundColor?:
+          | ('white' | 'none' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'photoGrid';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Headline — line breaks are kept. Words listed in "Highlighted Words" render in bright red.
+         */
+        heading?: string | null;
+        /**
+         * Exact consecutive words from the headline to color in bright red (e.g. "CREATING MEMORIES,").
+         */
+        highlightedWords?: string | null;
+        /**
+         * Centered intro paragraph rendered below the headline.
+         */
+        body?: string | null;
+        backgroundColor?:
+          | ('none' | 'white' | 'lev-yellow-light' | 'lev-blue-light' | 'lev-green-light' | 'lev-pink')
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'galleryHero';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        /**
+         * Big heading on the left. Use \n for line breaks.
+         */
+        heading: string;
+        /**
+         * Substring of the heading rendered in the highlight color. Leave empty for a single-color heading.
+         */
+        highlightedWord?: string | null;
+        highlightColor?:
+          | ('none' | 'lev-red' | 'lev-red-dark' | 'lev-orange' | 'lev-blue' | 'lev-green' | 'lev-yellow')
+          | null;
+        headingColor?: ('lev-red-dark' | 'lev-blue-dark' | 'lev-green-dark' | 'lev-black') | null;
+        /**
+         * Small heading rendered on top of the form card.
+         */
+        formTitle?: string | null;
+        /**
+         * Form to render inside the card. Submissions are stored in admin Submissions. Recommended: the seeded "Program Application" form.
+         */
+        form?: (number | null) | Form;
+        contactLink?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        /**
+         * Subtle dot pattern behind the section (matches the original Gallery design).
+         */
+        showDotPattern?: boolean | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'galleryCta';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        form: number | Form;
+        enableIntro?: boolean | null;
+        introContent?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'formBlock';
+      }
+    | {
+        /**
+         * Hide this section on the live site without deleting it. Untick to show it again.
+         */
+        hidden?: boolean | null;
+        syncKey?: string | null;
+        heading?: string | null;
+        subheading?: string | null;
+        displayMode?: ('auto' | 'manual') | null;
+        selectedPrograms?: (number | Program)[] | null;
+        filters?: {
+          /**
+           * Empty = show all types.
+           */
+          byType?: (number | ProgramType)[] | null;
+          /**
+           * Empty = show all countries.
+           */
+          byCountry?:
+            | (
+                | 'US'
+                | 'UK'
+                | 'CA'
+                | 'DE'
+                | 'FR'
+                | 'ES'
+                | 'IT'
+                | 'AU'
+                | 'IE'
+                | 'ZA'
+                | 'EG'
+                | 'JO'
+                | 'SA'
+                | 'AE'
+                | 'multi'
+              )[]
+            | null;
+          onlyOpen?: boolean | null;
+          limit?: number | null;
+          sortBy?: ('newest' | 'oldest' | 'titleAZ') | null;
+        };
+        layout?: {
+          cardsPerRow?: ('2' | '3' | '4') | null;
+          cardStyle?: ('default' | 'compact' | 'featured') | null;
+          showCountry?: boolean | null;
+          showDuration?: boolean | null;
+          showDeadline?: boolean | null;
+        };
+        cta?: {
+          enabled?: boolean | null;
+          label?: string | null;
+          url?: string | null;
+        };
+        emptyMessage?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'programsList';
+      }
+  )[];
+  meta?: {
+    /**
+     * 50-60 chars. Falls back to page title.
+     */
+    title?: string | null;
+    /**
+     * 150-160 chars.
+     */
+    description?: string | null;
+    /**
+     * Optional. Most search engines ignore this, but harmless to fill.
+     */
+    keywords?: string | null;
+    /**
+     * 1200x630 recommended. Used for social sharing previews.
+     */
+    image?: (number | null) | Media;
+    canonicalURL?: string | null;
+    noIndex?: boolean | null;
+    noFollow?: boolean | null;
+  };
+  /**
+   * Optional overrides for social shares. Falls back to meta fields if empty.
+   */
+  openGraph?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  sitemap?: {
+    /**
+     * Hide this page from sitemap.xml
+     */
+    excludeFromSitemap?: boolean | null;
+  };
+  structuredData?: {
+    enabled?: boolean | null;
+    /**
+     * "Auto" detects from page content (FAQ block → FAQPage, etc.).
+     */
+    type?: ('auto' | 'WebPage' | 'AboutPage' | 'ContactPage' | 'FAQPage') | null;
+  };
+  /**
+   * URL part. Auto-generated from title; you can edit it.
+   */
+  slug: string;
+  /**
+   * Lower numbers appear first in the slider.
+   */
+  order?: number | null;
+  translationComplete?: boolean | null;
+  publishedAt?: string | null;
+  dateModified?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "form-submissions".
  */
@@ -5565,6 +7862,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'programs';
         value: number | Program;
+      } | null)
+    | ({
+        relationTo: 'job-types';
+        value: number | JobType;
+      } | null)
+    | ({
+        relationTo: 'jobs';
+        value: number | Job;
       } | null)
     | ({
         relationTo: 'blog-categories';
@@ -5817,6 +8122,8 @@ export interface PagesSelect<T extends boolean = true> {
                     answer?: T;
                     id?: T;
                   };
+              enableSearch?: T;
+              pageSize?: T;
               enableSchema?: T;
               id?: T;
               blockName?: T;
@@ -6431,6 +8738,197 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        programHero?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              tag?: T;
+              heading?: T;
+              subtitle?: T;
+              note?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programIntro?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              body?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programWhatIs?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              title?: T;
+              highlightedWords?: T;
+              body?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programPhotoBreak?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programPictureYourself?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              body?: T;
+              circleHeading?: T;
+              circleBody?: T;
+              photo?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programWhyParticipate?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              benefits?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programJobs?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programDestinations?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              leadText?: T;
+              heading?: T;
+              highlightedWords?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    area?: T;
+                    country?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programRequirements?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              items?:
+                | T
+                | {
+                    iconKey?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programBenefitsShowcase?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              title?: T;
+              highlightedWords?: T;
+              items?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programWhyChoose?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              features?:
+                | T
+                | {
+                    iconKey?: T;
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programShare?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        dynamicSlider?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              source?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              byCountry?: T;
+              byJobType?: T;
+              byProgramType?: T;
+              limit?: T;
+              emptyMessage?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -6630,6 +9128,8 @@ export interface ProgramTypesSelect<T extends boolean = true> {
                     answer?: T;
                     id?: T;
                   };
+              enableSearch?: T;
+              pageSize?: T;
               enableSchema?: T;
               id?: T;
               blockName?: T;
@@ -7527,6 +10027,23 @@ export interface ProgramsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        dynamicSlider?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              source?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              byCountry?: T;
+              byJobType?: T;
+              byProgramType?: T;
+              limit?: T;
+              emptyMessage?: T;
+              id?: T;
+              blockName?: T;
+            };
         hero?:
           | T
           | {
@@ -7651,6 +10168,8 @@ export interface ProgramsSelect<T extends boolean = true> {
                     answer?: T;
                     id?: T;
                   };
+              enableSearch?: T;
+              pageSize?: T;
               enableSchema?: T;
               id?: T;
               blockName?: T;
@@ -8348,6 +10867,1056 @@ export interface ProgramsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "job-types_select".
+ */
+export interface JobTypesSelect<T extends boolean = true> {
+  name?: T;
+  shortDescription?: T;
+  icon?: T;
+  slug?: T;
+  order?: T;
+  translationComplete?: T;
+  publishedAt?: T;
+  dateModified?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "jobs_select".
+ */
+export interface JobsSelect<T extends boolean = true> {
+  title?: T;
+  shortDescription?: T;
+  country?: T;
+  jobType?: T;
+  image?: T;
+  employmentType?: T;
+  startDate?: T;
+  endDate?: T;
+  salary?:
+    | T
+    | {
+        amount?: T;
+        currency?: T;
+        period?: T;
+      };
+  applyUrl?: T;
+  relatedJobs?: T;
+  sections?:
+    | T
+    | {
+        programHero?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              tag?: T;
+              heading?: T;
+              subtitle?: T;
+              note?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programIntro?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              body?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programWhatIs?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              title?: T;
+              highlightedWords?: T;
+              body?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programPhotoBreak?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programPictureYourself?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              body?: T;
+              circleHeading?: T;
+              circleBody?: T;
+              photo?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programWhyParticipate?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              benefits?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programJobs?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programDestinations?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              leadText?: T;
+              heading?: T;
+              highlightedWords?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    area?: T;
+                    country?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programRequirements?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              items?:
+                | T
+                | {
+                    iconKey?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programBenefitsShowcase?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              title?: T;
+              highlightedWords?: T;
+              items?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programWhyChoose?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              features?:
+                | T
+                | {
+                    iconKey?: T;
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programShare?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        dynamicSlider?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              source?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              byCountry?: T;
+              byJobType?: T;
+              byProgramType?: T;
+              limit?: T;
+              emptyMessage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        hero?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              variant?: T;
+              eyebrow?: T;
+              heading?: T;
+              highlightedWord?: T;
+              highlightColor?: T;
+              subheading?: T;
+              media?: T;
+              actions?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                    style?: T;
+                    id?: T;
+                  };
+              backgroundColor?: T;
+              textColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        heroHome?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              headline?: T;
+              subheadline?: T;
+              backgroundType?: T;
+              backgroundImage?: T;
+              backgroundColor?: T;
+              opportunities?:
+                | T
+                | {
+                    label?: T;
+                    id?: T;
+                  };
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              showSocialIcons?: T;
+              intro?:
+                | T
+                | {
+                    heading?: T;
+                    paragraph1?: T;
+                    paragraph2?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        richText?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              content?: T;
+              width?: T;
+              id?: T;
+              blockName?: T;
+            };
+        content?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              subheading?: T;
+              columns?:
+                | T
+                | {
+                    size?: T;
+                    content?: T;
+                    enableLink?: T;
+                    link?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        gallery?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              layout?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    caption?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              subheading?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              enableSearch?: T;
+              pageSize?: T;
+              enableSchema?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              description?: T;
+              actions?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                    style?: T;
+                    id?: T;
+                  };
+              background?: T;
+              backgroundImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        imageFeature?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              heading?: T;
+              paragraph?: T;
+              image?: T;
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        mediaShowcase?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              description?: T;
+              aspectRatio?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    caption?: T;
+                    url?: T;
+                    id?: T;
+                  };
+              autoplay?: T;
+              autoplayDelay?: T;
+              id?: T;
+              blockName?: T;
+            };
+        decoratedCTA?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              description?: T;
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              topImages?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              bottomImages?:
+                | T
+                | {
+                    image?: T;
+                    id?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        partnersCarousel?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              heading?: T;
+              highlightedWord?: T;
+              highlightColor?: T;
+              headingColor?: T;
+              paragraph1?: T;
+              paragraph2?: T;
+              partners?:
+                | T
+                | {
+                    logo?: T;
+                    name?: T;
+                    id?: T;
+                  };
+              storyImage?: T;
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featureCards?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              description?: T;
+              sectionCta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    label?: T;
+                    image?: T;
+                    panelColor?: T;
+                    overlayTextColor?: T;
+                    ctaUrl?: T;
+                    id?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        alternatingContent?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              heading?: T;
+              introParagraph?: T;
+              rows?:
+                | T
+                | {
+                    tag?: T;
+                    heading?: T;
+                    paragraph?: T;
+                    image?: T;
+                    imagePosition?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        blogPostsList?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              heading?: T;
+              description?: T;
+              displayMode?: T;
+              limit?: T;
+              selectedPosts?: T;
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        videoTestimonials?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              subheading?: T;
+              description?: T;
+              videos?:
+                | T
+                | {
+                    video?: T;
+                    caption?: T;
+                    id?: T;
+                  };
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        socialFeed?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              stats?:
+                | T
+                | {
+                    number?: T;
+                    numberColor?: T;
+                    category?: T;
+                    paragraph?: T;
+                    id?: T;
+                  };
+              communityHeading?: T;
+              communityDescription?: T;
+              platform?: T;
+              backgroundImage?: T;
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        programShowcase?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              programTypes?:
+                | T
+                | {
+                    label?: T;
+                    id?: T;
+                  };
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              programs?:
+                | T
+                | {
+                    label?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        foundersCarousel?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              founders?:
+                | T
+                | {
+                    title?: T;
+                    name?: T;
+                    description?: T;
+                    photo?: T;
+                    id?: T;
+                  };
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        missionStats?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              stats?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    id?: T;
+                  };
+              backgroundColor?: T;
+              statValueColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        valuesList?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              values?:
+                | T
+                | {
+                    number?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        textTestimonials?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              headingFaded?: T;
+              headingSolid?: T;
+              testimonials?:
+                | T
+                | {
+                    name?: T;
+                    description?: T;
+                    role?: T;
+                    photo?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        mapEmbed?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              heading?: T;
+              supportingParagraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              mapImage?: T;
+              mapLink?: T;
+              stat?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    description?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        contactForm?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWord?: T;
+              socialsLabel?: T;
+              showSocials?: T;
+              form?: T;
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        addressList?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              intro?: T;
+              offices?:
+                | T
+                | {
+                    code?: T;
+                    address?: T;
+                    phones?:
+                      | T
+                      | {
+                          number?: T;
+                          id?: T;
+                        };
+                    directionsLabel?: T;
+                    directionsURL?: T;
+                    socials?:
+                      | T
+                      | {
+                          platform?: T;
+                          url?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        heroWithImageGrid?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              eyebrow?: T;
+              heading?: T;
+              highlightedWord?: T;
+              highlightColor?: T;
+              description?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    alt?: T;
+                    id?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        promptCTA?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              image?: T;
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        relatedItems?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              sectionLabel?: T;
+              viewAll?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              items?:
+                | T
+                | {
+                    title?: T;
+                    image?: T;
+                    url?: T;
+                    id?: T;
+                  };
+              columns?: T;
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        memoriesGrid?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              title?: T;
+              images?: T;
+              primaryCta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              secondaryLink?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        educationStats?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              paragraph?: T;
+              cta?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              stats?:
+                | T
+                | {
+                    value?: T;
+                    label?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              backgroundColor?: T;
+              headingColor?: T;
+              statValueColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        ventureGrid?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              subtitle?: T;
+              cards?:
+                | T
+                | {
+                    label?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              paragraph1?: T;
+              paragraph2?: T;
+              backgroundColor?: T;
+              headingColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        photoGrid?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              images?: T;
+              initialCount?: T;
+              batchSize?: T;
+              showMoreLabel?: T;
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        galleryHero?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWords?: T;
+              body?: T;
+              backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        galleryCta?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              highlightedWord?: T;
+              highlightColor?: T;
+              headingColor?: T;
+              formTitle?: T;
+              form?: T;
+              contactLink?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              showDotPattern?: T;
+              id?: T;
+              blockName?: T;
+            };
+        formBlock?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              form?: T;
+              enableIntro?: T;
+              introContent?: T;
+              id?: T;
+              blockName?: T;
+            };
+        programsList?:
+          | T
+          | {
+              hidden?: T;
+              syncKey?: T;
+              heading?: T;
+              subheading?: T;
+              displayMode?: T;
+              selectedPrograms?: T;
+              filters?:
+                | T
+                | {
+                    byType?: T;
+                    byCountry?: T;
+                    onlyOpen?: T;
+                    limit?: T;
+                    sortBy?: T;
+                  };
+              layout?:
+                | T
+                | {
+                    cardsPerRow?: T;
+                    cardStyle?: T;
+                    showCountry?: T;
+                    showDuration?: T;
+                    showDeadline?: T;
+                  };
+              cta?:
+                | T
+                | {
+                    enabled?: T;
+                    label?: T;
+                    url?: T;
+                  };
+              emptyMessage?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        keywords?: T;
+        image?: T;
+        canonicalURL?: T;
+        noIndex?: T;
+        noFollow?: T;
+      };
+  openGraph?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  sitemap?:
+    | T
+    | {
+        excludeFromSitemap?: T;
+      };
+  structuredData?:
+    | T
+    | {
+        enabled?: T;
+        type?: T;
+      };
+  slug?: T;
+  order?: T;
+  translationComplete?: T;
+  publishedAt?: T;
+  dateModified?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blog-categories_select".
  */
 export interface BlogCategoriesSelect<T extends boolean = true> {
@@ -8472,6 +12041,8 @@ export interface BlogSelect<T extends boolean = true> {
                     answer?: T;
                     id?: T;
                   };
+              enableSearch?: T;
+              pageSize?: T;
               enableSchema?: T;
               id?: T;
               blockName?: T;
@@ -8848,6 +12419,16 @@ export interface SiteSetting {
         }[]
       | null;
   };
+  internship?: {
+    /**
+     * Opens when a visitor clicks APPLY NOW on a job card.
+     */
+    applyForm?: (number | null) | Form;
+    /**
+     * Opens from the "Suggest New Opportunities" section button.
+     */
+    suggestForm?: (number | null) | Form;
+  };
   /**
    * Injected into <head>. Use for Google Analytics, Tag Manager, Pixel, etc.
    */
@@ -9051,6 +12632,12 @@ export interface SiteSettingsSelect<T extends boolean = true> {
               enabled?: T;
               id?: T;
             };
+      };
+  internship?:
+    | T
+    | {
+        applyForm?: T;
+        suggestForm?: T;
       };
   headCode?: T;
   bodyCode?: T;

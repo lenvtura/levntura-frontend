@@ -136,7 +136,7 @@ export function FeatureCardsBlock({ block }: FeatureCardsBlockProps) {
           className={cn(
             "grid gap-6 w-full",
             cards.length <= 2
-              ? "grid-cols-1 md:grid-cols-2 md:ml-auto md:max-w-[1000px]"
+              ? "grid-cols-1 md:grid-cols-2 md:ms-auto md:max-w-[1000px]"
               : "grid-cols-1 md:grid-cols-2",
           )}
         >

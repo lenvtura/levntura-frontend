@@ -162,7 +162,7 @@ export function DecoratedCTABlock({ block }: DecoratedCTABlockProps) {
                   src={img.src}
                   width={img.width}
                   height={img.height}
-                  className={isLast ? "ml-auto mr-6" : undefined}
+                  className={isLast ? "ms-auto me-6" : undefined}
                 />
               </FadeUpAnimator>
             );

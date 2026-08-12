@@ -96,7 +96,7 @@ export function FoundersCarouselBlock({ block }: FoundersCarouselBlockProps) {
               />
             )}
 
-            <div className="top-0 right-[200px] absolute grid lg:grid-cols-3 h-full p-4">
+            <div className="top-0 end-[200px] absolute grid lg:grid-cols-3 h-full p-4">
               <div className="flex flex-col items-start justify-end lg:justify-center lg:col-start-3 text-white gap-y-4">
                 <h2 className="typography-S34 text-white uppercase">
                   {person.title}

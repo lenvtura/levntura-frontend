@@ -2,15 +2,6 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  easeIn,
-  type MotionValue,
-} from "motion/react";
-import { useEffect, useRef, useState } from "react";
 
 import type { StaticImageData } from "next/image";
 
@@ -44,17 +35,11 @@ interface TravelDestinationsStripProps {
 }
 
 export function TravelDestinationsStrip({ images }: TravelDestinationsStripProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"],
-  });
-
   if (!images || images.length === 0) return null;
 
   return (
-    <div ref={containerRef} className="bg-white pb-8">
-      <TravelStripMobile images={images} scrollYProgress={scrollYProgress} />
+    <div className="bg-white pb-8">
+      <TravelStripMobile images={images} />
       <TravelStripDesktop images={images} />
     </div>
   );
@@ -73,46 +58,17 @@ function TravelStripDesktop({ images }: { images: TravelImage[] }) {
   );
 }
 
-function TravelStripMobile({
-  images,
-  scrollYProgress,
-}: {
-  images: TravelImage[];
-  scrollYProgress: MotionValue<number>;
-}) {
-  const translateXa = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 50,
-    restDelta: 0.001,
-  });
-
-  const photoContainerRef = useRef<HTMLDivElement>(null);
-  const [photoContainerWidth, setPhotoContainerWidth] = useState(0);
-  useEffect(() => {
-    setPhotoContainerWidth(photoContainerRef.current?.clientWidth || 0);
-  }, [photoContainerRef.current?.clientWidth]);
-
-  const translateX = useTransform(translateXa, [0, 0.8], ["0%", "-60%"], {
-    ease: easeIn,
-  });
-
+function TravelStripMobile({ images }: { images: TravelImage[] }) {
+  // Same drag-to-move slider as ProgramShowcase (was a fast scroll-driven
+  // motion before, which felt like it "ran" on its own).
   return (
-    <div className="mt-[24px] md:hidden">
-      <motion.div
-        ref={photoContainerRef}
-        dragConstraints={{
-          left: -photoContainerWidth / 5,
-          right: photoContainerWidth / 5,
-        }}
-        style={{ translateX }}
-        drag="x"
-        whileDrag={{ cursor: "grabbing" }}
-        className="flex w-full gap-4 p-2 min-w-[1500px]"
-      >
-        {images.map((item) => (
+    <div className="mt-[24px] md:hidden overflow-hidden">
+      <Slider
+        data={images}
+        renderItem={(item) => (
           <TravelCard key={item.id ?? item.label} item={item} variant="mobile" />
-        ))}
-      </motion.div>
+        )}
+      />
     </div>
   );
 }
@@ -136,13 +92,13 @@ function TravelCard({
   const wrapperClass =
     variant === "desktop"
       ? "shrink-0 relative w-[400px] h-[400px] overflow-hidden"
-      : "w-full h-full shrink-0 pointer-events-none relative overflow-hidden";
+      : "shrink-0 relative w-[240px] h-[320px] pointer-events-none overflow-hidden";
 
   // `z-10` keeps the label above the framer-motion stacking context during
   // drag. `pointer-events-auto` on the link re-enables clicks inside the
   // `pointer-events-none` mobile wrapper.
   const labelBase =
-    "absolute z-10 typography-B48 left-[16px] bottom-[16px] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]";
+    "absolute z-10 typography-B48 start-[16px] bottom-[16px] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]";
 
   const label = item.url ? (
     <Link
@@ -166,7 +122,7 @@ function TravelCard({
           className={
             variant === "desktop"
               ? "object-cover group-hover:scale-105 transition-[scale] pointer-events-none w-full h-full"
-              : "object-contain pointer-events-none w-full h-full"
+              : "object-cover pointer-events-none w-full h-full"
           }
         />
       )}

@@ -3,20 +3,24 @@ import type { CollectionConfig } from 'payload'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { isAdmin, isContentEditor } from '../../access/roles'
 
-import { seoFields, pageSchemaFields } from '../../fields/seo'
 import { slugField } from '../../fields/slug'
 
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { populateDateModified } from '../../hooks/populateDateModified'
 import { translationGate } from '../../hooks/translationGate'
 import { seedTranslation } from '../../hooks/seedTranslation'
-import { createRedirectOnSlugChange } from '../../hooks/createRedirectOnSlugChange'
 
-export const BlogCategories: CollectionConfig = {
-  slug: 'blog-categories',
+/**
+ * Job Types — a simple taxonomy for internship job categories (e.g.
+ * "Engineering", "Hospitality", "Marketing"). Used to tag `jobs` and to
+ * filter the DynamicSlider block. Mirrors the ProgramTypes pattern but
+ * leaner (no page/sections — it's a filter category, not a page).
+ */
+export const JobTypes: CollectionConfig = {
+  slug: 'job-types',
   labels: {
-    singular: 'Blog Category',
-    plural: 'Blog Categories',
+    singular: 'Job Type',
+    plural: 'Job Types',
   },
 
   access: {
@@ -28,8 +32,9 @@ export const BlogCategories: CollectionConfig = {
 
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'slug', 'order', '_status'],
-    description: 'Categories for organizing blog posts.',
+    defaultColumns: ['name', 'slug', 'order', '_status', 'updatedAt'],
+    description: 'Categories for internship jobs (Engineering, Hospitality, etc.)',
+    group: 'Careers',
   },
 
   versions: {
@@ -43,10 +48,7 @@ export const BlogCategories: CollectionConfig = {
 
   hooks: {
     beforeChange: [populatePublishedAt, populateDateModified, translationGate],
-    afterChange: [
-      createRedirectOnSlugChange('blog-categories', { prefix: '/blogs/category' }),
-      seedTranslation,
-    ],
+    afterChange: [seedTranslation],
   },
 
   fields: [
@@ -55,44 +57,27 @@ export const BlogCategories: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
+      admin: {
+        description: 'Display name (e.g. "Engineering", "Hospitality").',
+      },
     },
 
     {
-      type: 'tabs',
-      tabs: [
-        {
-          label: 'Content',
-          fields: [
-            {
-              name: 'description',
-              type: 'textarea',
-              localized: true,
-              admin: {
-                description: 'Shown on the category page.',
-              },
-            },
-            {
-              name: 'image',
-              type: 'upload',
-              relationTo: 'media',
-              admin: {
-                description: 'Optional image for category cards.',
-              },
-            },
-            {
-              name: 'color',
-              type: 'text',
-              admin: {
-                description: 'Optional accent color (hex). Used in tags/badges.',
-              },
-            },
-          ],
-        },
-        {
-          label: 'SEO',
-          fields: [...seoFields, ...pageSchemaFields],
-        },
-      ],
+      name: 'shortDescription',
+      type: 'textarea',
+      localized: true,
+      admin: {
+        description: 'Optional brief description of this job category.',
+      },
+    },
+
+    {
+      name: 'icon',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description: 'Optional small icon used in filters/cards.',
+      },
     },
 
     ...slugField('name'),
@@ -111,7 +96,9 @@ export const BlogCategories: CollectionConfig = {
       name: 'translationComplete',
       type: 'checkbox',
       defaultValue: false,
-      admin: { position: 'sidebar' },
+      admin: {
+        position: 'sidebar',
+      },
     },
 
     {

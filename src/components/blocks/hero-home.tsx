@@ -110,10 +110,9 @@ export function HeroHomeBlock({ block }: HeroHomeBlockProps) {
             <div className="flex max-lg:flex-col-reverse max-lg:items-start gap-8 justify-between items-end mb-8">
               <FadeUpAnimator transition={{ delay: 0.2 }}>
                 <h1 className="uppercase typography-EB74 max-sm:typography-EB48 text-white">
-                  <span
-                    className="text-transparent"
-                    style={{ WebkitTextStroke: "2px white" }}
-                  >
+                  {/* Hollow (outlined) in LTR; solid white in Arabic where the
+                      outline stroke reads badly on Arabic glyphs. */}
+                  <span className="text-transparent [-webkit-text-stroke:2px_white] rtl:text-white rtl:[-webkit-text-stroke:0px]">
                     {block.headline}
                   </span>
                   {block.subheadline && (

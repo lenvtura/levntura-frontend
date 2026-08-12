@@ -227,7 +227,16 @@ export const seedTranslation: CollectionAfterChangeHook = async ({
   // structural sync with the source — add/remove/reorder mirror across, but
   // blocks that still line up keep their translation. See run() below.
   const seedPatch = Boolean((context as { seedTranslate?: boolean })?.seedTranslate)
-  const isFullCopy = operation === 'create' || seedPatch
+  // Autosave creates the doc early and empty, so a create-only full copy
+  // copies nothing. While editing the ENGLISH side and the translation isn't
+  // marked complete, keep mirroring EN → AR on every save so the Arabic side
+  // fills in as content is typed. Once the editor ticks "Translation Complete",
+  // AR is preserved (structure-sync only). Editing the AR side never triggers a
+  // full copy (so it can't overwrite the English).
+  const autoMirror =
+    sourceLocale === 'en' &&
+    (doc as { translationComplete?: boolean }).translationComplete === false
+  const isFullCopy = operation === 'create' || seedPatch || autoMirror
 
   // Mirror to the "other" locale, whichever side the doc was created on.
   if (sourceLocale !== 'en' && sourceLocale !== 'ar') return doc

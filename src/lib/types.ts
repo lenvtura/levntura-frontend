@@ -1051,6 +1051,41 @@ export interface Program {
   _status?: 'draft' | 'published'
 }
 
+export interface JobType {
+  id: string | number
+  name: string
+  slug: string
+  shortDescription?: string
+  icon?: Media
+}
+
+export interface Job {
+  id: string | number
+  title: string
+  slug: string
+  shortDescription?: string
+  country: ProgramCountry
+  jobType?: JobType | string | number
+  image?: Media
+  employmentType?: 'full-time' | 'part-time' | 'internship' | 'contract' | 'seasonal'
+  startDate?: string
+  endDate?: string
+  salary?: {
+    amount?: number
+    currency?: string
+    period?: '/m' | '/wk' | '/yr' | 'total'
+  }
+  applyUrl?: string
+  relatedJobs?: Array<Job | string | number>
+  sections?: Block[]
+  publishedAt?: string
+  dateModified?: string
+  translationComplete?: boolean
+  meta?: SEOMeta
+  openGraph?: OpenGraphMeta
+  _status?: 'draft' | 'published'
+}
+
 export interface BlogPost {
   id: string | number
   title: string

@@ -13,6 +13,7 @@ import { seedTranslation } from '../../hooks/seedTranslation'
 import { createRedirectOnSlugChange } from '../../hooks/createRedirectOnSlugChange'
 
 import { withBlockMeta } from '../../blocks/withBlockMeta'
+import { programSectionBlocksForPages, withGroup } from '../../blocks'
 import { HeroBlock } from '../../blocks/Hero'
 import { HeroHomeBlock } from '../../blocks/HeroHome'
 import { TravelDestinationsBlock } from '../../blocks/TravelDestinations'
@@ -78,7 +79,7 @@ export const Pages: CollectionConfig = {
   },
 
   versions: {
-    drafts: true,
+    drafts: { autosave: { interval: 2000 } },
     maxPerDoc: 50,
   },
 
@@ -160,7 +161,14 @@ export const Pages: CollectionConfig = {
                 PromptCTABlock,
                 RelatedItemsBlock,
                 // Every block gets the shared section meta (hide toggle + sync key).
-              ].map(withBlockMeta),
+              ]
+                // The standard page blocks, grouped under "Global" in the
+                // "Add Section" picker.
+                .map(withGroup('Global'))
+                .map(withBlockMeta)
+                // The program section blocks (grouped under "Program sections")
+                // so any page can reuse the same sections as the program pages.
+                .concat(programSectionBlocksForPages),
             },
           ],
         },

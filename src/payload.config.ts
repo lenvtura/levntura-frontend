@@ -15,6 +15,8 @@ import { Pages } from './collections/Pages'
 import { Redirects } from './collections/Redirects'
 import { ProgramTypes } from './collections/ProgramTypes'
 import { Programs } from './collections/Programs'
+import { JobTypes } from './collections/JobTypes'
+import { Jobs } from './collections/Jobs'
 import { BlogCategories } from './collections/BlogCategories'
 import { Blog } from './collections/Blog'
 
@@ -86,6 +88,8 @@ export default buildConfig({
     Redirects,
     ProgramTypes,
     Programs,
+    JobTypes,
+    Jobs,
     BlogCategories,
     Blog,
   ],

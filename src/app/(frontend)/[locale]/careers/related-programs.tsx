@@ -13,21 +13,29 @@ interface RelatedProgram {
 
 interface RelatedProgramsProps {
   programs: RelatedProgram[];
+  title?: string;
+  label?: string;
+  viewAllLabel?: string;
 }
 
-export function RelatedPrograms({ programs }: RelatedProgramsProps) {
+export function RelatedPrograms({
+  programs,
+  title = "Related Programs",
+  label = "Programs",
+  viewAllLabel = "View All",
+}: RelatedProgramsProps) {
   return (
     <div className="bg-lev-green-dark py-16 lg:py-24">
       <div className="container">
         <FadeUpAnimator transition={{ delay: 0.1 }}>
           <SectionTitle className="text-white mb-12 text-center typography-M48">
-            Related Programs
+            {title}
           </SectionTitle>
         </FadeUpAnimator>
 
         <div className="flex items-center justify-between mb-12">
           <FadeUpAnimator transition={{ delay: 0.2 }}>
-            <span className="typography-R18 text-white">Programs</span>
+            <span className="typography-R18 text-white">{label}</span>
           </FadeUpAnimator>
           <div className="flex-1 h-[1px] bg-white/30 mx-6" />
           <FadeUpAnimator transition={{ delay: 0.3 }}>
@@ -35,7 +43,7 @@ export function RelatedPrograms({ programs }: RelatedProgramsProps) {
               href="/programs"
               className="flex items-center gap-2 typography-R18 text-white hover:text-lev-green-light transition-colors"
             >
-              View All
+              {viewAllLabel}
               <ChevronRight className="w-5 h-5" />
             </Link>
           </FadeUpAnimator>

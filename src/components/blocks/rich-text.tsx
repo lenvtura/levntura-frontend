@@ -65,6 +65,13 @@ export interface RichTextHeading {
   text: string;
 }
 
+/** Flatten a Lexical rich-text document to plain text (used for FAQ search). */
+export function lexicalToText(content: unknown): string {
+  const root = (content as { root?: LexicalNode } | undefined)?.root;
+  if (!root?.children) return "";
+  return root.children.map(extractText).join(" ");
+}
+
 export function extractHeadingsFromLexical(content: unknown): RichTextHeading[] {
   const root = (content as { root?: LexicalNode } | undefined)?.root;
   if (!root?.children) return [];
@@ -173,8 +180,16 @@ function renderNode(
 
     case "list": {
       const Tag = node.listType === "number" ? "ol" : "ul";
+      const isCheck = node.listType === "check";
       return (
-        <Tag key={key} className="list-disc pl-6 mb-6 typography-R16 text-lev-black space-y-2">
+        <Tag
+          key={key}
+          className={
+            isCheck
+              ? "mb-6 typography-R16 text-lev-black space-y-3 list-none ps-0 [&>li]:relative [&>li]:ps-7 [&>li]:leading-relaxed [&>li]:before:absolute [&>li]:before:start-0 [&>li]:before:content-['✓'] [&>li]:before:font-bold [&>li]:before:text-lev-green"
+              : "list-disc pl-6 mb-6 typography-R16 text-lev-black space-y-3 [&>li]:leading-relaxed"
+          }
+        >
           {renderChildren(node.children, key, ctx)}
         </Tag>
       );

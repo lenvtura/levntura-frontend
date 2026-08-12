@@ -31,8 +31,8 @@ const FALLBACK: FooterGlobal = {
         { label: 'Travel & Work', url: '/' },
         { label: 'Camp Counselor', url: '/about' },
         { label: 'Travel & Study', url: '/blogs' },
-        { label: 'Internship', url: '/careers' },
-        { label: 'Student Portal', url: '/careers' },
+        { label: 'Internship', url: '/internship' },
+        { label: 'Student Portal', url: '/internship' },
       ],
     },
   ],
@@ -190,7 +190,9 @@ export async function Footer() {
                     href={`tel:${phone.number.replace(/\s+/g, '')}`}
                     className="hover:text-lev-yellow"
                   >
-                    {phone.number}
+                    {/* Number stays LTR (digits + leading +) while the link
+                        itself follows the column's direction. */}
+                    <span dir="ltr">{phone.number}</span>
                   </a>
                 ))}
               </div>

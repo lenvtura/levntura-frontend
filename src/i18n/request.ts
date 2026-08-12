@@ -33,6 +33,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     common: (await import(`../messages/${locale}/common.json`)).default,
     blogs: (await import(`../messages/${locale}/blogs.json`)).default,
     programs: (await import(`../messages/${locale}/programs.json`)).default,
+    internship: (await import(`../messages/${locale}/internship.json`)).default,
   }
 
   return {

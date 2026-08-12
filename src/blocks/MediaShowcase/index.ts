@@ -47,7 +47,15 @@ export const MediaShowcaseBlock: Block = {
       name: 'items',
       type: 'array',
       minRows: 1,
+      // Start with one empty row so the image upload slot is visible the
+      // moment the block is added (otherwise editors don't realise images
+      // go here — the frontend shows placeholders until they're filled).
+      defaultValue: [{}],
       labels: { singular: 'Media Item', plural: 'Media Items' },
+      admin: {
+        description:
+          'The images shown in the carousel — add one item (with an image) per photo. Until you add any, the site shows placeholder photos.',
+      },
       fields: [
         {
           name: 'image',

@@ -89,7 +89,7 @@ export function AddressListBlock({ block }: AddressListBlockProps) {
                       key={phone.id ?? `ph-${j}`}
                       className="typography-R14 leading-5 text-lev-black opacity-50"
                     >
-                      {phone.number}
+                      <span dir="ltr">{phone.number}</span>
                     </p>
                   ))}
                 </div>

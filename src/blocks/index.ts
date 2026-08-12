@@ -51,6 +51,7 @@ import { ProgramBenefitsShowcaseBlock } from './ProgramBenefitsShowcase'
 import { ProgramWhyChooseBlock } from './ProgramWhyChoose'
 import { ProgramApplyBlock } from './ProgramApply'
 import { ProgramShareBlock } from './ProgramShare'
+import { DynamicSliderBlock } from './DynamicSlider'
 
 import { withBlockMeta } from './withBlockMeta'
 
@@ -154,7 +155,7 @@ export const contentBlocks = [
  * Tag a block with an admin group so the "Add Section" drawer splits blocks
  * into labelled categories (Payload `admin.group`).
  */
-const withGroup =
+export const withGroup =
   (group: string) =>
   (block: Block): Block => ({
     ...block,
@@ -162,32 +163,38 @@ const withGroup =
   })
 
 /**
- * Short DB table names for the program blocks. Payload derives table names
- * from the slug, and under the versioned `_programs_v_blocks_*` prefix the
- * long program-block slugs push some constraint names past Postgres's
- * 63-char identifier limit (which breaks schema push). A short `dbName`
- * fixes that — it only changes the table name, not the `blockType`/API.
+ * The program section blocks use a fixed short `dbName` — their long slugs
+ * would blow past Postgres's 63-char identifier limit under the versioned
+ * `_<collection>_v_blocks_*` prefix. But `dbName` is a FIXED physical table
+ * name, so the SAME block reused in two collections would share ONE table —
+ * causing FK conflicts + cross-collection leakage (a doc whose id matches
+ * another collection's id would render the wrong section). The fix: give each
+ * collection its own table prefix. This map holds the shared suffix; the
+ * prefix is per-collection (pgm=Programs, ppg=Pages, jbg=Jobs).
  */
-const PROGRAM_BLOCK_DBNAMES: Record<string, string> = {
-  programHero: 'pgm_hero',
-  programIntro: 'pgm_intro',
-  programWhatIs: 'pgm_wi',
-  programPhotoBreak: 'pgm_pb',
-  programPictureYourself: 'pgm_py',
-  programWhyParticipate: 'pgm_wp',
-  programJobs: 'pgm_jobs',
-  programDestinations: 'pgm_dst',
-  programBenefitsShowcase: 'pgm_bs',
-  programRequirements: 'pgm_req',
-  programWhyChoose: 'pgm_wc',
-  programApply: 'pgm_apply',
-  programShare: 'pgm_share',
+const PROGRAM_BLOCK_DB_SUFFIX: Record<string, string> = {
+  programHero: 'hero',
+  programIntro: 'intro',
+  programWhatIs: 'wi',
+  programPhotoBreak: 'pb',
+  programPictureYourself: 'py',
+  programWhyParticipate: 'wp',
+  programJobs: 'jobs',
+  programDestinations: 'dst',
+  programBenefitsShowcase: 'bs',
+  programRequirements: 'req',
+  programWhyChoose: 'wc',
+  programApply: 'apply',
+  programShare: 'share',
+  dynamicSlider: 'dyn',
 }
 
-const withShortDbName = (block: Block): Block => {
-  const dbName = PROGRAM_BLOCK_DBNAMES[block.slug]
-  return dbName ? { ...block, dbName } : block
-}
+const withDbPrefix =
+  (prefix: string) =>
+  (block: Block): Block => {
+    const suffix = PROGRAM_BLOCK_DB_SUFFIX[block.slug]
+    return suffix ? { ...block, dbName: `${prefix}_${suffix}` } : block
+  }
 
 /**
  * Program-page-specific section blocks (migrated from the fixed
@@ -207,18 +214,63 @@ const programSectionBlocks: Block[] = [
   ProgramWhyChooseBlock,
   ProgramApplyBlock,
   ProgramShareBlock,
+  DynamicSliderBlock,
 ]
 
 /**
- * Program blocks — program-specific sections grouped under "Program
- * sections", plus the standard content blocks grouped under "General", so
- * the picker clearly separates the two. withBlockMeta is idempotent, so
- * re-wrapping the already-wrapped contentBlocks is a no-op.
+ * Build the full page-builder block set for a collection: the program section
+ * blocks (grouped "Program sections", tables prefixed per collection) + the
+ * standard content blocks (grouped "Global"). One helper so Programs, Pages
+ * and Jobs share the exact same picker layout WITHOUT sharing tables.
+ *
+ *  - dbPrefix     distinct table prefix (pgm / ppg / jbg). NEVER reuse a
+ *                 prefix across collections, or they share physical tables.
+ *  - includeApply Apply means "apply to THIS program" and renders nothing
+ *                 without a program context, so only Programs includes it.
  */
-export const programBlocks = [
-  ...programSectionBlocks.map(withGroup('Program sections')).map(withShortDbName),
-  ...contentBlocks.map(withGroup('General')),
-].map(withBlockMeta)
+const buildProgramAwareBlocks = ({
+  dbPrefix,
+  includeApply,
+}: {
+  dbPrefix: string
+  includeApply: boolean
+}): Block[] =>
+  [
+    ...programSectionBlocks
+      .filter((b) => includeApply || b.slug !== 'programApply')
+      .map(withGroup('Program sections'))
+      .map(withDbPrefix(dbPrefix)),
+    ...contentBlocks.map(withGroup('Global')),
+  ].map(withBlockMeta)
+
+/** Programs collection picker — program sections (pgm_*) + Global blocks. */
+export const programBlocks = buildProgramAwareBlocks({
+  dbPrefix: 'pgm',
+  includeApply: true,
+})
+
+/** Jobs collection picker — same layout, jbg_* tables, no Apply. */
+export const jobBlocks = buildProgramAwareBlocks({
+  dbPrefix: 'jbg',
+  includeApply: false,
+})
+
+/**
+ * Just the program section blocks (ppg_* tables, no Apply) to concat into the
+ * Pages collection's own curated block list.
+ *
+ * ⚠️ Adding these to a collection creates new block tables in that
+ * collection's schema, so the schema must be pushed/migrated wherever added.
+ */
+export const programSectionBlocksForPages: Block[] = programSectionBlocks
+  .filter((block) => block.slug !== 'programApply')
+  .map(withGroup('Program sections'))
+  .map(withDbPrefix('ppg'))
+  .map(withBlockMeta)
+
+/** The standard content blocks grouped under "Global" — for pickers that mix
+ * their own curated list with a labelled Global group (e.g. Pages). */
+export const globalContentBlocks: Block[] = contentBlocks.map(withGroup('Global'))
 
 /**
  * Article blocks — for Blog posts.

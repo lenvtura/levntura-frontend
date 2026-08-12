@@ -21,6 +21,22 @@ export const FAQBlock: Block = {
       ],
     },
     {
+      name: 'enableSearch',
+      type: 'checkbox',
+      defaultValue: true,
+      label: 'Show search box',
+    },
+    {
+      name: 'pageSize',
+      type: 'number',
+      defaultValue: 8,
+      min: 1,
+      max: 50,
+      admin: {
+        description: 'How many questions to show per page (rest go under the page numbers).',
+      },
+    },
+    {
       name: 'enableSchema',
       type: 'checkbox',
       defaultValue: true,

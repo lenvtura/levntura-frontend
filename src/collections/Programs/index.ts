@@ -44,7 +44,7 @@ export const Programs: CollectionConfig = {
   },
 
   versions: {
-    drafts: true,
+    drafts: { autosave: { interval: 2000 } },
     maxPerDoc: 30,
   },
 

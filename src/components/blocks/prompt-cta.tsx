@@ -46,13 +46,13 @@ export function PromptCTABlock({ block }: PromptCTABlockProps) {
         </div>
       </div>
 
-      <div className="relative lg:ml-auto lg:w-[30%] flex flex-col justify-center items-center h-full">
+      <div className="relative lg:ms-auto lg:w-[30%] flex flex-col justify-center items-center h-full">
         <LeventuraSymbolLogo
           className="absolute top-0 opacity-10 -right-1/2 -translate-x-1/2 size-[500px] group-hover:scale-105 group-hover:rotate-90 transition-all duration-500"
           width={500}
           height={500}
         />
-        <div className="relative flex flex-col items-center justify-center z-10 text-center lg:text-left w-full">
+        <div className="relative flex flex-col items-center justify-center z-10 text-center lg:text-start w-full">
           <FadeUpAnimator transition={{ delay: 0.1 }}>
             <h2 className="typography-EB34 text-center lg:typography-EB48 uppercase text-lev-black mb-8 leading-tight">
               {block.heading.split("\n").map((line, i, arr) => (

@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "eyebrow": "FROM LEVNTURA",
+    "titlePre": "JOIN",
+    "titleHighlight": "THE BEST",
+    "titlePost": "TEAM IN THE WORLD",
+    "body": "At Levntura, we're here to guide you every step of the way on your journey of discovery. Explore the internship opportunities below and find the role that fits you."
+  },
+  "available": {
+    "title": "AVAILABLE OPPORTUNITIES",
+    "subtitle": "Cultivate the next generation of global leaders through immersive international experiences. Our tailor-made programs are designed not just to traverse borders, but to transcend them.",
+    "searchPlaceholder": "Search",
+    "allCountries": "All countries",
+    "allTypes": "Available opportunities",
+    "empty": "No opportunities found matching your search."
+  },
+  "card": {
+    "apply": "APPLY NOW",
+    "more": "MORE"
+  },
+  "suggest": {
+    "title": "SUGGEST NEW OPPORTUNITIES",
+    "button": "APPLY NOW"
+  },
+  "programs": {
+    "title": "Internship Programs",
+    "label": "Programs",
+    "viewAll": "View All"
+  },
+  "share": {
+    "title": "Share it with the ones you love!",
+    "subtitle": "If you like this opportunity, feel free to share it with those who'd get value from it."
+  }
+}

@@ -49,6 +49,10 @@ import { PartnersCarouselBlock } from "./partners-carousel";
 import { FeatureCardsBlock } from "./feature-cards";
 import { AlternatingContentBlock } from "./alternating-content";
 import { BlogPostsListBlock } from "./blog-posts-list";
+import {
+  DynamicSliderBlock,
+  type DynamicSliderBlockData,
+} from "./dynamic-slider";
 import { VideoTestimonialsBlock } from "./video-testimonials";
 import { SocialFeedBlock } from "./social-feed";
 import { ProgramShowcaseBlock } from "./program-showcase";
@@ -58,6 +62,7 @@ import { ValuesListBlock } from "./values-list";
 import { TextTestimonialsBlock } from "./text-testimonials";
 import { MapEmbedBlock } from "./map-embed";
 import { ContactFormBlock } from "./contact-form";
+import { FormBlock, type FormBlockData } from "./form-block";
 import { AddressListBlock } from "./address-list";
 import { HeroWithImageGridBlock } from "./hero-with-image-grid";
 import { MemoriesGridBlock } from "./memories-grid";
@@ -540,6 +545,19 @@ export function BlockRenderer({
                 block={block as Block & { heading?: string }}
                 shareUrl={shareUrl}
               />
+            );
+
+          case "dynamicSlider":
+            return (
+              <DynamicSliderBlock
+                key={key}
+                block={block as DynamicSliderBlockData}
+              />
+            );
+
+          case "formBlock":
+            return (
+              <FormBlock key={key} block={block as FormBlockData} />
             );
 
           case "heroBlogPost":

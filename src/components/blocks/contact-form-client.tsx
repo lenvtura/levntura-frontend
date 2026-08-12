@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { UploadCloud } from "lucide-react";
+
 import { Button } from "@/design-system/button";
 import { Input } from "@/design-system/input";
 import { cn } from "@/design-system/helpers";
@@ -11,7 +13,15 @@ import type { CmsForm, CmsFormField } from "@/lib/types";
 // paths so the browser targets the current host — no separate CMS URL.
 const CMS_URL = "";
 
-export function DynamicForm({ form }: { form: CmsForm }) {
+export function DynamicForm({
+  form,
+  bare = false,
+}: {
+  form: CmsForm;
+  /** Inside a modal the frame/padding is provided by the parent — drop the
+   *  form's own white box and enlarge the title. */
+  bare?: boolean;
+}) {
   const [values, setValues] = useState<Record<string, string>>({});
   const [files, setFiles] = useState<Record<string, File | null>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "ok" | "error">(
@@ -100,8 +110,23 @@ export function DynamicForm({ form }: { form: CmsForm }) {
   }
 
   return (
-    <div className="flex flex-col gap-y-4 max-w-2xl w-full bg-white p-6">
-      {form.title && <h2 className="typography-S24 w-5/6">{form.title}</h2>}
+    <div
+      className={cn(
+        "flex w-full flex-col gap-y-4",
+        bare ? "" : "max-w-2xl bg-white p-6",
+      )}
+    >
+      {form.title && (
+        <h2
+          className={
+            bare
+              ? "typography-EB34 uppercase text-lev-green-dark mb-2"
+              : "typography-S24 w-5/6"
+          }
+        >
+          {form.title}
+        </h2>
+      )}
       <form className="contactForm" onSubmit={handleSubmit}>
         <div className="grid grid-cols-12 gap-3">
           {(form.fields ?? [])
@@ -278,28 +303,26 @@ function FieldRenderer({
       // and uploaded to /api/media on submit — the returned Media id then
       // populates the submissionData entry.
       return (
-        <div className="flex flex-col gap-1">
-          <label className="typography-R14 text-lev-black/70">
-            {placeholder}
-          </label>
-          <input
-            required={field.required}
-            type="file"
-            onChange={(e) => onFileChange(e.target.files?.[0] ?? null)}
-            className={cn(
-              "block w-full text-sm",
-              "file:mr-3 file:py-2 file:px-4",
-              "file:rounded-md file:border-0",
-              "file:typography-R14",
-              "file:bg-lev-gray-light file:text-lev-black",
-              "hover:file:bg-lev-gray-light/80",
-            )}
-          />
-          {file && (
-            <span className="typography-R12 text-lev-gray">
-              ✓ {file.name} ({Math.round(file.size / 1024)} KB)
+        <div className="flex flex-col gap-2">
+          <label className="typography-S18 text-lev-black">{placeholder}</label>
+          <label className="relative flex min-h-[170px] cursor-pointer flex-col items-center justify-center gap-2 border-2 border-dashed border-lev-blue/40 bg-lev-blue-highlighter/40 p-6 text-center transition-colors hover:border-lev-blue">
+            <input
+              required={field.required}
+              type="file"
+              onChange={(e) => onFileChange(e.target.files?.[0] ?? null)}
+              className="absolute inset-0 cursor-pointer opacity-0"
+            />
+            <UploadCloud className="h-8 w-8 text-lev-blue" />
+            <span className="typography-R14 text-lev-black">
+              <span className="text-lev-blue underline">Click To Upload</span>{" "}
+              Or Drag And Drop
             </span>
-          )}
+            {file && (
+              <span className="typography-R12 text-lev-gray">
+                ✓ {file.name} ({Math.round(file.size / 1024)} KB)
+              </span>
+            )}
+          </label>
         </div>
       );
 

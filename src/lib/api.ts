@@ -27,6 +27,7 @@ import type {
   BlogPost,
   FooterGlobal,
   HeaderGlobal,
+  Job,
   Locale,
   Page,
   PaginatedResponse,
@@ -287,6 +288,65 @@ export async function getProgram(
   })
 
   return (res.docs[0] as unknown as Program) ?? null
+}
+
+export async function getJobs(
+  locale?: Locale,
+  options: {
+    limit?: number
+    countries?: string[]
+    jobTypeIds?: Array<string | number>
+    draft?: boolean
+  } = {},
+): Promise<Job[]> {
+  const { limit = 12, countries, jobTypeIds, draft } = options
+  const [payload, resolvedLocale] = await Promise.all([
+    payloadClient(),
+    locale ? Promise.resolve(locale) : resolveRequestLocale(),
+  ])
+
+  const where: Where = {}
+  if (!draft) where._status = { equals: 'published' }
+  if (countries && countries.length) where.country = { in: countries }
+  if (jobTypeIds && jobTypeIds.length) where.jobType = { in: jobTypeIds }
+
+  const res = await payload.find({
+    collection: 'jobs',
+    where,
+    locale: resolvedLocale,
+    depth: 2,
+    limit,
+    sort: ['order', '-publishedAt'],
+    draft: Boolean(draft),
+  })
+
+  return res.docs as unknown as Job[]
+}
+
+export async function getJob(
+  slug: string,
+  locale?: Locale,
+  options: { draft?: boolean; preview?: boolean } = {},
+): Promise<Job | null> {
+  const wantDraft = Boolean(options.draft || options.preview)
+  const [payload, resolvedLocale] = await Promise.all([
+    payloadClient(),
+    locale ? Promise.resolve(locale) : resolveRequestLocale(),
+  ])
+
+  const where: Where = { slug: { equals: slug } }
+  if (!wantDraft) where._status = { equals: 'published' }
+
+  const res = await payload.find({
+    collection: 'jobs',
+    where,
+    locale: resolvedLocale,
+    depth: 2,
+    limit: 1,
+    draft: wantDraft,
+  })
+
+  return (res.docs[0] as unknown as Job) ?? null
 }
 
 export async function getProgramTypes(

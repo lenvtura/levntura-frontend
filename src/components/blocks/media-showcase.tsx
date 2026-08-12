@@ -94,8 +94,8 @@ export function MediaShowcaseBlock({ block }: MediaShowcaseBlockProps) {
         </FadeUpAnimator>
 
         {block.description && (
-          <div className="w-full flex lg:translate-x-[70px] lg:-translate-y-[50px] justify-center items-center">
-            <FadeUpAnimator className="sm:w-1/2 md:w-1/3 text-lev-red-dark typography-R18 leading-6">
+          <div className="w-full flex lg:-translate-y-[50px] justify-center items-center ltr:lg:translate-x-[70px] rtl:lg:-translate-x-[70px]">
+            <FadeUpAnimator className="sm:w-1/2 md:w-1/3 text-lev-red-dark typography-R18 leading-8 rtl:lg:pt-12">
               {block.description}
             </FadeUpAnimator>
           </div>
