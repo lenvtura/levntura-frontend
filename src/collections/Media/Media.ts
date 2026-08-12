@@ -7,6 +7,7 @@ import { setSpacesPublicAcl } from './hooks/setSpacesPublicAcl'
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  trash: true,
   labels: {
     singular: 'Media',
     plural: 'Media',

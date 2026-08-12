@@ -189,6 +189,7 @@ export interface Media {
   caption?: string | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   url?: string | null;
   thumbnailURL?: string | null;
   filename?: string | null;
@@ -1971,6 +1972,7 @@ export interface Page {
   dateModified?: string | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -2225,6 +2227,7 @@ export interface Blog {
   isFeatured?: boolean | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -2303,6 +2306,7 @@ export interface BlogCategory {
   dateModified?: string | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -2544,6 +2548,7 @@ export interface JobType {
   dateModified?: string | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -4038,6 +4043,7 @@ export interface ProgramType {
   dateModified?: string | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -5914,6 +5920,7 @@ export interface Program {
   dateModified?: string | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -7781,6 +7788,7 @@ export interface Job {
   dateModified?: string | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -7963,6 +7971,7 @@ export interface MediaSelect<T extends boolean = true> {
   caption?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   url?: T;
   thumbnailURL?: T;
   filename?: T;
@@ -8969,6 +8978,7 @@ export interface PagesSelect<T extends boolean = true> {
   dateModified?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**
@@ -9819,6 +9829,7 @@ export interface ProgramTypesSelect<T extends boolean = true> {
   dateModified?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**
@@ -10863,6 +10874,7 @@ export interface ProgramsSelect<T extends boolean = true> {
   dateModified?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**
@@ -10880,6 +10892,7 @@ export interface JobTypesSelect<T extends boolean = true> {
   dateModified?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**
@@ -11913,6 +11926,7 @@ export interface JobsSelect<T extends boolean = true> {
   dateModified?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**
@@ -11960,6 +11974,7 @@ export interface BlogCategoriesSelect<T extends boolean = true> {
   dateModified?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**
@@ -12114,6 +12129,7 @@ export interface BlogSelect<T extends boolean = true> {
   isFeatured?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**

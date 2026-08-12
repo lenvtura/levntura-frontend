@@ -90,6 +90,7 @@ export const Pages: CollectionConfig = {
   // editing. That root cause is fixed (the hook now skips no-op writes and
   // bypasses the lock via overrideLock), so locking is safe to enable.
   lockDocuments: { duration: 300 },
+  trash: true,
 
   hooks: {
     beforeChange: [

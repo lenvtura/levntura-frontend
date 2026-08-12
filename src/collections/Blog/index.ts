@@ -52,6 +52,7 @@ export const Blog: CollectionConfig = {
   // See Pages collection — locking re-enabled after fixing the
   // seedTranslation no-op writes that used to false-alarm the poll.
   lockDocuments: { duration: 300 },
+  trash: true,
 
   hooks: {
     beforeChange: [
