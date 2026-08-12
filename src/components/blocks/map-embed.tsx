@@ -94,7 +94,7 @@ export function MapEmbedBlock({ block }: MapEmbedBlockProps) {
       <div className="lg:absolute inset-0">{mapWithLink}</div>
 
       {stat && (stat.value || stat.label || stat.description) && (
-        <div className="lg:absolute left-0 bottom-0 w-100 space-y-4">
+        <div className="lg:absolute start-0 bottom-0 w-100 space-y-4">
           <div className="flex items-center gap-4">
             {stat.value && (
               <h1 className={cn("typography-EB74 text-lev-orange")}>
