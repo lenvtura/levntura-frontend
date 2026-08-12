@@ -41,7 +41,7 @@ export function ContactFormBlock({ block }: ContactFormBlockProps) {
       <div className="space-y-12 flex-1">
         <article>
           <FadeUpAnimator transition={{ delay: 0.1 }}>
-            <h1 className="typography-EB74 text-white leading-16">
+            <h1 className="typography-EB74 max-sm:typography-EB48 text-white leading-16 max-sm:leading-tight">
               <HighlightedHeading
                 text={block.heading}
                 highlight={block.highlightedWord}

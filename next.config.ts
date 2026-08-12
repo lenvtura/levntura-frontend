@@ -19,6 +19,11 @@ const nextConfig: NextConfig = {
   cacheComponents: false,
 
   images: {
+    // NOTE: if Vercel's Image Optimization quota can't be raised, flip this to
+    // `unoptimized: true` — it serves images straight from DO Spaces (a CDN) and
+    // bypasses the optimizer, which returns 402 for uncached width/format combos
+    // once the monthly quota is exhausted (why images vanish on mobile but not
+    // desktop — different requested widths). One-line change, no other edits.
     unoptimized: process.env.NODE_ENV === 'development',
     localPatterns: [
       {

@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { ProgramCard } from "./program-card";
 import { FadeUpAnimator } from "@/atoms/fade-up-animator";
+import { mediaUrl } from "@/lib/url";
 import type { Program } from "@/lib/types";
 
 interface ProgramsGridProps {
@@ -35,8 +36,8 @@ export function ProgramsGrid({ programs }: ProgramsGridProps) {
           >
             <ProgramCard
               image={
-                typeof program.featuredImage === "object" && program.featuredImage?.url
-                  ? program.featuredImage.url
+                typeof program.featuredImage === "object"
+                  ? mediaUrl(program.featuredImage) ?? null
                   : null
               }
               title={program.title}

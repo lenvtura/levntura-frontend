@@ -38,7 +38,7 @@ export function ProgramHeroBlock({ block }: { block: ProgramHeroBlockData }) {
         href="#apply"
         className="z-10 text-white cursor-pointer border-white absolute top-[350px] left-[50%] translate-x-[-50%]"
       />
-      <div className="flex flex-col text-white uppercase z-10 gap-4 items-center -translate-y-[200px] text-center px-4">
+      <div className="flex flex-col text-white uppercase z-10 gap-4 items-center -translate-y-[200px] lg:-translate-y-[160px] text-center px-4">
         {block.tag && <span className="typography-B18">{block.tag}</span>}
         <h1 className="typography-EB48! mix-blend-difference! sm:typography-EB74! text-[64px] sm:text-[90px]">
           {block.heading}

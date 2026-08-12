@@ -44,7 +44,12 @@ export const Slider = <T,>({
   return (
     <div
       ref={containerRef}
-      className="relative h-full flex items-center"
+      // `overflow-x-clip` keeps the wide (max-content) card row from spilling
+      // past the viewport — without it, any page embedding <Slider> directly
+      // (e.g. Program Showcase) gets horizontal scroll on mobile. `clip`
+      // (not `hidden`) so the vertical hover lift/scale isn't cut off and no
+      // stray scroll container is created.
+      className="relative h-full flex items-center overflow-x-clip"
       // Force LTR so drag direction + padding math stay consistent even
       // when the surrounding page is RTL (Arabic).
       dir="ltr"

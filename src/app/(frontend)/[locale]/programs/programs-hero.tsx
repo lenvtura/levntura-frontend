@@ -15,7 +15,7 @@ export function ProgramsHero() {
   const line2 = t("headingLine2");
 
   return (
-    <section className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+    <section className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] max-md:pt-16">
       <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-2">
         <div className="bg-lev-green-dark" />
         <div className="relative min-h-[200px] md:min-h-[400px] lg:min-h-full">
