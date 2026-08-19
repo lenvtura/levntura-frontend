@@ -1,5 +1,8 @@
-import type { Block } from "@/lib/types";
+import Image from "next/image";
+
+import type { Block, Media } from "@/lib/types";
 import { cn } from "@/design-system/helpers";
+import { mediaUrl, mediaAlt } from "@/lib/url";
 import { RICH_TEXT_STATE_CSS } from "@/lib/richTextState";
 
 interface RichTextBlockProps {
@@ -14,13 +17,18 @@ type LexicalNode = {
   type?: string;
   tag?: string;
   text?: string;
-  format?: number;
+  // Text nodes: bitmask (bold/italic/…). Element nodes (paragraph/heading):
+  // the alignment string ('', 'center', 'right', 'justify', 'start', 'end').
+  format?: number | string;
   url?: string;
   listType?: "number" | "bullet" | "check";
   children?: LexicalNode[];
   // Inline text-state (color / size) applied to a selection — Payload stores
   // it under `$` on the text node.
   $?: Record<string, string>;
+  // `upload` (image) nodes: `value` is the populated Media doc at depth >= 1.
+  relationTo?: string;
+  value?: Media | number | string | null;
 };
 
 const hyphenToCamel = (s: string) =>
@@ -102,9 +110,22 @@ const FORMAT_CODE = 1 << 4;
 const FORMAT_SUBSCRIPT = 1 << 5;
 const FORMAT_SUPERSCRIPT = 1 << 6;
 
+// Element-node alignment (paragraph/heading store it in `format` as a string).
+const ALIGN_CLASS: Record<string, string> = {
+  center: "text-center",
+  right: "text-end",
+  justify: "text-justify",
+  start: "text-start",
+  end: "text-end",
+  left: "text-start",
+};
+function alignClass(node: LexicalNode): string | undefined {
+  return typeof node.format === "string" ? ALIGN_CLASS[node.format] : undefined;
+}
+
 function renderText(node: LexicalNode, key: string) {
   let content: React.ReactNode = node.text ?? "";
-  const f = node.format ?? 0;
+  const f = typeof node.format === "number" ? node.format : 0;
   if (f & FORMAT_CODE) content = <code>{content}</code>;
   if (f & FORMAT_BOLD) content = <strong>{content}</strong>;
   if (f & FORMAT_ITALIC) content = <em>{content}</em>;
@@ -148,7 +169,13 @@ function renderNode(
 
     case "paragraph":
       return (
-        <p key={key} className="typography-R16 lg:typography-R18 text-lev-black mb-6 leading-relaxed">
+        <p
+          key={key}
+          className={cn(
+            "typography-R16 lg:typography-R18 text-lev-black mb-6 leading-relaxed",
+            alignClass(node),
+          )}
+        >
           {renderChildren(node.children, key, ctx)}
         </p>
       );
@@ -171,7 +198,10 @@ function renderNode(
         <Tag
           id={id}
           key={key}
-          className="typography-EB24 lg:typography-EB32 text-lev-green-dark mb-4 mt-8 scroll-mt-24"
+          className={cn(
+            "typography-EB24 lg:typography-EB32 text-lev-green-dark mb-4 mt-8 scroll-mt-24",
+            alignClass(node),
+          )}
         >
           {renderChildren(node.children, key, ctx)}
         </Tag>
@@ -220,6 +250,32 @@ function renderNode(
           {renderChildren(node.children, key, ctx)}
         </blockquote>
       );
+
+    case "upload": {
+      // Image inserted inline in the editor. `value` is the populated Media
+      // doc (depth >= 1). Route through mediaUrl so the src is host-correct
+      // (relative on localhost, Spaces/absolute in prod).
+      const media = node.value;
+      if (!media || typeof media !== "object") return null;
+      const url = mediaUrl(media as Media);
+      if (!url) return null;
+      const dims = media as { width?: number; height?: number };
+      return (
+        <figure key={key} className="my-8">
+          <Image
+            src={url}
+            alt={mediaAlt(media as Media)}
+            width={dims.width ?? 1200}
+            height={dims.height ?? 800}
+            sizes="(max-width: 768px) 100vw, 800px"
+            className="rounded-2xl w-full h-auto"
+          />
+        </figure>
+      );
+    }
+
+    case "horizontalrule":
+      return <hr key={key} className="my-8 border-lev-gray-light" />;
 
     default:
       // Unknown node — just render children to avoid losing content

@@ -34,8 +34,16 @@ export const richTextState = {
 } as const
 
 // Flat lookup: stateKey -> value -> css object. Used by the frontend renderer.
+// Note we unwrap each entry's `.css` — the raw `richTextState` values are
+// `{ label, css }` (the shape TextStateFeature wants), so returning them
+// verbatim would put `label`/`css` keys into the inline style and drop the
+// actual color/size. This extraction is what makes colours render on the front.
 export const RICH_TEXT_STATE_CSS: Record<string, Record<string, Record<string, string>>> =
-  richTextState as unknown as Record<
-    string,
-    Record<string, Record<string, string>>
-  >
+  Object.fromEntries(
+    Object.entries(richTextState).map(([stateKey, values]) => [
+      stateKey,
+      Object.fromEntries(
+        Object.entries(values).map(([value, entry]) => [value, entry.css]),
+      ),
+    ]),
+  )
