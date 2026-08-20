@@ -5,6 +5,21 @@ export const DEFAULT_SITE_ORIGIN =
     ? 'https://www.levntura.com'
     : 'http://localhost:3000'
 
+/**
+ * Percent-encoded non-ASCII slugs (e.g. Arabic) can reach the data layer from
+ * the router still encoded — e.g. `/ar/blogs/تجربة` arrives as
+ * `%D8%AA%D8%AC…`, which never matches the stored (decoded) slug and 404s.
+ * Decode before any slug/fullPath DB lookup. No-op for plain ASCII slugs;
+ * malformed input falls back to the raw value.
+ */
+export function decodeSlug(slug: string): string {
+  try {
+    return decodeURIComponent(slug)
+  } catch {
+    return slug
+  }
+}
+
 export function isLocalOrigin(origin: string): boolean {
   try {
     const host = new URL(origin).hostname

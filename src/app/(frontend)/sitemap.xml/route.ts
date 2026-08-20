@@ -22,6 +22,8 @@ interface CmsDoc {
   updatedAt?: string;
   dateModified?: string;
   translationComplete?: boolean;
+  // Blog posts only: the single language the post is written in.
+  language?: "en" | "ar";
   sitemap?: { excludeFromSitemap?: boolean };
 }
 
@@ -155,8 +157,17 @@ export async function GET() {
 
   for (const post of blog) {
     if (!post.slug) continue;
-    const e = buildEntry(post, `/blogs/${post.slug}`, "monthly", "0.7");
-    if (e) entries.push(e);
+    // Single-language posts: emit the URL in the post's OWN language only, with
+    // no cross-language hreflang alternate (the other locale 404s this post).
+    const path =
+      post.language === "ar"
+        ? `/ar/blogs/${post.slug}`
+        : `/blogs/${post.slug}`;
+    const e = buildEntry(post, path, "monthly", "0.7");
+    if (e) {
+      e.withAR = false;
+      entries.push(e);
+    }
   }
 
   for (const type of programTypes) {

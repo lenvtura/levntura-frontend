@@ -1649,9 +1649,13 @@ export interface Page {
         hidden?: boolean | null;
         syncKey?: string | null;
         /**
-         * Small label above the "Picture yourself" title.
+         * Small label above the title.
          */
         eyebrow?: string | null;
+        /**
+         * The big section title. Put each line on its own line (a line break renders as a new line, e.g. "Picture" / "yourself").
+         */
+        title?: string | null;
         body?: string | null;
         /**
          * Bold text inside the yellow circle overlay.
@@ -2206,6 +2210,10 @@ export interface Blog {
    * URL part. Auto-generated from title; you can edit it.
    */
   slug: string;
+  /**
+   * The single language this post is written in. It only appears on the matching site (EN or AR) — blog posts are not translated.
+   */
+  language: 'en' | 'ar';
   /**
    * Defaults to the user creating the post.
    */
@@ -4174,9 +4182,13 @@ export interface Program {
         hidden?: boolean | null;
         syncKey?: string | null;
         /**
-         * Small label above the "Picture yourself" title.
+         * Small label above the title.
          */
         eyebrow?: string | null;
+        /**
+         * The big section title. Put each line on its own line (a line break renders as a new line, e.g. "Picture" / "yourself").
+         */
+        title?: string | null;
         body?: string | null;
         /**
          * Bold text inside the yellow circle overlay.
@@ -6099,9 +6111,13 @@ export interface Job {
         hidden?: boolean | null;
         syncKey?: string | null;
         /**
-         * Small label above the "Picture yourself" title.
+         * Small label above the title.
          */
         eyebrow?: string | null;
+        /**
+         * The big section title. Put each line on its own line (a line break renders as a new line, e.g. "Picture" / "yourself").
+         */
+        title?: string | null;
         body?: string | null;
         /**
          * Bold text inside the yellow circle overlay.
@@ -8796,6 +8812,7 @@ export interface PagesSelect<T extends boolean = true> {
               hidden?: T;
               syncKey?: T;
               eyebrow?: T;
+              title?: T;
               body?: T;
               circleHeading?: T;
               circleBody?: T;
@@ -9898,6 +9915,7 @@ export interface ProgramsSelect<T extends boolean = true> {
               hidden?: T;
               syncKey?: T;
               eyebrow?: T;
+              title?: T;
               body?: T;
               circleHeading?: T;
               circleBody?: T;
@@ -10969,6 +10987,7 @@ export interface JobsSelect<T extends boolean = true> {
               hidden?: T;
               syncKey?: T;
               eyebrow?: T;
+              title?: T;
               body?: T;
               circleHeading?: T;
               circleBody?: T;
@@ -12120,6 +12139,7 @@ export interface BlogSelect<T extends boolean = true> {
         excludeFromSitemap?: T;
       };
   slug?: T;
+  language?: T;
   author?: T;
   translationComplete?: T;
   publishedAt?: T;

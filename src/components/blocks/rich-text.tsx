@@ -26,9 +26,11 @@ type LexicalNode = {
   // Inline text-state (color / size) applied to a selection — Payload stores
   // it under `$` on the text node.
   $?: Record<string, string>;
-  // `upload` (image) nodes: `value` is the populated Media doc at depth >= 1.
+  // `upload` (image) nodes: `value` is the populated Media doc at depth >= 1,
+  // and `fields` holds the UploadFeature extras (e.g. `href`, `newTab`).
   relationTo?: string;
   value?: Media | number | string | null;
+  fields?: { href?: string; newTab?: boolean } & Record<string, unknown>;
 };
 
 const hyphenToCamel = (s: string) =>
@@ -260,16 +262,32 @@ function renderNode(
       const url = mediaUrl(media as Media);
       if (!url) return null;
       const dims = media as { width?: number; height?: number };
+      const href = node.fields?.href?.trim();
+      const newTab = node.fields?.newTab;
+      const img = (
+        <Image
+          src={url}
+          alt={mediaAlt(media as Media)}
+          width={dims.width ?? 1200}
+          height={dims.height ?? 800}
+          sizes="(max-width: 768px) 100vw, 800px"
+          className="rounded-2xl w-full h-auto"
+        />
+      );
       return (
         <figure key={key} className="my-8">
-          <Image
-            src={url}
-            alt={mediaAlt(media as Media)}
-            width={dims.width ?? 1200}
-            height={dims.height ?? 800}
-            sizes="(max-width: 768px) 100vw, 800px"
-            className="rounded-2xl w-full h-auto"
-          />
+          {href ? (
+            <a
+              href={href}
+              target={newTab ? "_blank" : undefined}
+              rel={newTab ? "noopener noreferrer" : undefined}
+              className="block"
+            >
+              {img}
+            </a>
+          ) : (
+            img
+          )}
         </figure>
       );
     }

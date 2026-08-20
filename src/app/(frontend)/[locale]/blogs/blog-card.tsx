@@ -30,7 +30,7 @@ export function BlogCard({
           {image ? (
             <Image
               src={image}
-              alt={title}
+              alt={title || category || ""}
               fill
               className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
             />

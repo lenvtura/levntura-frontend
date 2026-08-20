@@ -1,5 +1,5 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { lexicalEditor, TextStateFeature } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, TextStateFeature, UploadFeature } from '@payloadcms/richtext-lexical'
 
 import { richTextState } from './lib/richTextState'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
@@ -99,6 +99,33 @@ export default buildConfig({
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,
+      // Re-declare UploadFeature so images can carry an optional link — click
+      // an inserted image in the editor to set "Link URL" and it becomes
+      // clickable on the front end. Stored inside the rich-text JSON (no DB
+      // change). Overrides the default upload feature's (empty) field set.
+      UploadFeature({
+        collections: {
+          media: {
+            fields: [
+              {
+                name: 'href',
+                type: 'text',
+                label: 'Link URL (optional)',
+                admin: {
+                  description:
+                    'Make this image clickable — e.g. https://example.com or /programs/work-and-travel',
+                },
+              },
+              {
+                name: 'newTab',
+                type: 'checkbox',
+                label: 'Open link in a new tab',
+                defaultValue: true,
+              },
+            ],
+          },
+        },
+      }),
       // Inline color + size on selected text (see lib/richTextState).
       TextStateFeature({ state: richTextState }),
     ],
@@ -273,9 +300,13 @@ export default buildConfig({
     }),
 
     // Images live in DigitalOcean Spaces (S3), not on Vercel’s filesystem.
-    ...(spacesReady
-      ? [
-          s3Storage({
+    // ALWAYS register the plugin so the admin importMap always carries the S3
+    // client upload handler on any machine — otherwise local dev/build (where
+    // DO_SPACES_* are unset) regenerates the map without it and black-outs the
+    // production admin. `enabled` gates the actual storage: creds present →
+    // uploads go to Spaces; absent (local) → Payload falls back to disk.
+    s3Storage({
+            enabled: spacesReady,
             // Browser → Spaces direct upload (bypasses Vercel’s 4.5MB limit).
             // Do NOT set `acl` here: the client PUT omits `x-amz-acl`, so signing
             // with ACL breaks the Spaces upload (often surfaces as a CORS error).
@@ -298,8 +329,6 @@ export default buildConfig({
               },
               forcePathStyle: false,
             },
-          }),
-        ]
-      : []),
+    }),
   ],
 })

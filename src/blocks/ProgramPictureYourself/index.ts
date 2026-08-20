@@ -15,7 +15,17 @@ export const ProgramPictureYourselfBlock: Block = {
       type: 'text',
       localized: true,
       defaultValue: 'IMAGINE',
-      admin: { description: 'Small label above the "Picture yourself" title.' },
+      admin: { description: 'Small label above the title.' },
+    },
+    {
+      name: 'title',
+      type: 'textarea',
+      localized: true,
+      defaultValue: 'Picture\nyourself',
+      admin: {
+        description:
+          'The big section title. Put each line on its own line (a line break renders as a new line, e.g. "Picture" / "yourself").',
+      },
     },
     {
       name: 'body',

@@ -22,6 +22,8 @@ import { getPayload, type Where } from 'payload'
 import { getLocale } from 'next-intl/server'
 import config from '@payload-config'
 
+import { decodeSlug } from './url'
+
 import type {
   BlogCategory,
   BlogPost,
@@ -74,7 +76,10 @@ export async function getBlogPosts(
 
   const where: Where = {}
   if (!draft) where._status = { equals: 'published' }
-  if (categorySlug) where['category.slug'] = { equals: categorySlug }
+  if (categorySlug) where['category.slug'] = { equals: decodeSlug(categorySlug) }
+  // Blog posts are single-language: only surface posts written in the locale
+  // currently being viewed (an EN post never shows on the AR site, & vice versa).
+  where.language = { equals: resolvedLocale }
 
   const res = await payload.find({
     collection: 'blog',
@@ -101,8 +106,11 @@ export async function getBlogPost(
     locale ? Promise.resolve(locale) : resolveRequestLocale(),
   ])
 
-  const where: Where = { slug: { equals: slug } }
+  const where: Where = { slug: { equals: decodeSlug(slug) } }
   if (!wantDraft) where._status = { equals: 'published' }
+  // Single-language: a post only resolves on its own locale — requesting it on
+  // the other locale returns nothing, so the page 404s (matches the SEO spec).
+  where.language = { equals: resolvedLocale }
 
   const res = await payload.find({
     collection: 'blog',
@@ -153,7 +161,7 @@ export async function getBlogCategory(
     locale ? Promise.resolve(locale) : resolveRequestLocale(),
   ])
 
-  const where: Where = { slug: { equals: slug } }
+  const where: Where = { slug: { equals: decodeSlug(slug) } }
   if (!draft) where._status = { equals: 'published' }
 
   const res = await payload.find({
@@ -175,7 +183,7 @@ export async function getPageByPath(
   options: { draft?: boolean; preview?: boolean } = {},
 ): Promise<Page | null> {
   const wantDraft = Boolean(options.draft || options.preview)
-  const normalized = fullPath.startsWith('/') ? fullPath : `/${fullPath}`
+  const normalized = decodeSlug(fullPath.startsWith('/') ? fullPath : `/${fullPath}`)
   const [payload, resolvedLocale] = await Promise.all([
     payloadClient(),
     locale ? Promise.resolve(locale) : resolveRequestLocale(),
@@ -246,7 +254,7 @@ export async function getPrograms(
 
   const where: Where = {}
   if (!draft) where._status = { equals: 'published' }
-  if (typeSlug) where['type.slug'] = { equals: typeSlug }
+  if (typeSlug) where['type.slug'] = { equals: decodeSlug(typeSlug) }
   if (country) where.country = { equals: country }
   if (onlyOpen) where.isOpen = { equals: true }
 
@@ -275,7 +283,7 @@ export async function getProgram(
     locale ? Promise.resolve(locale) : resolveRequestLocale(),
   ])
 
-  const where: Where = { slug: { equals: slug } }
+  const where: Where = { slug: { equals: decodeSlug(slug) } }
   if (!wantDraft) where._status = { equals: 'published' }
 
   const res = await payload.find({
@@ -334,7 +342,7 @@ export async function getJob(
     locale ? Promise.resolve(locale) : resolveRequestLocale(),
   ])
 
-  const where: Where = { slug: { equals: slug } }
+  const where: Where = { slug: { equals: decodeSlug(slug) } }
   if (!wantDraft) where._status = { equals: 'published' }
 
   const res = await payload.find({
@@ -386,7 +394,7 @@ export async function getProgramType(
     locale ? Promise.resolve(locale) : resolveRequestLocale(),
   ])
 
-  const where: Where = { slug: { equals: slug } }
+  const where: Where = { slug: { equals: decodeSlug(slug) } }
   if (!wantDraft) where._status = { equals: 'published' }
 
   const res = await payload.find({

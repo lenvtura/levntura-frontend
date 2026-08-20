@@ -9,11 +9,10 @@ import { articleBlocks } from '../../blocks'
 
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { populateDateModified } from '../../hooks/populateDateModified'
-import { translationGate } from '../../hooks/translationGate'
-import { seedTranslation } from '../../hooks/seedTranslation'
 import { revalidatePath } from '../../hooks/revalidatePath'
 import { createRedirectOnSlugChange } from '../../hooks/createRedirectOnSlugChange'
 import { setDefaultAuthor } from './hooks/setDefaultAuthor'
+import { setDefaultLanguage } from './hooks/setDefaultLanguage'
 
 import { calculateReadingTime } from './hooks/calculateReadingTime'
 
@@ -57,15 +56,17 @@ export const Blog: CollectionConfig = {
   hooks: {
     beforeChange: [
       setDefaultAuthor,
+      setDefaultLanguage,
       populatePublishedAt,
       populateDateModified,
-      translationGate,
       calculateReadingTime,
     ],
+    // Blog posts are single-language (see the `language` field) — no
+    // translation mirroring/gating here, unlike Pages/Programs which keep
+    // the shared seedTranslation/translationGate hooks.
     afterChange: [
       revalidatePath('blog', (doc) => `/blogs/${doc.slug}`),
       createRedirectOnSlugChange('blog', { prefix: '/blogs' }),
-      seedTranslation,
     ],
   },
 
@@ -74,7 +75,6 @@ export const Blog: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
-      localized: true,
     },
 
     {
@@ -88,7 +88,6 @@ export const Blog: CollectionConfig = {
               name: 'excerpt',
               type: 'textarea',
               required: true,
-              localized: true,
               admin: {
                 description: 'Short summary shown on blog listing pages (140-200 chars).',
               },
@@ -106,7 +105,6 @@ export const Blog: CollectionConfig = {
               name: 'sections',
               label: 'Article body',
               type: 'blocks',
-              localized: true,
               required: true,
               minRows: 1,
               admin: {
@@ -173,6 +171,22 @@ export const Blog: CollectionConfig = {
     ...slugField('title'),
 
     {
+      name: 'language',
+      type: 'select',
+      required: true,
+      defaultValue: 'en',
+      options: [
+        { label: 'English', value: 'en' },
+        { label: 'العربية', value: 'ar' },
+      ],
+      admin: {
+        position: 'sidebar',
+        description:
+          'The single language this post is written in. It only appears on the matching site (EN or AR) — blog posts are not translated.',
+      },
+    },
+
+    {
       name: 'author',
       type: 'relationship',
       relationTo: 'users',
@@ -184,10 +198,13 @@ export const Blog: CollectionConfig = {
     },
 
     {
+      // Legacy translation flag — no longer used now that posts are
+      // single-language. Kept (hidden) to avoid a schema drop; safe to remove
+      // in a future migration.
       name: 'translationComplete',
       type: 'checkbox',
       defaultValue: false,
-      admin: { position: 'sidebar' },
+      admin: { hidden: true },
     },
 
     {

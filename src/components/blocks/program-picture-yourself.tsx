@@ -11,6 +11,7 @@ import pictureYourselfFallback from "@/app/(frontend)/[locale]/programs/work-and
 
 interface ProgramPictureYourselfBlockData {
   eyebrow?: string;
+  title?: string;
   body?: string;
   circleHeading?: string;
   circleBody?: string;
@@ -27,7 +28,7 @@ export function ProgramPictureYourselfBlock({
 
   return (
     <>
-      {(block.eyebrow || block.body) && (
+      {(block.eyebrow || block.title || block.body) && (
         <SectionWrapper className="container-md">
           <FadeUpAnimator>
             {block.eyebrow && (
@@ -35,8 +36,8 @@ export function ProgramPictureYourselfBlock({
                 {block.eyebrow}
               </span>
             )}
-            <SectionTitle className="mb-[40px] sm:mb-0">
-              Picture <br /> yourself
+            <SectionTitle className="mb-[40px] sm:mb-0 whitespace-pre-line">
+              {block.title || "Picture\nyourself"}
             </SectionTitle>
           </FadeUpAnimator>
           {block.body && (
