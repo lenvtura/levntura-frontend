@@ -1,0 +1,25 @@
+{
+  "breadcrumbs": {
+    "home": "الرئيسية",
+    "blogs": "المدونة",
+    "programs": "البرامج"
+  },
+
+  "search": "بحث",
+  "searchPlaceholder": "بحث",
+  "noResults": "مفيش أسئلة مطابقة لبحثك.",
+  "all": "الكل",
+  "startNow": "ابدأ الآن",
+  "navigationMenu": "قائمة التنقل",
+
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي"
+  },
+
+  "inspireOthers": {
+    "heading": "دع رحلتك تلهم الآخرين",
+    "body": "تجربتك لديها القوة لتحفيز المستكشفين القادمين. شارك ملاحظاتك أو قصتك مع فريق Levntura — معاً نحتفل بكل رحلة تشكّل قادة الغد.",
+    "contactOurTeam": "تواصل مع فريقنا"
+  }
+}

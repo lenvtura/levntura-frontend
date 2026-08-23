@@ -1,0 +1,19 @@
+{
+  "hero": {
+    "headingLine1": "OUR",
+    "headingLine2": "PROGRAMS",
+    "intro": "Explore dynamic programs that combine travel, learning, and cultural discovery—crafted to expand your horizons and challenge your potential."
+  },
+
+  "listing": {
+    "title": "OUR PROGRAMS",
+    "intro": "Discover Our Programs: personalized support, workshops, and counseling services designed to empower and enhance well-being."
+  },
+
+  "filters": {
+    "allCountries": "All countries",
+    "countryLabel": "Country"
+  },
+  "share": "Share this program",
+  "emptyState": "No programs found matching your criteria."
+}

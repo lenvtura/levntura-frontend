@@ -1,0 +1,12 @@
+{
+  "heading": "BLOGS",
+  "intro": "At Levntura, we're here to guide you every step of the way on your journey of discovery. Whether you're exploring global programs, looking for inspiration, or seeking advice from alumni who've lived the experience—our blog is your window to the world. Here you'll find real stories, expert insights, and cultural guides that connect you to a global community of dreamers and doers",
+  "latestArticles": "Latest Articles",
+  "noArticles": "No articles found matching your criteria.",
+
+  "detail": {
+    "byAuthor": "By",
+    "minRead": "min read",
+    "moreToRead": "More to read"
+  }
+}
