@@ -39,6 +39,7 @@ import {
   parseSiteOrigins,
 } from './lib/url'
 import { isSpacesConfigured, spacesEnv, spacesFileUrl } from './lib/storage/spaces'
+import { shouldPushSchema } from './lib/db'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -137,10 +138,11 @@ export default buildConfig({
   },
 
   db: postgresAdapter({
-    // ⚠️ push: true auto-syncs the schema (great for local dev). Before going
-    // to production, switch to `process.env.NODE_ENV !== 'production'` and apply
-    // changes via committed migrations — push can drop columns on schema drift.
-    push: process.env.NODE_ENV !== 'production',
+    // Auto-sync the schema ONLY against a local database. Gating on NODE_ENV
+    // alone is not enough — seed scripts and local dev servers run with
+    // NODE_ENV unset and will happily push to whatever DATABASE_URL points at.
+    // See src/lib/db.ts; override with PAYLOAD_DB_PUSH.
+    push: shouldPushSchema(),
     pool: {
       connectionString: process.env.DATABASE_URL || '',
       // Managed Postgres on Vercel usually needs TLS.

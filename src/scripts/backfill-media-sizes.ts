@@ -16,10 +16,8 @@
  * idempotent: the original object is rewritten byte-for-byte in place and the
  * variants appear alongside it. Re-running skips anything already done.
  *
- * Runs with NODE_ENV=production (set in the npm script) purely to force
- * `push: false` in the Postgres adapter. Without it, booting Payload locally
- * against a production DATABASE_URL auto-pushes the schema — which is how this
- * database drifted out of sync with its migrations in the first place.
+ * Safe to point at a remote database: `shouldPushSchema()` in src/lib/db.ts
+ * keeps the adapter from auto-syncing the schema unless DATABASE_URL is local.
  *
  * Flags:
  *   --force   re-generate even for docs that already have variants
