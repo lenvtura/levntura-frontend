@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import { Suspense } from 'react'
 import {
   FaFacebook,
@@ -240,6 +241,13 @@ export async function Footer() {
           )}
         </div>
       )}
+
+      {/* ICEF IAS badge loader — renders into #iasBadge above. */}
+      <Script
+        src="https://www-cdn.icef.com/scripts/iasbadgeid.js"
+        strategy="lazyOnload"
+        crossOrigin="anonymous"
+      />
     </FooterWrapper>
   )
 }
