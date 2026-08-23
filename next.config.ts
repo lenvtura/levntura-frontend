@@ -19,12 +19,14 @@ const nextConfig: NextConfig = {
   cacheComponents: false,
 
   images: {
-    // NOTE: if Vercel's Image Optimization quota can't be raised, flip this to
-    // `unoptimized: true` — it serves images straight from DO Spaces (a CDN) and
-    // bypasses the optimizer, which returns 402 for uncached width/format combos
-    // once the monthly quota is exhausted (why images vanish on mobile but not
-    // desktop — different requested widths). One-line change, no other edits.
-    unoptimized: process.env.NODE_ENV === 'development',
+    // Vercel's Image Optimization quota is exhausted on this account, so
+    // /_next/image returns 402 (OPTIMIZED_IMAGE_REQUEST_PAYMENT_REQUIRED) for
+    // any (url, width, quality) combo it hasn't already cached — which is why
+    // some images render and others vanish. We bypass the optimizer entirely
+    // and serve straight from DO Spaces; right-sizing is done by Payload/sharp
+    // at upload time instead (see Media.upload.imageSizes + mediaUrl() in
+    // src/lib/url.ts).
+    unoptimized: true,
     localPatterns: [
       {
         pathname: '/api/media/**',
