@@ -36,7 +36,9 @@ import { Client } from 'pg'
 const MIGRATION = '20260823_000000_media_image_sizes'
 const PRESUMED_APPLIED = '20260806_122240'
 
-const log = (m: string): void => process.stdout.write(`[migrate:media] ${m}\n`)
+const log = (m: string): void => {
+  process.stdout.write(`[migrate:media] ${m}\n`)
+}
 
 /** Read the `up()` SQL out of the committed migration file. */
 function readUpSql(): string {

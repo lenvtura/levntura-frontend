@@ -33,7 +33,9 @@ import config from '../payload.config'
 
 const SIZE_NAMES = ['thumbnail', 'card', 'feature', 'og'] as const
 
-const log = (msg: string): void => process.stdout.write(`[backfill:media] ${msg}\n`)
+const log = (msg: string): void => {
+  process.stdout.write(`[backfill:media] ${msg}\n`)
+}
 
 const arg = (name: string): string | undefined =>
   process.argv.find((a) => a.startsWith(`--${name}=`))?.split('=')[1]
