@@ -33,6 +33,14 @@ import config from '../payload.config'
 
 const SIZE_NAMES = ['thumbnail', 'card', 'feature', 'og'] as const
 
+const UNPROCESSABLE_MIMES = new Set([
+  'image/svg+xml',
+  'image/heic',
+  'image/heif',
+  'image/x-icon',
+  'image/vnd.microsoft.icon',
+])
+
 const log = (msg: string): void => {
   process.stdout.write(`[backfill:media] ${msg}\n`)
 }
@@ -59,7 +67,7 @@ const run = async (): Promise<void> => {
 
   log(`found ${docs.length} image docs`)
 
-  const report = { processed: 0, skipped: 0, failed: 0 }
+  const report = { processed: 0, skipped: 0, orphaned: 0, failed: 0 }
 
   for (const doc of docs) {
     if (report.processed >= limit) break
@@ -74,9 +82,14 @@ const run = async (): Promise<void> => {
       continue
     }
 
-    // SVGs have no meaningful raster variants and sharp would rasterise them,
-    // losing the whole point of a vector logo.
-    if (doc.mimeType === 'image/svg+xml') {
+    // Formats sharp cannot resize, or should not. These can never succeed, so
+    // they are skipped rather than counted as failures — otherwise every future
+    // run exits non-zero on the same handful of files and the exit code stops
+    // meaning anything.
+    //   svg  - rasterising a vector logo defeats the point
+    //   heic - sharp needs libheif, which is not built in here
+    //   ico  - not a resizable raster format
+    if (doc.mimeType && UNPROCESSABLE_MIMES.has(doc.mimeType)) {
       report.skipped += 1
       continue
     }
@@ -91,8 +104,10 @@ const run = async (): Promise<void> => {
     try {
       const res = await fetch(url)
       if (!res.ok) {
-        log(`  ⚠ id=${id} ${filename}: fetch ${res.status} — skipping`)
-        report.failed += 1
+        // An orphaned row: the record outlived its object in Spaces. Nothing a
+        // re-run can fix, so it is not counted as a failure.
+        log(`  ⚠ id=${id} ${filename}: fetch ${res.status} — orphaned record, skipping`)
+        report.orphaned += 1
         continue
       }
       const buffer = Buffer.from(await res.arrayBuffer())
@@ -121,8 +136,29 @@ const run = async (): Promise<void> => {
   }
 
   log(JSON.stringify(report))
+  // Flush stdout before exiting: process.exit() truncates buffered writes to a
+  // pipe, which previously swallowed this very report line when piped to grep.
+  await new Promise((resolve) => process.stdout.write('', resolve))
   process.exit(report.failed > 0 ? 1 : 0)
 }
+
+// A dropped connection to Spaces or Postgres surfaces as an unhandled 'error'
+// event on the pg client, outside the per-document try/catch. Without these
+// guards the process died mid-run reporting exit 0, which read as a clean
+// finish - the run looked complete when a third of the images were untouched.
+process.on('unhandledRejection', (err) => {
+  process.stderr.write(
+    `[backfill:media] unhandled rejection: ${
+      err instanceof Error ? err.message : String(err)
+    }\n`,
+  )
+  process.exit(1)
+})
+
+process.on('uncaughtException', (err) => {
+  process.stderr.write(`[backfill:media] uncaught exception: ${err.message}\n`)
+  process.exit(1)
+})
 
 run().catch((err) => {
   process.stderr.write(`[backfill:media] failed: ${(err as Error).message}\n`)
